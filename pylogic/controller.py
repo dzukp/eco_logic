@@ -13,6 +13,7 @@ class Controller(LoggedObject):
         self.tag_server = None
         self.top_object = None
         self.saver = None
+        self.supervisor_manager = None
         self.cycle_time = 0.05
 
     def set_tag_server(self, tag_server):
@@ -24,10 +25,15 @@ class Controller(LoggedObject):
     def set_saver(self, saver):
         self.saver = saver
 
+    def set_supervisor_manager(self, supervisor_manager):
+        self.supervisor_manager = supervisor_manager
+
     def init(self):
         self.top_object.set_saver(self.saver)
         self.top_object.init_all()
         self.test_channel_attaching()
+        self.supervisor_manager.set_top_object(self.top_object)
+        self.supervisor_manager.init()
 
     def test_channel_attaching(self):
         in_tag_atached_channel_names = []
@@ -35,11 +41,12 @@ class Controller(LoggedObject):
             in_tag_atached_channel_names += [ch.name for ch in tag.channels]
         out_tag_atached_channel_names = []
         for tag in self.tag_server.out_tags:
-            out_tag_atached_channel_names.append(tag.channel)
+            if tag.channel is not None:
+                out_tag_atached_channel_names.append(tag.channel.name)
         for channel in self.top_object.get_all_channels():
             if channel.name:
                 if isinstance(channel, (InChannel, InOutChannel)):
-                    count = in_tag_atached_channel_names.count(channel.name) != 1
+                    count = in_tag_atached_channel_names.count(channel.name)
                     if count == 0:
                         self.logger.warning(f'{type(channel).__name__} `{channel.name} has no attached tag')
                     elif count > 1:
@@ -49,9 +56,11 @@ class Controller(LoggedObject):
                         self.logger.warning(f'{type(channel).__name__} `{channel.name}` has no attached tag')
 
     def process(self):
+        self.supervisor_manager.receive_data()
         self.tag_server.read_all()
         self.top_object.process_all()
         self.tag_server.write_all()
+        self.supervisor_manager.send_data()
 
     def start_loop(self):
         self.tag_server.start()

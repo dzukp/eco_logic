@@ -9,7 +9,7 @@ logging_config = {
         'PylogicLogger': {
             'handlers': ['common_console'],
             'propagate': False,
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
         'top': {
             'handlers': ['common_console', 'top_file'],
@@ -21,6 +21,16 @@ logging_config = {
             'propagate': False,
             'level':'DEBUG',
         },
+        'supervisors': {
+            'handlers': ['common_console'],
+            'propagate': False,
+            'level': 'INFO',
+        },
+        # 'modbus_tk': {
+        #     'handlers': ['common_console'],
+        #     'propagate': False,
+        #     'level': 'DEBUG',
+        # }
     },
     'handlers': {
         'tagsrv_file': {
@@ -32,12 +42,12 @@ logging_config = {
             'filename': 'logs/tagsrv.log'
         },
         'tagsrv_console': {
-            'level': 'WARNING',
+            'level': 'CRITICAL',
             'formatter': 'verbose',
             'class': 'logging.StreamHandler'
         },
         'common_console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'formatter': 'verbose',
             'class': 'logging.StreamHandler'
         },

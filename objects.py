@@ -1,54 +1,179 @@
 from pylogic.io_object import IoObject
-from valve import Valve
+from valve import Valve, NOValve
+from engine import Engine
+from fc import Altivar212
+from tank import Tank
 from post import Post
+from waterpreparing import WaterPreparing
+from nofrost import Nofrost
+from top import Top
 
 
 objects = {
     'top': {
-        'class': IoObject,
+        'class': Top,
         'children': {
-            'xxx': {
-                'class': IoObject,
+            'supplier': {
+                'class': WaterPreparing,
+                'di_press_1': '',
+                'ai_pe_1': '',
+                'di_press_2': '',
+                'ai_pe_2': '',
+                'di_press_3': '',
+                'mb_cells_idx': 86,
+                'children': {
+                    'pump_n1': {
+                        'class': Engine,
+                        'do_start': '',
+                        'mb_cells_idx': 0,
+                    },
+                    'pump_n2': {
+                        'class': Engine,
+                        'do_start': '',
+                        'mb_cells_idx': 3
+                    },
+                    'pump_os1': {
+                        'class': Engine,
+                        'do_start': '',
+                        'mb_cells_idx': 6
+                    },
+                    'pump_os2': {
+                        'class': Engine,
+                        'do_start': '',
+                        'mb_cells_idx': 9
+                    },
+                    'pump_i1': {
+                        'class': Engine,
+                        'do_start': '',
+                        'mb_cells_idx': 12
+                    },
+                    'valve_b1': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 15
+                    },
+                    'valve_b2': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 18
+                    },
+                    'valve_water_os': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 21
+                    },
+                    'tank_b1': {
+                        'class': Tank,
+                        'di_low_level': '',
+                        'di_mid_level': '',
+                        'di_hi_level': '',
+                        'mb_cells_idx': 24
+                    },
+                    'tank_b2': {
+                        'class': Tank,
+                        'di_low_level': '',
+                        'di_mid_level': '',
+                        'di_hi_level': '',
+                        'mb_cells_idx': 26
+                    },
+                    'valve_dose_wax': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 87
+                    },
+                    'valve_dose_shampoo': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 90
+                    },
+                    'valve_dose_foam': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 93
+                    },
+                    'valve_dose_intensive': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 96
+                    }
+                }
+            },
+            'nofrost': {
+                'class': Nofrost,
+                'ai_temp_1': '',
+                'ai_temp_2': '',
+                'mb_cells_idx': 28,
+                'children': {
+                    'valve_nc': {
+                        'class': Valve,
+                        'do_open': '',
+                        'mb_cells_idx': 32
+                    },
+                    'valve_no': {
+                        'class': NOValve,
+                        'do_close': '',
+                        'mb_cells_idx': 35
+                    },
+                }
             },
             'post_1': {
                 'class': Post,
                 'ai_pressure': 'ai_1_1',
+                'mb_cells_idx': 76,
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
-                        'do_open': 'do_1_1'
+                        'do_open': 'do_1_1',
+                        'mb_cells_idx': 39
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
-                        'do_open': 'do_1_2'
+                        'do_open': 'do_1_2',
+                        'mb_cells_idx': 42
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
-                        'do_open': 'do_1_3'
+                        'do_open': 'do_1_3',
+                        'mb_cells_idx': 45
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
-                        'do_open': 'do_1_4'
+                        'do_open': 'do_1_4',
+                        'mb_cells_idx': 48
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
-                        'do_open': 'do_1_5'
+                        'do_open': 'do_1_5',
+                        'mb_cells_idx': 51
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
-                        'do_open': 'do_1_6'
+                        'do_open': 'do_1_6',
+                        'mb_cells_idx': 54
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
-                        'do_open': 'do_1_7'
+                        'do_open': 'do_1_7',
+                        'mb_cells_idx': 57
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
-                        'do_open': 'do_1_8'
+                        'do_open': 'do_1_8',
+                        'mb_cells_idx': 60
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
-                        'do_open': 'do_2_9'
+                        'do_open': 'do_2_9',
+                        'mb_cells_idx': 63
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': '',
+                        'ao_frequency': '',
+                        'ai_status': '',
+                        'ai_frequency': '',
+                        'ai_alarm_code': '',
+                        'mb_cells_idx': 66
                     }
                 }
             },
@@ -56,39 +181,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_1_2',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_1_9'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_1_10'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_1_11'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_1_12'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
                         'do_open': 'do_1_13'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_1_14'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_1_15'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_1_16'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_10'
                     }
@@ -98,39 +223,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_1_3',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_1_17'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_1_18'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_1_19'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_1_20'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
-                        'do_open': 'do_1_211'
+                        'do_open': 'do_1_21'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_1_22'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_1_23'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_1_24'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_11'
                     }
@@ -140,39 +265,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_2_4',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_2_1'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_2_2'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_2_3'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_2_4'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
                         'do_open': 'do_2_5'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_2_6'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_2_7'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_2_8'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_12'
                     }
@@ -182,39 +307,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_3_5',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_3_1'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_3_2'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_3_3'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_3_4'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
                         'do_open': 'do_3_5'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_3_6'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_3_7'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_3_8'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_9'
                     }
@@ -224,39 +349,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_3_6',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_3_9'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_3_10'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_3_11'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_3_12'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
                         'do_open': 'do_3_13'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_3_14'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_3_15'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_3_16'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_10'
                     }
@@ -266,39 +391,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_3_7',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_3_17'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_3_18'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_3_19'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_3_20'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
-                        'do_open': 'do_3_211'
+                        'do_open': 'do_3_21'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_3_22'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_3_23'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_3_24'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_11'
                     }
@@ -308,39 +433,39 @@ objects = {
                 'class': Post,
                 'ai_pressure': 'ai_3_8',
                 'children': {
-                    'v_foam': {
+                    'valve_foam': {
                         'class': Valve,
                         'do_open': 'do_4_1'
                     },
-                    'v_wax': {
+                    'valve_wax': {
                         'class': Valve,
                         'do_open': 'do_4_2'
                     },
-                    'v_shampoo': {
+                    'valve_shampoo': {
                         'class': Valve,
                         'do_open': 'do_4_3'
                     },
-                    'v_cold_water': {
+                    'valve_cold_water': {
                         'class': Valve,
                         'do_open': 'do_4_4'
                     },
-                    'v_hot_water': {
+                    'valve_hot_water': {
                         'class': Valve,
                         'do_open': 'do_4_5'
                     },
-                    'v_osmos': {
+                    'valve_osmos': {
                         'class': Valve,
                         'do_open': 'do_4_6'
                     },
-                    'v_out_1': {
+                    'valve_out_1': {
                         'class': Valve,
                         'do_open': 'do_4_7'
                     },
-                    'v_out_2': {
+                    'valve_out_2': {
                         'class': Valve,
                         'do_open': 'do_4_8'
                     },
-                    'v_intensive': {
+                    'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_12'
                     }

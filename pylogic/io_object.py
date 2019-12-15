@@ -11,7 +11,7 @@ class IoObject(LoggedObject):
         self.children = []
         self.parent = None
         self.full_name = name
-        self.__set_parent(parent)
+        self._set_parent(parent)
         self.saver = None
 
     # def __del__(self):
@@ -48,7 +48,7 @@ class IoObject(LoggedObject):
                 else:
                     return child
 
-    def __set_parent(self, parent):
+    def _set_parent(self, parent):
         self.parent = parent
         if self.parent:
             self.full_name = '.'.join([parent.full_name, self.name])
@@ -59,9 +59,9 @@ class IoObject(LoggedObject):
         #     child.set_parent(self)
 
     def set_logger(self, logger):
-        super().set_logger(logger.getChild(self.name))
+        super().set_logger(logger)
         for child in self.children:
-            child.set_logger(self.logger)
+            child.set_logger(self.logger.getChild(child.name))
 
     def save(self):
         if self.saver:
@@ -113,3 +113,6 @@ class IoObject(LoggedObject):
 
     def process(self):
         pass
+
+    def __str__(self):
+        return f'{self.__class__.__name__}<{self.full_name}>'

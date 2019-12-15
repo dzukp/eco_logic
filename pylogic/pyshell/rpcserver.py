@@ -3,6 +3,7 @@ import sys
 #import time
 import threading
 import code
+import traceback
 from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 from rlcompleter import Completer
@@ -26,6 +27,32 @@ class FileCacher:
         return output
 
 
+class MyInterpreter(code.InteractiveInterpreter):
+
+    def showtraceback(self):
+        """Display the exception that just occurred.
+
+        We remove the first stack item because it is our own code.
+
+        The output is written by self.write(), below.
+
+        """
+        sys.last_type, sys.last_value, last_tb = ei = sys.exc_info()
+        sys.last_traceback = last_tb
+        try:
+            lines = traceback.format_exception(ei[0], ei[1], last_tb.tb_next)
+            if sys.excepthook is sys.__excepthook__:
+                self.write(''.join(lines))
+            else:
+                # If someone has set sys.excepthook, we let that take precedence
+                # over self.write
+                # sys.excepthook(ei[0], ei[1], last_tb)
+                self.write(''.join(lines))
+                pass
+        finally:
+            last_tb = ei = None
+
+
 class PylogicRequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ('/RPC2',)
 
@@ -35,7 +62,6 @@ class ShellXMLRPCServer(SimpleXMLRPCServer):
         self.completer = Completer(locals)
         SimpleXMLRPCServer.__init__(self,addr, requestHandler, logRequests=False, allow_none=False, encoding=None, bind_and_activate=True)
         self.register_introspection_functions()
-        self.register_function(pow)
         
         self.register_function(self.interpreter_function, 'interpreter')
         self.register_function(self.completer_function, 'completer')
@@ -48,7 +74,8 @@ class ShellXMLRPCServer(SimpleXMLRPCServer):
         self.buffer = []
         self.filename = "<console>"
         self.locals = locals
-        self.interpreter = code.InteractiveInterpreter(self.locals)
+        #self.interpreter = code.InteractiveInterpreter(self.locals)
+        self.interpreter = MyInterpreter(self.locals)
         
     def get_output(self): 
         """ Захватить вывод """
@@ -69,9 +96,9 @@ class ShellXMLRPCServer(SimpleXMLRPCServer):
         more = self.interpreter.runsource(source, self.filename)
         if not more:
             self.resetbuffer()
-    
+
         self.return_output()
-        
+
         output = self.cache.flush()
         return output, more
 

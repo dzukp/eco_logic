@@ -7,7 +7,9 @@ class Mechanism(IoObject):
         self.manual = False
 
     def set_manual(self, manual=True):
-        self.manual = manual
+        if self.manual != manual:
+            self.manual = manual
+            self.logger.info(f'{"manual" if manual else "automate"} command')
 
     def set_automate(self):
-        self.manual = False
+        self.set_manual(manual=False)
