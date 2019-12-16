@@ -3,18 +3,14 @@ import time
 import os
 import binascii
 import logging
-
-if os.name == 'nt':
-    from serial import serialwin32 as serial
-elif os.name == 'posix':
-    import serial
+import serial
 
 
 class DummyPort(object):
     ''' Затычка, чтобы не падало, когда нет такого COM-орта '''
     def write(self, data):
         return len(data)
-    def readall(self):
+    def read_all(self):
         return ''
     def read(self, byte_cnt):
         return ''
@@ -39,13 +35,13 @@ class SerialSource(object):
         except Exception as ex:
             self.logger.error(ex)
             self.serial = DummyPort()
-            self.name = 'Dummy %d' % port
+            self.name = f'Dummy[{port}]'
         
     def __del__(self):
         self.serial.close()
         
-    def readAll(self):
-        return self.serial.readall()
+    def read_all(self):
+        return self.serial.read_all()
     
     def write(self, data):
         self.logger.debug('Serial %s write %s `%s`', self.name, binascii.b2a_hex(data), data)
@@ -59,7 +55,7 @@ class SerialSource(object):
         while True:
             c += 1
             # чтение из ком-порта
-            data += self.serial.readall()
+            data += self.serial.read_all()
             if len(data) >= required_bytes:
                 self.logger.debug('Serial %s Read time %.4f count %d', self.name, time.time() - start_time, c)
                 break

@@ -174,11 +174,11 @@ objects = {
                     },
                     'pump': {
                         'class': Altivar212,
-                        'ao_command': '',
-                        'ao_frequency': '',
-                        'ai_status': '',
-                        'ai_frequency': '',
-                        'ai_alarm_code': '',
+                        'ao_command': 'fc1_ao_1',
+                        'ao_frequency': 'fc1_ao_2',
+                        'ai_status': 'fc1_ai_1',
+                        'ai_frequency': 'fc1_ai_2',
+                        'ai_alarm_code': 'fc1_ai_3',
                         'mb_cells_idx': 66
                     }
                 }
@@ -223,6 +223,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_10'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc2_ao_1',
+                        'ao_frequency': 'fc2_ao_2',
+                        'ai_status': 'fc2_ai_1',
+                        'ai_frequency': 'fc2_ai_2',
+                        'ai_alarm_code': 'fc2_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -266,6 +275,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_11'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc3_ao_1',
+                        'ao_frequency': 'fc3_ao_2',
+                        'ai_status': 'fc3_ai_1',
+                        'ai_frequency': 'fc3_ai_2',
+                        'ai_alarm_code': 'fc3_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -309,6 +327,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_2_12'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc4_ao_1',
+                        'ao_frequency': 'fc4_ao_2',
+                        'ai_status': 'fc4_ai_1',
+                        'ai_frequency': 'fc4_ai_2',
+                        'ai_alarm_code': 'fc4_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -352,6 +379,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_9'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc5_ao_1',
+                        'ao_frequency': 'fc5_ao_2',
+                        'ai_status': 'fc5_ai_1',
+                        'ai_frequency': 'fc5_ai_2',
+                        'ai_alarm_code': 'fc5_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -395,6 +431,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_10'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc6_ao_1',
+                        'ao_frequency': 'fc6_ao_2',
+                        'ai_status': 'fc6_ai_1',
+                        'ai_frequency': 'fc6_ai_2',
+                        'ai_alarm_code': 'fc6_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -438,6 +483,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_11'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc7_ao_1',
+                        'ao_frequency': 'fc7_ao_2',
+                        'ai_status': 'fc7_ai_1',
+                        'ai_frequency': 'fc7_ai_2',
+                        'ai_alarm_code': 'fc7_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             },
@@ -481,6 +535,15 @@ objects = {
                     'valve_intensive': {
                         'class': Valve,
                         'do_open': 'do_4_12'
+                    },
+                    'pump': {
+                        'class': Altivar212,
+                        'ao_command': 'fc8_ao_1',
+                        'ao_frequency': 'fc8_ao_2',
+                        'ai_status': 'fc8_ai_1',
+                        'ai_frequency': 'fc8_ai_2',
+                        'ai_alarm_code': 'fc8_ai_3',
+                        'mb_cells_idx': None
                     }
                 }
             }

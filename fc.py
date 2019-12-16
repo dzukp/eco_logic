@@ -105,6 +105,8 @@ class Altivar212(Mechanism, ModbusDataObject):
                     self.logger.debug(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
 
     def mb_cells(self):
+        if self.mb_cells_idx is None:
+            return []
         return [self.mb_cells_idx, self.mb_cells_idx + 5]
 
     def mb_input(self, start_addr, data):
