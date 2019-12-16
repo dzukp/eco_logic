@@ -4,9 +4,7 @@ from pylogic.tagsrv.owen_mx210 import OwenAiMv210, OwenAoMu210, OwenDiMv210, Owe
 
 
 tags = {
-    'in': {
-        'ai_1_0': InTag(0),
-    },
+    'in': {},
     'out': {}
 }
 
@@ -14,7 +12,7 @@ module_tags = {}
 
 # generate ai_1_1 - ai_2_8
 for pref in ('ai_1_','ai_2_',):
-    tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(8)]))
+    tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 9)]))
 
 # generate do_1_1 - do_4_24
 for pref in ('do_1_', 'do_2_', 'do_3_', 'do_4_'):

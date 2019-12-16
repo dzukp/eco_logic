@@ -54,6 +54,8 @@ class Controller(LoggedObject):
                 if isinstance(channel, (OutChannel, InOutChannel)):
                     if channel.name not in out_tag_atached_channel_names:
                         self.logger.warning(f'{type(channel).__name__} `{channel.name}` has no attached tag')
+            else:
+                self.logger.warning('Channel has no name')
 
     def process(self):
         self.supervisor_manager.receive_data()

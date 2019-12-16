@@ -1,7 +1,7 @@
 import logging
 
 
-from .simulator import SimulatorDispatcher
+#from .simulator import SimulatorDispatcher
 
 
 class InTag:
@@ -31,8 +31,8 @@ class TagSrv(object):
         self.sim_dispatchers = None
     
     def init(self, setting, channels, sim_channels=()):
-        self.in_tags = setting['tags']['in'].values() if 'in' in setting['tags'] else []
-        self.out_tags = setting['tags']['out'].values() if 'out' in setting['tags'] else []
+        self.in_tags = list(setting['tags']['in'].values()) if 'in' in setting['tags'] else []
+        self.out_tags = list(setting['tags']['out'].values()) if 'out' in setting['tags'] else []
         self.dispatchers = setting['dispatchers']
         for disp in self.dispatchers.values():
             disp.set_logger(self.logger)
@@ -44,7 +44,7 @@ class TagSrv(object):
                 setting['tags']['out'][ch.name].channel = ch
         if sim_channels:
             self.sim_dispatchers = {
-                'Simulator': SimulatorDispatcher(setting['tags'], sim_channels)
+                #'Simulator': SimulatorDispatcher(setting['tags'], sim_channels)
             }
     
     def start(self):

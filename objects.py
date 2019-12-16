@@ -15,85 +15,90 @@ objects = {
         'children': {
             'supplier': {
                 'class': WaterPreparing,
-                'di_press_1': '',
-                'ai_pe_1': '',
-                'di_press_2': '',
-                'ai_pe_2': '',
-                'di_press_3': '',
+                'di_press_1': 'di_1_7',
+                'ai_pe_1': 'ai_2_1',
+                'di_press_2': 'di_1_8',
+                'ai_pe_2': 'ai_2_2',
+                'di_press_3': 'di_1_9',
                 'mb_cells_idx': 86,
                 'children': {
                     'pump_n1': {
                         'class': Engine,
-                        'do_start': '',
+                        'do_start': 'do_2_13',
                         'mb_cells_idx': 0,
                     },
                     'pump_n2': {
                         'class': Engine,
-                        'do_start': '',
+                        'do_start': 'do_2_14',
                         'mb_cells_idx': 3
                     },
                     'pump_os1': {
                         'class': Engine,
-                        'do_start': '',
+                        'do_start': 'do_2_15',
                         'mb_cells_idx': 6
                     },
                     'pump_os2': {
                         'class': Engine,
-                        'do_start': '',
+                        'do_start': 'do_2_16',
                         'mb_cells_idx': 9
                     },
                     'pump_i1': {
                         'class': Engine,
-                        'do_start': '',
+                        'do_start': 'do_2_17',
                         'mb_cells_idx': 12
+                    },
+                    'valve_water_os': {
+                        'class': Valve,
+                        'do_open': 'do_2_18',
+                        'mb_cells_idx': 21
+                    },
+                    'valve_wash_osmos': {
+                        'class': Valve,
+                        'do_open': 'do_2_19',
+                        'mb_cells_idx': 21
                     },
                     'valve_b1': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_2_20',
                         'mb_cells_idx': 15
                     },
                     'valve_b2': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_2_21',
                         'mb_cells_idx': 18
-                    },
-                    'valve_water_os': {
-                        'class': Valve,
-                        'do_open': '',
-                        'mb_cells_idx': 21
                     },
                     'tank_b1': {
                         'class': Tank,
-                        'di_low_level': '',
-                        'di_mid_level': '',
-                        'di_hi_level': '',
+                        'di_low_level': 'di_1_1',
+                        'di_mid_level': 'di_1_2',
+                        'di_hi_level': 'di_1_3',
                         'mb_cells_idx': 24
                     },
                     'tank_b2': {
                         'class': Tank,
-                        'di_low_level': '',
-                        'di_mid_level': '',
-                        'di_hi_level': '',
+                        'di_low_level': 'di_1_4',
+                        'di_mid_level': 'di_1_5',
+                        'di_hi_level': 'di_1_6',
                         'mb_cells_idx': 26
+                    },
+                    'valve_dose_foam': {
+                        'class': Valve,
+                        'do_open': 'do_4_15',
+                        'mb_cells_idx': 93
                     },
                     'valve_dose_wax': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_4_16',
                         'mb_cells_idx': 87
                     },
                     'valve_dose_shampoo': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_4_17',
                         'mb_cells_idx': 90
-                    },
-                    'valve_dose_foam': {
-                        'class': Valve,
-                        'do_open': '',
-                        'mb_cells_idx': 93
                     },
                     'valve_dose_intensive': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_4_18',
                         'mb_cells_idx': 96
                     }
                 }
@@ -106,12 +111,12 @@ objects = {
                 'children': {
                     'valve_nc': {
                         'class': Valve,
-                        'do_open': '',
+                        'do_open': 'do_4_13',
                         'mb_cells_idx': 32
                     },
                     'valve_no': {
                         'class': NOValve,
-                        'do_close': '',
+                        'do_close': 'do_4_14',
                         'mb_cells_idx': 35
                     },
                 }
@@ -119,6 +124,7 @@ objects = {
             'post_1': {
                 'class': Post,
                 'ai_pressure': 'ai_1_1',
+                'di_flow': 'di_1_10',
                 'mb_cells_idx': 76,
                 'children': {
                     'valve_foam': {
@@ -180,6 +186,7 @@ objects = {
             'post_2': {
                 'class': Post,
                 'ai_pressure': 'ai_1_2',
+                'di_flow': 'di_1_11',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -222,6 +229,7 @@ objects = {
             'post_3': {
                 'class': Post,
                 'ai_pressure': 'ai_1_3',
+                'di_flow': 'di_1_12',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -263,7 +271,8 @@ objects = {
             },
             'post_4': {
                 'class': Post,
-                'ai_pressure': 'ai_2_4',
+                'ai_pressure': 'ai_1_4',
+                'di_flow': 'di_1_13',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -305,7 +314,8 @@ objects = {
             },
             'post_5': {
                 'class': Post,
-                'ai_pressure': 'ai_3_5',
+                'ai_pressure': 'ai_1_5',
+                'di_flow': 'di_1_14',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -347,7 +357,8 @@ objects = {
             },
             'post_6': {
                 'class': Post,
-                'ai_pressure': 'ai_3_6',
+                'ai_pressure': 'ai_1_6',
+                'di_flow': 'di_1_15',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -389,7 +400,8 @@ objects = {
             },
             'post_7': {
                 'class': Post,
-                'ai_pressure': 'ai_3_7',
+                'ai_pressure': 'ai_1_7',
+                'di_flow': 'di_1_16',
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -431,7 +443,8 @@ objects = {
             },
             'post_8': {
                 'class': Post,
-                'ai_pressure': 'ai_3_8',
+                'ai_pressure': 'ai_1_8',
+                'di_flow': 'di_1_17',
                 'children': {
                     'valve_foam': {
                         'class': Valve,

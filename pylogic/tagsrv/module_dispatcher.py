@@ -2,12 +2,11 @@
 import threading
 import time
 import logging
-from .tagsrv_logger import logger
 
 
 
 class ModuleDispatcher(threading.Thread):
-    
+
     def __init__(self, modules, timeout=0.005):
         super().__init__()
         self.setDaemon(True)
@@ -15,7 +14,7 @@ class ModuleDispatcher(threading.Thread):
             raise Exception('Module dispatcher has no modules')
         self.modules = modules
         self.timeout = timeout
-        self.logger = logging.getLogger()
+        self.logger = logging.getLogger('TagSrv')
 
     def set_logger(self, logger):
         self.logger = logger
