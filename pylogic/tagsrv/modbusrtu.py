@@ -1,5 +1,6 @@
 
 import time
+import struct
 
 from .tagsrv_logger import logger
 
@@ -8,16 +9,16 @@ __all__ = ['ModbusRTUModule',]
 
 
 def u16_to_bestr(u):
-    """Given word, return as big-endian binary string"""
-    u = (int(u) & 0xFFFF)
-    return( chr(u>>8) + chr(u&0xFF) )
+    """Given word, return as big-endian binary"""
+    u = (u & 0xFFFF)
+    return u >> 8 + u & 0xFF
 
 
-def crc16(inputstring):
+def crc16(input_data: bytes):
     """Calculate CRC-16 for Modbus.
     
     Args:
-        inputstring (str): An arbitrary-length message (without the CRC).
+        input_data (bytes): An arbitrary-length message (without the CRC).
 
     Returns:
         A two-byte CRC string, where the least significant byte is first.
@@ -26,22 +27,20 @@ def crc16(inputstring):
     
     """
     # Constant for MODBUS CRC-16
-    POLY = 0xA001
+    poly = 0xA001
  
     # Preload a 16-bit register with ones
     register = 0xFFFF
     
-    for character in inputstring:
-        
+    for byte in input_data:
         # XOR with each character
-        register = register ^ ord(character)
-
+        register = register ^ byte
         for i in range(8):
             if register & 0x01:
-                register = (register >> 1) ^ POLY
+                register = (register >> 1) ^ poly
             else:
                 register = (register >> 1)
-    return chr(register & 0xFF) + chr(register >> 8)
+    return struct.pack('H', register)
     
 
 class ModbusRTUModule(object):
@@ -54,11 +53,14 @@ class ModbusRTUModule(object):
             self.tags = tags
             self.tags.sort(key=sort_key)
             addr = self.tags[0].addr
-            self.req = chr(slave) + chr(0x3) + \
-                        u16_to_bestr(addr) + \
-                        u16_to_bestr(len(self.tags))
+            # self.req = chr(slave) + chr(0x3) + \
+            #             u16_to_bestr(addr) + \
+            #             u16_to_bestr(len(self.tags))
+            # self.req += crc16(self.req)
+            self.req = struct.pack('BBHH', slave, 0x3, addr, len(self.tags))
             self.req += crc16(self.req)
-            self.ans = chr(slave) + chr(0x3)
+            #self.ans = chr(slave) + chr(0x3)
+            self.ans = struct.pack('BB', slave, 0x3)
             self.ans_len = 5 + len(self.tags) * 2
             
         def generate(self):
@@ -72,16 +74,23 @@ class ModbusRTUModule(object):
             return True
         
         def ans_process(self, ans):
-            i = 0
-            for tag in self.tags:
-                a = ord(ans[3 + i])
-                b = ord(ans[4 + i])
-                value = (a << 8) + b
+            quant = len(self.tags)
+            data = struct.unpack('H' * quant, ans[3:3 + quant * 2])
+            for tag, value in zip(self.tags, data):
                 if tag.filter:
                     tag.value = tag.filter.apply(value)
                 else:
                     tag.value = value
-                i += 2
+            # i = 0
+            # for tag in self.tags:
+            #     a = ord(ans[3 + i])
+            #     b = ord(ans[4 + i])
+            #     value = (a << 8) + b
+            #     if tag.filter:
+            #         tag.value = tag.filter.apply(value)
+            #     else:
+            #         tag.value = value
+            #     i += 2
         
     class OutTagRequest(object):
         def __init__(self, slave, tags):
@@ -90,23 +99,26 @@ class ModbusRTUModule(object):
             self.tags = tags
             self.tags.sort(key=sort_key)
             addr = self.tags[0].addr
-            self.req = chr(slave) + chr(0x10) + \
-                        u16_to_bestr(addr) + \
-                        u16_to_bestr(len(self.tags)) + \
-                        chr(len(self.tags) * 2)
-            self.ans = chr(slave) + chr(0x10) + \
-                        u16_to_bestr(addr) + \
-                        u16_to_bestr(len(self.tags))
+            # self.req = chr(slave) + chr(0x10) + \
+            #             u16_to_bestr(addr) + \
+            #             u16_to_bestr(len(self.tags)) + \
+            #             chr(len(self.tags) * 2)
+            # self.ans = chr(slave) + chr(0x10) + \
+            #             u16_to_bestr(addr) + \
+            #             u16_to_bestr(len(self.tags))
+            self.req = struct.pack('BBHHB', slave, 0x10, addr, len(self.tags), len(self.tags) * 2)
+            self.ans = struct.pack('BBHH', slave, 0x10, addr, len(self.tags))
             self.ans_len = 8
             
         def generate(self):
-            data = ''
+            values = []
             for tag in self.tags:
                 if tag.filter:
                     val = tag.filter.apply(tag.value)
                 else:
                     val = tag.value
-                data += u16_to_bestr(val)
+                values.append(val)
+            data = struct.pack('H' * len(self.tags), *values)
             result = self.req + data
             result += crc16(result)
             return result

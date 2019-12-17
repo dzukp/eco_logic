@@ -86,24 +86,24 @@ class Ton:
             self.clock = moment_clock
         else:
             raise Exception('need use periodic_clock or moment_clock')
-        self.started = False
-        self.start_time = 0
-        self.timeout = 0.0
+        self._started = False
+        self._start_time = 0
+        self._timeout = 0.0
 
     def process(self, run, timeout=None):
         if timeout is not None:
-            self.timeout = timeout
-        if self.started and not run:
+            self._timeout = timeout
+        if self._started and not run:
             self.reset()
-        elif not self.started and run:
-            self.start_time = self.clock.time()
-        if self.started and self.start_time + self.timeout < self.clock.time():
+        elif not self._started and run:
+            self._start_time = self.clock.time()
+        if self._started and self._start_time + self._timeout < self.clock.time():
             return True
         return False
 
     def reset(self):
-        self.started = False
-        self.start_time = 0
+        self._started = False
+        self._start_time = 0
 
     def set_timeout(self, timeout):
-        self.timeout = timeout
+        self._timeout = timeout

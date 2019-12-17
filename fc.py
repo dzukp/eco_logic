@@ -45,9 +45,9 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.is_run = (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
-        if self.is_alarm:
+        if self.is_alarm and self.func_state != self.state_alarm:
             self.func_state = self.state_alarm
-            self.logger.debug('Alarm signal - alarm state')
+            self.logger.info('Alarm signal - alarm state')
         if self.reset_alarm:
             self.ao_command.val |= self.CMD_RESET
             if reset_alarm_time:
@@ -95,14 +95,24 @@ class Altivar212(Mechanism, ModbusDataObject):
             if self.func_state == self.state_idle and not self.func_state == self.state_alarm:
                 if self.func_state not in (self.state_starting, self.state_run):
                     self.func_state = self.state_starting
-                    self.logger.debug(f'{self.name}: start command {"manual" if self.manual else "automate"}')
+                    self.logger.info(f'{self.name}: start command {"manual" if self.manual else "automate"}')
 
     def stop(self, manual=False):
         if manual == self.manual:
             if self.func_state in (self.state_run, self.state_starting) and not self.func_state == self.state_alarm:
                 if self.func_state not in (self.state_stopping, self.state_idle):
                     self.func_state = self.state_stopping
-                    self.logger.debug(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
+                    self.logger.info(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
+
+    def set_frequency(self, freq, manual=False):
+        if manual:
+            if freq != self.man_frequency_task:
+                self.man_frequency_task = freq
+                self.logger.debug(f'set manual frequency task: {freq}')
+        else:
+            if freq != self.auto_frequency_task:
+                self.auto_frequency_task = freq
+                self.logger.debug(f'set auto frequency task: {freq}')
 
     def mb_cells(self):
         if self.mb_cells_idx is None:

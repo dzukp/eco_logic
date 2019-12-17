@@ -157,12 +157,12 @@ objects = {
                         'do_open': 'do_1_6',
                         'mb_cells_idx': 54
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_1_7',
                         'mb_cells_idx': 57
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_1_8',
                         'mb_cells_idx': 60
@@ -212,11 +212,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_1_14'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_1_15'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_1_16'
                     },
@@ -264,11 +264,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_1_22'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_1_23'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_1_24'
                     },
@@ -316,11 +316,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_2_6'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_2_7'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_2_8'
                     },
@@ -368,11 +368,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_3_6'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_3_7'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_3_8'
                     },
@@ -420,11 +420,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_3_14'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_3_15'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_3_16'
                     },
@@ -472,11 +472,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_3_22'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_3_23'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_3_24'
                     },
@@ -524,11 +524,11 @@ objects = {
                         'class': Valve,
                         'do_open': 'do_4_6'
                     },
-                    'valve_out_1': {
+                    'valve_out_water': {
                         'class': Valve,
                         'do_open': 'do_4_7'
                     },
-                    'valve_out_2': {
+                    'valve_out_foam': {
                         'class': Valve,
                         'do_open': 'do_4_8'
                     },

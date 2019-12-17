@@ -22,20 +22,24 @@ class SerialSource(object):
     
     opened_ports = {}
     
-    def __init__(self, port=0, baudrate=155200, bytesize=8, parity='N'):
+    def __init__(self, port=0, baudrate=155200, bytesize=8, parity='N', stopbits=1):
         self.logger = logging.getLogger(f'serial_port_{port}')
         if port in self.opened_ports:
             raise Exception('Port is opened')
         try:
             self.serial = serial.Serial(
-                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, timeout=0)
+                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, stopbits=stopbits, timeout=0)
             self.opened_ports[self.serial.port] = self.serial
             self.name = self.serial.name
             self.logger.info('serial port %s opened', self.serial.name)
-        except Exception as ex:
-            self.logger.error(ex)
-            self.serial = DummyPort()
-            self.name = f'Dummy[{port}]'
+        except ValueError:
+            self.logger.error(f'Attempt create serial port failed. Bad parameters: {port} {baudrate} {bytesize}-{parity}-{stopbits}')
+        except Exception:
+            self.logger.exception(f'Attempt crete serial port failed. {port} {baudrate} {bytesize}-{parity}-{stopbits}')
+        finally:
+            if not hasattr(self, 'serial'):
+                self.serial = DummyPort()
+                self.name = f'Dummy[{port}]'
         
     def __del__(self):
         self.serial.close()
