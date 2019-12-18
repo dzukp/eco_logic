@@ -28,14 +28,13 @@ class ModbusSupervisor(BaseSupervisor):
         self.logger.info(f'Create modbus block {start_addr} - {self.length}')
         self.slave_1.add_block('main_hr', block_type=cst.HOLDING_REGISTERS, starting_address=self.start_addr,
                                size=self.length)
+        self.send_data()
 
     def prepare_object(self, mb_object):
         start_addr = None
         end_addr = None
         if isinstance(mb_object, ModbusDataObject):
             self.mb_objects.append(mb_object)
-            #cells = [addr for addr, field, frmt in mb_object.mb_cells()['in'] + mb_object.mb_cells()['out']]
-            #cells = mb_object.mb_cells()['in'] + mb_object.mb_cells()['out']
             cells = mb_object.mb_cells()
             if cells and (start_addr is None or min(cells) < start_addr):
                 start_addr = min(cells)

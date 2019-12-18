@@ -3,6 +3,8 @@ from pylogic.channel import OutChannel, InChannel
 from pylogic.timer import Timer, Ton
 from pylogic.modbus_supervisor import ModbusDataObject
 
+import struct
+
 
 class Altivar212(Mechanism, ModbusDataObject):
     """ Frequency converter Altivar 212 controlled by Modbus/RTU """
@@ -104,6 +106,11 @@ class Altivar212(Mechanism, ModbusDataObject):
                     self.func_state = self.state_stopping
                     self.logger.info(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
 
+    def reset(self):
+        if not self.reset_alarm:
+            self.reset_alarm = True
+            self.logger.info(f'{self.name}: reset command')
+
     def set_frequency(self, freq, manual=False):
         if manual:
             if freq != self.man_frequency_task:
@@ -121,7 +128,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
-            cmd = data[- start_addr + self.mb_cells_idx]
+            cmd = data[- start_addr +self.mb_cells_idx ]
             if cmd & 0x0001:
                 self.set_manual(True)
             if cmd & 0x0002:
@@ -130,7 +137,10 @@ class Altivar212(Mechanism, ModbusDataObject):
                 self.start(manual=True)
             if cmd & 0x0008:
                 self.stop(manual=True)
-            self.man_frequency_task = data[-start_addr + self.mb_cells_idx + 1]
+            if cmd & 0x0010:
+                self.reset()
+            float_data = struct.unpack('fff', struct.pack('HHHHHH', *tuple(data[self.mb_cells_idx + 2: self.mb_cells_idx + 8])))
+            self.man_frequency_task = float_data[1]
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
@@ -139,15 +149,18 @@ class Altivar212(Mechanism, ModbusDataObject):
                      int(self.is_run) * (1 << 1) | \
                      int(self.is_alarm) * (1 << 2) | \
                      0x400
+            float_data2 = struct.pack('fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
+            float_data = struct.unpack('HHHHHH', float_data2)
             return {-start_addr + self.mb_cells_idx: cmd,
-                    -start_addr + self.mb_cells_idx + 1: int(self.ai_frequency.val),
-                    -start_addr + self.mb_cells_idx + 2: 0,
-                    -start_addr + self.mb_cells_idx + 3: int(self.man_frequency_task),
-                    -start_addr + self.mb_cells_idx + 4: 0,
-                    -start_addr + self.mb_cells_idx + 5: int(self.auto_frequency_task) * 100,
-                    -start_addr + self.mb_cells_idx + 6: 0,
-                    -start_addr + self.mb_cells_idx + 7: self.ai_alarm_code.val,
-                    -start_addr + self.mb_cells_idx + 7: 888,
+                    -start_addr + self.mb_cells_idx + 1: status,
+                    -start_addr + self.mb_cells_idx + 2: float_data[0],
+                    -start_addr + self.mb_cells_idx + 3: float_data[1],
+                    -start_addr + self.mb_cells_idx + 4: float_data[2],
+                    -start_addr + self.mb_cells_idx + 5: float_data[3],
+                    -start_addr + self.mb_cells_idx + 6: float_data[4],
+                    -start_addr + self.mb_cells_idx + 7: float_data[5],
+                    -start_addr + self.mb_cells_idx + 8: self.ai_alarm_code.val,
+                    -start_addr + self.mb_cells_idx + 9: 888,
                     }
         else:
             return {}
