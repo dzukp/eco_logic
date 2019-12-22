@@ -57,7 +57,7 @@ class ModbusRTUModule(object):
             #             u16_to_bestr(addr) + \
             #             u16_to_bestr(len(self.tags))
             # self.req += crc16(self.req)
-            self.req = struct.pack('BBHH', slave, 0x3, addr, len(self.tags))
+            self.req = struct.pack('>BBHH', slave, 0x3, addr, len(self.tags))
             self.req += crc16(self.req)
             #self.ans = chr(slave) + chr(0x3)
             self.ans = struct.pack('BB', slave, 0x3)
@@ -75,7 +75,7 @@ class ModbusRTUModule(object):
         
         def ans_process(self, ans):
             quant = len(self.tags)
-            data = struct.unpack('H' * quant, ans[3:3 + quant * 2])
+            data = struct.unpack('>H' * quant, ans[3:3 + quant * 2])
             for tag, value in zip(self.tags, data):
                 if tag.filter:
                     tag.value = tag.filter.apply(value)
@@ -106,8 +106,8 @@ class ModbusRTUModule(object):
             # self.ans = chr(slave) + chr(0x10) + \
             #             u16_to_bestr(addr) + \
             #             u16_to_bestr(len(self.tags))
-            self.req = struct.pack('BBHHB', slave, 0x10, addr, len(self.tags), len(self.tags) * 2)
-            self.ans = struct.pack('BBHH', slave, 0x10, addr, len(self.tags))
+            self.req = struct.pack('>BBHHB', slave, 0x10, addr, len(self.tags), len(self.tags) * 2)
+            self.ans = struct.pack('>BBHH', slave, 0x10, addr, len(self.tags))
             self.ans_len = 8
             
         def generate(self):
@@ -117,8 +117,8 @@ class ModbusRTUModule(object):
                     val = tag.filter.apply(tag.value)
                 else:
                     val = tag.value
-                values.append(val)
-            data = struct.pack('H' * len(self.tags), *values)
+                values.append(int(val))
+            data = struct.pack('>' + ('H' * len(self.tags)), *values)
             result = self.req + data
             result += crc16(result)
             return result
@@ -161,10 +161,11 @@ class ModbusRTUModule(object):
         def ans_process(self, ans):
             pass
 
-    def __init__(self, slave, serial, in_tags=[], out_tags=[], io_tags=[], max_answ_len=16):
+    def __init__(self, slave, serial, in_tags=[], out_tags=[], io_tags=[], max_answ_len=16, timeout=0.1):
         self.slave = slave
         self.serial = serial
         self.max_answ_len = max_answ_len
+        self.timeout = timeout
         in_tags = self._forming_tag_list(in_tags + io_tags)
         out_tags = self._forming_tag_list(out_tags + io_tags)
         self.ireqs = []
@@ -211,14 +212,15 @@ class ModbusRTUModule(object):
         #print 'all_cycle', time.time() - first_start_time
     
     def send(self, req):
-        #print '-->', [hex(ord(x)) for x in req.generate()]
-        if not self.serial.write(req.generate()):
+        request = req.generate()
+        self.logger.debug(f'Send {[hex(x) for x in request]}')
+        if not self.serial.write(request):
             self.err_cnt += 1
             raise Exception('Slave %d (ModBus RTU): Send error (%d)' % (self.slave, self.err_cnt))
     
     def receive(self, req):
-        result = self.serial.read(req.ans_len, 1.0)[-req.ans_len:]
-        #print '<< <<', [hex(ord(x)) for x in result]
+        result = self.serial.read(req.ans_len, self.timeout)[-req.ans_len:]
+        self.logger.debug(f'Receive {[hex(x) for x in result]}')
         if req.is_ans_valid(result):
             # Обработка ответа ПЧ
             req.ans_process(result)
@@ -226,7 +228,7 @@ class ModbusRTUModule(object):
         else:
             self.err_cnt += 1
             self.logger.error('Slave %d (ModBus RTU): Receive error (%d), serial read result `%s` request `%s`' % \
-                    (self.slave, self.err_cnt, [hex(ord(r)) for r in result], [hex(ord(r)) for r in req.generate()]))
+                    (self.slave, self.err_cnt, [hex(r) for r in result], [hex(r) for r in req.generate()]))
             raise Exception('Slave %d (ModBus RTU): Receive error ModBus RTU' % self.slave)
 
 

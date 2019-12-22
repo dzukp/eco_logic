@@ -5,15 +5,17 @@ import binascii
 import logging
 import serial
 
+from .tagsrv_logger import logger
+
 
 class DummyPort(object):
     ''' Затычка, чтобы не падало, когда нет такого COM-орта '''
     def write(self, data):
         return len(data)
     def read_all(self):
-        return ''
+        return b''
     def read(self, byte_cnt):
-        return ''
+        return b''
     def close(self):
         pass
         
@@ -22,13 +24,13 @@ class SerialSource(object):
     
     opened_ports = {}
     
-    def __init__(self, port=0, baudrate=155200, bytesize=8, parity='N', stopbits=1):
-        self.logger = logging.getLogger(f'serial_port_{port}')
+    def __init__(self, port=0, baudrate=155200, bytesize=8, parity='N', stopbits=1, timeout=0):
+        self.logger = logger.getChild(f'serial_port_{port}')
         if port in self.opened_ports:
             raise Exception('Port is opened')
         try:
             self.serial = serial.Serial(
-                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, stopbits=stopbits, timeout=0)
+                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, stopbits=stopbits, timeout=timeout)
             self.opened_ports[self.serial.port] = self.serial
             self.name = self.serial.name
             self.logger.info('serial port %s opened', self.serial.name)
@@ -48,12 +50,12 @@ class SerialSource(object):
         return self.serial.read_all()
     
     def write(self, data):
-        self.logger.debug('Serial %s write %s `%s`', self.name, binascii.b2a_hex(data), data)
+        self.logger.debug(f'Serial {self.name} write: hex({binascii.b2a_hex(data)}) ascii({data})')
         self.serial.write(data)
         return True
     
     def read(self, required_bytes=0, timeout=0.2):
-        data = ''
+        data = b''
         start_time = time.time()
         c=0
         while True:
@@ -66,14 +68,14 @@ class SerialSource(object):
             if time.time() - start_time > timeout:
                 break
             time.sleep(0.001)
-        self.logger.debug('Serial %s read %s `%s`', self.name, binascii.b2a_hex(data), data)
+        self.logger.debug(f'Serial {self.name} read: hex({binascii.b2a_hex(data)}) ascii({data})')
         return data
 
 
 if __name__ == '__main__':
     import time
     s = serial.Serial(0, 115200, 8, 'N', timeout=0)
-    s.write('@02\r')
+    s.write(b'@02\r')
     i = 1
     t1 = time.time()
     while True:
