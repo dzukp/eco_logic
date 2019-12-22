@@ -97,6 +97,7 @@ class Ton:
             self.reset()
         elif not self._started and run:
             self._start_time = self.clock.time()
+            self._started = True
         if self._started and self._start_time + self._timeout < self.clock.time():
             return True
         return False
