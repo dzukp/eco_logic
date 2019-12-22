@@ -123,7 +123,8 @@ class OwenAiMv210(BaseOwenMx210):
                               quantity_of_x=24, data_format='>fHfHfHfHfHfHfHfH')
         self.logger.debug(f'data readed {[x for x in res]}')
         for tag in self.tags:
-            tag.value = tag.filter.apply(res[(tag.addr - 1) * 2]) if tag.filter else res[tag.addr * 2]
+            tag.value = tag.filter.apply(res[(tag.addr - 1) * 2]) if tag.filter else res[(tag.addr - 1) * 2]
+        self.logger.debug(f'values readed {[tag.value for tag in self.tags]}')
 
 
 class OwenAoMu210(BaseOwenMx210):
