@@ -4,7 +4,13 @@ logging_config = {
         'TagSrv': {
             'handlers':['tagsrv_file', 'tagsrv_console'],
             'propagate': False,
-            'level':'DEBUG',
+            'level': 'DEBUG',
+        },
+        'TagSrv.serial_port_COM3': {
+            'handlers':['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
+
         },
         'PylogicLogger': {
             'handlers': ['common_console'],
@@ -45,6 +51,14 @@ logging_config = {
             'level': 'CRITICAL',
             'formatter': 'verbose',
             'class': 'logging.StreamHandler'
+        },
+        'comport_file': {
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024*1024,
+            'backupCount': 10,
+            'filename': 'logs/comport.log'
         },
         'common_console': {
             'level': 'DEBUG',

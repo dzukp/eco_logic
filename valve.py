@@ -48,8 +48,10 @@ class Valve(Mechanism, ModbusDataObject):
             cmd = 0
             status = int(self.manual) * (1 << 0) + \
                      int(self.do_open.val) * (1 << 1) + \
-                     0x8000
-            return {self.mb_cells_idx: cmd, self.mb_cells_idx + 1: status, self.mb_cells_idx + 2: 999}
+                     0
+            return {
+                #self.mb_cells_idx: cmd,
+                self.mb_cells_idx + 1: status}
         else:
             return {}
 

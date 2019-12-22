@@ -51,6 +51,8 @@ class Engine(Mechanism, ModbusDataObject):
                      int(self.do_start.val) * (1 << 1) | \
                      0xC000
             #return {self.mb_cells_idx - start_addr: cmd, self.mb_cells_idx + 1 - start_addr: status}
-            return {self.mb_cells_idx + 1 - start_addr: status}
+            return {
+                #self.mb_cells_idx - start_addr: cmd,
+                self.mb_cells_idx + 1 - start_addr: status}
         else:
             return {}

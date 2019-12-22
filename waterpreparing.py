@@ -217,9 +217,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def stop_osmosis(self):
         self.active_functions.discard(FuncNames.OSMOSIS)
 
-    def mb_cells(self):
-        return [self.mb_cells_idx, self.mb_cells_idx + 1]
-
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
             cmd = data[self.mb_cells_idx - start_addr]
@@ -232,7 +229,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         if self.mb_cells_idx is not None:
             cmd = 0
             status = int(self.started) * (1 << 0)
-            return {self.mb_cells_idx - start_addr: cmd, self.mb_cells_idx - start_addr + 1: status}
+            data = [cmd, status]
+            result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
+            return result
         else:
             return {}
 

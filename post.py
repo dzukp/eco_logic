@@ -33,6 +33,7 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.INTENSIVE: self._func_intensive,
             FuncNames.STOP: self._func_idle
         }
+        self.func_number = len(FuncNames.all_funcs())
         self.foam_frequency_task = 30.0
         self.water_frequency_task = 50.0
         self.pump_timeout = 3.0
@@ -48,6 +49,7 @@ class Post(IoObject, ModbusDataObject):
             new_func = self.func_by_name[func_name]
             if new_func != self.func:
                 self.func = new_func
+                self.func_number = FuncNames.all_funcs().index(func_name)
                 self.logger.info('set function `func_name`')
         except KeyError:
             self.logger.error(f'func for `{func_name}` not exists')
@@ -145,7 +147,7 @@ class Post(IoObject, ModbusDataObject):
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             return {
-                self.mb_cells_idx - start_addr: 777,
+                self.mb_cells_idx - start_addr: 0,
                 self.mb_cells_idx - start_addr + 1: 777,
                 self.mb_cells_idx - start_addr + 2: 777,
                 self.mb_cells_idx - start_addr + 3: 777,

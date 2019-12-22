@@ -61,8 +61,8 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.timer.reset()
 
     def state_starting(self):
-        self.ao_command.val = self.CMD_STOP
-        self.ao_frequency.val = self.man_frequency_task if self.manual else self.auto_frequency_task
+        self.ao_command.val = self.CMD_FORWARD_START
+        self.ao_frequency.val = self.man_frequency_task * 100.0 if self.manual else self.auto_frequency_task * 100.0
         if self.is_run:
             self.func_state = self.state_run
             self.logger.debug(f'{self.name}: run state')
@@ -72,8 +72,8 @@ class Altivar212(Mechanism, ModbusDataObject):
             self.logger.debug(f'{self.name}: alarm state from starting state, don\'t run signal in timeout')
 
     def state_run(self):
-        self.ao_command.val = self.CMD_STOP
-        self.ao_frequency.val = self.man_frequency_task if self.manual else self.auto_frequency_task
+        self.ao_command.val = self.CMD_FORWARD_START
+        self.ao_frequency.val = self.man_frequency_task * 100.0 if self.manual else self.auto_frequency_task * 100.0
         if self.timer.process(not self.is_run):
             self.func_state = self.state_alarm
             self.timer.reset()
@@ -122,9 +122,7 @@ class Altivar212(Mechanism, ModbusDataObject):
                 self.logger.debug(f'set auto frequency task: {freq}')
 
     def mb_cells(self):
-        if self.mb_cells_idx is None:
-            return []
-        return [self.mb_cells_idx, self.mb_cells_idx + 5]
+        return self.mb_output(0).keys()
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
@@ -140,7 +138,7 @@ class Altivar212(Mechanism, ModbusDataObject):
             if cmd & 0x0010:
                 self.reset()
             float_data = struct.unpack('fff', struct.pack('HHHHHH', *tuple(data[self.mb_cells_idx + 2: self.mb_cells_idx + 8])))
-            self.man_frequency_task = float_data[1]
+            #self.man_frequency_task = float_data[1]
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
@@ -148,13 +146,13 @@ class Altivar212(Mechanism, ModbusDataObject):
             status = int(self.manual) * (1 << 0) | \
                      int(self.is_run) * (1 << 1) | \
                      int(self.is_alarm) * (1 << 2) | \
-                     0x400
-            float_data2 = struct.pack('fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
+                     0
+            float_data2 = struct.pack('>fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
             float_data = struct.unpack('HHHHHH', float_data2)
-            return {-start_addr + self.mb_cells_idx: cmd,
+            return {#-start_addr + self.mb_cells_idx: cmd,
                     -start_addr + self.mb_cells_idx + 1: status,
-                    -start_addr + self.mb_cells_idx + 2: float_data[0],
-                    -start_addr + self.mb_cells_idx + 3: float_data[1],
+                    -start_addr + self.mb_cells_idx + 2: 0,
+                    -start_addr + self.mb_cells_idx + 3: 0,
                     -start_addr + self.mb_cells_idx + 4: float_data[2],
                     -start_addr + self.mb_cells_idx + 5: float_data[3],
                     -start_addr + self.mb_cells_idx + 6: float_data[4],

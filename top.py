@@ -1,4 +1,5 @@
 from pylogic.io_object import IoObject
+from pylogic.modbus_supervisor import ModbusDataObject
 from post import Post
 from func_names import FuncNames
 from rpc_post_server import RpcPostServer
@@ -7,7 +8,7 @@ from threading import Lock
 from queue import Queue
 
 
-class Top(IoObject):
+class Top(IoObject, ModbusDataObject):
 
     def __init__(self, *args):
         super().__init__(*args)
@@ -17,6 +18,8 @@ class Top(IoObject):
         self.post_function = {}
         self.new_function = {}
         self.rpc_server = RpcPostServer()
+        self.mb_cells_idx = None
+        self.counter = 0
 
     def init(self):
         for child in self.children:
@@ -33,6 +36,7 @@ class Top(IoObject):
         self.function_process()
         for post, func in self.post_function.items():
             self.new_function[post] = func
+        self.counter = (self.counter + 1) % 30000
 
     def function_process(self):
         wished_funcs = set()
@@ -136,3 +140,15 @@ class Top(IoObject):
             return self.post_function[post]
         else:
             return ''
+
+    def mb_cells(self):
+        return [0, 400]
+
+    def mb_output(self, start_addr):
+        if self.mb_cells_idx is not None:
+            data = [self.counter,]
+            result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
+            return result
+        else:
+            return {}
+
