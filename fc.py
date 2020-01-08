@@ -146,6 +146,7 @@ class Altivar212(Mechanism, ModbusDataObject):
             status = int(self.manual) * (1 << 0) | \
                      int(self.is_run) * (1 << 1) | \
                      int(self.is_alarm) * (1 << 2) | \
+                     int(self.state_alarm == self.func_state) * (1 << 3) | \
                      0
             float_data2 = struct.pack('>fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
             float_data = struct.unpack('HHHHHH', float_data2)

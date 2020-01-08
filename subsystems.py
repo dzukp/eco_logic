@@ -37,6 +37,7 @@ class WaterSupplier(Subsystem):
         self.pump = None
         self.tank = None
         self.ai_pressure = None
+        self.di_pressure = None
         self.hysteresis = Hysteresis(low=3.0, hi=4.0)
         self.enough_pressure = 2.0
 

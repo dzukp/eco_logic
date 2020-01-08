@@ -27,7 +27,7 @@ class RpcPostServer(LoggedObject):
         self.set_logger(self.logger.getChild('rpc_post_server'))
         self.top_object = None
         self.server_thread = None
-        self.host = ('localhost', 9876)
+        self.host = ('0.0.0.0', 9876)
 
     def set_top_object(self, top_object: IoObject):
         self.top_object = top_object

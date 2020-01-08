@@ -26,6 +26,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.valve_b1 = None
         self.valve_b2 = None
         self.valve_water_os = None
+        self.valve_wash_osmos = None
         self.valve_dose_wax = None
         self.valve_dose_shampoo = None
         self.valve_dose_foam = None
@@ -60,6 +61,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
 
     def process(self):
+        self.valve_wash_osmos.close()
         # Filling Water Tank
         if not self.started:
             self.b1_filler.disable()
