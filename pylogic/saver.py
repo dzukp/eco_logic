@@ -14,13 +14,14 @@ class FileParameterSaver(LoggedObject):
         self.save_dir = self.work_dir / self.save_subdir
 
     def save(self, name, data):
-        filename = self.filename(name)
-        if not self.save_dir.exists():
-            makedirs(self.save_dir.absolute())
-        with open(filename, 'w') as fl:
-            json.dump(data, fl)
-            self.logger.info(f'{name} saved')
-            self.logger.debug(f'{name} saved data: {data}')
+        if data:
+            filename = self.filename(name)
+            if not self.save_dir.exists():
+                makedirs(self.save_dir.absolute())
+            with open(filename, 'w') as fl:
+                json.dump(data, fl)
+                self.logger.info(f'{name} saved')
+                self.logger.debug(f'{name} saved data: {data}')
 
     def load(self, name):
         try:
