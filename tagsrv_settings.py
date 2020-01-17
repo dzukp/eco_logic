@@ -4,6 +4,8 @@ from pylogic.tagsrv.owen_mx210 import OwenAiMv210, OwenDiMv210, OwenDoMu210_403
 from pylogic.tagsrv.modbusrtu import ModbusRTUModule
 from pylogic.tagsrv.serialsource import SerialSource
 
+import os
+
 
 tags = {
     'in': {},
@@ -43,7 +45,12 @@ do_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.st
 do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_4_')], ip='192.168.200.4',
                        timeout=0.03)
 
-port_1 = SerialSource(port='COM3', baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+if os.name == 'posix':
+    com_port1_name = '/dev/ttyS0'
+else:
+    com_port1_name = 'COM3'
+
+port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
 fc_modules = []
 
 for i in range(1, 9):

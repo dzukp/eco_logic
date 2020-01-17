@@ -556,3 +556,19 @@ if True:
         }
     }
     objects['top']['children'].update(posts5_8)
+
+for name, obj in objects['top']['children'].items():
+    if not name.startswith('post_'):
+        continue
+    start_addr = 60 + (int(name.lstrip('post_')) - 1) * 32
+    obj['mb_cells_idx'] = start_addr
+    obj['children']['valve_foam']['mb_cells_idx'] = start_addr + 5
+    obj['children']['valve_wax']['mb_cells_idx'] = start_addr + 7
+    obj['children']['valve_shampoo']['mb_cells_idx'] = start_addr + 9
+    obj['children']['valve_cold_water']['mb_cells_idx'] = start_addr + 11
+    obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
+    obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
+    obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
+    obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+    obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
+    obj['children']['pump']['mb_cells_idx'] = start_addr + 23

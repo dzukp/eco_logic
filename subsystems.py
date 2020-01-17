@@ -38,8 +38,10 @@ class WaterSupplier(Subsystem):
         self.tank = None
         self.ai_pressure = None
         self.di_pressure = None
-        self.hysteresis = Hysteresis(low=3.0, hi=4.0)
         self.enough_pressure = 2.0
+        self.pump_on_press = 3.0
+        self.pump_off_press = 4.0
+        self.hysteresis = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
 
     def process(self):
         if self.need_pump() and not self.tank.is_empty():
@@ -48,6 +50,8 @@ class WaterSupplier(Subsystem):
             self.pump.stop()
 
     def need_pump(self):
+        self.hysteresis.low = self.pump_on_press
+        self.hysteresis.hi = self.pump_off_press
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):

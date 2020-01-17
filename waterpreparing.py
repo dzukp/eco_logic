@@ -3,10 +3,14 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from subsystems import TankFiller, OsmosisTankFiller, WaterSupplier
 from func_names import FuncNames
+from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
 
 class WaterPreparing(IoObject, ModbusDataObject):
     """ Water preparing """
+
+    _save_attrs = ('water_enough_press', 'water_pump_on_press', 'water_pump_off_press',
+                   'osmosis_enough_press', 'osmosis_pump_on_press', 'osmosis_pump_off_press')
 
     def __init__(self, *args):
         super().__init__(*args)
@@ -31,6 +35,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.valve_dose_shampoo = None
         self.valve_dose_foam = None
         self.valve_dose_intensive = None
+        self.water_enough_press = 2.0
+        self.water_pump_on_press = 3.0
+        self.water_pump_off_press = 4.0
+        self.osmosis_enough_press = 2.0
+        self.osmosis_pump_on_press = 3.0
+        self.osmosis_pump_off_press = 4.0
         self.b1_filler = TankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
@@ -81,6 +91,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.process()
 
         # Supplying water
+        self.water_supplier.enough_pressure = self.water_enough_press
+        self.water_supplier.pump_on_press = self.water_pump_on_press
+        self.water_supplier.pump_off_press = self.water_pump_off_press
         if not self.started:
             self.water_supplier.disable()
         elif self.tank_b1.is_empty():
@@ -90,6 +103,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.process()
 
         # Supplying osmos
+        self.osmos_supplier.enough_pressure = self.osmosis_enough_press
+        self.osmos_supplier.pump_on_press = self.osmosis_pump_on_press
+        self.osmos_supplier.pump_off_press = self.osmosis_pump_off_press
         if not self.started:
             self.osmos_supplier.disable()
         elif self.tank_b2.is_empty():
@@ -221,20 +237,32 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
-            cmd = data[self.mb_cells_idx - start_addr]
+            addr = self.mb_cells_idx - start_addr
+            cmd = data[addr]
             if cmd & 0x0001:
                 self.started = True
             if cmd & 0x0002:
                 self.started = False
+            floats = modbus_cells_to_floats(data[addr + 12:addr + 24])
+            self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, self.osmosis_pump_off_press,\
+                self.osmosis_pump_on_press, self.osmosis_enough_press = floats
+
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             cmd = 0
-            status = int(self.started) * (1 << 0)
-            data = [cmd, status]
+            status = int(self.started) * (1 << 0) | \
+                     int(self.di_press_1.val) * (1 << 1) | \
+                     int(self.di_press_1.val) * (1 << 2) | \
+                     int(self.di_press_1.val) * (1 << 3)
+            tmp_data = floats_to_modbus_cells((self.ai_pe_1.val, self.ai_pe_2.val, self.ai_pe_3.val))
+            water_suppl_status = 0
+            osmos_suppl_status = 0
+            tmp_data_2 = floats_to_modbus_cells((self.water_pump_off_press, self.water_pump_on_press,
+                                                 self.water_enough_press, self.osmosis_pump_off_press,
+                                                 self.osmosis_pump_on_press, self.osmosis_enough_press))
+            data = [cmd, status] + tmp_data + [water_suppl_status, 0, osmos_suppl_status, 0] + tmp_data_2
             result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
             return result
         else:
             return {}
-
-

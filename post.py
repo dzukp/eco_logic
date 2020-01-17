@@ -1,3 +1,5 @@
+import struct
+
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
@@ -7,6 +9,8 @@ from func_names import FuncNames
 
 
 class Post(IoObject, ModbusDataObject):
+
+    _save_attrs = ('foam_frequency_task', 'water_frequency_task', 'pump_timeout')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -84,6 +88,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.foam_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Foam programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_shampoo(self):
@@ -93,6 +98,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.water_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Shampoo programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_wax(self):
@@ -102,6 +108,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.water_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Wax programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_hot_water(self):
@@ -111,6 +118,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.water_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Hot water programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_cold_water(self):
@@ -120,6 +128,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.water_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Cold water programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_osmosis(self):
@@ -129,6 +138,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.start()
         self.pump.set_frequency(self.water_frequency_task)
         if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
+            self.logger.info(f'Osmosis programm -> alarm pump run but no flow')
             self.set_alarm()
 
     def _func_intensive(self):
@@ -146,13 +156,15 @@ class Post(IoObject, ModbusDataObject):
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
+            status = 0
+            data = struct.pack('>f', self.ai_pressure.val)
+            p1, p2 = struct.unpack('>HH', data)
             return {
                 self.mb_cells_idx - start_addr: 0,
-                self.mb_cells_idx - start_addr + 1: 777,
-                self.mb_cells_idx - start_addr + 2: 777,
-                self.mb_cells_idx - start_addr + 3: 777,
-                self.mb_cells_idx - start_addr + 4: 777,
-                self.mb_cells_idx - start_addr + 5: 777,
+                self.mb_cells_idx - start_addr + 1: status,
+                self.mb_cells_idx - start_addr + 2: self.func_number,
+                self.mb_cells_idx - start_addr + 3: p1,
+                self.mb_cells_idx - start_addr + 4: p2,
             }
         else:
             return {}
