@@ -12,6 +12,7 @@ class Controller(LoggedObject):
         super().__init__('Controller')
         self.tag_server = None
         self.top_object = None
+        self.sim_object = None
         self.saver = None
         self.supervisor_manager = None
         self.cycle_time = 0.05
@@ -22,6 +23,9 @@ class Controller(LoggedObject):
     def set_top_object(self, top_object):
         self.top_object = top_object
 
+    def set_sim_object(self, sim_object):
+        self.sim_object = sim_object
+
     def set_saver(self, saver):
         self.saver = saver
 
@@ -31,6 +35,8 @@ class Controller(LoggedObject):
     def init(self):
         self.top_object.set_saver(self.saver)
         self.top_object.init_all()
+        if self.sim_object:
+            self.sim_object.init_all()
         self.test_channel_attaching()
         self.supervisor_manager.set_top_object(self.top_object)
         self.supervisor_manager.init()
@@ -61,6 +67,8 @@ class Controller(LoggedObject):
         self.supervisor_manager.receive_data()
         self.tag_server.read_all()
         self.top_object.process_all()
+        if self.sim_object:
+            self.sim_object.process_all()
         self.tag_server.write_all()
         self.supervisor_manager.send_data()
 

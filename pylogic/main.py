@@ -10,6 +10,7 @@ def main(config):
     logging.basicConfig()
     app_config = {
         'objects': {},
+        'simulators': {},
         'tagsrv_settings': {
             'tags': {},
             'sources': {},
@@ -35,8 +36,10 @@ def main(config):
     if 'supervisor_manager_class' in app_config:
         factory_.set_supervisor_manager_class(app_config['supervisor_manager_class'])
 
-    top_object = factory_.get_top_object(config['objects'])
-    tag_srv = factory_.get_tag_srv(config['tagsrv_settings'], top_object.get_all_channels(), {})
+    top_object = factory_.get_top_object(app_config['objects'])
+    sim_object = factory_.get_simulator_object(app_config['simulators'])
+    sim_channels = sim_object.get_all_channels() if sim_object else {}
+    tag_srv = factory_.get_tag_srv(config['tagsrv_settings'], top_object.get_all_channels(), sim_channels)
     saver = factory_.get_saver()
     supervisor_manager = factory_.get_supervisor_manager()
     for name, supervisor_class in app_config['supervisors'].items():
@@ -45,6 +48,7 @@ def main(config):
     controller = factory_.get_controller()
     controller.set_tag_server(tag_srv)
     controller.set_top_object(top_object)
+    controller.set_sim_object(sim_object)
     controller.set_saver(saver)
     controller.set_supervisor_manager(supervisor_manager)
 

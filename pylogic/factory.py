@@ -44,6 +44,14 @@ class Factory(LoggedObject):
                 self.top_object = self.io_object_config_parse(name, cfg, None)
         return self.top_object
 
+    def get_simulator_object(self, config):
+        self.logger.info('Create simulator objects')
+        if len(config) > 1:
+            raise Exception('Required 1 root io_object')
+        for name, cfg in config.items():
+            simulator = self.io_object_config_parse(name, cfg, None)
+            return simulator
+
     def io_object_config_parse(self, name, config, parent):
         current = config['class'](name, parent)
         current.set_logger(parent.logger.getChild(current.name) if parent is not None else logging.getLogger(name))
