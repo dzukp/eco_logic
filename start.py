@@ -9,6 +9,7 @@ from pylogic.main import main
 from pylogic.logged_object import DEFAULT_LOGGER
 from pylogic.modbus_supervisor import ModbusSupervisor
 from objects import objects
+from simulator_objects import simulators
 from tagsrv_settings import settings as tagsrv_settings
 from logconfig import logging_config
 
@@ -19,6 +20,7 @@ def start():
         makedirs(log_dir.absolute())
     config = {
         'objects': objects,
+        'simulators': simulators,
         'tagsrv_settings': tagsrv_settings,
         'logging_conf': logging_config,
         'supervisors': {'supervis_modbus': ModbusSupervisor,}

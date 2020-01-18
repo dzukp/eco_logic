@@ -21,6 +21,7 @@ objects = {
                 'di_press_2': 'di_1_8',
                 'ai_pe_2': 'ai_2_2',
                 'di_press_3': 'di_1_9',
+                'ai_pe_3': 'ai_2_3',
                 'mb_cells_idx': 0,
                 'children': {
                     'pump_n1': {
