@@ -7,7 +7,7 @@ class Subsystem(LoggedObject):
 
     def __init__(self, name):
         super().__init__(name)
-        self.started = False
+        self.started = True
         self.external_enable = True
 
     def start(self):
@@ -44,7 +44,7 @@ class WaterSupplier(Subsystem):
         self.hysteresis = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
 
     def process(self):
-        if self.need_pump() and not self.tank.is_empty():
+        if self.started and not self.external_enable and self.need_pump() and not self.tank.is_empty():
             self.pump.start()
         else:
             self.pump.stop()
@@ -67,13 +67,13 @@ class TankFiller(Subsystem):
         self.tank = None
 
     def process(self):
-        if self.need_fill():
+        if self.started and not self.external_enable and self.need_fill():
             self.valve.open()
         else:
             self.valve.close()
 
     def need_fill(self):
-        self.tank.is_want_water()
+        return self.tank.is_want_water()
 
 
 class OsmosisTankFiller(TankFiller):
@@ -87,8 +87,10 @@ class OsmosisTankFiller(TankFiller):
         self._state = 0
 
     def process(self):
+        if not self.started or self.external_enable:
+            self._state = 0
         # no filling
-        if self._state == 0:
+        elif self._state == 0:
             self.valve_inlet.close()
             self.pump1.stop()
             self.pump2.stop()
@@ -120,5 +122,3 @@ class OsmosisTankFiller(TankFiller):
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, go stop and close all')
                 self._state = 0
-
-

@@ -150,7 +150,7 @@ class Altivar212(Mechanism, ModbusDataObject):
                      0
             float_data2 = struct.pack('>fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
             float_data = struct.unpack('HHHHHH', float_data2)
-            return {#-start_addr + self.mb_cells_idx: cmd,
+            return {-start_addr + self.mb_cells_idx: cmd,
                     -start_addr + self.mb_cells_idx + 1: status,
                     -start_addr + self.mb_cells_idx + 2: 0,
                     -start_addr + self.mb_cells_idx + 3: 0,

@@ -45,7 +45,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
         self.osmos_supplier = WaterSupplier('osmosis')
-        self.started = True
+        self.start_b1 = True
+        self.start_b2 = True
+        self.start_water_press = True
+        self.start_osmos_press = True
         self.mb_cells_idx = None
         self.active_functions = set()
 
@@ -57,6 +60,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.pump1 = self.pump_os1
         self.b2_filler.pump2 = self.pump_os2
         self.b2_filler.valve_inlet = self.valve_water_os
+        self.b2_filler.di_pressure = self.di_press_2
         self.water_supplier.tank = self.tank_b1
         self.water_supplier.ai_pressure = self.ai_pe_2
         self.water_supplier.di_pressure = self.di_press_1
@@ -73,16 +77,18 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def process(self):
         self.valve_wash_osmos.close()
         # Filling Water Tank
-        if not self.started:
-            self.b1_filler.disable()
+        if self.start_b1:
+            self.b1_filler.start()
         else:
-            self.b1_filler.enable()
+            self.b1_filler.stop()
         self.b1_filler.process()
 
         # Filling Osmosis Tank
-        if not self.started:
-            self.b2_filler.disable()
-        elif self.tank_b1.is_empty():
+        if self.start_b2:
+            self.b2_filler.start()
+        else:
+            self.b2_filler.stop()
+        if self.tank_b1.is_empty():
             self.b2_filler.disable()
         elif not self.di_press_2.val:
             self.b2_filler.disable()
@@ -94,7 +100,11 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.enough_pressure = self.water_enough_press
         self.water_supplier.pump_on_press = self.water_pump_on_press
         self.water_supplier.pump_off_press = self.water_pump_off_press
-        if not self.started:
+        if self.start_water_press:
+            self.water_supplier.start()
+        else:
+            self.water_supplier.stop()
+        if not self.start_water_press:
             self.water_supplier.disable()
         elif self.tank_b1.is_empty():
             self.water_supplier.disable()
@@ -106,7 +116,11 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmos_supplier.enough_pressure = self.osmosis_enough_press
         self.osmos_supplier.pump_on_press = self.osmosis_pump_on_press
         self.osmos_supplier.pump_off_press = self.osmosis_pump_off_press
-        if not self.started:
+        if self.start_osmos_press:
+            self.osmos_supplier.start()
+        else:
+            self.osmos_supplier.stop()
+        if not self.start_osmos_press:
             self.osmos_supplier.disable()
         elif self.tank_b2.is_empty():
             self.osmos_supplier.disable()
@@ -240,9 +254,21 @@ class WaterPreparing(IoObject, ModbusDataObject):
             addr = self.mb_cells_idx - start_addr
             cmd = data[addr]
             if cmd & 0x0001:
-                self.started = True
+                self.start_b1 = True
             if cmd & 0x0002:
-                self.started = False
+                self.start_water_press = True
+            if cmd & 0x0004:
+                self.start_b2 = True
+            if cmd & 0x0008:
+                self.start_osmos_press = True
+            if cmd & 0x0010:
+                self.start_b1 = False
+            if cmd & 0x0020:
+                self.start_water_press = False
+            if cmd & 0x0040:
+                self.start_b2 = False
+            if cmd & 0x0080:
+                self.start_osmos_press = False
             floats = modbus_cells_to_floats(data[addr + 12:addr + 24])
             self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, self.osmosis_pump_off_press,\
                 self.osmosis_pump_on_press, self.osmosis_enough_press = floats
@@ -251,10 +277,14 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             cmd = 0
-            status = int(self.started) * (1 << 0) | \
+            status = int(False) * (1 << 0) | \
                      int(self.di_press_1.val) * (1 << 1) | \
-                     int(self.di_press_1.val) * (1 << 2) | \
-                     int(self.di_press_1.val) * (1 << 3)
+                     int(self.di_press_2.val) * (1 << 2) | \
+                     int(self.di_press_3.val) * (1 << 3) | \
+                     int(self.start_b1) * (1 << 4) | \
+                     int(self.start_water_press) * (1 << 5) | \
+                     int(self.start_b2) * (1 << 6) | \
+                     int(self.start_osmos_press) * (1 << 7)
             tmp_data = floats_to_modbus_cells((self.ai_pe_1.val, self.ai_pe_2.val, self.ai_pe_3.val))
             water_suppl_status = 0
             osmos_suppl_status = 0
