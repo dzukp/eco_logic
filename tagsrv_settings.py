@@ -46,7 +46,7 @@ do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.st
                        timeout=0.03)
 
 if os.name == 'posix':
-    com_port1_name = '/dev/ttyS0'
+    com_port1_name = 'serial'
 else:
     com_port1_name = 'COM3'
 
