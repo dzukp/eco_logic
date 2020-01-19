@@ -1,5 +1,5 @@
 from pylogic.logged_object import LoggedObject
-from pylogic.timer import Ton
+from pylogic.timer import Timer
 from pylogic.utils import Hysteresis
 
 
@@ -7,7 +7,7 @@ class Subsystem(LoggedObject):
 
     def __init__(self, name):
         super().__init__(name)
-        self.started = True
+        self.started = False
         self.external_enable = True
 
     def start(self):
@@ -44,7 +44,7 @@ class WaterSupplier(Subsystem):
         self.hysteresis = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
 
     def process(self):
-        if self.started and not self.external_enable and self.need_pump() and not self.tank.is_empty():
+        if self.started and self.external_enable and self.need_pump() and not self.tank.is_empty():
             self.pump.start()
         else:
             self.pump.stop()
@@ -67,7 +67,7 @@ class TankFiller(Subsystem):
         self.tank = None
 
     def process(self):
-        if self.started and not self.external_enable and self.need_fill():
+        if self.started and self.external_enable and self.need_fill():
             self.valve.open()
         else:
             self.valve.close()
@@ -84,19 +84,20 @@ class OsmosisTankFiller(TankFiller):
         self.pump2 = None
         self.valve_inlet = None
         self.di_pressure = None
+        self.timer = Timer()
         self._state = 0
 
     def process(self):
-        if not self.started or self.external_enable:
-            self._state = 0
+        if not self.started or not self.external_enable:
+            self.set_state(0)
         # no filling
-        elif self._state == 0:
+        if self._state == 0:
             self.valve_inlet.close()
             self.pump1.stop()
             self.pump2.stop()
             self.valve.close()
-            if self.need_fill():
-                self._state = 1
+            if self.started and self.external_enable and self.need_fill():
+                self.set_state(1)
                 self.logger.info('need fill osmosis tank, go to open inlet valve')
         # open inlet valve
         elif self._state == 1:
@@ -104,21 +105,42 @@ class OsmosisTankFiller(TankFiller):
             self.pump1.stop()
             self.pump2.stop()
             self.valve.close()
-            if self.di_pressure.val:
+            self.timer.start(5.0)
+            if self.di_pressure.val and self.timer.is_end():
                 self.logger.info('water, go start pumps and open valve')
-                self._state = 2
+                self.set_state(2)
             if not self.need_fill():
-                self.logger.info('osmosis tank is full, go stop and close all')
-                self._state = 0
-        # start pumps and open valve
+                self.logger.info('osmosis tank is full, stop osmosis filler')
+                self.set_state(0)
+        # start 1 pump and open valve
         elif self._state == 2:
+            self.valve_inlet.open()
+            self.pump1.start()
+            self.pump2.stop()
+            self.valve.open()
+            self.timer.start(2.0)
+            if self.timer.is_end():
+                self.set_state(3)
+                self.logger.info('timer end, start os2')
+            if not self.di_pressure.val:
+                self.logger.info('no pressure, stop osmosis filler')
+                self.set_state(0)
+            if not self.need_fill():
+                self.logger.info('osmosis tank is full, stop osmosis filler')
+                self.set_state(0)
+        # start 2 pump
+        elif self._state == 3:
             self.valve_inlet.open()
             self.pump1.start()
             self.pump2.start()
             self.valve.open()
             if not self.di_pressure.val:
-                self.logger.info('water, go start pumps and open valve')
-                self._state = 0
+                self.logger.info('no pressure, stop osmosis filler')
+                self.set_state(0)
             if not self.need_fill():
-                self.logger.info('osmosis tank is full, go stop and close all')
-                self._state = 0
+                self.logger.info('osmosis tank is full, stop osmosis filler')
+                self.set_state(0)
+
+    def set_state(self, new_state):
+        self._state = new_state
+        self.timer.reset()

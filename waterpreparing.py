@@ -90,7 +90,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.b2_filler.stop()
         if self.tank_b1.is_empty():
             self.b2_filler.disable()
-        elif not self.di_press_2.val:
+        elif not self.di_press_1.val:
             self.b2_filler.disable()
         else:
             self.b2_filler.enable()
@@ -104,12 +104,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.water_supplier.start()
         else:
             self.water_supplier.stop()
-        if not self.start_water_press:
-            self.water_supplier.disable()
-        elif self.tank_b1.is_empty():
-            self.water_supplier.disable()
-        else:
-            self.water_supplier.enable()
+        # if self.tank_b1.is_empty():
+        #     self.water_supplier.disable()
+        # else:
+        #     self.water_supplier.enable()
         self.water_supplier.process()
 
         # Supplying osmos
@@ -120,12 +118,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.osmos_supplier.start()
         else:
             self.osmos_supplier.stop()
-        if not self.start_osmos_press:
-            self.osmos_supplier.disable()
-        elif self.tank_b2.is_empty():
-            self.osmos_supplier.disable()
-        else:
-            self.osmos_supplier.enable()
+        # if self.tank_b2.is_empty():
+        #     self.osmos_supplier.disable()
+        # else:
+        #     self.osmos_supplier.enable()
         self.osmos_supplier.process()
 
         # Functions
