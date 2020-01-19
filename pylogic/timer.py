@@ -67,13 +67,17 @@ class Timer:
         self.end_time = 0
         self.elapsed_time = 0
 
+    def restart(self):
+        self.reset()
+        self.start()
+
     def left(self):
         return self.end_time - self.clock.time()
 
     def elapsed(self):
         return self.clock.time() - self.start_time
 
-    def end(self):
+    def is_end(self):
         return self.end_time < self.clock.time()
 
 
