@@ -7,67 +7,86 @@ from pylogic.tagsrv.serialsource import SerialSource
 import os
 
 
-tags = {
-    'in': {},
-    'out': {}
-}
+def gen_tagsrv_config(post_quantity=8):
+    tags = {
+        'in': {},
+        'out': {}
+    }
 
-# generate ai_1_1 - ai_2_8
-for pref in ('ai_1_','ai_2_',):
-    tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 9)]))
+    if post_quantity in (5, 6, 7, 8):
+        ai_names = ('ai_1_', 'ai_2_',)
+        do_names = ('do_1_', 'do_2_', 'do_3_', 'do_4_')
+    else:
+        ai_names = ('ai_1_',)
+        do_names = ('do_1_', 'do_2_')
+    fc_names = tuple([f'fc{i}_' for i in range(1, post_quantity + 1)])
 
-# generate do_1_1 - do_4_24
-for pref in ('do_1_', 'do_2_', 'do_3_', 'do_4_'):
-    tags['out'].update(dict([(pref + str(i), OutTag(i)) for i in range(1, 25)]))
+    # generate ai_1_1 - ai_2_8
+    for pref in ai_names:
+        tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 9)]))
 
-# generate di_1_1 - do_1_20
-for pref in ('di_1_',):
-    tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
+    # generate do_1_1 - do_4_24
+    for pref in do_names:
+        tags['out'].update(dict([(pref + str(i), OutTag(i)) for i in range(1, 25)]))
 
-# generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
-for pref in ('fc1_', 'fc2_', 'fc3_', 'fc4_', 'fc5_', 'fc6_', 'fc7_', 'fc8_'):
-    tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
-    tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+    # generate di_1_1 - do_1_20
+    for pref in ('di_1_',):
+        tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
 
-ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.20',
+    # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
+    for pref in fc_names:
+        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
+        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+
+    ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.20',
                        timeout=0.03)
-ai_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_')], ip='192.168.200.21',
+    ai_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_')], ip='192.168.200.21',
                        timeout=0.03)
-di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10',
+    di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10',
                        timeout=0.03)
-# ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
-do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')], ip='192.168.200.1',
-                       timeout=0.03)
-do_2 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_')], ip='192.168.200.2',
-                       timeout=0.03)
-do_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_3_')], ip='192.168.200.3',
-                       timeout=0.03)
-do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_4_')], ip='192.168.200.4',
-                       timeout=0.03)
+    # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
+    do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')],
+                           ip='192.168.200.1',
+                           timeout=0.03)
+    do_2 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_')],
+                           ip='192.168.200.2',
+                           timeout=0.03)
+    do_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_3_')],
+                           ip='192.168.200.3',
+                           timeout=0.03)
+    do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_4_')],
+                           ip='192.168.200.4',
+                           timeout=0.03)
 
-if os.name == 'posix':
-    com_port1_name = 'serial'
-else:
-    com_port1_name = 'COM3'
+    if os.name == 'posix':
+        com_port1_name = 'serial'
+    else:
+        com_port1_name = 'COM3'
 
-port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
-fc_modules = []
+    port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+    fc_modules = []
 
-for i in range(1, 9):
-    fc_modules.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
-                           in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc{i}_ai_')],
-                           out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc{i}_ao_')]))
+    for i in range(1, post_quantity + 1):
+        fc_modules.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc{i}_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc{i}_ao_')]))
 
-dispatchers = {
-    'disp_1': ParallelDispatcher(
-        #modules=[do_1, do_2, do_3, do_4, di_1, ai_1, ai_2]
-        modules=[do_1, do_2, di_1, ai_1]
-    ),
-    'mb_disp': SerialDispatcher(modules=fc_modules[:4])
-}
+    if post_quantity in (5, 6, 7, 8):
+        modules = [do_1, do_2, do_3, do_4, di_1, ai_1, ai_2]
+    else:
+        modules = [do_1, do_2, di_1, ai_1]
 
-settings = {
-    'tags': tags,
-    'sources': {'port_1': port_1},
-    'dispatchers': dispatchers
-}
+    dispatchers = {
+        'disp_1': ParallelDispatcher(
+            modules=modules
+        ),
+        'mb_disp': SerialDispatcher(modules=fc_modules)
+    }
+
+    return {
+        'tags': tags,
+        'sources': {'port_1': port_1},
+        'dispatchers': dispatchers
+    }
