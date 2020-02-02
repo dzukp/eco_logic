@@ -84,7 +84,7 @@ logging_config = {
     },
     'formatters': {
         'verbose': {
-            'format': '%(name)s - %(asctime)s: %(message)s'
+            'format': '%(asctime)s - %(name)s: %(message)s'
         },
         'simple': {
             'format': '%(message)s'
