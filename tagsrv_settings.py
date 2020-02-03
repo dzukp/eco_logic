@@ -59,7 +59,7 @@ def gen_tagsrv_config(post_quantity=8):
                            timeout=0.03)
 
     if os.name == 'posix':
-        com_port1_name = 'serial'
+        com_port1_name = 'fc_serial'
     else:
         com_port1_name = 'COM3'
 

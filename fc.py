@@ -115,7 +115,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         if manual:
             if freq != self.man_frequency_task:
                 self.man_frequency_task = freq
-                self.logger.debug(f'set manual frequency task: {freq}')
+                self.logger.info(f'set manual frequency task: {freq}')
         else:
             if freq != self.auto_frequency_task:
                 self.auto_frequency_task = freq
@@ -126,7 +126,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
-            cmd = data[- start_addr +self.mb_cells_idx ]
+            cmd = data[- start_addr + self.mb_cells_idx ]
             if cmd & 0x0001:
                 self.set_manual(True)
             if cmd & 0x0002:
@@ -138,7 +138,7 @@ class Altivar212(Mechanism, ModbusDataObject):
             if cmd & 0x0010:
                 self.reset()
             float_data = struct.unpack('fff', struct.pack('HHHHHH', *tuple(data[self.mb_cells_idx + 2: self.mb_cells_idx + 8])))
-            #self.man_frequency_task = float_data[1]
+            self.set_frequency(float_data[1], manual=True)
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
@@ -148,12 +148,12 @@ class Altivar212(Mechanism, ModbusDataObject):
                      int(self.is_alarm) * (1 << 2) | \
                      int(self.state_alarm == self.func_state) * (1 << 3) | \
                      0
-            float_data2 = struct.pack('>fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
+            float_data2 = struct.pack('fff', self.ai_frequency.val, self.man_frequency_task, self.auto_frequency_task)
             float_data = struct.unpack('HHHHHH', float_data2)
             return {-start_addr + self.mb_cells_idx: cmd,
                     -start_addr + self.mb_cells_idx + 1: status,
-                    -start_addr + self.mb_cells_idx + 2: 0,
-                    -start_addr + self.mb_cells_idx + 3: 0,
+                    -start_addr + self.mb_cells_idx + 2: float_data[0],
+                    -start_addr + self.mb_cells_idx + 3: float_data[1],
                     -start_addr + self.mb_cells_idx + 4: float_data[2],
                     -start_addr + self.mb_cells_idx + 5: float_data[3],
                     -start_addr + self.mb_cells_idx + 6: float_data[4],
