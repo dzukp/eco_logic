@@ -75,7 +75,7 @@ class ModbusRTUModule(object):
         
         def ans_process(self, ans):
             quant = len(self.tags)
-            data = struct.unpack('>H' * quant, ans[3:3 + quant * 2])
+            data = struct.unpack(f'>{"H" * quant}', ans[3:3 + quant * 2])
             for tag, value in zip(self.tags, data):
                 if tag.filter:
                     tag.value = tag.filter.apply(value)
