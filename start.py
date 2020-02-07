@@ -10,14 +10,14 @@ from pylogic.main import main
 from pylogic.logged_object import DEFAULT_LOGGER
 from pylogic.modbus_supervisor import ModbusSupervisor
 from objects import get_object
-from simulator_objects import simulators
+from simulator_objects import get_simulator_objects
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
 
 
 def start():
-    sim_obj = simulators if '--simulator' in sys.argv else {}
     post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8
+    sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():
         makedirs(log_dir.absolute())
