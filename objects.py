@@ -17,11 +17,11 @@ def get_object(post_quantity=8):
                 'supplier': {
                     'class': WaterPreparing,
                     'di_press_1': 'di_1_7',
-                    'ai_pe_1': 'ai_2_1',
+                    'ai_pe_1': ('ai_1_5', 'ai_2_1')[post_quantity // 5],
                     'di_press_2': 'di_1_8',
-                    'ai_pe_2': 'ai_2_2',
+                    'ai_pe_2': ('ai_1_6', 'ai_2_2')[post_quantity // 5],
                     'di_press_3': 'di_1_9',
-                    'ai_pe_3': 'ai_2_3',
+                    'ai_pe_3': ('ai_1_7', 'ai_2_3')[post_quantity // 5],
                     'mb_cells_idx': 0,
                     'children': {
                         'pump_n1': {
