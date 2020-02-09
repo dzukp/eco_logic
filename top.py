@@ -48,42 +48,49 @@ class Top(IoObject, ModbusDataObject):
         if FuncNames.WAX in wished_funcs:
             if not self.supplier.try_wax():
                 prepared_funcs.remove(FuncNames.WAX)
+                self.logger.debug(f'It not ready for function `{FuncNames.WAX}`')
         else:
             self.supplier.stop_wax()
 
         if FuncNames.SHAMPOO in wished_funcs:
             if not self.supplier.try_shampoo():
                 prepared_funcs.remove(FuncNames.SHAMPOO)
+                self.logger.debug(f'It not ready for function `{FuncNames.SHAMPOO}`')
         else:
             self.supplier.stop_shampoo()
 
         if FuncNames.FOAM in wished_funcs:
             if not self.supplier.try_foam():
                 prepared_funcs.remove(FuncNames.FOAM)
+                self.logger.debug(f'It not ready for function `{FuncNames.FOAM}`')
         else:
             self.supplier.stop_foam()
 
         if FuncNames.INTENSIVE in wished_funcs:
             if not self.supplier.try_intensive():
                 prepared_funcs.remove(FuncNames.INTENSIVE)
+                self.logger.debug(f'It not ready for function `{FuncNames.INTENSIVE}`')
         else:
             self.supplier.stop_intensive()
 
         if FuncNames.HOT_WATER in wished_funcs:
             if not self.supplier.try_hot_water():
                 prepared_funcs.remove(FuncNames.HOT_WATER)
+                self.logger.debug(f'It not ready for function `{FuncNames.HOT_WATER}`')
         else:
             self.supplier.stop_hot_water()
 
         if FuncNames.COLD_WATER in wished_funcs:
             if not self.supplier.try_cold_water():
                 prepared_funcs.remove(FuncNames.COLD_WATER)
+                self.logger.debug(f'It not ready for function `{FuncNames.COLD_WATER}`')
         else:
             self.supplier.stop_cold_water()
 
         if FuncNames.OSMOSIS in wished_funcs:
             if not self.supplier.try_osmosis():
                 prepared_funcs.remove(FuncNames.OSMOSIS)
+                self.logger.debug(f'It not ready for function `{FuncNames.OSMOSIS}`')
         else:
             self.supplier.stop_osmosis()
 

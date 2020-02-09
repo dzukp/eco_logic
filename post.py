@@ -54,7 +54,7 @@ class Post(IoObject, ModbusDataObject):
             if new_func != self.func:
                 self.func = new_func
                 self.func_number = FuncNames.all_funcs().index(func_name)
-                self.logger.info('set function `func_name`')
+                self.logger.info(f'set function {func_name}')
         except KeyError:
             self.logger.error(f'func for `{func_name}` not exists')
 
@@ -67,17 +67,22 @@ class Post(IoObject, ModbusDataObject):
             self.valve_foam,
             self.valve_wax,
             self.valve_shampoo,
+            self.valve_osmos,
             self.valve_cold_water,
             self.valve_hot_water,
             self.valve_intensive]
-        if valve:
+        if isinstance(valve, (list, tuple)):
+            for v in valve:
+                valves.remove(v)
+                v.open()
+        else:
             valves.remove(valve)
             valve.open()
         for v in valves:
             v.close()
 
     def _func_idle(self):
-        self._open_valve(None)
+        self._open_valve([])
         self.pump.stop()
         self.pump.set_frequency(0.0)
 
@@ -144,7 +149,7 @@ class Post(IoObject, ModbusDataObject):
     def _func_intensive(self):
         self._open_valve(self.valve_intensive)
         self.valve_out_foam.close()
-        self.valve_out_water.open()
+        self.valve_out_water.close()
         self.pump.stop()
         self.pump.set_frequency(0.0)
 

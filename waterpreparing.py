@@ -205,26 +205,33 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def try_hot_water(self):
         if self.is_ready_for_hot_water():
             self.active_functions.add(FuncNames.HOT_WATER)
+            return True
         else:
             self.stop_hot_water()
+            return False
 
     def try_cold_water(self):
         if self.is_ready_for_cold_water():
             self.active_functions.add(FuncNames.COLD_WATER)
+            return True
         else:
             self.stop_cold_water()
+            return False
 
     def try_osmosis(self):
         if self.is_ready_for_osmosis():
             self.active_functions.add(FuncNames.OSMOSIS)
+            return True
         else:
             self.stop_osmosis()
+            return False
 
     def stop_wax(self):
+        self.active_functions.discard(FuncNames.WAX)
         self.valve_dose_wax.close()
 
     def stop_shampoo(self):
-        self.active_functions.discard(FuncNames.WAX)
+        self.active_functions.discard(FuncNames.SHAMPOO)
         self.valve_dose_shampoo.close()
 
     def stop_foam(self):
