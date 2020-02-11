@@ -24,7 +24,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
-        self.ao_command = OutChannel(0)
+        self.ao_command = OutChannel(0)#команда частотнику
         self.ao_frequency = OutChannel(0)
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)

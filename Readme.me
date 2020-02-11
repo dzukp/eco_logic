@@ -1,0 +1,45 @@
+C:\Users\pasha\AppData\Local\Programs\Python\Python38-32\python.exe "C:\Program Files\JetBrains\PyCharm Community Edition 2019.3.2\plugins\python-ce\helpers\pydev\pydevconsole.py" --mode=client --port=51812
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['E:\\projects\\eco_logic', 'E:/projects/eco_logic'])
+PyDev console: starting.
+Python 3.8.1 (tags/v3.8.1:1b293b6, Dec 18 2019, 22:39:24) [MSC v.1916 32 bit (Intel)] on win32
+from tests.post_rpc_client import PostRpcClient
+from tests.post_rpc_client import PostRpcClient
+c = PostRpcClient('http://localhost:9876')
+c.start_function(1, 'wax')
+>> start_function 1 wax
+OK
+c.start_function(1, 'wax')
+>> start_function 1 wax
+OK
+c.start_function(1, 'stop')
+>> start_function 1 stop
+OK
+c.start_function(1, 'wax')
+>> start_function 1 wax
+OK
+c.start_function(1, 'cold_water')
+>> start_function 1 cold_water
+OK
+from pylogic.pyshell.rpcshell import main
+main()
+-------------------------------------------------------
+INFO: Custom shell is not implemented.
+For implement Make func shell.getShell(server)
+Loading default pyshell...
+-------------------------------------------------------
+Welcome to remote PyShell
+!help: list of custom commands
+ >?
+ >?
+ >? dir()
+['__builtins__', 'app_config', 'config', 'controller', 'factory_', 'name', 'saver', 'sim_channels', 'sim_object', 'supervisor_class', 'supervisor_manager', 'tag_srv', 'top_object']
+ >?
+ >? top_object
+<top.Top object at 0x03147CA0>
+ >? top_object.children[0]
+<waterpreparing.WaterPreparing object at 0x03147D00>
+ >? top_object.children[0].ai_pe_1.val
+3.841710536816125
+
+

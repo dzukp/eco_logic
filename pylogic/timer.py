@@ -82,7 +82,7 @@ class Timer:
 
 
 class Ton:
-
+    """Таймер задержкм включения"""
     def __init__(self, periodic_clock_name='default', moment_clock_name=False):
         if periodic_clock_name:
             self.clock = get_periodic_clock(periodic_clock_name)
