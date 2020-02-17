@@ -70,21 +70,27 @@ class IoObject(LoggedObject):
                 if hasattr(self, attr):
                     data[attr] = self.__dict__[attr]
             self.saver.save(self.full_name, data)
-        for child in self.children:
-            child.save()
 
     def load(self):
         if self.saver:
             data = self.saver.load(self.full_name)
             if data:
-                for name, value in data.items:
+                for name, value in data.items():
                     if hasattr(self, name):
                         self.__dict__[name] = value
                     else:
                         self.logger.error(f'Attribute `{name}` not exists')
                         self.__dict__[name] = value
+
+    def load_all(self):
+        self.load()
         for child in self.children:
-            child.load()
+            child.load_all()
+
+    def save_all(self):
+        self.save()
+        for child in self.children:
+            child.save()
 
     def get_all_channels(self):
         channels = [attr for name, attr in self.__dict__.items() if isinstance(attr, Channel)]
