@@ -34,6 +34,7 @@ class Controller(LoggedObject):
 
     def init(self):
         self.top_object.set_saver(self.saver)
+        self.top_object.load_all()
         self.top_object.init_all()
         if self.sim_object:
             self.sim_object.init_all()
