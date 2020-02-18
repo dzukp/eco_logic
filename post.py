@@ -5,12 +5,14 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
+from post_function import SimplePostFunctionSteps, PostIntensiveSteps
+
 from func_names import FuncNames
 
 
 class Post(IoObject, ModbusDataObject):
 
-    _save_attrs = ('foam_frequency_task', 'water_frequency_task', 'pump_timeout')
+    _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -26,146 +28,142 @@ class Post(IoObject, ModbusDataObject):
         self.valve_out_water = None
         self.valve_out_foam = None
         self.pump = None
-        self.func = self._func_idle
-        self.func_by_name = {
-            FuncNames.FOAM: self._func_foam,
-            FuncNames.SHAMPOO: self._func_shampoo,
-            FuncNames.WAX: self._func_wax,
-            FuncNames.HOT_WATER: self._func_hot_water,
-            FuncNames.COLD_WATER: self._func_cold_water,
-            FuncNames.OSMOSIS: self._func_osmosis,
-            FuncNames.INTENSIVE: self._func_intensive,
-            FuncNames.STOP: self._func_idle
-        }
+        self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
-        self.foam_frequency_task = 30.0
-        self.water_frequency_task = 50.0
-        self.pump_timeout = 3.0
-        self.pump_timer = Ton()
+        self.func_frequencies = {
+            FuncNames.FOAM: 25.0,
+            FuncNames.SHAMPOO: 40.0,
+            FuncNames.WAX: 40.0,
+            FuncNames.HOT_WATER: 40.0,
+            FuncNames.COLD_WATER: 40.0,
+            FuncNames.OSMOSIS: 40.0,
+        }
+        self.pump_on_timeout = 1.0
+        self.valve_off_timeout = 1.0
+        self.pressure_timeout = 3.0
+        self.pressure_timer = Ton()
+        self.min_pressure = 10.0
         self.alarm = False
         self.mb_cells_idx = None
+        self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
+                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
+        self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+
+    def init(self):
+        config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout}
+        valves = {
+            FuncNames.FOAM: self.valve_foam,
+            FuncNames.SHAMPOO: self.valve_shampoo,
+            FuncNames.WAX: self.valve_wax,
+            FuncNames.HOT_WATER: self.valve_hot_water,
+            FuncNames.COLD_WATER: self.valve_cold_water,
+            FuncNames.OSMOSIS: self.valve_osmos,
+            FuncNames.INTENSIVE: self.valve_intensive
+        }
+        for func_name, step in self.func_steps.items():
+            step.valve = valves[func_name]
+            if func_name != FuncNames.INTENSIVE:
+                step.set_config(config)
 
     def process(self):
-        self.func()
+        for func_name, step in self.func_steps.items():
+            if func_name == self.current_func:
+                if not step.is_active():
+                    step.start()
+            else:
+                step.stop()
+        pump = False
+        freq = 0.0
+        water_out_valve = False
+        foam_out_valve = False
+        for func_name, step in self.func_steps.items():
+            step.process()
+            if step.pump:
+                pump = True
+                try:
+                    freq = self.func_frequencies[func_name]
+                except KeyError:
+                    self.logger.error(f'No frequency task for function `{func_name}`')
+            if step.out_valve:
+                if func_name == FuncNames.FOAM:
+                    foam_out_valve = True
+                else:
+                    water_out_valve = True
+        if pump:
+            self.pump.start()
+            self.pump.set_frequency(freq)
+        else:
+            self.pump.stop()
+            self.pump.set_frequency(0.0)
+        if foam_out_valve:
+            self.valve_out_foam.open()
+        else:
+            self.valve_out_foam.close()
+        if water_out_valve:
+            self.valve_out_water.open()
+        else:
+            self.valve_out_water.close()
+        if not self.alarm:
+            if self.pump.is_alarm_state():
+                self.set_alarm()
+                self.logger.info('Set alarm because pump alarm')
+            if self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
+                                           timeout=self.pressure_timeout):
+                self.set_alarm()
+                self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
 
     def set_function(self, func_name):
-        try:
-            new_func = self.func_by_name[func_name]
-            if new_func != self.func:
-                self.func = new_func
-                self.func_number = FuncNames.all_funcs().index(func_name)
-                self.logger.info(f'set function {func_name}')
-        except KeyError:
-            self.logger.error(f'func for `{func_name}` not exists')
+        if not self.alarm and func_name in FuncNames.all_funcs():
+            if self.current_func != func_name:
+                self.logger.debug(f'New function {func_name}')
+            self.current_func = func_name
+        else:
+            self.current_func = FuncNames.STOP
+        self.func_number = FuncNames.all_funcs().index(self.current_func)
 
     def set_alarm(self):
         self.alarm = True
-        self.func = self.func_by_name[FuncNames.STOP]
+        self.current_func = FuncNames.STOP
 
-    def _open_valve(self, valve):
-        valves = [
-            self.valve_foam,
-            self.valve_wax,
-            self.valve_shampoo,
-            self.valve_osmos,
-            self.valve_cold_water,
-            self.valve_hot_water,
-            self.valve_intensive]
-        if isinstance(valve, (list, tuple)):
-            for v in valve:
-                valves.remove(v)
-                v.open()
-        else:
-            valves.remove(valve)
-            valve.open()
-        for v in valves:
-            v.close()
+    def reset_alarm(self):
+        self.alarm = False
+        self.logger.info('Reset alarm')
 
-    def _func_idle(self):
-        self._open_valve([])
-        self.pump.stop()
-        self.pump.set_frequency(0.0)
+    def set_func_pump_frequency(self, func_name, task):
+        if func_name in self.func_frequencies:
+            if self.func_frequencies[func_name] != float(task):
+                self.func_frequencies[func_name] = float(task)
+                self.logger.info(f'Set pump frequency for function `{func_name}` = {task}')
+                self.save()
 
-    def _func_foam(self):
-        self._open_valve(self.valve_foam)
-        self.valve_out_foam.open()
-        self.valve_out_water.close()
-        self.pump.start()
-        self.pump.set_frequency(self.foam_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Foam programm -> alarm pump run but no flow')
-            self.set_alarm()
+    def set_pump_on_timeout(self, timeout):
+        if self.pump_on_timeout != timeout:
+            self.pump_on_timeout = timeout
+            self.logger.info(f'Set pump on timeout {timeout}s')
+            self.save()
 
-    def _func_shampoo(self):
-        self._open_valve(self.valve_shampoo)
-        self.valve_out_foam.close()
-        self.valve_out_water.open()
-        self.pump.start()
-        self.pump.set_frequency(self.water_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Shampoo programm -> alarm pump run but no flow')
-            self.set_alarm()
-
-    def _func_wax(self):
-        self._open_valve(self.valve_wax)
-        self.valve_out_foam.close()
-        self.valve_out_water.open()
-        self.pump.start()
-        self.pump.set_frequency(self.water_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Wax programm -> alarm pump run but no flow')
-            self.set_alarm()
-
-    def _func_hot_water(self):
-        self._open_valve(self.valve_hot_water)
-        self.valve_out_foam.close()
-        self.valve_out_water.open()
-        self.pump.start()
-        self.pump.set_frequency(self.water_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Hot water programm -> alarm pump run but no flow')
-            self.set_alarm()
-
-    def _func_cold_water(self):
-        self._open_valve(self.valve_cold_water)
-        self.valve_out_foam.close()
-        self.valve_out_water.open()
-        self.pump.start()
-        self.pump.set_frequency(self.water_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Cold water programm -> alarm pump run but no flow')
-            self.set_alarm()
-
-    def _func_osmosis(self):
-        self._open_valve(self.valve_osmos)
-        self.valve_out_foam.close()
-        self.valve_out_water.open()
-        self.pump.start()
-        self.pump.set_frequency(self.water_frequency_task)
-        if self.pump_timer.process(run=self.pump.is_run and not self.di_flow.val, timeout=self.pump_timeout):
-            self.logger.info(f'Osmosis programm -> alarm pump run but no flow')
-            self.set_alarm()
-
-    def _func_intensive(self):
-        self._open_valve(self.valve_intensive)
-        self.valve_out_foam.close()
-        self.valve_out_water.close()
-        self.pump.stop()
-        self.pump.set_frequency(0.0)
+    def set_valve_off_timeout(self, timeout):
+        if self.valve_off_timeout != timeout:
+            self.valve_off_timeout = timeout
+            self.logger.info(f'Set value off timeout {timeout}s')
+            self.save()
 
     def mb_cells(self):
         return self.mb_output(0).keys()
 
     def mb_input(self, start_addr, data):
-        pass
+        if self.mb_cells_idx is not None:
+            cmd = data[self.mb_cells_idx - start_addr]
+            if cmd & 0x0001:
+                self.reset_alarm()
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
-            status = 0
+            status = int(self.alarm) * (1 << 0)
             data = struct.pack('>f', self.ai_pressure.val)
             p1, p2 = struct.unpack('>HH', data)
             return {
-                self.mb_cells_idx - start_addr: 0,
+                self.mb_cells_idx - start_addr: 0xFF00,
                 self.mb_cells_idx - start_addr + 1: status,
                 self.mb_cells_idx - start_addr + 2: self.func_number,
                 self.mb_cells_idx - start_addr + 3: p1,
