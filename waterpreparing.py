@@ -14,12 +14,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.di_press_1 = InChannel(False)#дискретный датчик давления после насоса p1
-        self.ai_pe_1 = InChannel(0.0)#аналоговый датчик давления после насоса П1
-        self.di_press_2 = InChannel(False)#дискретный датчик давления после П2
-        self.ai_pe_2 = InChannel(0.0)#аналоговый датчик давления после фильтра
-        self.ai_pe_3 = InChannel(0.0)#аналоговый датчик давления после насоса П2
-        self.di_press_3 = InChannel(False)#
+        self.di_press_1 = InChannel(False)  # дискретный датчик давления после насоса p1
+        self.ai_pe_1 = InChannel(0.0)  # аналоговый датчик давления после насоса П1
+        self.di_press_2 = InChannel(False)  # дискретный датчик давления после П2
+        self.ai_pe_2 = InChannel(0.0)  # аналоговый датчик давления после фильтра
+        self.ai_pe_3 = InChannel(0.0)  # аналоговый датчик давления после насоса П2
+        self.di_press_3 = InChannel(False)  #
         self.pump_n1 = None
         self.pump_n2 = None
         self.pump_os1 = None
@@ -273,9 +273,13 @@ class WaterPreparing(IoObject, ModbusDataObject):
             if cmd & 0x0080:
                 self.start_osmos_press = False
             floats = modbus_cells_to_floats(data[addr + 12:addr + 24])
-            self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, self.osmosis_pump_off_press,\
+            last_floats = self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, \
+                          self.osmosis_pump_off_press, self.osmosis_pump_on_press, self.osmosis_enough_press
+            if last_floats != floats:
+                self.logger.debug(f'New press settings {floats}')
+                self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, self.osmosis_pump_off_press, \
                 self.osmosis_pump_on_press, self.osmosis_enough_press = floats
-
+                self.save()
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:

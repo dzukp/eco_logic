@@ -121,6 +121,9 @@ class Altivar212(Mechanism, ModbusDataObject):
                 self.auto_frequency_task = freq
                 self.logger.debug(f'set auto frequency task: {freq}')
 
+    def is_alarm_state(self):
+        return self.state_alarm == self.func_state
+
     def mb_cells(self):
         return self.mb_output(0).keys()
 

@@ -29,7 +29,7 @@ class Steps(LoggedObject):
                 self.trans_args = ()
             else:
                 raise Exception('Return value of the logic step must be are dict or func')
-            self.logger.info(f'New step: {self.current_step.func_name}')
+            self.logger.info(f'New step: {self.current_step.__name__}')
 
     def start(self):
         if self.is_idle():

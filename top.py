@@ -26,7 +26,7 @@ class Top(IoObject, ModbusDataObject):
             if isinstance(child, Post):
                 self.posts[child.name] = child
                 self.post_function[child] = FuncNames.STOP
-                self.new_function[child] = FuncNames.STOP
+                # self.new_function[child] = FuncNames.STOP
         self.rpc_server.set_top_object(self)
         self.rpc_server.start()
 
@@ -34,14 +34,18 @@ class Top(IoObject, ModbusDataObject):
         for post, func in self.new_function.items():
             self.post_function[post] = func
         self.function_process()
-        for post, func in self.post_function.items():
-            self.new_function[post] = func
+        # for post, func in self.post_function.items():
+        #     self.new_function[post] = func
+        self.new_function.clear()
         self.counter = (self.counter + 1) % 30000
 
     def function_process(self):
         wished_funcs = set()
-        for func in self.post_function.values():
-            wished_funcs.add(func)
+        for post, func in self.post_function.items():
+            if not post.alarm:
+                wished_funcs.add(func)
+            elif func != FuncNames.STOP:
+                self.logger.debug(f'Stop function `{post.name}` because it is alarm')
 
         prepared_funcs = wished_funcs.copy()
 
@@ -151,9 +155,41 @@ class Top(IoObject, ModbusDataObject):
     def mb_cells(self):
         return [0, 400]
 
+    def mb_input(self, start_addr, data):
+        if self.mb_cells_idx is not None:
+            for p in self.posts.values():
+                if data[self.mb_cells_idx - start_addr + 1] != p.pump_on_timeout:
+                    p.set_pump_on_timeout(float(data[self.mb_cells_idx - start_addr + 1]) * 0.001)
+                if p.valve_off_timeout != data[self.mb_cells_idx - start_addr + 2]:
+                    p.set_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 2]) * 0.001)
+                if data[self.mb_cells_idx - start_addr + 3] != p.func_frequencies[FuncNames.FOAM]:
+                    p.set_func_pump_frequency(FuncNames.FOAM, data[self.mb_cells_idx - start_addr + 3])
+                if data[self.mb_cells_idx - start_addr + 4] != p.func_frequencies[FuncNames.SHAMPOO]:
+                    p.set_func_pump_frequency(FuncNames.SHAMPOO, data[self.mb_cells_idx - start_addr + 4])
+                if data[self.mb_cells_idx - start_addr + 5] != p.func_frequencies[FuncNames.WAX]:
+                    p.set_func_pump_frequency(FuncNames.WAX, data[self.mb_cells_idx - start_addr + 5])
+                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.HOT_WATER]:
+                    p.set_func_pump_frequency(FuncNames.HOT_WATER, data[self.mb_cells_idx - start_addr + 6])
+                if data[self.mb_cells_idx - start_addr + 7] != p.func_frequencies[FuncNames.COLD_WATER]:
+                    p.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
+                if data[self.mb_cells_idx - start_addr + 8] != p.func_frequencies[FuncNames.OSMOSIS]:
+                    p.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
+
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
-            data = [self.counter,]
+            data = [
+                self.counter,
+                int(self.posts['post_1'].pump_on_timeout * 1000),
+                int(self.posts['post_1'].valve_off_timeout * 1000),
+                int(self.posts['post_1'].func_frequencies[FuncNames.FOAM]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.SHAMPOO]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.WAX]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.HOT_WATER]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.COLD_WATER]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.OSMOSIS]),
+                int(self.posts['post_1'].pressure_timeout),
+                int(self.posts['post_1'].min_pressure * 100),
+            ]
             result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
             return result
         else:
