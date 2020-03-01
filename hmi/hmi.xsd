@@ -74,7 +74,7 @@
                 <XMnemoLayer Name="general" Visible="1"/>
             </XMnemoLayers>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_1" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="149" rect.bottom="178" rect.left="48" rect.right="80"/>
+                <Geometry rect.top="78" rect.bottom="107" rect.left="47" rect.right="79"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -121,7 +121,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_2" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="149" rect.bottom="178" rect.left="84" rect.right="116"/>
+                <Geometry rect.top="78" rect.bottom="107" rect.left="83" rect.right="115"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -169,7 +169,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_9" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="116" rect.bottom="139" rect.left="53" rect.right="76"/>
+                <Geometry rect.top="45" rect.bottom="68" rect.left="52" rect.right="75"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -187,7 +187,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_9" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="117" rect.bottom="140" rect.left="84" rect.right="111"/>
+                <Geometry rect.top="46" rect.bottom="69" rect.left="83" rect.right="110"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -219,7 +219,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_10" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="181" rect.bottom="210" rect.left="48" rect.right="80"/>
+                <Geometry rect.top="110" rect.bottom="139" rect.left="47" rect.right="79"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -266,7 +266,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_11" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="181" rect.bottom="210" rect.left="84" rect.right="116"/>
+                <Geometry rect.top="110" rect.bottom="139" rect.left="83" rect.right="115"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -313,7 +313,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_12" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="84" rect.bottom="107" rect.left="40" rect.right="142"/>
+                <Geometry rect.top="5" rect.bottom="28" rect.left="47" rect.right="149"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -327,7 +327,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_8" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="553" rect.bottom="576" rect.left="54" rect.right="156"/>
+                <Geometry rect.top="482" rect.bottom="505" rect.left="53" rect.right="155"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -341,7 +341,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_9" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="651" rect.bottom="680" rect.left="62" rect.right="94"/>
+                <Geometry rect.top="580" rect.bottom="609" rect.left="61" rect.right="93"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -389,7 +389,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_10" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="586" rect.bottom="609" rect.left="67" rect.right="90"/>
+                <Geometry rect.top="515" rect.bottom="538" rect.left="66" rect.right="89"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -407,7 +407,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_11" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="587" rect.bottom="610" rect.left="98" rect.right="125"/>
+                <Geometry rect.top="516" rect.bottom="539" rect.left="97" rect.right="124"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -439,7 +439,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_12" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="619" rect.bottom="648" rect.left="62" rect.right="94"/>
+                <Geometry rect.top="548" rect.bottom="577" rect.left="61" rect.right="93"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -486,7 +486,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_13" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="619" rect.bottom="648" rect.left="98" rect.right="130"/>
+                <Geometry rect.top="548" rect.bottom="577" rect.left="97" rect.right="129"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -533,7 +533,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_14" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="651" rect.bottom="680" rect.left="98" rect.right="130"/>
+                <Geometry rect.top="580" rect.bottom="609" rect.left="97" rect.right="129"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -580,7 +580,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_15" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="176" rect.right="278"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="175" rect.right="277"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -594,7 +594,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_16" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="192" rect.right="224"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="191" rect.right="223"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -642,7 +642,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_17" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="197" rect.right="220"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="196" rect.right="219"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -660,7 +660,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_18" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="228" rect.right="255"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="227" rect.right="254"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -692,7 +692,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_19" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="192" rect.right="224"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="191" rect.right="223"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -739,7 +739,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_20" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="228" rect.right="260"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="227" rect.right="259"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -786,7 +786,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_21" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="228" rect.right="260"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="227" rect.right="259"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -834,7 +834,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_22" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="3"/>
-                <Geometry rect.top="586" rect.bottom="609" rect.left="40" rect.right="63"/>
+                <Geometry rect.top="515" rect.bottom="538" rect.left="39" rect.right="62"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -851,7 +851,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_23" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="685" rect.bottom="714" rect.left="72" rect.right="121"/>
+                <Geometry rect.top="614" rect.bottom="643" rect.left="71" rect.right="120"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -898,7 +898,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_24" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="82" rect.bottom="105" rect.left="186" rect.right="288"/>
+                <Geometry rect.top="11" rect.bottom="34" rect.left="185" rect.right="287"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -912,7 +912,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_25" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="194" rect.right="226"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="193" rect.right="225"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -960,7 +960,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_26" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="114" rect.bottom="137" rect.left="199" rect.right="222"/>
+                <Geometry rect.top="43" rect.bottom="66" rect.left="198" rect.right="221"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -978,7 +978,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_27" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="230" rect.right="257"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="229" rect.right="256"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1010,7 +1010,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_28" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="194" rect.right="226"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="193" rect.right="225"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1057,7 +1057,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_29" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="230" rect.right="262"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="229" rect.right="261"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1104,7 +1104,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_30" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="230" rect.right="262"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="229" rect.right="261"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1151,7 +1151,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_31" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="82" rect.bottom="105" rect.left="300" rect.right="399"/>
+                <Geometry rect.top="11" rect.bottom="34" rect.left="299" rect.right="398"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1165,7 +1165,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_32" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="313" rect.right="345"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="312" rect.right="344"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1213,7 +1213,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_33" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="114" rect.bottom="137" rect.left="318" rect.right="341"/>
+                <Geometry rect.top="43" rect.bottom="66" rect.left="317" rect.right="340"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1231,7 +1231,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_34" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="349" rect.right="376"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="348" rect.right="375"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1263,7 +1263,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_35" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="313" rect.right="345"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="312" rect.right="344"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1310,7 +1310,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_36" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="349" rect.right="381"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="348" rect.right="380"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1357,7 +1357,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_37" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="349" rect.right="381"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="348" rect.right="380"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1404,7 +1404,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_38" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="82" rect.bottom="105" rect.left="429" rect.right="528"/>
+                <Geometry rect.top="11" rect.bottom="34" rect.left="428" rect.right="527"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1418,7 +1418,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_39" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="442" rect.right="474"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="441" rect.right="473"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1466,7 +1466,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_40" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="114" rect.bottom="137" rect.left="447" rect.right="470"/>
+                <Geometry rect.top="43" rect.bottom="66" rect.left="446" rect.right="469"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1484,7 +1484,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_41" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="478" rect.right="505"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="477" rect.right="504"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1516,7 +1516,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_42" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="442" rect.right="474"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="441" rect.right="473"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1563,7 +1563,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_43" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="478" rect.right="510"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="477" rect.right="509"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1610,7 +1610,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_44" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="478" rect.right="510"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="477" rect.right="509"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1657,7 +1657,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_45" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="82" rect.bottom="105" rect.left="574" rect.right="673"/>
+                <Geometry rect.top="11" rect.bottom="34" rect.left="573" rect.right="672"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1671,7 +1671,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_46" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="587" rect.right="619"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="586" rect.right="618"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1719,7 +1719,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_47" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="114" rect.bottom="137" rect.left="592" rect.right="615"/>
+                <Geometry rect.top="43" rect.bottom="66" rect.left="591" rect.right="614"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1737,7 +1737,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_48" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="623" rect.right="650"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="622" rect.right="649"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1769,7 +1769,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_49" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="587" rect.right="619"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="586" rect.right="618"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1816,7 +1816,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_50" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="623" rect.right="655"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="622" rect.right="654"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1863,7 +1863,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_51" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="623" rect.right="655"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="622" rect.right="654"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1910,7 +1910,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_52" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="81" rect.bottom="104" rect.left="723" rect.right="825"/>
+                <Geometry rect.top="10" rect.bottom="33" rect.left="722" rect.right="824"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1924,7 +1924,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_53" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="732" rect.right="764"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="731" rect.right="763"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -1972,7 +1972,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_54" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="114" rect.bottom="137" rect.left="737" rect.right="760"/>
+                <Geometry rect.top="43" rect.bottom="66" rect.left="736" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -1990,7 +1990,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_55" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="768" rect.right="795"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="767" rect.right="794"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2022,7 +2022,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_56" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="732" rect.right="764"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="731" rect.right="763"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2069,7 +2069,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_57" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="768" rect.right="800"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="767" rect.right="799"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2116,7 +2116,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_58" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="768" rect.right="800"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="767" rect.right="799"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2163,7 +2163,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_59" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="81" rect.bottom="104" rect.left="847" rect.right="949"/>
+                <Geometry rect.top="10" rect.bottom="33" rect.left="846" rect.right="948"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2177,7 +2177,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_60" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="855" rect.right="887"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="854" rect.right="886"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2225,7 +2225,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_61" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="113" rect.bottom="136" rect.left="860" rect.right="883"/>
+                <Geometry rect.top="42" rect.bottom="65" rect.left="859" rect.right="882"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2243,7 +2243,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_62" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="891" rect.right="918"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="890" rect.right="917"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2275,7 +2275,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_63" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="855" rect.right="887"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="854" rect.right="886"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2322,7 +2322,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_64" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="891" rect.right="923"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="890" rect.right="922"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2369,7 +2369,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_65" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="891" rect.right="923"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="890" rect.right="922"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2417,7 +2417,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_66" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="435" rect.bottom="459" rect.left="45" rect.right="76"/>
+                <Geometry rect.top="364" rect.bottom="388" rect.left="44" rect.right="75"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2440,7 +2440,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_67" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="81" rect.bottom="104" rect.left="974" rect.right="1076"/>
+                <Geometry rect.top="10" rect.bottom="33" rect.left="973" rect.right="1075"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2454,7 +2454,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_68" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="982" rect.right="1014"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="981" rect.right="1013"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2502,7 +2502,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_69" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="113" rect.bottom="136" rect.left="987" rect.right="1010"/>
+                <Geometry rect.top="42" rect.bottom="65" rect.left="986" rect.right="1009"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2520,7 +2520,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_70" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="1018" rect.right="1045"/>
+                <Geometry rect.top="44" rect.bottom="67" rect.left="1017" rect.right="1044"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2552,7 +2552,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_71" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="982" rect.right="1014"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="981" rect.right="1013"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2599,7 +2599,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_72" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="1018" rect.right="1050"/>
+                <Geometry rect.top="76" rect.bottom="105" rect.left="1017" rect.right="1049"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2646,7 +2646,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_73" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="1018" rect.right="1050"/>
+                <Geometry rect.top="108" rect.bottom="137" rect.left="1017" rect.right="1049"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2693,7 +2693,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_74" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="81" rect.bottom="104" rect.left="1110" rect.right="1212"/>
+                <Geometry rect.top="18" rect.bottom="41" rect.left="1110" rect.right="1212"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2707,7 +2707,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_75" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="1118" rect.right="1150"/>
+                <Geometry rect.top="84" rect.bottom="113" rect.left="1118" rect.right="1150"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2755,7 +2755,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_76" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="113" rect.bottom="136" rect.left="1123" rect.right="1146"/>
+                <Geometry rect.top="50" rect.bottom="73" rect.left="1123" rect.right="1146"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2773,7 +2773,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_77" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="115" rect.bottom="138" rect.left="1154" rect.right="1181"/>
+                <Geometry rect.top="52" rect.bottom="75" rect.left="1154" rect.right="1181"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2805,7 +2805,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_78" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="1118" rect.right="1150"/>
+                <Geometry rect.top="116" rect.bottom="145" rect.left="1118" rect.right="1150"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2852,7 +2852,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_79" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="147" rect.bottom="176" rect.left="1154" rect.right="1186"/>
+                <Geometry rect.top="84" rect.bottom="113" rect.left="1154" rect.right="1186"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2899,7 +2899,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_80" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="179" rect.bottom="208" rect.left="1154" rect.right="1186"/>
+                <Geometry rect.top="116" rect.bottom="145" rect.left="1154" rect.right="1186"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -2946,7 +2946,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_81" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="233" rect.bottom="256" rect.left="1260" rect.right="1362"/>
+                <Geometry rect.top="170" rect.bottom="193" rect.left="1260" rect.right="1362"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2960,7 +2960,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_82" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1268" rect.right="1300"/>
+                <Geometry rect.top="236" rect.bottom="265" rect.left="1268" rect.right="1300"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3008,7 +3008,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_83" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="265" rect.bottom="288" rect.left="1273" rect.right="1296"/>
+                <Geometry rect.top="202" rect.bottom="225" rect.left="1273" rect.right="1296"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3026,7 +3026,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_84" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="267" rect.bottom="290" rect.left="1304" rect.right="1331"/>
+                <Geometry rect.top="204" rect.bottom="227" rect.left="1304" rect.right="1331"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3058,7 +3058,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_85" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1268" rect.right="1300"/>
+                <Geometry rect.top="268" rect.bottom="297" rect.left="1268" rect.right="1300"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3105,7 +3105,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_86" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1304" rect.right="1336"/>
+                <Geometry rect.top="236" rect.bottom="265" rect.left="1304" rect.right="1336"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3152,7 +3152,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_87" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1304" rect.right="1336"/>
+                <Geometry rect.top="268" rect.bottom="297" rect.left="1304" rect.right="1336"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3199,7 +3199,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_88" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="233" rect.bottom="256" rect.left="1118" rect.right="1220"/>
+                <Geometry rect.top="170" rect.bottom="193" rect.left="1118" rect.right="1220"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3213,7 +3213,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_89" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1135" rect.right="1167"/>
+                <Geometry rect.top="268" rect.bottom="297" rect.left="1135" rect.right="1167"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3261,7 +3261,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_90" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="265" rect.bottom="288" rect.left="1140" rect.right="1163"/>
+                <Geometry rect.top="202" rect.bottom="225" rect.left="1140" rect.right="1163"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3279,7 +3279,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_91" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="267" rect.bottom="290" rect.left="1171" rect.right="1198"/>
+                <Geometry rect.top="204" rect.bottom="227" rect.left="1171" rect.right="1198"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3311,7 +3311,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_92" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1135" rect.right="1167"/>
+                <Geometry rect.top="236" rect.bottom="265" rect.left="1135" rect.right="1167"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3358,7 +3358,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_93" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1171" rect.right="1203"/>
+                <Geometry rect.top="236" rect.bottom="265" rect.left="1171" rect.right="1203"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3405,7 +3405,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_94" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1171" rect.right="1203"/>
+                <Geometry rect.top="268" rect.bottom="297" rect.left="1171" rect.right="1203"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3452,7 +3452,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_95" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="233" rect.bottom="256" rect.left="985" rect.right="1087"/>
+                <Geometry rect.top="162" rect.bottom="185" rect.left="984" rect.right="1086"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3466,7 +3466,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_96" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1001" rect.right="1033"/>
+                <Geometry rect.top="260" rect.bottom="289" rect.left="1000" rect.right="1032"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3514,7 +3514,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_97" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="265" rect.bottom="288" rect.left="1006" rect.right="1029"/>
+                <Geometry rect.top="194" rect.bottom="217" rect.left="1005" rect.right="1028"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3532,7 +3532,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_98" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="267" rect.bottom="290" rect.left="1037" rect.right="1064"/>
+                <Geometry rect.top="196" rect.bottom="219" rect.left="1036" rect.right="1063"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3564,7 +3564,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_99" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1001" rect.right="1033"/>
+                <Geometry rect.top="228" rect.bottom="257" rect.left="1000" rect.right="1032"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3611,7 +3611,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_100" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="1037" rect.right="1069"/>
+                <Geometry rect.top="228" rect.bottom="257" rect.left="1036" rect.right="1068"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3658,7 +3658,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_101" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="1037" rect.right="1069"/>
+                <Geometry rect.top="260" rect.bottom="289" rect.left="1036" rect.right="1068"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3705,7 +3705,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_102" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="233" rect.bottom="256" rect.left="857" rect.right="959"/>
+                <Geometry rect.top="162" rect.bottom="185" rect.left="856" rect.right="958"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3719,7 +3719,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_103" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="873" rect.right="905"/>
+                <Geometry rect.top="228" rect.bottom="257" rect.left="872" rect.right="904"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3767,7 +3767,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_104" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="265" rect.bottom="288" rect.left="878" rect.right="901"/>
+                <Geometry rect.top="194" rect.bottom="217" rect.left="877" rect.right="900"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3785,7 +3785,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_105" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="267" rect.bottom="290" rect.left="909" rect.right="936"/>
+                <Geometry rect.top="196" rect.bottom="219" rect.left="908" rect.right="935"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3817,7 +3817,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_106" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="873" rect.right="905"/>
+                <Geometry rect.top="260" rect.bottom="289" rect.left="872" rect.right="904"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3864,7 +3864,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_107" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="299" rect.bottom="328" rect.left="909" rect.right="941"/>
+                <Geometry rect.top="228" rect.bottom="257" rect.left="908" rect.right="940"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3911,7 +3911,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_108" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="331" rect.bottom="360" rect.left="909" rect.right="941"/>
+                <Geometry rect.top="260" rect.bottom="289" rect.left="908" rect.right="940"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -3958,7 +3958,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_109" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="722" rect.bottom="745" rect.left="64" rect.right="128"/>
+                <Geometry rect.top="651" rect.bottom="674" rect.left="63" rect.right="127"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -3975,7 +3975,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoLineEdit" Name="LineEdit_110" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="753" rect.bottom="776" rect.left="65" rect.right="129"/>
+                <Geometry rect.top="682" rect.bottom="705" rect.left="64" rect.right="128"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4005,7 +4005,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_111" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="455" rect.bottom="464" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="384" rect.bottom="393" rect.left="100" rect.right="109"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4023,7 +4023,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_112" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="437" rect.bottom="446" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="366" rect.bottom="375" rect.left="100" rect.right="109"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4041,7 +4041,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_113" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="419" rect.bottom="428" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="348" rect.bottom="357" rect.left="100" rect.right="109"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4058,7 +4058,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_114" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="403" rect.bottom="426" rect.left="170" rect.right="234"/>
+                <Geometry rect.top="332" rect.bottom="355" rect.left="169" rect.right="233"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4075,7 +4075,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_115" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="403" rect.bottom="426" rect.left="270" rect.right="334"/>
+                <Geometry rect.top="332" rect.bottom="355" rect.left="269" rect.right="333"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4093,7 +4093,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_116" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="434" rect.bottom="463" rect.left="141" rect.right="170"/>
+                <Geometry rect.top="363" rect.bottom="392" rect.left="140" rect.right="169"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4110,7 +4110,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_117" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="182" rect.right="206"/>
+                <Geometry rect.top="501" rect.bottom="530" rect.left="181" rect.right="205"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4154,7 +4154,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_118" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="212" rect.right="236"/>
+                <Geometry rect.top="501" rect.bottom="530" rect.left="211" rect.right="235"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4198,7 +4198,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_119" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="285" rect.right="387"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="284" rect.right="386"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4212,7 +4212,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_120" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="301" rect.right="333"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="300" rect.right="332"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4260,7 +4260,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_121" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="306" rect.right="329"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="305" rect.right="328"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4278,7 +4278,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_122" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="337" rect.right="364"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="336" rect.right="363"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4310,7 +4310,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_123" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="301" rect.right="333"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="300" rect.right="332"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4357,7 +4357,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_124" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="337" rect.right="369"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="336" rect.right="368"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4404,7 +4404,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_125" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="337" rect.right="369"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="336" rect.right="368"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4451,7 +4451,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_126" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="389" rect.right="491"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="388" rect.right="490"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4465,7 +4465,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_127" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="405" rect.right="437"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="404" rect.right="436"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4513,7 +4513,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_128" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="410" rect.right="433"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="409" rect.right="432"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4531,7 +4531,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_129" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="441" rect.right="468"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="440" rect.right="467"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4563,7 +4563,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_130" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="405" rect.right="437"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="404" rect.right="436"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4610,7 +4610,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_131" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="441" rect.right="473"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="440" rect.right="472"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4657,7 +4657,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_132" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="441" rect.right="473"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="440" rect.right="472"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4704,7 +4704,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_133" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="513" rect.right="615"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="512" rect.right="614"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4718,7 +4718,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_134" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="529" rect.right="561"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="528" rect.right="560"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4766,7 +4766,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_135" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="534" rect.right="557"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="533" rect.right="556"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4784,7 +4784,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_136" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="565" rect.right="592"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="564" rect.right="591"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4816,7 +4816,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_137" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="529" rect.right="561"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="528" rect.right="560"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4863,7 +4863,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_138" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="565" rect.right="597"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="564" rect.right="596"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4910,7 +4910,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_139" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="565" rect.right="597"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="564" rect.right="596"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4957,7 +4957,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_140" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="636" rect.right="738"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="635" rect.right="737"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4971,7 +4971,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_141" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="652" rect.right="684"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="651" rect.right="683"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5019,7 +5019,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_142" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="657" rect.right="680"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="656" rect.right="679"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5037,7 +5037,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_143" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="688" rect.right="715"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="687" rect.right="714"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5069,7 +5069,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_144" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="652" rect.right="684"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="651" rect.right="683"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5116,7 +5116,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_145" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="688" rect.right="720"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="687" rect.right="719"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5163,7 +5163,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_146" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="688" rect.right="720"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="687" rect.right="719"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5210,7 +5210,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_147" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="759" rect.right="861"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="758" rect.right="860"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5224,7 +5224,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_148" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="775" rect.right="807"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="774" rect.right="806"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5272,7 +5272,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_149" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="780" rect.right="803"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="779" rect.right="802"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5290,7 +5290,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_150" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="811" rect.right="838"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="810" rect.right="837"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5322,7 +5322,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_151" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="775" rect.right="807"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="774" rect.right="806"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5369,7 +5369,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_152" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="811" rect.right="843"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="810" rect.right="842"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5416,7 +5416,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_153" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="811" rect.right="843"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="810" rect.right="842"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5463,7 +5463,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_154" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="886" rect.right="988"/>
+                <Geometry rect.top="549" rect.bottom="572" rect.left="885" rect.right="987"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5477,7 +5477,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_155" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="902" rect.right="934"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="901" rect.right="933"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5525,7 +5525,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_156" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="907" rect.right="930"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="906" rect.right="929"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5543,7 +5543,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_157" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="938" rect.right="965"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="937" rect.right="964"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5575,7 +5575,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_158" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="902" rect.right="934"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="901" rect.right="933"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5622,7 +5622,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_159" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="938" rect.right="970"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="937" rect.right="969"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5669,7 +5669,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_160" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="938" rect.right="970"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="937" rect.right="969"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5716,7 +5716,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_161" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="1012" rect.right="1114"/>
+                <Geometry rect.top="486" rect.bottom="509" rect.left="1011" rect.right="1113"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5730,7 +5730,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_162" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="1028" rect.right="1060"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="1027" rect.right="1059"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5778,7 +5778,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_163" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="1033" rect.right="1056"/>
+                <Geometry rect.top="582" rect.bottom="605" rect.left="1032" rect.right="1055"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5796,7 +5796,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_164" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="1064" rect.right="1091"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="1063" rect.right="1090"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5828,7 +5828,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_165" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="1028" rect.right="1060"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="1027" rect.right="1059"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5875,7 +5875,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_166" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="1064" rect.right="1096"/>
+                <Geometry rect.top="615" rect.bottom="644" rect.left="1063" rect.right="1095"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5922,7 +5922,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_167" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="1064" rect.right="1096"/>
+                <Geometry rect.top="647" rect.bottom="676" rect.left="1063" rect.right="1095"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -5969,7 +5969,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_168" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="620" rect.bottom="643" rect.left="1144" rect.right="1246"/>
+                <Geometry rect.top="557" rect.bottom="580" rect.left="1144" rect.right="1246"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5983,7 +5983,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_169" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="1160" rect.right="1192"/>
+                <Geometry rect.top="623" rect.bottom="652" rect.left="1160" rect.right="1192"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6031,7 +6031,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_170" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="653" rect.bottom="676" rect.left="1165" rect.right="1188"/>
+                <Geometry rect.top="590" rect.bottom="613" rect.left="1165" rect.right="1188"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6049,7 +6049,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_171" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="654" rect.bottom="677" rect.left="1196" rect.right="1223"/>
+                <Geometry rect.top="591" rect.bottom="614" rect.left="1196" rect.right="1223"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6081,7 +6081,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_172" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="1160" rect.right="1192"/>
+                <Geometry rect.top="655" rect.bottom="684" rect.left="1160" rect.right="1192"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6128,7 +6128,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_173" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="686" rect.bottom="715" rect.left="1196" rect.right="1228"/>
+                <Geometry rect.top="623" rect.bottom="652" rect.left="1196" rect.right="1228"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6175,7 +6175,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_174" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="718" rect.bottom="747" rect.left="1196" rect.right="1228"/>
+                <Geometry rect.top="655" rect.bottom="684" rect.left="1196" rect.right="1228"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6222,7 +6222,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_175" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="769" rect.bottom="792" rect.left="1242" rect.right="1391"/>
+                <Geometry rect.top="651" rect.bottom="674" rect.left="1244" rect.right="1393"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6237,7 +6237,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_176" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="407" rect.bottom="426" rect.left="243" rect.right="262"/>
+                <Geometry rect.top="336" rect.bottom="355" rect.left="242" rect.right="261"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6254,7 +6254,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Width="0" Cursor="0" EndTipStyle="1" Comment="" Type="XMnemoLine" Name="Line_177" ToolTip="" MnemoLayer="general" Style="1">
-                <Geometry rect.top="447" rect.bottom="447" rect.left="172" rect.right="296"/>
+                <Geometry rect.top="376" rect.bottom="376" rect.left="171" rect.right="295"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6263,12 +6263,12 @@
                 </StandartProperies>
                 <Color g="0" r="0" a="255" b="0"/>
                 <Points>
-                    <Point x="172" y="447"/>
-                    <Point x="296" y="447"/>
+                    <Point x="171" y="376"/>
+                    <Point x="295" y="376"/>
                 </Points>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_178" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="436" rect.bottom="459" rect.left="303" rect.right="362"/>
+                <Geometry rect.top="365" rect.bottom="388" rect.left="302" rect.right="361"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6282,7 +6282,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_179" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="388" rect.bottom="411" rect.left="86" rect.right="127"/>
+                <Geometry rect.top="317" rect.bottom="340" rect.left="85" rect.right="126"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6297,7 +6297,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_180" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="290" rect.bottom="314" rect.left="50" rect.right="81"/>
+                <Geometry rect.top="219" rect.bottom="243" rect.left="49" rect.right="80"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6320,7 +6320,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_181" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="259" rect.bottom="282" rect.left="253" rect.right="294"/>
+                <Geometry rect.top="188" rect.bottom="211" rect.left="252" rect.right="293"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6335,7 +6335,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_182" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="290" rect.bottom="299" rect.left="268" rect.right="277"/>
+                <Geometry rect.top="219" rect.bottom="228" rect.left="267" rect.right="276"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6353,7 +6353,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_183" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="308" rect.bottom="317" rect.left="268" rect.right="277"/>
+                <Geometry rect.top="237" rect.bottom="246" rect.left="267" rect.right="276"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6371,7 +6371,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_184" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="326" rect.bottom="335" rect.left="268" rect.right="277"/>
+                <Geometry rect.top="255" rect.bottom="264" rect.left="267" rect.right="276"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6389,7 +6389,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_185" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="273" rect.bottom="292" rect.left="104" rect.right="123"/>
+                <Geometry rect.top="202" rect.bottom="221" rect.left="103" rect.right="122"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6407,7 +6407,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_186" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="259" rect.bottom="288" rect.left="153" rect.right="182"/>
+                <Geometry rect.top="188" rect.bottom="217" rect.left="152" rect.right="181"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6425,7 +6425,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_187" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="318" rect.bottom="347" rect.left="153" rect.right="182"/>
+                <Geometry rect.top="247" rect.bottom="276" rect.left="152" rect.right="181"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6443,7 +6443,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_188" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="295" rect.bottom="319" rect.left="209" rect.right="240"/>
+                <Geometry rect.top="224" rect.bottom="248" rect.left="208" rect.right="239"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6467,7 +6467,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_192" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="3"/>
-                <Geometry rect.top="266" rect.bottom="285" rect.left="361" rect.right="380"/>
+                <Geometry rect.top="195" rect.bottom="214" rect.left="360" rect.right="379"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6485,7 +6485,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_193" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="294" rect.bottom="323" rect.left="305" rect.right="334"/>
+                <Geometry rect.top="223" rect.bottom="252" rect.left="304" rect.right="333"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6502,7 +6502,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_194" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="298" rect.bottom="321" rect.left="409" rect.right="468"/>
+                <Geometry rect.top="227" rect.bottom="250" rect.left="408" rect.right="467"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6516,7 +6516,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Width="0" Cursor="0" EndTipStyle="1" Comment="" Type="XMnemoLine" Name="Line_194" ToolTip="" MnemoLayer="general" Style="1">
-                <Geometry rect.top="309" rect.bottom="309" rect.left="349" rect.right="409"/>
+                <Geometry rect.top="238" rect.bottom="238" rect.left="348" rect.right="408"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6525,12 +6525,12 @@
                 </StandartProperies>
                 <Color g="0" r="0" a="255" b="0"/>
                 <Points>
-                    <Point x="349" y="309"/>
-                    <Point x="409" y="309"/>
+                    <Point x="348" y="238"/>
+                    <Point x="408" y="238"/>
                 </Points>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_193" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="264" rect.bottom="287" rect.left="393" rect.right="457"/>
+                <Geometry rect.top="193" rect.bottom="216" rect.left="392" rect.right="456"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6547,7 +6547,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_194" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="243" rect.right="267"/>
+                <Geometry rect.top="501" rect.bottom="530" rect.left="242" rect.right="266"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6591,7 +6591,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_195" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="273" rect.right="297"/>
+                <Geometry rect.top="501" rect.bottom="530" rect.left="272" rect.right="296"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6636,7 +6636,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_196" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="331" rect.bottom="355" rect.left="657" rect.right="688"/>
+                <Geometry rect.top="260" rect.bottom="284" rect.left="656" rect.right="687"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6660,7 +6660,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_197" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="365" rect.bottom="389" rect.left="657" rect.right="688"/>
+                <Geometry rect.top="294" rect.bottom="318" rect.left="656" rect.right="687"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6684,7 +6684,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_198" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="399" rect.bottom="423" rect.left="657" rect.right="688"/>
+                <Geometry rect.top="328" rect.bottom="352" rect.left="656" rect.right="687"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6708,7 +6708,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_199" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="433" rect.bottom="457" rect.left="657" rect.right="688"/>
+                <Geometry rect.top="362" rect.bottom="386" rect.left="656" rect.right="687"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6732,7 +6732,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_200" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="433" rect.bottom="462" rect.left="721" rect.right="750"/>
+                <Geometry rect.top="362" rect.bottom="391" rect.left="720" rect.right="749"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6749,7 +6749,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_201" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="332" rect.bottom="355" rect.left="580" rect.right="639"/>
+                <Geometry rect.top="261" rect.bottom="284" rect.left="579" rect.right="638"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6763,7 +6763,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_202" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="366" rect.bottom="389" rect.left="580" rect.right="639"/>
+                <Geometry rect.top="295" rect.bottom="318" rect.left="579" rect.right="638"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6777,7 +6777,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_203" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="400" rect.bottom="423" rect.left="580" rect.right="639"/>
+                <Geometry rect.top="329" rect.bottom="352" rect.left="579" rect.right="638"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6791,7 +6791,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_204" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="434" rect.bottom="457" rect.left="580" rect.right="639"/>
+                <Geometry rect.top="363" rect.bottom="386" rect.left="579" rect.right="638"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6805,7 +6805,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_205" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="595" rect.left="451" rect.right="515"/>
+                <Geometry rect.top="501" rect.bottom="524" rect.left="450" rect.right="514"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6822,7 +6822,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_206" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="574" rect.bottom="597" rect.left="324" rect.right="420"/>
+                <Geometry rect.top="503" rect.bottom="526" rect.left="323" rect.right="419"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6836,7 +6836,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_208" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="477" rect.bottom="500" rect.left="76" rect.right="132"/>
+                <Geometry rect.top="406" rect.bottom="429" rect.left="75" rect.right="131"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6850,7 +6850,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_209" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="344" rect.bottom="367" rect.left="242" rect.right="308"/>
+                <Geometry rect.top="273" rect.bottom="296" rect.left="241" rect.right="307"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6864,7 +6864,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_214" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="753" rect.bottom="776" rect.left="133" rect.right="184"/>
+                <Geometry rect.top="682" rect.bottom="705" rect.left="132" rect.right="183"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6878,7 +6878,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_215" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="18" rect.bottom="47" rect.left="37" rect.right="156"/>
+                <Geometry rect.top="494" rect.bottom="523" rect.left="739" rect.right="858"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6917,7 +6917,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_216" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="411" rect.bottom="440" rect.left="1279" rect.right="1308"/>
+                <Geometry rect.top="348" rect.bottom="377" rect.left="1279" rect.right="1308"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6964,7 +6964,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_217" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="411" rect.bottom="440" rect.left="1316" rect.right="1345"/>
+                <Geometry rect.top="348" rect.bottom="377" rect.left="1316" rect.right="1345"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7012,7 +7012,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_217" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="4"/>
-                <Geometry rect.top="417" rect.bottom="436" rect.left="1250" rect.right="1269"/>
+                <Geometry rect.top="354" rect.bottom="373" rect.left="1250" rect.right="1269"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7029,7 +7029,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_218" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="414" rect.bottom="437" rect.left="1141" rect.right="1241"/>
+                <Geometry rect.top="351" rect.bottom="374" rect.left="1141" rect.right="1241"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7043,7 +7043,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_219" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="447" rect.bottom="476" rect.left="1316" rect.right="1345"/>
+                <Geometry rect.top="384" rect.bottom="413" rect.left="1316" rect.right="1345"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7090,7 +7090,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_220" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="450" rect.bottom="473" rect.left="1141" rect.right="1241"/>
+                <Geometry rect.top="387" rect.bottom="410" rect.left="1141" rect.right="1241"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7105,7 +7105,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_221" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="5"/>
-                <Geometry rect.top="453" rect.bottom="472" rect.left="1250" rect.right="1269"/>
+                <Geometry rect.top="390" rect.bottom="409" rect.left="1250" rect.right="1269"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7122,7 +7122,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_222" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="447" rect.bottom="476" rect.left="1279" rect.right="1308"/>
+                <Geometry rect.top="384" rect.bottom="413" rect.left="1279" rect.right="1308"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7169,7 +7169,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_223" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="484" rect.bottom="513" rect.left="1316" rect.right="1345"/>
+                <Geometry rect.top="421" rect.bottom="450" rect.left="1316" rect.right="1345"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7216,7 +7216,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_224" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="487" rect.bottom="510" rect.left="1141" rect.right="1241"/>
+                <Geometry rect.top="424" rect.bottom="447" rect.left="1141" rect.right="1241"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7231,7 +7231,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_225" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="6"/>
-                <Geometry rect.top="490" rect.bottom="509" rect.left="1250" rect.right="1269"/>
+                <Geometry rect.top="427" rect.bottom="446" rect.left="1250" rect.right="1269"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7248,7 +7248,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_226" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="484" rect.bottom="513" rect.left="1279" rect.right="1308"/>
+                <Geometry rect.top="421" rect.bottom="450" rect.left="1279" rect.right="1308"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7295,7 +7295,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_227" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="521" rect.bottom="550" rect.left="1317" rect.right="1346"/>
+                <Geometry rect.top="458" rect.bottom="487" rect.left="1317" rect.right="1346"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7342,7 +7342,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_228" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="527" rect.bottom="550" rect.left="1141" rect.right="1241"/>
+                <Geometry rect.top="464" rect.bottom="487" rect.left="1141" rect.right="1241"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7357,7 +7357,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_229" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="7"/>
-                <Geometry rect.top="527" rect.bottom="546" rect.left="1251" rect.right="1270"/>
+                <Geometry rect.top="464" rect.bottom="483" rect.left="1251" rect.right="1270"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7374,7 +7374,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_230" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="521" rect.bottom="550" rect.left="1280" rect.right="1309"/>
+                <Geometry rect.top="458" rect.bottom="487" rect.left="1280" rect.right="1309"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7421,7 +7421,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_228" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="567" rect.bottom="596" rect.left="569" rect.right="708"/>
+                <Geometry rect.top="496" rect.bottom="525" rect.left="568" rect.right="707"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8394,171 +8394,115 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_cmd" Units="....." Location="61" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_status" Units="....." Location="62" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_number" Units="....." Location="63" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_number"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pressure" Units="....." Location="64" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pressure"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_cmd" Units="....." Location="66" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_status" Units="....." Location="67" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_cmd" Units="....." Location="68" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_status" Units="....." Location="69" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_cmd" Units="....." Location="70" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_status" Units="....." Location="71" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_cmd" Units="....." Location="72" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_status" Units="....." Location="73" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_cmd" Units="....." Location="74" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_status" Units="....." Location="75" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_cmd" Units="....." Location="76" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_status" Units="....." Location="77" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_cmd" Units="....." Location="78" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_status" Units="....." Location="79" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_cmd" Units="....." Location="80" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_status" Units="....." Location="81" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_cmd" Units="....." Location="82" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_status" Units="....." Location="83" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_cmd" Units="....." Location="84" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_status" Units="....." Location="85" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_out_freq" Units="....." Location="86" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_out_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_man_freq" Units="....." Location="88" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_man_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_auto_freq" Units="....." Location="90" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_auto_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_alarm" Units="....." Location="92" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_alarm"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_cmd" Units="....." Location="93" IsReadTag="0">
@@ -9434,148 +9378,113 @@
     <GlobalVariablesList>
         <Group Marker="0" Name="Post">
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_status" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_status(4-62)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_cmd(4-61)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_number" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_206"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_number(4-63)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Float" Marker="0" Comments="" Name="post_pressure" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_205"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pressure(4-64)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_cmd(4-66)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_15"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_17"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_18"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_status(4-67)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_cmd(4-68)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_122"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_119"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_121"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_status(4-69)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_cmd(4-70)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_129"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_126"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_128"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_status(4-71)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_cmd(4-72)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_136"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_135"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_133"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_status(4-73)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_cmd(4-74)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_143"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_140"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_142"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_status(4-75)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_cmd(4-76)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_150"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_147"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_149"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_status(4-77)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_cmd(4-78)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_157"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_154"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_156"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_status(4-79)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_cmd(4-80)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_164"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_161"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_163"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_status(4-81)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_cmd(4-82)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_171"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_168"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_170"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_status(4-83)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_cmd(4-84)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_status" Value="0">
                 <ListenersList>
@@ -9583,30 +9492,23 @@
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_10"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_11"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_22"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_status(4-85)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_out_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_109"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_out_freq(4-86)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_man_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_214"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_man_freq(4-88)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_auto_freq" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_auto_freq(4-90)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_alarm" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_alarm(4-92)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
         </Group>
     </GlobalVariablesList>

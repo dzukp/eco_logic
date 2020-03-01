@@ -55,6 +55,9 @@ class OwenDiMv210(BaseOwenMx210):
     def process(self):
         res = self.mb.execute(slave=self.slave, function_code=cst.READ_HOLDING_REGISTERS, starting_address=51,
                               quantity_of_x=self.quantity, data_format=self.data_format)[0]
+        # print(f'src {bin(res)[2:]}')
+        res = ((res & 0x0000FFFF) << 16) + ((res & 0xFFFF0000) >> 16)
+        # print(f'DiMv2010 {bin(res)[2:]}')
         self.logger.debug(f'data readed {bin(res)[2:].zfill(max(24, 16 * self.quantity))}')
         for tag in self.tags:
             tag.value = (res & (1 << (tag.addr - 1))) != 0
