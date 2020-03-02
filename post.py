@@ -6,7 +6,7 @@ from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
 from post_function import SimplePostFunctionSteps, PostIntensiveSteps
-
+from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
 
@@ -161,7 +161,7 @@ class Post(IoObject, ModbusDataObject):
         if self.mb_cells_idx is not None:
             status = int(self.alarm) * (1 << 0)
             data = struct.pack('>f', self.ai_pressure.val)
-            p1, p2 = struct.unpack('>HH', data)
+            p1, p2 = floats_to_modbus_cells((self.ai_pressure.val,))
             return {
                 self.mb_cells_idx - start_addr: 0xFF00,
                 self.mb_cells_idx - start_addr + 1: status,
