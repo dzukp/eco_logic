@@ -1,7 +1,7 @@
 import modbus_tk
 import modbus_tk.defines as cst
 from modbus_tk import modbus_tcp, hooks
-import logging
+import struct
 import socket
 from time import time, sleep
 
@@ -120,10 +120,11 @@ class OwenAiMv210(BaseOwenMx210):
 
     def process(self):
         res = self.mb.execute(slave=self.slave, function_code=cst.READ_HOLDING_REGISTERS, starting_address=4000,
-                              quantity_of_x=24, data_format='>fHfHfHfHfHfHfHfH')
+                              quantity_of_x=24, data_format='>' + 'H' * 24)
         self.logger.debug(f'data readed {[x for x in res]}')
+        f_data = [struct.unpack('>f', struct.pack('>HH', res[i * 3 + 1], res[i * 3]))[0] for i in range(0, 8)]
         for tag in self.tags:
-            tag.value = tag.filter.apply(res[(tag.addr - 1) * 2]) if tag.filter else res[(tag.addr - 1) * 2]
+            tag.value = tag.filter.apply(f_data[tag.addr - 1]) if tag.filter else f_data[tag.addr - 1]
         self.logger.debug(f'values readed {[tag.value for tag in self.tags]}')
 
 
