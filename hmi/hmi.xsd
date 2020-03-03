@@ -9522,7 +9522,7 @@
     <ConditionsList/>
     <ModelList/>
     <TcpSocketList>
-        <TcpSocket AutoReconnect="0" Host="127.0.0.1" Marker="0" Comments="" Name="TcpSocket 0" Reconnect_delay="1000" MaxTimeoutCount="1" Port="502">
+        <TcpSocket AutoReconnect="0" Host="192.168.200.100" Marker="0" Comments="" Name="TcpSocket 0" Reconnect_delay="1000" MaxTimeoutCount="1" Port="502">
             <ListenersList/>
         </TcpSocket>
     </TcpSocketList>
