@@ -29,6 +29,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
         self.ai_alarm_code = InChannel(0)
+        self.ai_frequency.set_trans(trans_divide_10)
         self.is_run = False
         self.is_alarm = False
         self.reset_alarm = False
@@ -40,16 +41,23 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.func_state = self.state_idle
         self.reset_timer = Ton()
         self.reset_timer.set_timeout(2.0)
+        self.alarm_auto_reset_timeout = 5.0
+        self.alarm_auto_reset_timer = Ton()
         self.mb_cells_idx = None
 
     def process(self):
-        self.is_alarm = (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
+        self.is_alarm = False  # (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
         self.is_run = (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
         if self.is_alarm and self.func_state != self.state_alarm:
             self.func_state = self.state_alarm
             self.logger.info('Alarm signal - alarm state')
+        # Alarm auto reset by timeout
+        if self.alarm_auto_reset_timer.process(run=self.state_alarm == self.func_state,
+                                               timeout=self.alarm_auto_reset_timeout):
+            self.logger.debug('Alarm reset by time')
+            self.reset_alarm = True
         if self.reset_alarm:
             self.ao_command.val |= self.CMD_RESET
             if reset_alarm_time:
@@ -166,3 +174,7 @@ class Altivar212(Mechanism, ModbusDataObject):
                     }
         else:
             return {}
+
+
+def trans_divide_10(value):
+    return value / 10.0

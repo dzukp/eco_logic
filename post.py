@@ -43,6 +43,8 @@ class Post(IoObject, ModbusDataObject):
         self.pressure_timeout = 3.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
+        self.alarm_reset_timeout = 10.0
+        self.alarm_reset_timer = Ton()
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
@@ -111,6 +113,10 @@ class Post(IoObject, ModbusDataObject):
                                            timeout=self.pressure_timeout):
                 self.set_alarm()
                 self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
+        # Alarm auto reset by timeout
+        if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
+            self.logger.debug('Alarm reset by time')
+            self.reset_alarm()
 
     def set_function(self, func_name):
         if not self.alarm and func_name in FuncNames.all_funcs():
