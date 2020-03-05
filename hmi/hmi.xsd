@@ -9,6 +9,7 @@
     <Screens Name="Screens">
         <Screen Name="Common"/>
         <Screen Name="Settings"/>
+        <Screen Name="Trends"/>
     </Screens>
     <PopupMessage Name="Popup message"/>
     <Databases Name="Databases"/>
@@ -7467,6 +7468,45 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_229" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="18" rect.bottom="47" rect.left="175" rect.right="294"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Jump to screen">
+                                <Expanded Value="1"/>
+                                <Property Name="Screen">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Screen" Value="Trends"/>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="Тренды"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
         </MnemoScreen>
         <MnemoScreen FullName="Settings">
             <Properties>
@@ -8105,6 +8145,164 @@
                 </StandartProperies>
                 <SpinBoxProperties Step="1" Decimals="0" Min="0" Max="50"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+            </MnemoObject>
+        </MnemoScreen>
+        <MnemoScreen FullName="Trends">
+            <Properties>
+                <Color g="192" r="192" a="255" b="192"/>
+                <Alignment StepSize="20" Enabled="0">
+                    <AlignColor g="0" r="0" a="128" b="0"/>
+                </Alignment>
+                <HotKey key="Not assigned"/>
+                <Password CryptData="0"/>
+                <Comment Comment=""/>
+                <Activate>
+                    <Action Name="Execute script">
+                        <Expanded Value="0"/>
+                        <Property Name="Script">
+                            <Data Value="0"/>
+                            <UserData>
+                                <ExecScript Value=""/>
+                            </UserData>
+                        </Property>
+                    </Action>
+                </Activate>
+                <Deactivate>
+                    <Action Name="Execute script">
+                        <Expanded Value="0"/>
+                        <Property Name="Script">
+                            <Data Value="0"/>
+                            <UserData>
+                                <ExecScript Value=""/>
+                            </UserData>
+                        </Property>
+                    </Action>
+                </Deactivate>
+            </Properties>
+            <XMnemoLayers>
+                <XMnemoLayer Name="general" Visible="1"/>
+            </XMnemoLayers>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTrend" Name="Trend_1" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="53" rect.bottom="403" rect.left="21" rect.right="1316"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Parameters zoomEnabled="1" topControl="1" timeControl="1" markerEnabled="0"/>
+                <RealTime bufferDepth="100000" valueUpdate="100" factorScreenUpdate="1">
+                    <Pens>
+                        <Pen width="0" name="Pe 1" color="#f00000">
+                            <Tag type="SourceTag" name="suppl_pe1" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pe 2" color="#00f000">
+                            <Tag type="SourceTag" name="suppl_pe2" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pe 3" color="#0000ff">
+                            <Tag type="SourceTag" name="suppl_pe3" sourcename="main"/>
+                        </Pen>
+                    </Pens>
+                </RealTime>
+                <Archive bufferDepth="10000" weedingTolerance="1" weeding="0">
+                    <Pens/>
+                </Archive>
+                <TrendView legendPosition="right" title="" thicknessAxes="1" majorYCount="5" timeOnXAxis="1" majorXCount="4" timeDirection="right" accurancy="1" maxY="10" thicknessGrid="0" minY="0" legendOnStart="1" minorYCount="2" minorXCount="2"/>
+                <TimeRanges rangeValue="600">
+                    <Range rangeId="60-sec" baseTemplate="hh:mm:ss" extraTemplate="ss.zzz"/>
+                    <Range rangeId="2-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="5-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                </TimeRanges>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_2" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="17" rect.bottom="46" rect.left="21" rect.right="140"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Jump to screen">
+                                <Expanded Value="1"/>
+                                <Property Name="Screen">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Screen" Value="Common"/>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="Назад"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTrend" Name="Trend_3" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="409" rect.bottom="759" rect.left="21" rect.right="1316"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Parameters zoomEnabled="1" topControl="1" timeControl="1" markerEnabled="1"/>
+                <RealTime bufferDepth="100000" valueUpdate="100" factorScreenUpdate="1">
+                    <Pens>
+                        <Pen width="0" name="Пост 1" color="#f00000">
+                            <Tag type="SourceTag" name="p1_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Пост 2" color="#00f000">
+                            <Tag type="SourceTag" name="p2_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Пост 3" color="#0000ff">
+                            <Tag type="SourceTag" name="p3_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Пост 4" color="#808000">
+                            <Tag type="SourceTag" name="p4_pressure" sourcename="main"/>
+                        </Pen>
+                    </Pens>
+                </RealTime>
+                <Archive bufferDepth="10000" weedingTolerance="1" weeding="0">
+                    <Pens/>
+                </Archive>
+                <TrendView legendPosition="right" title="" thicknessAxes="0" majorYCount="5" timeOnXAxis="1" majorXCount="4" timeDirection="right" accurancy="0" maxY="250" thicknessGrid="0" minY="0" legendOnStart="1" minorYCount="2" minorXCount="2"/>
+                <TimeRanges rangeValue="600">
+                    <Range rangeId="60-sec" baseTemplate="hh:mm:ss" extraTemplate="ss.zzz"/>
+                    <Range rangeId="2-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="5-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                </TimeRanges>
             </MnemoObject>
         </MnemoScreen>
     </MnemoScreenList>
