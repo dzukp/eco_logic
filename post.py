@@ -166,7 +166,6 @@ class Post(IoObject, ModbusDataObject):
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             status = int(self.alarm) * (1 << 0)
-            data = struct.pack('>f', self.ai_pressure.val)
             p1, p2 = floats_to_modbus_cells((self.ai_pressure.val,))
             return {
                 self.mb_cells_idx - start_addr: 0xFF00,
