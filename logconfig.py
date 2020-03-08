@@ -12,6 +12,11 @@ logging_config = {
             'level': 'DEBUG',
 
         },
+        'TagSrv.serial_port_fc_serial': {
+            'handlers': ['comport_file'],
+            'propagate': False,
+            'level': 'DEBUG'
+        },
         'PylogicLogger': {
             'handlers': ['common_console'],
             'propagate': False,
@@ -32,6 +37,11 @@ logging_config = {
             'propagate': False,
             'level': 'INFO',
         },
+        'PylogicLogger.rpc_post_server': {
+            'handlers': ['rpc_post_server_file'],
+            'propagate': False,
+            'level': 'DEBUG'
+        }
         # 'modbus_tk': {
         #     'handlers': ['common_console'],
         #     'propagate': False,
@@ -44,7 +54,7 @@ logging_config = {
             'formatter': 'verbose',
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 1024*1024,
-            'backupCount': 10,
+            'backupCount': 100,
             'filename': 'logs/tagsrv.log'
         },
         'tagsrv_console': {
@@ -57,7 +67,7 @@ logging_config = {
             'formatter': 'verbose',
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 1024*1024,
-            'backupCount': 10,
+            'backupCount': 100,
             'filename': 'logs/comport.log'
         },
         'common_console': {
@@ -72,6 +82,14 @@ logging_config = {
             'maxBytes': 1024*1024,
             'backupCount': 10,
             'filename': 'logs/objects.log'
+        },
+        'rpc_post_server_file': {
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024*1024,
+            'backupCount': 100,
+            'filename': 'logs/rpc.log'
         },
         'tmp_file': {
             'level': 'DEBUG',
