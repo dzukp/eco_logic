@@ -60,7 +60,7 @@ class RpcPostServer(LoggedObject):
                     return 'FAIL'
                 """
                 try:
-                    self.logger.debug(f'start function `{function_name}` from post #{post_number} ')
+                    self.logger.info(f'start function `{function_name}` from post #{post_number} ')
                     return self.start_function(post_number, function_name)
                 except:
                     self.logger.exception(f'get_state({post_number})')
@@ -68,7 +68,7 @@ class RpcPostServer(LoggedObject):
 
             @server.register_function
             def stop_function(post_number):
-                self.logger.debug(f'function stop from post #{post_number} ')
+                self.logger.info(f'function stop from post #{post_number} ')
                 return self.start_function(post_number, FuncNames.STOP)
 
             @server.register_function

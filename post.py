@@ -40,6 +40,7 @@ class Post(IoObject, ModbusDataObject):
         }
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
+        self.hi_press_valve_off_timeout = 2.0
         self.pressure_timeout = 3.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
@@ -52,7 +53,8 @@ class Post(IoObject, ModbusDataObject):
         self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
 
     def init(self):
-        config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout}
+        config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
+                  'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
             FuncNames.FOAM: self.valve_foam,
             FuncNames.SHAMPOO: self.valve_shampoo,
@@ -152,6 +154,12 @@ class Post(IoObject, ModbusDataObject):
         if self.valve_off_timeout != timeout:
             self.valve_off_timeout = timeout
             self.logger.info(f'Set value off timeout {timeout}s')
+            self.save()
+
+    def set_hi_press_valve_off_timeout(self, timeout):
+        if self.hi_press_valve_off_timeout != timeout:
+            self.hi_press_valve_off_timeout = timeout
+            self.logger.info(f'Set hi pressure value off timeout {timeout}s')
             self.save()
 
     def mb_cells(self):

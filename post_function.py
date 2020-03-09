@@ -10,13 +10,16 @@ class SimplePostFunctionSteps(Steps):
         self.out_valve = False
         self.pump = False
         self.ton = Ton()
+        self.ton2 = Ton()
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
+        self.hi_press_valve_off_timeout = 2.0
         self.need_stop = False
 
     def set_config(self, config):
         self.pump_on_timeout = config['pump_on_timeout']
         self.valve_off_timeout = config['valve_off_timeout']
+        self.hi_press_valve_off_timeout = config['hi_press_valve_off_timeout']
 
     def stop(self):
         self.need_stop = True
@@ -49,21 +52,22 @@ class SimplePostFunctionSteps(Steps):
         if self.need_stop:
             self.pump = False
             self.ton.reset()
-            return self.step_stop_pump
+            self.ton2.reset()
+            return self.step_stop
 
-    def step_stop_pump(self):
+    def step_stop(self):
         self.out_valve = True
         self.pump = False
-        if self.ton.process(run=True, timeout=self.valve_off_timeout):
+        v1 = self.ton.process(run=True, timeout=self.valve_off_timeout)
+        v2 = self.ton2.process(run=True, timeout=self.hi_press_valve_off_timeout)
+        if v1:
             self.valve.close()
+        if v2:
+            self.out_valve = False
+        if v1 and v2:
             self.ton.reset()
-            return self.step_close_valve
-
-    def step_close_valve(self):
-        self.out_valve = False
-        self.pump = False
-        self.valve.close()
-        return self.idle
+            self.ton2.reset()
+            return self.idle
 
 
 class PostIntensiveSteps(Steps):
