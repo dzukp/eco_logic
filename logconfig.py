@@ -40,7 +40,7 @@ logging_config = {
         'PylogicLogger.rpc_post_server': {
             'handlers': ['rpc_post_server_file'],
             'propagate': False,
-            'level': 'DEBUG'
+            'level': 'INFO'
         }
         # 'modbus_tk': {
         #     'handlers': ['common_console'],

@@ -42,12 +42,17 @@ class WaterSupplier(Subsystem):
         self.pump_on_press = 3.0
         self.pump_off_press = 4.0
         self.hysteresis = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
+        self.last_can_supply = False
 
     def process(self):
         if self.started and self.external_enable and self.need_pump() and not self.tank.is_empty():
             self.pump.start()
         else:
             self.pump.stop()
+        is_can_supply = self.is_can_supply()
+        if self.last_can_supply != is_can_supply:
+            self.last_can_supply = is_can_supply
+            self.logger.debug('Can supply' if is_can_supply else 'Can\'t supply')
 
     def need_pump(self):
         self.hysteresis.low = self.pump_on_press
@@ -106,7 +111,8 @@ class OsmosisTankFiller(TankFiller):
             self.pump2.stop()
             self.valve.close()
             self.timer.start(5.0)
-            if self.di_pressure.val and self.timer.is_end():
+            # if self.di_pressure.val and self.timer.is_end():
+            if self.timer.is_end():
                 self.logger.info('water, go start pumps and open valve')
                 self.set_state(2)
             if not self.need_fill():
@@ -122,9 +128,9 @@ class OsmosisTankFiller(TankFiller):
             if self.timer.is_end():
                 self.set_state(3)
                 self.logger.info('timer end, start os2')
-            if not self.di_pressure.val:
-                self.logger.info('no pressure, stop osmosis filler')
-                self.set_state(0)
+            # if not self.di_pressure.val:
+            #     self.logger.info('no pressure, stop osmosis filler')
+            #     self.set_state(0)
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, stop osmosis filler')
                 self.set_state(0)
@@ -134,9 +140,9 @@ class OsmosisTankFiller(TankFiller):
             self.pump1.start()
             self.pump2.start()
             self.valve.open()
-            if not self.di_pressure.val:
-                self.logger.info('no pressure, stop osmosis filler')
-                self.set_state(0)
+            # if not self.di_pressure.val:
+            #     self.logger.info('no pressure, stop osmosis filler')
+            #     self.set_state(0)
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, stop osmosis filler')
                 self.set_state(0)

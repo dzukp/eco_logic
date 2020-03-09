@@ -90,7 +90,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.b2_filler.stop()
         if self.tank_b1.is_empty():
             self.b2_filler.disable()
-        elif not self.di_press_1.val:
+        # elif not self.di_press_1.val:
+        #     self.b2_filler.disable()
+        elif not self.water_supplier.is_can_supply():
             self.b2_filler.disable()
         else:
             self.b2_filler.enable()
