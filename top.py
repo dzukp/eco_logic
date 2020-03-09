@@ -158,9 +158,9 @@ class Top(IoObject, ModbusDataObject):
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
             for p in self.posts.values():
-                if data[self.mb_cells_idx - start_addr + 1] != p.pump_on_timeout:
+                if data[self.mb_cells_idx - start_addr + 1] * 0.001 != p.pump_on_timeout:
                     p.set_pump_on_timeout(float(data[self.mb_cells_idx - start_addr + 1]) * 0.001)
-                if p.valve_off_timeout != data[self.mb_cells_idx - start_addr + 2]:
+                if p.valve_off_timeout != data[self.mb_cells_idx - start_addr + 2] * 0.001:
                     p.set_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 2]) * 0.001)
                 if data[self.mb_cells_idx - start_addr + 3] != p.func_frequencies[FuncNames.FOAM]:
                     p.set_func_pump_frequency(FuncNames.FOAM, data[self.mb_cells_idx - start_addr + 3])
@@ -174,6 +174,8 @@ class Top(IoObject, ModbusDataObject):
                     p.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
                 if data[self.mb_cells_idx - start_addr + 8] != p.func_frequencies[FuncNames.OSMOSIS]:
                     p.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
+                if p.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
+                    p.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
@@ -189,6 +191,7 @@ class Top(IoObject, ModbusDataObject):
                 int(self.posts['post_1'].func_frequencies[FuncNames.OSMOSIS]),
                 int(self.posts['post_1'].pressure_timeout),
                 int(self.posts['post_1'].min_pressure * 100),
+                int(self.posts['post_1'].hi_press_valve_off_timeout * 1000),
             ]
             result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
             return result
