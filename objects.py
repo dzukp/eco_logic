@@ -8,7 +8,7 @@ from waterpreparing import WaterPreparing
 from nofrost import Nofrost
 from top import Top
 
-def get_object(post_quantity=4):
+def get_object(post_quantity=8):
     objects = {
         'top': {
             'class': Top,
