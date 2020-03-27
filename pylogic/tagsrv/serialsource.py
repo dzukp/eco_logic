@@ -24,13 +24,13 @@ class SerialSource(object):
     
     opened_ports = {}
     
-    def __init__(self, port=0, baudrate=155200, bytesize=8, parity='N', stopbits=1, timeout=0):
+    def __init__(self, port=0, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=0, xonxoff = False, rtscts = False):
         self.logger = logger.getChild(f'serial_port_{port}')
         if port in self.opened_ports:
             raise Exception('Port is opened')
         try:
             self.serial = serial.Serial(
-                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, stopbits=stopbits, timeout=timeout)
+                    port=port, baudrate=baudrate, bytesize=bytesize, parity=parity, stopbits=stopbits, timeout=timeout, xonxoff = xonxoff, rtscts = rtscts)
             self.opened_ports[self.serial.port] = self.serial
             self.name = self.serial.name
             self.logger.info('serial port %s opened', self.serial.name)

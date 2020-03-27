@@ -59,15 +59,26 @@ def gen_tagsrv_config(post_quantity=8):
                            timeout=0.03)
 
     if os.name == 'posix':
-        com_port1_name = 'fc_serial'
+        com_port1_name = 'fc_serial1'
+        com_port2_name = 'fc_serial2'
     else:
         com_port1_name = 'COM3'
+        com_port2_name = 'COM4'
 
     port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+    port_2 = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+
     fc_modules = []
 
-    for i in range(1, post_quantity + 1):
+    for i in range(1, (post_quantity + 1 , 5)[post_quantity // 5]):
         fc_modules.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc{i}_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc{i}_ao_')]))
+
+    for i in range(5, post_quantity + 1):
+        fc_modules.append(ModbusRTUModule(i, port_2, io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
