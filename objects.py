@@ -85,7 +85,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_dose_foam': {
                             'class': Valve,
-                            'do_open': ('do_2_20', 'do_4_15')[post_quantity // 5],
+                            'do_open': ('do_2_20', 'do_4_18')[post_quantity // 5],
                             'mb_cells_idx': 52
                         },
                         'valve_dose_wax': {
@@ -100,7 +100,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_dose_intensive': {
                             'class': Valve,
-                            'do_open': ('do_2_23', 'do_4_18')[post_quantity // 5],
+                            'do_open': ('do_2_23', 'do_4_15')[post_quantity // 5],
                             'mb_cells_idx': 58
                         }
                     }
@@ -575,4 +575,3 @@ def get_object(post_quantity=8):
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
     return objects
-
