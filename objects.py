@@ -123,7 +123,7 @@ def get_object(post_quantity=8):
                         },
                     }
                 },
-                'post_1': {
+                'post_8': {
                     'class': Post,
                     'ai_pressure': 'ai_1_1',
                     'di_flow': 'di_1_10',
@@ -185,7 +185,7 @@ def get_object(post_quantity=8):
                         }
                     }
                 },
-                'post_2': {
+                'post_7': {
                     'class': Post,
                     'ai_pressure': 'ai_1_2',
                     'di_flow': 'di_1_11',
@@ -237,7 +237,7 @@ def get_object(post_quantity=8):
                         }
                     }
                 },
-                'post_3': {
+                'post_6': {
                     'class': Post,
                     'ai_pressure': 'ai_1_3',
                     'di_flow': 'di_1_12',
@@ -289,7 +289,7 @@ def get_object(post_quantity=8):
                         }
                     }
                 },
-                'post_4': {
+                'post_5': {
                     'class': Post,
                     'ai_pressure': 'ai_1_4',
                     'di_flow': 'di_1_13',
@@ -347,7 +347,7 @@ def get_object(post_quantity=8):
 
     if post_quantity > 4:
         posts5_8 = {
-            'post_5': {
+            'post_4': {
                 'class': Post,
                 'ai_pressure': 'ai_1_5',
                 'di_flow': 'di_1_14',
@@ -399,7 +399,7 @@ def get_object(post_quantity=8):
                     }
                 }
             },
-            'post_6': {
+            'post_3': {
                 'class': Post,
                 'ai_pressure': 'ai_1_6',
                 'di_flow': 'di_1_15',
@@ -451,7 +451,7 @@ def get_object(post_quantity=8):
                     }
                 }
             },
-            'post_7': {
+            'post_2': {
                 'class': Post,
                 'ai_pressure': 'ai_1_7',
                 'di_flow': 'di_1_16',
@@ -503,7 +503,7 @@ def get_object(post_quantity=8):
                     }
                 }
             },
-            'post_8': {
+            'post_1': {
                 'class': Post,
                 'ai_pressure': 'ai_1_8',
                 'di_flow': 'di_1_17',
