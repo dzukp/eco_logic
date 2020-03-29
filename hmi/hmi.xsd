@@ -328,7 +328,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_8" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="553" rect.bottom="576" rect.left="54" rect.right="156"/>
+                <Geometry rect.top="555" rect.bottom="578" rect.left="53" rect.right="155"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -4111,7 +4111,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_117" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="182" rect.right="206"/>
+                <Geometry rect.top="538" rect.bottom="567" rect.left="190" rect.right="214"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -4155,7 +4155,7 @@
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_118" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="212" rect.right="236"/>
+                <Geometry rect.top="538" rect.bottom="567" rect.left="220" rect.right="244"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6548,7 +6548,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_194" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="243" rect.right="267"/>
+                <Geometry rect.top="538" rect.bottom="567" rect.left="252" rect.right="276"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6592,7 +6592,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_195" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="601" rect.left="273" rect.right="297"/>
+                <Geometry rect.top="538" rect.bottom="567" rect.left="282" rect.right="306"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -6806,7 +6806,7 @@
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_205" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="572" rect.bottom="595" rect.left="451" rect.right="515"/>
+                <Geometry rect.top="583" rect.bottom="606" rect.left="490" rect.right="554"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6823,7 +6823,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_206" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="574" rect.bottom="597" rect.left="324" rect.right="420"/>
+                <Geometry rect.top="581" rect.bottom="604" rect.left="375" rect.right="471"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7422,7 +7422,7 @@
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_228" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="567" rect.bottom="596" rect.left="569" rect.right="708"/>
+                <Geometry rect.top="580" rect.bottom="609" rect.left="589" rect.right="728"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -7506,6 +7506,182 @@
                 <Text string="Тренды"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_231" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="575" rect.bottom="604" rect.left="190" rect.right="214"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Execute script">
+                                <Expanded Value="1"/>
+                                <Property Name="Script">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <ExecScript Value="post">
+                                            <Function Name="selectPost"/>
+                                            <ListArgument>
+                                                <Argument Type="Integer" Value="5"/>
+                                            </ListArgument>
+                                        </ExecScript>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="5"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem AutoIconResize="232"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_232" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="575" rect.bottom="604" rect.left="220" rect.right="244"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Execute script">
+                                <Expanded Value="1"/>
+                                <Property Name="Script">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <ExecScript Value="post">
+                                            <Function Name="selectPost"/>
+                                            <ListArgument>
+                                                <Argument Type="Integer" Value="6"/>
+                                            </ListArgument>
+                                        </ExecScript>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="6"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_233" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="575" rect.bottom="604" rect.left="251" rect.right="275"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Execute script">
+                                <Expanded Value="1"/>
+                                <Property Name="Script">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <ExecScript Value="post">
+                                            <Function Name="selectPost"/>
+                                            <ListArgument>
+                                                <Argument Type="Integer" Value="7"/>
+                                            </ListArgument>
+                                        </ExecScript>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="7"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem AutoIconResize="24"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_234" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="575" rect.bottom="604" rect.left="282" rect.right="306"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Execute script">
+                                <Expanded Value="1"/>
+                                <Property Name="Script">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <ExecScript Value="post">
+                                            <Function Name="selectPost"/>
+                                            <ListArgument>
+                                                <Argument Type="Integer" Value="8"/>
+                                            </ListArgument>
+                                        </ExecScript>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="8"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem AutoIconResize="254"/>
             </MnemoObject>
         </MnemoScreen>
         <MnemoScreen FullName="Settings">
@@ -9507,7 +9683,6 @@
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_valve_off_timeout" Units="....." Location="323" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_16"/>
-                        <Listener Path="" Type="XMnemoSpinBox" Name="SpinBox_16"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -9558,7 +9733,6 @@
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_hi_press_valve_off_timeout" Units="....." Location="332" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_30"/>
-                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_31"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>

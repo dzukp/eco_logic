@@ -21,7 +21,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.ai_pe_3 = InChannel(0.0)  # аналоговый датчик давления после насоса П2
         self.di_press_3 = InChannel(False)
 
-        self.ai_pe_3.set_trans(simulate_pressure)
+        # self.ai_pe_3.set_trans(simulate_pressure)
 
         self.pump_n1 = None
         self.pump_n2 = None
@@ -310,4 +310,4 @@ class WaterPreparing(IoObject, ModbusDataObject):
             return {}
 
 def simulate_pressure(value):
-    return 5.0
+    return 3.0
