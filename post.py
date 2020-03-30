@@ -1,4 +1,4 @@
-import struct
+import time
 
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
@@ -17,6 +17,9 @@ class Post(IoObject, ModbusDataObject):
     def __init__(self, name, parent):
         super().__init__(name, parent)
         self.ai_pressure = InChannel(0.0)
+
+        # self.ai_pressure.set_trans(simulate_pressure)
+
         self.di_flow = InChannel(False)
         self.valve_foam = None
         self.valve_wax = None
@@ -69,6 +72,9 @@ class Post(IoObject, ModbusDataObject):
             if func_name != FuncNames.INTENSIVE:
                 step.set_config(config)
 
+        self.pump.reset()
+        self.pump.reset()
+
     def process(self):
         for func_name, step in self.func_steps.items():
             if func_name == self.current_func:
@@ -113,9 +119,9 @@ class Post(IoObject, ModbusDataObject):
             if self.pump.is_alarm_state():
                 self.set_alarm()
                 self.logger.info('Set alarm because pump alarm')
-            if no_pressure:
-                self.set_alarm()
-                self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
+            # if no_pressure:
+            #     self.set_alarm()
+            #     self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
         # Alarm auto reset by timeout
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')
@@ -186,4 +192,5 @@ class Post(IoObject, ModbusDataObject):
         else:
             return {}
 
-
+def simulate_pressure(value):
+    return 50.0
