@@ -171,7 +171,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_intensive': {
                             'class': Valve,
-                            'do_open': 'do_2_9',
+                            'do_open': 'do_4_12',
                             'mb_cells_idx': 81
                         },
                         'pump': {
@@ -224,7 +224,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_intensive': {
                             'class': Valve,
-                            'do_open': 'do_2_10'
+                            'do_open': 'do_4_11'
                         },
                         'pump': {
                             'class': Altivar212,
@@ -276,7 +276,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_intensive': {
                             'class': Valve,
-                            'do_open': 'do_2_11'
+                            'do_open': 'do_4_10'
                         },
                         'pump': {
                             'class': Altivar212,
@@ -328,7 +328,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_intensive': {
                             'class': Valve,
-                            'do_open': 'do_2_12'
+                            'do_open': 'do_4_9'
                         },
                         'pump': {
                             'class': Altivar212,
@@ -386,7 +386,7 @@ def get_object(post_quantity=8):
                     },
                     'valve_intensive': {
                         'class': Valve,
-                        'do_open': 'do_4_9'
+                        'do_open': 'do_2_12'
                     },
                     'pump': {
                         'class': Altivar212,
@@ -438,7 +438,7 @@ def get_object(post_quantity=8):
                     },
                     'valve_intensive': {
                         'class': Valve,
-                        'do_open': 'do_4_10'
+                        'do_open': 'do_2_11'
                     },
                     'pump': {
                         'class': Altivar212,
@@ -490,7 +490,7 @@ def get_object(post_quantity=8):
                     },
                     'valve_intensive': {
                         'class': Valve,
-                        'do_open': 'do_4_11'
+                        'do_open': 'do_2_10'
                     },
                     'pump': {
                         'class': Altivar212,
@@ -542,7 +542,7 @@ def get_object(post_quantity=8):
                     },
                     'valve_intensive': {
                         'class': Valve,
-                        'do_open': 'do_4_12'
+                        'do_open': 'do_2_9'
                     },
                     'pump': {
                         'class': Altivar212,
