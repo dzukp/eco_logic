@@ -1,1 +1,1 @@
-{"func_frequencies": {"foam": 37.0, "shampoo": 40.0, "wax": 30.0, "hot_water": 40.0, "cold_water": 40.0, "osmosis": 30.0}, "pressure_timeout": 3.0, "min_pressure": 10.0, "pump_on_timeout": 1.0, "valve_off_timeout": 0.5}
+{"func_frequencies": {"foam": 37.0, "shampoo": 40.0, "wax": 30.0, "hot_water": 40.0, "cold_water": 40.0, "osmosis": 30.0}, "pressure_timeout": 6.0, "min_pressure": 10.0, "pump_on_timeout": 1.0, "valve_off_timeout": 0.5}

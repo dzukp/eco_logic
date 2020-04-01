@@ -5,13 +5,16 @@ from pylogic.tagsrv.modbusrtu import ModbusRTUModule
 from pylogic.tagsrv.serialsource import SerialSource
 
 import os
-
+import time
 
 def gen_tagsrv_config(post_quantity=8):
     tags = {
         'in': {},
         'out': {}
     }
+
+    print('RS-485 imitalize delay')
+    time.sleep(15)
 
     if post_quantity in (5, 6, 7, 8):
         ai_names = ('ai_1_', 'ai_2_',)
@@ -38,7 +41,7 @@ def gen_tagsrv_config(post_quantity=8):
         tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
 
-    ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.21',
+    ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.7.251',
                        timeout=0.03)
     ai_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_')], ip='192.168.200.20',
                        timeout=0.03)
@@ -60,8 +63,8 @@ def gen_tagsrv_config(post_quantity=8):
 
     if os.name == 'posix':
         com_port_name = 'fc_serial'
-        com_port1_name = 'fc_serial1'
-        com_port2_name = 'fc_serial2'
+        com_port1_name = '/dev/ttyS6'
+        com_port2_name = '/dev/ttyS7'
     else:
         com_port1_name = 'COM3'
         com_port2_name = 'COM4'
