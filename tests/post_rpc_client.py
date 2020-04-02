@@ -59,7 +59,10 @@ class PostRpcClient(object):
     def multi(self, post, function):
         # Одним запросом вызываеи ф-цию start_function и get_state
         multicall = xmlrpc.client.MultiCall(self.server)
-        func = FuncNames.all_funcs()[function]
+        if isinstance(function, int):
+            func = FuncNames.all_funcs()[function]
+        else:
+            func = function
         print('>> start_function', post, func)
         multicall.start_function(post, func)
         print('>> get_state', post)
