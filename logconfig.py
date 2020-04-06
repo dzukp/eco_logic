@@ -17,6 +17,16 @@ logging_config = {
             'propagate': False,
             'level': 'DEBUG'
         },
+        'TagSrv.serial_port_fc_serial1': {
+            'handlers': ['comport_file'],
+            'propagate': False,
+            'level': 'DEBUG'
+        },
+        'TagSrv.serial_port_fc_serial2': {
+            'handlers': ['comport_file'],
+            'propagate': False,
+            'level': 'DEBUG'
+        },
         'PylogicLogger': {
             'handlers': ['common_console'],
             'propagate': False,
