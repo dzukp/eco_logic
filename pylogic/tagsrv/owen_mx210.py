@@ -30,9 +30,9 @@ class BaseOwenMx210(object):
             try:
                 self.process()
             except modbus_tk.modbus.ModbusError:
-                self.logger.exception('ModbusError')
+                self.logger.error('ModbusError')
             except socket.timeout:
-                self.logger.exception('socket.timeout')
+                self.logger.error('socket.timeout')
             except Exception:
                 self.logger.exception('Unexpected exception')
             finally:

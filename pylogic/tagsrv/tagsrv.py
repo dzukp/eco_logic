@@ -1,6 +1,7 @@
 import logging
 
 from .simulator import SimulatorDispatcher
+from .tagsrv_logger import logger
 
 
 class InTag:
@@ -26,15 +27,15 @@ class TagSrv(object):
         self.out_tags = []
         self.channels = []
         self.dispatchers = {}
-        self.logger = logging.getLogger('tag_srv')
+        self.logger = logger  # logging.getLogger('tag_srv')
         self.sim_dispatchers = None
     
     def init(self, setting, channels, sim_channels=()):
         self.in_tags = list(setting['tags']['in'].values()) if 'in' in setting['tags'] else []
         self.out_tags = list(setting['tags']['out'].values()) if 'out' in setting['tags'] else []
         self.dispatchers = setting['dispatchers']
-        for disp in self.dispatchers.values():
-            disp.set_logger(self.logger)
+        for name, disp in self.dispatchers.items():
+            disp.set_logger(self.logger.getChild(name))
         self.channels = channels
         for ch in self.channels:
             if 'in' in setting['tags'] and ch.name in setting['tags']['in']:
@@ -64,7 +65,7 @@ class TagSrv(object):
             if t.value is not None:
                 for ch in t.channels:
                     ch.set_value(t.value)
-        self.logger.debug('read all %s' % [t.channels for t in self.in_tags if t.channels])
+        # self.logger.debug('read all %s' % [[f'{ch.name}={t.value}' for ch in t.channels] for t in self.in_tags if t.channels])
     
     def write_all(self):
         for t in self.out_tags:
@@ -72,4 +73,4 @@ class TagSrv(object):
                 t.value = t.channel.get_value()
             else:
                 t.value = 0
-        self.logger.debug('write all %s' % [t.channel for t in self.out_tags if t.channel])
+        # self.logger.debug('write all %s' % [f'{t.channel.name}={t.value}' for t in self.out_tags if t.channel])
