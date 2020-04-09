@@ -1,0 +1,27 @@
+[Unit]
+Description = EcoLogic
+After = network.target multi-user.target
+Wants = network.target
+
+[Service]
+Type = simple
+
+#PIDFile = /var/run/eco_logic.pid
+
+WorkingDirectory = /home/eco/eco_logic
+ExecStart = /home/eco/eco_logic/start.py
+#ExecStop = pkill -e start.py
+
+#TimeoutSec = infinity
+Restart = on-failure
+KillMode = process
+#RestartSec = 10
+
+# Интерактивное взаимодействие с пользователем через tty3
+StandardInput=tty
+TTYPath=/dev/tty3
+TTYReset=yes
+TTYVHangup=yes
+
+[Install]
+WantedBy = multi-user.target
