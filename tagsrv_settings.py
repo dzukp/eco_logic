@@ -63,8 +63,8 @@ def gen_tagsrv_config(post_quantity=8):
 
     if os.name == 'posix':
         com_port_name = 'fc_serial'
-        com_port1_name = '/dev/ttyS6'
-        com_port2_name = '/dev/ttyS7'
+        com_port1_name = 'fc_serial1'
+        com_port2_name = 'fc_serial2'
     else:
         com_port1_name = 'COM3'
         com_port2_name = 'COM4'

@@ -194,6 +194,9 @@ class ModbusRTUModule(object):
             if tmp_tags:
                 formed_taglist.append(tmp_tags)
         return formed_taglist
+
+    def set_logger(self, logger):
+        self.logger = logger
         
     def process(self):
         self.serial.read_all()
