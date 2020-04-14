@@ -5,16 +5,12 @@ from pylogic.tagsrv.modbusrtu import ModbusRTUModule
 from pylogic.tagsrv.serialsource import SerialSource
 
 import os
-import time
 
 def gen_tagsrv_config(post_quantity=8):
     tags = {
         'in': {},
         'out': {}
     }
-
-    print('RS-485 imitalize delay')
-    time.sleep(15)
 
     if post_quantity in (5, 6, 7, 8):
         ai_names = ('ai_1_', 'ai_2_',)
