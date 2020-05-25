@@ -12,7 +12,8 @@ from func_names import FuncNames
 
 class Post(IoObject, ModbusDataObject):
 
-    _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout')
+    _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
+                   'disabled_funcs')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -51,6 +52,7 @@ class Post(IoObject, ModbusDataObject):
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
                                 for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
         self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+        self.disabled_funcs = []
 
     def init(self):
         config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
@@ -122,13 +124,14 @@ class Post(IoObject, ModbusDataObject):
             self.reset_alarm()
 
     def set_function(self, func_name):
-        if not self.alarm and func_name in FuncNames.all_funcs():
+        if not self.alarm and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
                 self.logger.debug(f'New function {func_name}')
             self.current_func = func_name
         else:
             self.current_func = FuncNames.STOP
         self.func_number = FuncNames.all_funcs().index(self.current_func)
+        return self.current_func == func_name
 
     def set_alarm(self):
         self.alarm = True
@@ -162,6 +165,9 @@ class Post(IoObject, ModbusDataObject):
             self.hi_press_valve_off_timeout = timeout
             self.logger.info(f'Set hi pressure value off timeout {timeout}s')
             self.save()
+
+    def is_func_allowed(self, func_name):
+        return func_name not in self.disabled_funcs
 
     def mb_cells(self):
         return self.mb_output(0).keys()
