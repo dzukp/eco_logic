@@ -100,7 +100,9 @@ class Top(IoObject, ModbusDataObject):
 
         for post, func in self.post_function.items():
             if func in prepared_funcs:
-                post.set_function(func)
+                if not post.set_function(func):
+                    self.post_function[post] = FuncNames.STOP
+                    self.logger.debug(f'Post {post.name} didn\'t start function {func}')
             else:
                 post.set_function(FuncNames.STOP)
                 self.post_function[post] = FuncNames.STOP
@@ -129,20 +131,30 @@ class Top(IoObject, ModbusDataObject):
         elif post_name not in self.posts:
             self.logger.error(f'Hasn\'t post `{post_name}`')
             return False
+        # elif not self.get_readiness_functions(post_name)[function]:
+        #     self.logger.info(f'Can\'t start function {function} on `{post_name}`. Function not ready.')
+        #     return False
         else:
             self.logger.info(f'New function for `{post_name}` is {function}')
             self.new_function[self.posts[post_name]] = function
             return True
 
-    def get_readiness_functions(self):
+    def get_readiness_functions(self, post_name):
         return {
-            FuncNames.WAX: self.supplier.is_ready_for_wax(),
-            FuncNames.SHAMPOO: self.supplier.is_ready_for_shampoo(),
-            FuncNames.FOAM: self.supplier.is_ready_for_foam(),
-            FuncNames.INTENSIVE: self.supplier.is_ready_for_intensive(),
-            FuncNames.OSMOSIS: self.supplier.is_ready_for_osmosis(),
-            FuncNames.COLD_WATER: self.supplier.is_ready_for_cold_water(),
-            FuncNames.HOT_WATER: self.supplier.is_ready_for_hot_water()
+            FuncNames.WAX:
+                self.supplier.is_ready_for_wax() and self.posts[post_name].is_func_allowed(FuncNames.WAX),
+            FuncNames.SHAMPOO:
+                self.supplier.is_ready_for_shampoo() and self.posts[post_name].is_func_allowed(FuncNames.SHAMPOO),
+            FuncNames.FOAM:
+                self.supplier.is_ready_for_foam() and self.posts[post_name].is_func_allowed(FuncNames.FOAM),
+            FuncNames.INTENSIVE:
+                self.supplier.is_ready_for_intensive() and self.posts[post_name].is_func_allowed(FuncNames.INTENSIVE),
+            FuncNames.OSMOSIS:
+                self.supplier.is_ready_for_osmosis() and self.posts[post_name].is_func_allowed(FuncNames.OSMOSIS),
+            FuncNames.COLD_WATER:
+                self.supplier.is_ready_for_cold_water() and self.posts[post_name].is_func_allowed(FuncNames.COLD_WATER),
+            FuncNames.HOT_WATER:
+                self.supplier.is_ready_for_hot_water() and self.posts[post_name].is_func_allowed(FuncNames.HOT_WATER)
         }
 
     def get_post_function(self, post_name):
@@ -197,4 +209,3 @@ class Top(IoObject, ModbusDataObject):
             return result
         else:
             return {}
-
