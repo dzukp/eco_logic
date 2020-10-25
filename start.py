@@ -20,17 +20,22 @@ from logconfig import logging_config
 def start():
     post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8
     sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
+    vers = '1.1'
+    for a in sys.argv:
+        if a.startswith('v'):
+            vers = a.lstrip('v')
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():
         makedirs(log_dir.absolute())
     config = {
-        'objects': get_object(post_quantity),
+        'objects': get_object(version=vers, post_quantity=post_quantity),
         'simulators': sim_obj,
         'tagsrv_settings': gen_tagsrv_config(post_quantity),
         'logging_conf': logging_config,
         'supervisors': {'supervis_modbus': ModbusSupervisor,}
     }
     main(config)
+
 
 
 def loggers_init():

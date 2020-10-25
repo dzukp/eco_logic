@@ -6,15 +6,22 @@ from pylogic.tagsrv.serialsource import SerialSource
 
 import os
 
+
 def gen_tagsrv_config(post_quantity=8):
     tags = {
         'in': {},
         'out': {}
     }
 
-    if post_quantity in (5, 6, 7, 8):
+    if post_quantity in (5, 6):
+        ai_names = ('ai_1_', 'ai_2_',)
+        do_names = ('do_1_', 'do_2_', 'do_3_')
+    elif post_quantity in (7, 8):
         ai_names = ('ai_1_', 'ai_2_',)
         do_names = ('do_1_', 'do_2_', 'do_3_', 'do_4_')
+    elif post_quantity in (9, 10):
+        ai_names = ('ai_1_', 'ai_2_',)
+        do_names = ('do_1_', 'do_2_', 'do_3_', 'do_4_', 'do_5_')
     else:
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
@@ -56,6 +63,12 @@ def gen_tagsrv_config(post_quantity=8):
     do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_4_')],
                            ip='192.168.200.4',
                            timeout=0.03)
+    do_5 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_5_')],
+                           ip='192.168.200.5',
+                           timeout=0.03)
+    do_6 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_6_')],
+                           ip='192.168.200.6',
+                           timeout=0.03)
 
     if os.name == 'posix':
         com_port_name = 'fc_serial'
@@ -71,22 +84,27 @@ def gen_tagsrv_config(post_quantity=8):
     fc_modules_1 = []
     fc_modules_2 = []
 
-    for i in range(1, (post_quantity + 1 , 5)[post_quantity // 5]):
+    # if quantity pumps > 4 use both serial ports
+    for i in range(1, max(4, post_quantity // 2)):
         fc_modules_1.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
-    for i in range(5, post_quantity + 1):
+    for i in range(max(4, post_quantity // 2) + 1, post_quantity + 1):
         fc_modules_2.append(ModbusRTUModule(i, port_2, io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
-    if post_quantity in (5, 6, 7, 8):
+    if post_quantity in (5, 6):
+        modules = [do_1, do_2, do_3, di_1, ai_1, ai_2]
+    elif post_quantity in (7, 8):
         modules = [do_1, do_2, do_3, do_4, di_1, ai_1, ai_2]
+    elif post_quantity in (9, 10):
+        modules = [do_1, do_2, do_3, do_4, do_5, do_6, di_1, ai_1, ai_2]
     else:
         modules = [do_1, do_2, di_1, ai_1]
 
