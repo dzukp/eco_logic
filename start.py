@@ -30,7 +30,7 @@ def start():
     config = {
         'objects': get_object(version=vers, post_quantity=post_quantity),
         'simulators': sim_obj,
-        'tagsrv_settings': gen_tagsrv_config(post_quantity),
+        'tagsrv_settings': gen_tagsrv_config(version=vers, post_quantity=post_quantity),
         'logging_conf': logging_config,
         'supervisors': {'supervis_modbus': ModbusSupervisor,}
     }

@@ -18,9 +18,9 @@ def get_object(post_quantity=8):
                 'supplier': {
                     'class': WaterPreparing,
                     'di_press_1': None,
-                    'ai_pe_1': 'ai_1_7',
+                    'ai_pe_1': None,
                     'di_press_2': None,
-                    'ai_pe_2': None,
+                    'ai_pe_2': 'ai_2_8',
                     'di_press_3': None,
                     'ai_pe_3': None,
                     'mb_cells_idx': 0,
@@ -57,7 +57,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': None,
+                            'do_open': 'do_2_19',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
@@ -259,7 +259,7 @@ def get_object(post_quantity=8):
                 },
                 'post_4': {
                     'class': Post,
-                    'ai_pressure': 'ai_1_3',
+                    'ai_pressure': 'ai_1_4',
                     'di_flow': None,
                     'children': {
                         'valve_foam': {

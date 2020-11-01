@@ -90,12 +90,11 @@ class OwenDoMu210_403(BaseOwenMx210):
         self.logger.debug(f'Write data request ok. data = {bin(data)[2:].zfill(16)}')
 
 
-
 class OwenDiDoMk210(BaseOwenMx210):
     """ Discrete input/output module МК210 """
 
-    def __init__(self, tags, ip, port=502, slave=1):
-        super().__init__(tags, ip, port, slave)
+    def __init__(self, tags, ip, port=502, slave=1, timeout=0.05):
+        super().__init__(tags, ip, port, slave, timeout)
         sorted_tags = sorted(tags, key=lambda x: x.addr)
         self.input_tags = [tag for tag in self.tags if isinstance(tag, InTag)]
         self.output_tags = [tag for tag in self.tags if isinstance(tag, OutTag)]
