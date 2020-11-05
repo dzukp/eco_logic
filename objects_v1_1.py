@@ -13,7 +13,7 @@ def get_object(post_quantity=8):
     objects = {
         'top': {
             'class': Top,
-            'mb_cells_idx': 320,
+            'mb_cells_idx': 500,
             'children': {
                 'supplier': {
                     'class': WaterPreparing,

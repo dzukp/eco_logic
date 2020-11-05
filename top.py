@@ -165,7 +165,7 @@ class Top(IoObject, ModbusDataObject):
             return ''
 
     def mb_cells(self):
-        return [0, 400]
+        return [0, self.mb_cells_idx + len(self.mb_output(self.mb_cells_idx))]
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
