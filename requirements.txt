@@ -1,2 +1,2 @@
 modbus-tk
-serial
+pyserial
