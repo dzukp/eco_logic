@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from subsystems import TankFiller, OsmosisTankFiller, WaterSupplier
+from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier
 from func_names import FuncNames
 from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
@@ -22,6 +22,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.di_press_3 = InChannel(False)
         self.pump_n1 = None
         self.pump_n2 = None
+        self.pump_n3 = None
         self.pump_os1 = None
         self.pump_os2 = None
         self.pump_i1 = None
@@ -40,7 +41,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_enough_press = 2.0
         self.osmosis_pump_on_press = 3.0
         self.osmosis_pump_off_press = 4.0
-        self.b1_filler = TankFiller('b1_filler')
+        self.b1_filler = PumpTankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
         self.osmos_supplier = WaterSupplier('osmosis')
@@ -54,6 +55,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def init(self):
         self.b1_filler.tank = self.tank_b1
         self.b1_filler.valve = self.valve_b1
+        self.b1_filler.pump = self.pump_n3
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
         self.b2_filler.pump1 = self.pump_os1
@@ -303,6 +305,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
             return result
         else:
             return {}
+
 
 def simulate_pressure(value):
     return 3.0

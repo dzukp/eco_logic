@@ -1,5 +1,5 @@
 from pylogic.logged_object import LoggedObject
-from pylogic.timer import Timer
+from pylogic.timer import Timer, Ton
 from pylogic.utils import Hysteresis
 
 
@@ -79,6 +79,30 @@ class TankFiller(Subsystem):
 
     def need_fill(self):
         return self.tank.is_want_water()
+
+
+class PumpTankFiller(TankFiller):
+    """  """
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.pump = None
+        self.di_press = None
+        self.no_press_timer = Timer()
+
+    def process(self):
+        if self.started and self.external_enable and self.need_fill():
+            self.no_press_timer.start(5.0)
+            if self.no_press_timer.is_end():
+                self.pump.start()
+                self.valve.open()
+            else:
+                self.pump.stop()
+                self.valve.close()
+        else:
+            self.valve.close()
+            self.pump.stop()
+            self.no_press_timer.reset()
 
 
 class OsmosisTankFiller(TankFiller):

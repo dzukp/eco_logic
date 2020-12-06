@@ -1,6 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
+from pylogic.timer import Ton
 
 
 class Tank(IoObject, ModbusDataObject):
@@ -11,10 +12,16 @@ class Tank(IoObject, ModbusDataObject):
         self.di_low_level = InChannel(False)
         self.di_mid_level = InChannel(False)
         self.di_hi_level = InChannel(False)
+        self.no_hi_level_timeout = 30.0
+        self.water_level_analizer_mode = '1'
         self._sens_err = False
         self._state = 0
         self._want_water = False
         self.mb_cells_idx = None
+        self.ton = Ton()
+
+    def init(self):
+        super(Tank, self).init()
 
     def process(self):
         if not self.di_low_level.val and (self.di_hi_level.val or self.di_mid_level.val):
@@ -29,10 +36,7 @@ class Tank(IoObject, ModbusDataObject):
             self.logger.debug('Sensor no error')
             self._sens_err = False
 
-        if not self.di_mid_level.val:
-            self._want_water = True
-        elif self.di_hi_level.val:
-            self._want_water = False
+        self.water_level_analizer()
 
         if self._state == 0:
             if self.di_low_level.val:
@@ -56,6 +60,24 @@ class Tank(IoObject, ModbusDataObject):
             if not self.di_hi_level.val:
                 self._state = 2
                 self.logger.debug('new level 2')
+
+    def water_level_analizer(self):
+        if self.water_level_analizer_mode == '1':
+            self.water_level_analizer_v1()
+        elif self.water_level_analizer_mode == '2':
+            self.water_level_analizer_v2()
+
+    def water_level_analizer_v1(self):
+        if not self.di_mid_level.val:
+            self._want_water = True
+        elif self.di_hi_level.val:
+            self._want_water = False
+
+    def water_level_analizer_v2(self):
+        if self.ton.process(not self.di_hi_level.val, self.no_hi_level_timeout):
+            self._want_water = True
+        else:
+            self._want_water = False
 
     def is_full(self):
         return self.di_hi_level.val

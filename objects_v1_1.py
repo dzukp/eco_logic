@@ -35,6 +35,11 @@ def get_object(post_quantity=8):
                             'do_start': 'do_1_20',
                             'mb_cells_idx': 32
                         },
+                        'pump_n3': {
+                            'class': Engine,
+                            'do_start': None,
+                            'mb_cells_idx': 497
+                        },
                         'pump_os1': {
                             'class': Engine,
                             'do_start': 'do_1_21',
@@ -70,6 +75,7 @@ def get_object(post_quantity=8):
                             'di_low_level': 'di_1_1',
                             'di_mid_level': 'di_1_2',
                             'di_hi_level': 'di_1_3',
+                            'water_level_analizer_mode': '2',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {
