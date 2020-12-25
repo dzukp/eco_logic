@@ -34,12 +34,12 @@ def get_object(post_quantity=8):
                         'pump_n1_2': {
                             'class': Engine,
                             'do_start': 'do_2_20',
-                            'mb_cells_idx': 30,
+                            'mb_cells_idx': 493,
                         },
                         'pump_n1_3': {
                             'class': Engine,
                             'do_start': 'do_2_21',
-                            'mb_cells_idx': 30,
+                            'mb_cells_idx': 495,
                         },
                         'pump_n2': {
                             'class': Engine,
@@ -53,7 +53,7 @@ def get_object(post_quantity=8):
                         },
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': '',
+                            'do_start': None,
                             'mb_cells_idx': 34
                         },
                         'pump_os2': {
@@ -64,6 +64,7 @@ def get_object(post_quantity=8):
                         'pump_os': {
                             'class': PidEngine,
                             'ai_sensor': 'ai_2_3',
+                            'mb_cells_idx': 473,
                             'children': {
                                 'fc': {
                                     'class': Altivar212,
@@ -72,7 +73,7 @@ def get_object(post_quantity=8):
                                     'ai_status': 'fc_os_ai_1',
                                     'ai_frequency': 'fc_os_ai_2',
                                     'ai_alarm_code': 'fc_os_ai_3',
-                                    'mb_cells_idx': None
+                                    'mb_cells_idx': 483
                                 }
                             }
                         },
@@ -506,7 +507,7 @@ def get_object(post_quantity=8):
                 }
             }
         )
-        objects['top']['children']['supplier']['ai_pe_1'] = 'ai_1_8'
+        # objects['top']['children']['supplier']['ai_pe_1'] = 'ai_1_8'
 
     if post_quantity > 7:
         objects['top']['children'].update({
@@ -563,7 +564,7 @@ def get_object(post_quantity=8):
                 }
             }
         })
-        objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_1'
+        # objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_1'
 
     if post_quantity > 8:
         objects['top']['children'].update(
@@ -622,7 +623,7 @@ def get_object(post_quantity=8):
                 }
             }
         )
-        objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_2'
+        # objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_2'
 
     if post_quantity > 9:
         objects['top']['children'].update({
@@ -679,7 +680,7 @@ def get_object(post_quantity=8):
                 }
             }
         })
-        objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_3'
+        # objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_3'
 
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):

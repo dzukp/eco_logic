@@ -6,6 +6,8 @@ from pylogic.utils import Hysteresis
 from simple_pid import PID
 from pylogic.channel import InChannel
 
+import struct
+
 
 class Subsystem(LoggedObject):
 
@@ -202,6 +204,7 @@ class PidEngine(IoObject, ModbusDataObject):
         self.pid = PID()
         self.pid.output_limits = tuple(self.freq_limits)
         self.pid.tunings = (self.pid_k, self.pid_i, self.pid_d)
+        self.mb_cells_idx = None
 
     def start(self):
         if not self.started:
@@ -222,3 +225,29 @@ class PidEngine(IoObject, ModbusDataObject):
             self.fc.stop()
             self.fc.set_frequency(0)
             self.pid.reset()
+
+    def mb_cells(self):
+        return [self.mb_cells_idx, self.mb_cells_idx + 1]
+
+    def mb_input(self, start_addr, data):
+        pass
+
+    def mb_output(self, start_addr):
+        if self.mb_cells_idx is not None:
+            status = int(self.started) * (1 << 0) | \
+                     0xD000
+            float_data = struct.pack('ffff', self.ai_sensor.val, self.pid_k, self.pid_i, self.pid_d)
+            float_data = struct.unpack('HHHHHHHH', float_data)
+            return {
+                self.mb_cells_idx - start_addr: status,
+                self.mb_cells_idx - start_addr + 1: float_data[0],
+                self.mb_cells_idx - start_addr + 2: float_data[1],
+                self.mb_cells_idx - start_addr + 3: float_data[2],
+                self.mb_cells_idx - start_addr + 4: float_data[3],
+                self.mb_cells_idx - start_addr + 5: float_data[4],
+                self.mb_cells_idx - start_addr + 6: float_data[5],
+                self.mb_cells_idx - start_addr + 7: float_data[6],
+                self.mb_cells_idx - start_addr + 8: float_data[7],
+            }
+        else:
+            return {}
