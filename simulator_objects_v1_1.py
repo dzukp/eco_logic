@@ -9,8 +9,8 @@ def get_simulator_objects(post_quantity):
             'version': '1.1',
             'di_valve_b1': 'do_2_19',
             'di_n1': 'do_1_19',
-            'ao_p1': None,
-            'ao_p2': 'ai_2_8',
+            'ao_p1': 'ai_2_5',
+            'ao_p2': 'ai_2_6',
             'do_press1': None,
             'di_water_os': 'do_1_23',
             'do_press2': None,
@@ -18,7 +18,7 @@ def get_simulator_objects(post_quantity):
             'di_os2': None,
             'di_valve_b2': None,
             'di_n2': 'do_1_20',
-            'ao_p3': None,
+            'ao_p3': 'ai_2_4',
             'do_press3': None,
             'children': {
                 'b1': {

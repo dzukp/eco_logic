@@ -1,6 +1,7 @@
 from mechanism import Mechanism
 from pylogic.channel import OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
+from pylogic.timer import Timer
 
 
 class Engine(Mechanism, ModbusDataObject):
@@ -56,3 +57,19 @@ class Engine(Mechanism, ModbusDataObject):
                 self.mb_cells_idx + 1 - start_addr: status}
         else:
             return {}
+
+
+class StartTimeLimit(object):
+    def __init__(self, start_time_limit):
+        self.start_time_limit = start_time_limit
+        self.last_tick = 0
+        self.tick_period = 0
+        self.ticks = []
+        self.tick_time = Timer()
+
+    def start(self):
+        self.tick_time.start()
+
+    def process(self):
+        pass
+

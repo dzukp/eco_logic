@@ -6,6 +6,7 @@ from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
 from nofrost import Nofrost
+from subsystems import PidEngine
 from top import Top
 
 
@@ -18,16 +19,26 @@ def get_object(post_quantity=8):
                 'supplier': {
                     'class': WaterPreparing,
                     'di_press_1': None,
-                    'ai_pe_1': None,
+                    'ai_pe_1': 'ai_2_5',
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_2_8',
+                    'ai_pe_2': 'ai_2_6',
                     'di_press_3': None,
-                    'ai_pe_3': None,
+                    'ai_pe_3': 'ai_2_4',
                     'mb_cells_idx': 0,
                     'children': {
                         'pump_n1': {
                             'class': Engine,
                             'do_start': 'do_1_19',
+                            'mb_cells_idx': 30,
+                        },
+                        'pump_n1_2': {
+                            'class': Engine,
+                            'do_start': 'do_2_20',
+                            'mb_cells_idx': 30,
+                        },
+                        'pump_n1_3': {
+                            'class': Engine,
+                            'do_start': 'do_2_21',
                             'mb_cells_idx': 30,
                         },
                         'pump_n2': {
@@ -37,18 +48,33 @@ def get_object(post_quantity=8):
                         },
                         'pump_n3': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_21',
                             'mb_cells_idx': 497
                         },
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': 'do_1_21',
+                            'do_start': '',
                             'mb_cells_idx': 34
                         },
                         'pump_os2': {
                             'class': Engine,
                             'do_start': None,
                             'mb_cells_idx': 36
+                        },
+                        'pump_os': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_3',
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_os_ao_1',
+                                    'ao_frequency': 'fc_os_ao_2',
+                                    'ai_status': 'fc_os_ai_1',
+                                    'ai_frequency': 'fc_os_ai_2',
+                                    'ai_alarm_code': 'fc_os_ai_3',
+                                    'mb_cells_idx': None
+                                }
+                            }
                         },
                         'pump_i1': {
                             'class': Engine,

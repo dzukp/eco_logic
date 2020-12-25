@@ -1,6 +1,10 @@
+from pylogic.io_object import IoObject
 from pylogic.logged_object import LoggedObject
+from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Timer, Ton
 from pylogic.utils import Hysteresis
+from simple_pid import PID
+from pylogic.channel import InChannel
 
 
 class Subsystem(LoggedObject):
@@ -37,7 +41,7 @@ class WaterSupplier(Subsystem):
         self.pump = None
         self.tank = None
         self.ai_pressure = None
-        self.di_pressure = None
+        # self.di_pressure = None
         self.enough_pressure = 2.0
         self.pump_on_press = 3.0
         self.pump_off_press = 4.0
@@ -114,6 +118,7 @@ class OsmosisTankFiller(TankFiller):
         self.valve_inlet = None
         self.di_pressure = None
         self.timer = Timer()
+        self.pid_pump = None
         self._state = 0
 
     def process(self):
@@ -124,6 +129,7 @@ class OsmosisTankFiller(TankFiller):
             self.valve_inlet.close()
             self.pump1.stop()
             self.pump2.stop()
+            self.pid_pump.stop()
             self.valve.close()
             if self.started and self.external_enable and self.need_fill():
                 self.set_state(1)
@@ -133,6 +139,7 @@ class OsmosisTankFiller(TankFiller):
             self.valve_inlet.open()
             self.pump1.stop()
             self.pump2.stop()
+            self.pid_pump.stop()
             self.valve.close()
             self.timer.start(5.0)
             # if self.di_pressure.val and self.timer.is_end():
@@ -147,6 +154,7 @@ class OsmosisTankFiller(TankFiller):
             self.valve_inlet.open()
             self.pump1.start()
             self.pump2.stop()
+            self.pid_pump.start()
             self.valve.open()
             self.timer.start(2.0)
             if self.timer.is_end():
@@ -163,6 +171,7 @@ class OsmosisTankFiller(TankFiller):
             self.valve_inlet.open()
             self.pump1.start()
             self.pump2.start()
+            self.pid_pump.start()
             self.valve.open()
             # if not self.di_pressure.val:
             #     self.logger.info('no pressure, stop osmosis filler')
@@ -174,3 +183,42 @@ class OsmosisTankFiller(TankFiller):
     def set_state(self, new_state):
         self._state = new_state
         self.timer.reset()
+
+
+class PidEngine(IoObject, ModbusDataObject):
+
+    _save_attrs = ('set_point', 'pid_k', 'pid_i', 'pid_d')
+
+    def __init__(self, *args, **kwargs):
+        super(PidEngine, self).__init__(*args, **kwargs)
+        self.started = False
+        self.fc = None
+        self.ai_sensor = InChannel(0.0)
+        self.set_point = 0.0
+        self.pid_k = 1.0
+        self.pid_i = 0.0
+        self.pid_d = 0.0
+        self.freq_limits = [20.0, 50.0]
+        self.pid = PID()
+        self.pid.output_limits = tuple(self.freq_limits)
+        self.pid.tunings = (self.pid_k, self.pid_i, self.pid_d)
+
+    def start(self):
+        if not self.started:
+            self.started = True
+            self.logger.info('Start')
+
+    def stop(self):
+        if self.started:
+            self.started = False
+            self.logger.info('Stop')
+
+    def process(self):
+        if self.started:
+            self.fc.start()
+            frequency = self.pid(self.ai_sensor.val)
+            self.fc.set_frequency(frequency)
+        else:
+            self.fc.stop()
+            self.fc.set_frequency(0)
+            self.pid.reset()
