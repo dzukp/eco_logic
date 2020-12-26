@@ -119,15 +119,17 @@ class Altivar212(Mechanism, ModbusDataObject):
             self.reset_alarm = True
             self.logger.info(f'{self.name}: reset command')
 
-    def set_frequency(self, freq, manual=False):
+    def set_frequency(self, freq, manual=False, no_log=False):
         if manual:
             if freq != self.man_frequency_task:
                 self.man_frequency_task = freq
-                self.logger.info(f'set manual frequency task: {freq}')
+                if not no_log:
+                    self.logger.info(f'set manual frequency task: {freq}')
         else:
             if freq != self.auto_frequency_task:
                 self.auto_frequency_task = freq
-                self.logger.debug(f'set auto frequency task: {freq}')
+                if not no_log:
+                    self.logger.debug(f'set auto frequency task: {freq}')
 
     def is_alarm_state(self):
         return self.state_alarm == self.func_state

@@ -217,10 +217,13 @@ class PidEngine(IoObject, ModbusDataObject):
             self.logger.info('Stop')
 
     def process(self):
+        self.pid.tunings = (self.pid_k, self.pid_i, self.pid_d)
+        self.pid.setpoint = self.set_point
+        self.pid.output_limits = tuple(self.freq_limits)
         if self.started:
             self.fc.start()
             frequency = self.pid(self.ai_sensor.val)
-            self.fc.set_frequency(frequency)
+            self.fc.set_frequency(frequency, no_log=True)
         else:
             self.fc.stop()
             self.fc.set_frequency(0)
