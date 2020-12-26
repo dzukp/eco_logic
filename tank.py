@@ -74,7 +74,7 @@ class Tank(IoObject, ModbusDataObject):
             self._want_water = False
 
     def water_level_analizer_v2(self):
-        if self.ton.process(not self.di_hi_level.val, self.no_hi_level_timeout):
+        if self.ton.process(not self.di_hi_level.val, self.no_hi_level_timeout) or not self.di_mid_level:
             self._want_water = True
         else:
             self._want_water = False

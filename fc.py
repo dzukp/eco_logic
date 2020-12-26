@@ -29,10 +29,10 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
         self.ai_alarm_code = InChannel(0)
-        self.ai_frequency.set_trans(trans_divide_10)
+        self.ai_frequency.set_trans(lambda v: v * 0.01)
         self.is_run = False
         self.is_alarm = False
-        self.reset_alarm = False
+        self.reset_alarm = True
         self.auto_frequency_task = 0.0
         self.man_frequency_task = 0.0
         self.timer = Ton()

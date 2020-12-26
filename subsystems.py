@@ -97,14 +97,16 @@ class PumpTankFiller(TankFiller):
         self.no_press_timer = Timer()
 
     def process(self):
-        if self.started and self.external_enable and self.need_fill():
+        if self.started and self.external_enable and not self.tank.di_mid_level.val:
+            self.pump.start()
+            self.valve.open()
+        elif self.started and self.external_enable and self.need_fill():
             self.no_press_timer.start(5.0)
             if self.no_press_timer.is_end():
                 self.pump.start()
-                self.valve.open()
             else:
                 self.pump.stop()
-                self.valve.close()
+            self.valve.close()
         else:
             self.valve.close()
             self.pump.stop()
@@ -189,7 +191,7 @@ class OsmosisTankFiller(TankFiller):
 
 class PidEngine(IoObject, ModbusDataObject):
 
-    _save_attrs = ('set_point', 'pid_k', 'pid_i', 'pid_d')
+    _save_attrs = ('set_point', 'pid_k', 'pid_i', 'pid_d', 'freq_limits')
 
     def __init__(self, *args, **kwargs):
         super(PidEngine, self).__init__(*args, **kwargs)
@@ -198,12 +200,13 @@ class PidEngine(IoObject, ModbusDataObject):
         self.ai_sensor = InChannel(0.0)
         self.set_point = 0.0
         self.pid_k = 1.0
-        self.pid_i = 0.0
+        self.pid_i = 2.0
         self.pid_d = 0.0
         self.freq_limits = [20.0, 50.0]
-        self.pid = PID()
+        self.pid = PID(sample_time=0.5)
         self.pid.output_limits = tuple(self.freq_limits)
         self.pid.tunings = (self.pid_k, self.pid_i, self.pid_d)
+        self.min_freq_timer = Timer()
         self.mb_cells_idx = None
 
     def start(self):
@@ -221,13 +224,21 @@ class PidEngine(IoObject, ModbusDataObject):
         self.pid.setpoint = self.set_point
         self.pid.output_limits = tuple(self.freq_limits)
         if self.started:
-            self.fc.start()
             frequency = self.pid(self.ai_sensor.val)
             self.fc.set_frequency(frequency, no_log=True)
+            if frequency <= self.pid.output_limits[0] + 0.1:
+                self.min_freq_timer.start(timeout=30.0)
+            else:
+                self.min_freq_timer.restart()
+            if self.min_freq_timer.is_end():
+                self.fc.stop()
+            else:
+                self.fc.start()
         else:
             self.fc.stop()
             self.fc.set_frequency(0)
             self.pid.reset()
+            self.min_freq_timer.restart()
 
     def mb_cells(self):
         return [self.mb_cells_idx, self.mb_cells_idx + 1]
@@ -237,10 +248,22 @@ class PidEngine(IoObject, ModbusDataObject):
             float_data = struct.unpack('ffff',
                                        struct.pack('HHHHHHHH',
                                                    *tuple(data[self.mb_cells_idx + 3: self.mb_cells_idx + 11])))
-            self.pid_k = float_data[0]
-            self.pid_i = float_data[1]
-            self.pid_d = float_data[2]
-            self.set_point = float_data[3]
+            if self.pid_k != float_data[0]:
+                self.pid_k = float_data[0]
+                self.logger.info(f'Set Pid K = {self.pid_k}')
+                self.save()
+            if self.pid_i != float_data[1]:
+                self.pid_i = float_data[1]
+                self.logger.info(f'Set Pid I = {self.pid_i}')
+                self.save()
+            if self.pid_d != float_data[2]:
+                self.pid_d = float_data[2]
+                self.logger.info(f'Set Pid K = {self.pid_d}')
+                self.save()
+            if self.set_point != float_data[3]:
+                self.set_point = float_data[3]
+                self.logger.info(f'Set pressure task = {self.set_point}')
+                self.save()
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
