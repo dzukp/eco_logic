@@ -69,6 +69,37 @@ class WaterSupplier(Subsystem):
         return self.ai_pressure.val > self.enough_pressure
 
 
+class ThreePumpWaterSupplier(WaterSupplier):
+
+    def __init__(self, name):
+        super(ThreePumpWaterSupplier, self).__init__(name)
+        self.pump2 = None
+        self.pump3 = None
+        self.hysteresis2 = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
+        self.hysteresis3 = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
+
+    def process(self):
+        super(ThreePumpWaterSupplier, self).process()
+        if self.started and self.external_enable and self.need_pump_2() and not self.tank.is_empty():
+            self.pump2.start()
+        else:
+            self.pump2.stop()
+        if self.started and self.external_enable and self.need_pump_3() and not self.tank.is_empty():
+            self.pump3.start()
+        else:
+            self.pump3.stop()
+
+    def need_pump_2(self):
+        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.33
+        self.hysteresis2.hi = self.pump_off_press
+        return not self.hysteresis2.process(self.ai_pressure.val)
+
+    def need_pump_3(self):
+        self.hysteresis3.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.66
+        self.hysteresis3.hi = self.pump_off_press
+        return not self.hysteresis3.process(self.ai_pressure.val)
+
+
 class TankFiller(Subsystem):
     """  """
 
@@ -95,9 +126,12 @@ class PumpTankFiller(TankFiller):
         self.pump = None
         self.di_press = None
         self.no_press_timer = Timer()
+        self.mid_level_ton = Ton()
 
     def process(self):
-        if self.started and self.external_enable and not self.tank.di_mid_level.val:
+        if self.started and self.external_enable and not self.tank.di_hi_level.val and \
+                not self.mid_level_ton.process(self.tank.di_mid_level.val, 10.0):
+            self.no_press_timer.start(5.0)
             self.pump.start()
             self.valve.open()
         elif self.started and self.external_enable and self.need_fill():

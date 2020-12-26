@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier
+from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, ThreePumpWaterSupplier
 from func_names import FuncNames
 from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
@@ -21,6 +21,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.ai_pe_3 = InChannel(0.0)  # аналоговый датчик давления после насоса П2
         self.di_press_3 = InChannel(False)
         self.pump_n1 = None
+        self.pump_n1_2 = None
+        self.pump_n1_3 = None
         self.pump_n2 = None
         self.pump_n3 = None
         self.pump_os1 = None
@@ -44,7 +46,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_pump_off_press = 4.0
         self.b1_filler = PumpTankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
-        self.water_supplier = WaterSupplier('cold_water')
+        self.water_supplier = ThreePumpWaterSupplier('cold_water')
         self.osmos_supplier = WaterSupplier('osmosis')
         self.start_b1 = True
         self.start_b2 = True
@@ -68,6 +70,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.ai_pressure = self.ai_pe_2
         self.water_supplier.di_pressure = self.di_press_1
         self.water_supplier.pump = self.pump_n1
+        self.water_supplier.pump2 = self.pump_n1_2
+        self.water_supplier.pump3 = self.pump_n1_3
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
         self.osmos_supplier.di_pressure = self.di_press_2
