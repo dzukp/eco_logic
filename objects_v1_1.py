@@ -64,7 +64,7 @@ def get_object(post_quantity=8):
                         'pump_os': {
                             'class': PidEngine,
                             'ai_sensor': 'ai_2_3',
-                            'mb_cells_idx': 473,
+                            'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
                                     'class': Altivar212,

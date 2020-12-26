@@ -230,14 +230,21 @@ class PidEngine(IoObject, ModbusDataObject):
         return [self.mb_cells_idx, self.mb_cells_idx + 1]
 
     def mb_input(self, start_addr, data):
-        pass
+        if self.mb_cells_idx is not None:
+            float_data = struct.unpack('ffff',
+                                       struct.pack('HHHHHHHH',
+                                                   *tuple(data[self.mb_cells_idx + 3: self.mb_cells_idx + 11])))
+            self.pid_k = float_data[0]
+            self.pid_i = float_data[1]
+            self.pid_d = float_data[2]
+            self.set_point = float_data[3]
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             status = int(self.started) * (1 << 0) | \
                      0xD000
-            float_data = struct.pack('ffff', self.ai_sensor.val, self.pid_k, self.pid_i, self.pid_d)
-            float_data = struct.unpack('HHHHHHHH', float_data)
+            float_data = struct.pack('fffff', self.ai_sensor.val, self.pid_k, self.pid_i, self.pid_d, self.set_point)
+            float_data = struct.unpack('HHHHHHHHHH', float_data)
             return {
                 self.mb_cells_idx - start_addr: status,
                 self.mb_cells_idx - start_addr + 1: float_data[0],
@@ -248,6 +255,8 @@ class PidEngine(IoObject, ModbusDataObject):
                 self.mb_cells_idx - start_addr + 6: float_data[5],
                 self.mb_cells_idx - start_addr + 7: float_data[6],
                 self.mb_cells_idx - start_addr + 8: float_data[7],
+                self.mb_cells_idx - start_addr + 9: float_data[8],
+                self.mb_cells_idx - start_addr + 10: float_data[9],
             }
         else:
             return {}
