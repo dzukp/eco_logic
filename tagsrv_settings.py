@@ -90,7 +90,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     fc_modules_2 = []
 
     # if quantity pumps > 4 use both serial ports
-    for i in range(1, max(4, post_quantity // 2)):
+    for i in range(1, max(4, post_quantity // 2) + 1):
         fc_modules_1.append(ModbusRTUModule(i, sources['port_1'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
