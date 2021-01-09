@@ -8006,7 +8006,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Text" format="P2 status: %X"/>
+                <Text Angle="0" string="Text" format="P1.2 status: %X"/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
@@ -8447,7 +8447,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Text" format="P3 status: %X"/>
+                <Text Angle="0" string="Text" format="P1.3 status: %X"/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
@@ -10032,6 +10032,24 @@
                         </Pen>
                         <Pen width="0" name="Пост 4" color="#808000">
                             <Tag type="SourceTag" name="p4_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_5" color="#008080">
+                            <Tag type="SourceTag" name="p5_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_6" color="#800080">
+                            <Tag type="SourceTag" name="p6_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_7" color="#a03030">
+                            <Tag type="SourceTag" name="p7_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_8" color="#30a030">
+                            <Tag type="SourceTag" name="p8_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_9" color="#3030a0">
+                            <Tag type="SourceTag" name="p9_pressure" sourcename="main"/>
+                        </Pen>
+                        <Pen width="0" name="Pen_10" color="#ffff00">
+                            <Tag type="SourceTag" name="p10_pressure" sourcename="main"/>
                         </Pen>
                     </Pens>
                 </RealTime>
