@@ -118,9 +118,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.process()
 
         # Supplying pressure before filter
-        self.pre_filter_supplier.enough_pressure = self.water_enough_press
-        self.pre_filter_supplier.pump_on_press = self.water_pump_on_press
-        self.pre_filter_supplier.pump_off_press = self.water_pump_off_press
+        self.pre_filter_supplier.enough_pressure = 1.5
+        self.pre_filter_supplier.pump_on_press = 2.0
+        self.pre_filter_supplier.pump_off_press = 6.0
         if self.start_water_press:
             self.pre_filter_supplier.start()
         else:
