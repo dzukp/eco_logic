@@ -114,26 +114,60 @@ class PumpTankFiller(TankFiller):
         super().__init__(name)
         self.pump = None
         self.di_press = None
+        self.do_no_press_signal = None
+        self.no_pump_timer = Timer()
+        self.wait_after_no_press_timer = Timer()
         self.no_press_timer = Timer()
         self.mid_level_ton = Ton()
+        self.pump_state = 0
 
     def process(self):
+        pump_start = False
         if self.started and self.external_enable and not self.tank.di_hi_level.val and \
                 not self.mid_level_ton.process(self.tank.di_mid_level.val, 10.0):
-            self.no_press_timer.start(5.0)
-            self.pump.start()
+            self.no_pump_timer.start(5.0)
+            pump_start = True
             self.valve.open()
         elif self.started and self.external_enable and self.need_fill():
-            self.no_press_timer.start(5.0)
-            if self.no_press_timer.is_end():
-                self.pump.start()
-            else:
-                self.pump.stop()
+            self.no_pump_timer.start(5.0)
+            if self.no_pump_timer.is_end():
+                pump_start = True
             self.valve.close()
         else:
             self.valve.close()
+            self.no_pump_timer.reset()
+            self.wait_after_no_press_timer.reset()
+
+        self.pump_process(pump_start)
+
+        if self.do_no_press_signal is not None:
+            self.do_no_press_signal.val = self.pump_state == -1 and self.wait_after_no_press_timer.elapsed() < 10.0
+
+    def pump_process(self, start):
+        if not start:
+            self.pump_state = 0
+        if self.pump_state == -1:
+            # Ожидание после отключения из-за давления
             self.pump.stop()
-            self.no_press_timer.reset()
+            self.wait_after_no_press_timer.start(30.0)
+            if self.wait_after_no_press_timer.is_end():
+                self.pump_state = 0
+        elif self.pump_state == 0:
+            # Бездействие
+            self.pump.stop()
+            if start:
+                self.pump_state = 1
+                self.no_press_timer.reset()
+        elif self.pump_state == 1:
+            # Работа
+            self.pump.start()
+            self.no_press_timer.start(5.0)
+            if self.di_press.val:
+                self.no_press_timer.restart()
+            elif self.no_press_timer.is_end():
+                self.logger.info('no pressure after pump start')
+                self.wait_after_no_press_timer.reset()
+                self.pump_state = -1
 
 
 class OsmosisTankFiller(TankFiller):

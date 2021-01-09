@@ -20,6 +20,8 @@ def get_simulator_objects(post_quantity):
             'di_n2': 'do_1_20',
             'ao_p3': 'ai_2_4',
             'do_press3': None,
+            'di_n3': 'do_1_21',
+            'do_press4': 'di_1_6',
             'children': {
                 'b1': {
                     'class': TankSimulator,

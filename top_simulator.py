@@ -2,6 +2,7 @@ import random
 
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
+from pylogic.timer import Ton, Timer
 
 
 class TopSimulator(IoObject):
@@ -23,6 +24,9 @@ class TopSimulator(IoObject):
         self.di_n2 = InChannel(False)
         self.ao_p3 = OutChannel(0.0)
         self.do_press3 = OutChannel(False)
+        self.di_n3 = InChannel(False)
+        self.do_press4 = OutChannel(False)
+        self.n3_timer = Timer()
 
     def process(self):
         # Water
@@ -53,6 +57,16 @@ class TopSimulator(IoObject):
         else:
             self.ao_p3.val = max(0.0, self.ao_p3.val - 0.027) + random.random() * 0.01
         self.do_press3.val = self.ao_p3.val > 0.5
+
+        if self.di_n3.val:
+            self.n3_timer.start(60)
+        else:
+            self.n3_timer.reset()
+        if self.n3_timer.elapsed() > 20.0:
+            self.do_press4.val = False
+        elif self.n3_timer.elapsed() > 2.0:
+            self.do_press4.val = True
+
 
 
 def get_about_0_rand(range_):

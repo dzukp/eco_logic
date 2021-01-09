@@ -9022,6 +9022,24 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_275" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="8"/>
+                <Geometry rect.top="486" rect.bottom="505" rect.left="45" rect.right="64"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <RectangleProperties Rounded="0" Brush="0" PenWidth="1" Frame="0">
+                    <PenColor g="0" r="0" a="255" b="0"/>
+                </RectangleProperties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="128" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
         </MnemoScreen>
         <MnemoScreen FullName="Settings">
             <Properties>
@@ -10163,6 +10181,8 @@
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_221"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_225"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_229"/>
+                        <Listener Path="" Type="XMnemoRectangle" Name="Rectangle_185"/>
+                        <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_275"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
