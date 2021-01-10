@@ -44,7 +44,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
     else:
         for pref in ('di_1_',):
-            tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 7)]))
+            tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
