@@ -45,7 +45,7 @@ class RpcPostServer(LoggedObject):
         self.server_thread.start()
 
     def run(self):
-        with MyXMLRPCServer(self.host, requestHandler=RequestHandler) as server:
+        with MyXMLRPCServer(self.host, requestHandler=RequestHandler, logRequests=False) as server:
 
             server.register_introspection_functions()
 
