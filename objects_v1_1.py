@@ -35,12 +35,12 @@ def get_object(post_quantity=8):
                         },
                         'pump_n1_2': {
                             'class': Engine,
-                            'do_start': 'do_2_20',
+                            'do_start': 'do_2_21',
                             'mb_cells_idx': 493,
                         },
                         'pump_n1_3': {
                             'class': Engine,
-                            'do_start': 'do_2_21',
+                            'do_start': 'do_2_20',
                             'mb_cells_idx': 495,
                         },
                         'pump_n2': {
@@ -104,7 +104,7 @@ def get_object(post_quantity=8):
                             'di_low_level': 'di_1_1',
                             'di_mid_level': 'di_1_2',
                             'di_hi_level': 'di_1_3',
-                            'water_level_analizer_mode': '2',
+                            'water_level_analizer_mode': '1',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {

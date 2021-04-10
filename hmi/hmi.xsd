@@ -10199,7 +10199,6 @@
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_221"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_225"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_229"/>
-                        <Listener Path="" Type="XMnemoRectangle" Name="Rectangle_185"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_275"/>
                     </ListenersList>
                     <FilterList/>

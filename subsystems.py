@@ -123,15 +123,15 @@ class PumpTankFiller(TankFiller):
 
     def process(self):
         pump_start = False
-        if self.started and self.external_enable and not self.tank.di_hi_level.val and \
-                not self.mid_level_ton.process(self.tank.di_mid_level.val, 10.0):
+        no_hi_level_timeout = self.mid_level_ton.process(not self.tank.di_hi_level.val, 10.0)
+
+        if self.started and self.external_enable and self.need_fill():
             self.no_pump_timer.start(5.0)
             pump_start = True
             self.valve.open()
-        elif self.started and self.external_enable and self.need_fill():
+        elif self.started and self.external_enable and not self.tank.di_hi_level.val and no_hi_level_timeout:
             self.no_pump_timer.start(5.0)
-            if self.no_pump_timer.is_end():
-                pump_start = True
+            pump_start = True
             self.valve.close()
         else:
             self.valve.close()

@@ -46,7 +46,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_enough_press = 2.0
         self.osmosis_pump_on_press = 3.0
         self.osmosis_pump_off_press = 4.0
-        self.b1_filler = PumpTankFiller('b1_filler')
+        self.b1_filler = TankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = TwoPumpWaterSupplier('cold_water')
         self.pre_filter_supplier = WaterSupplier('pre_filter')
