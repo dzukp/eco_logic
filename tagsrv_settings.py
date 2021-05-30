@@ -58,7 +58,10 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     if version in ('1.0',):
         di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10', timeout=0.03)
     else:
-        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.30', timeout=0.03)
+        tags['out'].update(dict([(f'do_6_{i}', OutTag(i)) for i in range(1, 5)]))
+        mk210_tags = [tag for name, tag in tags['in'].items() if name.startswith('di_1_')]
+        mk210_tags += [tag for name, tag in tags['out'].items() if name.startswith('do_6_')]
+        di_1 = OwenDiDoMk210(tags=mk210_tags, ip='192.168.200.30', timeout=0.03)
     # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
     do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')], ip='192.168.200.1',
                            timeout=0.03)

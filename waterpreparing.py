@@ -22,6 +22,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.di_press_3 = InChannel(False)
         self.di_press_4 = InChannel(True)
         self.do_no_n3_press_signal = OutChannel(False)
+        self.do_b2_low_level = OutChannel(False)
         self.pump_n1 = None
         self.pump_n1_2 = None
         self.pump_n1_3 = None
@@ -160,6 +161,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         else:
             self.valve_dose_intensive.close()
             self.pump_i1.stop()
+        self.do_b2_low_level.val = self.tank_b2.di_low_level.val
 
     def is_ready_for_foam(self):
         return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()

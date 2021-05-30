@@ -26,6 +26,7 @@ def get_object(post_quantity=8):
                     'ai_pe_3': 'ai_2_4',
                     'di_press_4': 'di_1_7',
                     'do_no_n3_press_signal': 'do_1_24',
+                    'do_b2_low_level': 'do_6_1',
                     'mb_cells_idx': 0,
                     'children': {
                         'pump_n1': {
