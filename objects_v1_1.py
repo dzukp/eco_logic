@@ -100,6 +100,11 @@ def get_object(post_quantity=8):
                             'do_open': None,
                             'mb_cells_idx': 46
                         },
+                        'valve_b2_1': {
+                            'class': Valve,
+                            'do_open': 'do_2_23',
+                            'mb_cells_idx': 469
+                        },
                         'tank_b1': {
                             'class': Tank,
                             'di_low_level': 'di_1_1',

@@ -36,6 +36,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.tank_b2 = None
         self.valve_b1 = None
         self.valve_b2 = None
+        self.valve_b2_1 = None
         self.valve_water_os = None
         self.valve_dose_wax = None
         self.valve_dose_shampoo = None
@@ -111,6 +112,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         else:
             self.b2_filler.enable()
         self.b2_filler.process()
+        if self.tank_b2.is_empty():
+            self.valve_b2_1.open()
+        else:
+            self.valve_b2_1.close()
 
         # Supplying water
         self.water_supplier.enough_pressure = self.water_enough_press
