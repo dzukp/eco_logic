@@ -9041,7 +9041,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_276" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="405" rect.bottom="428" rect.left="1102" rect.right="1204"/>
+                <Geometry rect.top="408" rect.bottom="431" rect.left="1090" rect.right="1218"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9049,7 +9049,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Text" format="Доз пен Статус: %X"/>
+                <Text Angle="0" string="Text" format="Байпас осм. Статус: %X"/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
