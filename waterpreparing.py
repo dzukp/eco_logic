@@ -112,10 +112,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
         else:
             self.b2_filler.enable()
         self.b2_filler.process()
-        if self.tank_b2.is_empty():
-            self.valve_b2_1.open()
-        else:
-            self.valve_b2_1.close()
 
         # Supplying water
         self.water_supplier.enough_pressure = self.water_enough_press
@@ -136,6 +132,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
         else:
             self.pre_filter_supplier.stop()
         self.pre_filter_supplier.process()
+
+        # If osmosis tank is empty open hot water
+        if self.tank_b2.is_empty():
+            self.valve_b2_1.open()
+        else:
+            self.valve_b2_1.close()
 
         # Supplying osmos
         self.osmos_supplier.enough_pressure = self.osmosis_enough_press
@@ -187,7 +189,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
 
     def is_ready_for_osmosis(self):
-        return self.osmos_supplier.is_can_supply()
+        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
 
     def try_wax(self):
         if self.is_ready_for_wax():
