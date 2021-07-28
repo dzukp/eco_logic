@@ -32,6 +32,8 @@ class FileParameterSaver(LoggedObject):
                 return data
         except FileNotFoundError:
             self.logger.info(f'file for `{name}` not exists, skip')
+        except json.decoder.JSONDecodeError:
+            self.logger.info(f'file for `{name}` has no json content, skip')
 
     def set_subdir(self, dirname):
         self.save_subdir = dirname

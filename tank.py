@@ -84,3 +84,21 @@ class Tank(IoObject, ModbusDataObject):
             return {self.mb_cells_idx + start_addr: cmd, self.mb_cells_idx + 1 - start_addr: status}
         else:
             return {}
+
+
+class FakeTank(IoObject, ModbusDataObject):
+
+    def process(self):
+        pass
+
+    def is_full(self):
+        return True
+
+    def is_want_water(self):
+        return False
+
+    def is_empty(self):
+        return False
+
+    def sensors_error(self):
+        return 0

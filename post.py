@@ -31,7 +31,7 @@ class Post(IoObject, ModbusDataObject):
         self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
-        self.pump = None
+        # self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
         self.func_frequencies = {
@@ -74,8 +74,8 @@ class Post(IoObject, ModbusDataObject):
             if func_name != FuncNames.INTENSIVE:
                 step.set_config(config)
 
-        self.pump.reset()
-        self.pump.reset()
+        # self.pump.reset()
+        # self.pump.reset()
 
     def process(self):
         for func_name, step in self.func_steps.items():
@@ -90,23 +90,23 @@ class Post(IoObject, ModbusDataObject):
         foam_out_valve = False
         for func_name, step in self.func_steps.items():
             step.process()
-            if step.pump:
-                pump = True
-                try:
-                    freq = self.func_frequencies[func_name]
-                except KeyError:
-                    self.logger.error(f'No frequency task for function `{func_name}`')
+            # if step.pump:
+            #     pump = True
+            #     try:
+            #         freq = self.func_frequencies[func_name]
+            #     except KeyError:
+            #         self.logger.error(f'No frequency task for function `{func_name}`')
             if step.out_valve:
                 if func_name == FuncNames.FOAM:
                     foam_out_valve = True
                 else:
                     water_out_valve = True
-        if pump:
-            self.pump.start()
-            self.pump.set_frequency(freq)
-        else:
-            self.pump.stop()
-            self.pump.set_frequency(0.0)
+        # if pump:
+        #     self.pump.start()
+        #     self.pump.set_frequency(freq)
+        # else:
+        #     self.pump.stop()
+        #     self.pump.set_frequency(0.0)
         if foam_out_valve:
             self.valve_out_foam.open()
         else:
@@ -115,15 +115,15 @@ class Post(IoObject, ModbusDataObject):
             self.valve_out_water.open()
         else:
             self.valve_out_water.close()
-        no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
-                                           timeout=self.pressure_timeout)
-        if not self.alarm:
-            if self.pump.is_alarm_state():
-                self.set_alarm()
-                self.logger.info('Set alarm because pump alarm')
-            if no_pressure:
-                self.set_alarm()
-                self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
+        # no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
+        #                                    timeout=self.pressure_timeout)
+        # if not self.alarm:
+        #     if self.pump.is_alarm_state():
+        #         self.set_alarm()
+        #         self.logger.info('Set alarm because pump alarm')
+        #     if no_pressure:
+        #         self.set_alarm()
+        #         self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
         # Alarm auto reset by timeout
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')
@@ -197,6 +197,7 @@ class Post(IoObject, ModbusDataObject):
             }
         else:
             return {}
+
 
 def simulate_pressure(value):
     return 50.0
