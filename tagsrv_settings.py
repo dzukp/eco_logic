@@ -53,7 +53,7 @@ def gen_tagsrv_config(post_quantity=8):
     #                    timeout=0.03)
     dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')] + \
                [tag for name, tag in tags['in'].items() if name.startswith('dio_1_i_')]
-    dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.4', timeout=0.03)
+    dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
     # di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10',
     #                    timeout=0.03)
     # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
