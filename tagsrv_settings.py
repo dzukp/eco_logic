@@ -40,7 +40,7 @@ def gen_tagsrv_config(post_quantity=8):
     # generate dio_1_1_o_1 - di_2_1_o_4
     for pref in dio_names:
         tags['in'].update(dict([(f'{pref}i_{i}', InTag(i)) for i in range(1, 13)]))
-        tags['out'].update(dict([(f'{pref}o_{i}', InTag(i)) for i in range(1, 5)]))
+        tags['out'].update(dict([(f'{pref}o_{i}', OutTag(i)) for i in range(1, 5)]))
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     # for pref in fc_names:
