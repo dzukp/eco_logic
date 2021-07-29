@@ -103,7 +103,7 @@ def get_object(post_quantity=8):
                 'post_8': {
                     'class': Post,
                     'ai_pressure': None,
-                    'di_flow': 'di_1_10',
+                    'di_flow': None,
                     'mb_cells_idx': 60,
                     'children': {
                         'valve_foam': {
@@ -217,7 +217,7 @@ def get_object(post_quantity=8):
                 'post_6': {
                     'class': Post,
                     'ai_pressure': None,
-                    'di_flow': 'di_1_12',
+                    'di_flow': None,
                     'children': {
                         'valve_foam': {
                             'class': Valve,
@@ -269,7 +269,7 @@ def get_object(post_quantity=8):
                 'post_5': {
                     'class': Post,
                     'ai_pressure': None,
-                    'di_flow': 'di_1_13',
+                    'di_flow': None,
                     'children': {
                         'valve_foam': {
                             'class': Valve,
@@ -327,7 +327,7 @@ def get_object(post_quantity=8):
             'post_4': {
                 'class': Post,
                 'ai_pressure': None,
-                'di_flow': 'di_1_14',
+                'di_flow': None,
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -379,7 +379,7 @@ def get_object(post_quantity=8):
             'post_3': {
                 'class': Post,
                 'ai_pressure': None,
-                'di_flow': 'di_1_15',
+                'di_flow': None,
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -431,7 +431,7 @@ def get_object(post_quantity=8):
             'post_2': {
                 'class': Post,
                 'ai_pressure': None,
-                'di_flow': 'di_1_16',
+                'di_flow': None,
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -483,7 +483,7 @@ def get_object(post_quantity=8):
             'post_1': {
                 'class': Post,
                 'ai_pressure': None,
-                'di_flow': 'di_1_17',
+                'di_flow': None,
                 'children': {
                     'valve_foam': {
                         'class': Valve,
@@ -552,7 +552,7 @@ def get_object(post_quantity=8):
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         # obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        module_number = (post_number - 1) // 4
+        module_number = (post_number // 4) + 1
         obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 1}'
         obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 2}'
         obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 3}'
