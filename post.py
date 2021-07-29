@@ -5,7 +5,7 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import SimplePostFunctionSteps, PostIntensiveSteps
+from post_function import SimplePostFunctionSteps, PostIntensiveSteps, TwoValveSteps, SharedValveSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -52,9 +52,11 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timer = Ton()
         self.alarm = False
         self.mb_cells_idx = None
-        self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
-        self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+        self.func_steps = dict([(name, TwoValveSteps(f'{name}_steps'))
+                                for name in FuncNames.all_funcs() if name not in (
+                                    FuncNames.STOP, FuncNames.COLD_WATER, FuncNames.OSMOSIS)])
+        self.func_steps[FuncNames.COLD_WATER] = SharedValveSteps(f'{FuncNames.COLD_WATER}_steps')
+        self.func_steps[FuncNames.OSMOSIS] = SharedValveSteps(f'{FuncNames.OSMOSIS}_steps')
         self.disabled_funcs = []
 
     def init(self):
@@ -65,14 +67,15 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.SHAMPOO: self.valve_shampoo,
             FuncNames.WAX: self.valve_wax,
             FuncNames.HOT_WATER: self.valve_hot_water,
-            FuncNames.COLD_WATER: self.valve_cold_water,
-            FuncNames.OSMOSIS: self.valve_osmos,
+            # FuncNames.COLD_WATER: self.valve_cold_water,
+            # FuncNames.OSMOSIS: self.valve_osmos,
             FuncNames.INTENSIVE: self.valve_intensive
         }
         for func_name, step in self.func_steps.items():
-            step.valve = valves[func_name]
-            if func_name != FuncNames.INTENSIVE:
-                step.set_config(config)
+            if func_name in valves:
+                step.valve = valves[func_name]
+                if func_name != FuncNames.INTENSIVE:
+                    step.set_config(config)
 
         # self.pump.reset()
         # self.pump.reset()
@@ -87,7 +90,7 @@ class Post(IoObject, ModbusDataObject):
         pump = False
         freq = 0.0
         water_out_valve = False
-        foam_out_valve = False
+        osmos_out_valve = False
         for func_name, step in self.func_steps.items():
             step.process()
             # if step.pump:
@@ -97,8 +100,8 @@ class Post(IoObject, ModbusDataObject):
             #     except KeyError:
             #         self.logger.error(f'No frequency task for function `{func_name}`')
             if step.out_valve:
-                if func_name == FuncNames.FOAM:
-                    foam_out_valve = True
+                if func_name in (FuncNames.FOAM, FuncNames.OSMOSIS):
+                    osmos_out_valve = True
                 else:
                     water_out_valve = True
         # if pump:
@@ -107,14 +110,14 @@ class Post(IoObject, ModbusDataObject):
         # else:
         #     self.pump.stop()
         #     self.pump.set_frequency(0.0)
-        if foam_out_valve:
-            self.valve_out_foam.open()
+        if osmos_out_valve:
+            self.valve_osmos.open()
         else:
-            self.valve_out_foam.close()
+            self.valve_osmos.close()
         if water_out_valve:
-            self.valve_out_water.open()
+            self.valve_cold_water.open()
         else:
-            self.valve_out_water.close()
+            self.valve_cold_water.close()
         # no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
         #                                    timeout=self.pressure_timeout)
         # if not self.alarm:

@@ -101,3 +101,87 @@ class PostIntensiveSteps(Steps):
         self.valve.open()
         if self.need_stop:
             return self.idle
+
+
+class TwoValveSteps(Steps):
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.valve = None
+        self.out_valve = False
+        self.pump = False
+        self.need_stop = False
+        self.ton = Ton()
+        self.valve_off_timeout = 1.0
+
+    def set_config(self, config):
+        self.valve_off_timeout = config['valve_off_timeout']
+
+    def stop(self):
+        self.need_stop = True
+
+    def is_active(self):
+        return self.current_step in (self.step_first, self.step_open_valve)
+
+    def idle(self):
+        self.out_valve = False
+        self.pump = False
+        self.valve.close()
+        self.need_stop = False
+
+    def step_first(self):
+        return self.step_open_valve()
+
+    def step_open_valve(self):
+        self.pump = False
+        self.out_valve = True
+        self.valve.open()
+        if self.need_stop:
+            return self.step_close_valve
+
+    def step_close_valve(self):
+        self.out_valve = False
+        self.pump = False
+        if self.ton.process(run=True, timeout=self.valve_off_timeout):
+            self.valve.close()
+            self.ton.reset()
+            return self.idle
+
+
+class SharedValveSteps(Steps):
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.out_valve = False
+        self.pump = False
+        self.need_stop = False
+        self.ton = Ton()
+        self.valve_off_timeout = 1.0
+
+    def set_config(self, config):
+        self.valve_off_timeout = config['valve_off_timeout']
+
+    def stop(self):
+        self.need_stop = True
+
+    def is_active(self):
+        return self.current_step in (self.step_first, self.step_open_valve)
+
+    def idle(self):
+        self.out_valve = False
+        self.pump = False
+        self.need_stop = False
+
+    def step_first(self):
+        return self.step_open_valve()
+
+    def step_open_valve(self):
+        self.pump = False
+        self.out_valve = True
+        if self.need_stop:
+            return self.step_close_valve
+
+    def step_close_valve(self):
+        self.out_valve = False
+        self.pump = False
+        return self.idle

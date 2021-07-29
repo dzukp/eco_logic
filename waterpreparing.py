@@ -147,25 +147,25 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.pump_i1.stop()
 
     def is_ready_for_foam(self):
-        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_wax(self):
-        return self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_shampoo(self):
-        return self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_cold_water(self):
-        return self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_hot_water(self):
-        return self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_intensive(self):
-        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
+        return True
 
     def is_ready_for_osmosis(self):
-        return self.osmos_supplier.is_can_supply()
+        return True
 
     def try_wax(self):
         if self.is_ready_for_wax():
