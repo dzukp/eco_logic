@@ -96,15 +96,15 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     fc_modules_1 = []
     fc_modules_2 = []
 
-    for i in range(1, (post_quantity + 1 , 5)[post_quantity // 5]):
-        fc_modules_1.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
+    for i in range(1, (post_quantity + 1, 5)[post_quantity // 5]):
+        fc_modules_1.append(ModbusRTUModule(i, sources['port_1'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
     for i in range(5, post_quantity + 1):
-        fc_modules_2.append(ModbusRTUModule(i, port_2, io_tags=[], max_answ_len=5,
+        fc_modules_2.append(ModbusRTUModule(i, sources['port_2'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
