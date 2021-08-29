@@ -176,5 +176,16 @@ class Altivar212(Mechanism, ModbusDataObject):
             return {}
 
 
+class OwenFc1(Altivar212):
+    """ Frequency converter Owen controlled by Modbus/RTU """
+
+    CMD_FORWARD_START = 0x847C
+    CMD_STOP = 0x8004
+    CMD_RESET = 0x8044
+
+    MASK_FORWARD_RUN = 0x0800
+    MASK_ALARM = 0x0008
+
+
 def trans_divide_10(value):
     return value / 10.0

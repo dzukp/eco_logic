@@ -19,7 +19,7 @@ def gen_tagsrv_config(post_quantity=8):
     # else:
     #     ai_names = ('ai_1_',)
     #     do_names = ('do_1_', 'do_2_')
-    # fc_names = tuple([f'fc{i}_' for i in range(1, post_quantity + 1)])
+    fc_names = tuple([f'fc{i}_' for i in range(1, post_quantity + 1)])
 
     # ai_names = (,)
     do_names = ('do_1_', 'do_2_',)
@@ -43,9 +43,18 @@ def gen_tagsrv_config(post_quantity=8):
         tags['out'].update(dict([(f'{pref}o_{i}', OutTag(i)) for i in range(1, 9)]))
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
-    # for pref in fc_names:
-    #     tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
-    #     tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+    for pref in fc_names:
+        tags['in'].update(
+            {
+                f'{pref}ai_1': InTag(50199),
+                f'{pref}ai_2': InTag(50299),
+
+                f'{pref}ao_1': InTag(49999),
+                f'{pref}ao_2': InTag(50009)
+            }
+            # dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)])
+        )
+        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
 
     # ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.7.251',
     #                    timeout=0.03)
@@ -70,34 +79,34 @@ def gen_tagsrv_config(post_quantity=8):
     #                        ip='192.168.200.4',
     #                        timeout=0.03)
     #
-    # if os.name == 'posix':
-    #     com_port_name = 'fc_serial'
-    #     com_port1_name = 'fc_serial1'
-    #     com_port2_name = 'fc_serial2'
-    # else:
-    #     com_port1_name = 'COM3'
-    #     com_port2_name = 'COM4'
-    #
-    # port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
-    # port_2 = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
-    #
-    # fc_modules_1 = []
-    # fc_modules_2 = []
-    #
-    # for i in range(1, (post_quantity + 1 , 5)[post_quantity // 5]):
-    #     fc_modules_1.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
-    #                                       in_tags=[tag for name, tag in tags['in'].items() if
-    #                                                name.startswith(f'fc{i}_ai_')],
-    #                                       out_tags=[tag for name, tag in tags['out'].items() if
-    #                                                 name.startswith(f'fc{i}_ao_')]))
-    #
-    # for i in range(5, post_quantity + 1):
-    #     fc_modules_2.append(ModbusRTUModule(i, port_2, io_tags=[], max_answ_len=5,
-    #                                       in_tags=[tag for name, tag in tags['in'].items() if
-    #                                                name.startswith(f'fc{i}_ai_')],
-    #                                       out_tags=[tag for name, tag in tags['out'].items() if
-    #                                                 name.startswith(f'fc{i}_ao_')]))
-    #
+    if os.name == 'posix':
+        com_port_name = 'fc_serial'
+        com_port1_name = 'fc_serial1'
+        com_port2_name = 'fc_serial2'
+    else:
+        com_port1_name = 'COM3'
+        com_port2_name = 'COM4'
+
+    port_1 = SerialSource(port=com_port1_name, baudrate=9600, bytesize=8, parity='N', stopbits=1, timeout=0.1)
+    port_2 = SerialSource(port=com_port2_name, baudrate=9600, bytesize=8, parity='N', stopbits=1, timeout=0.1)
+
+    fc_modules_1 = []
+    fc_modules_2 = []
+
+    for i in range(1, (post_quantity + 1 , 5)[post_quantity // 5]):
+        fc_modules_1.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc{i}_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc{i}_ao_')]))
+
+    for i in range(5, post_quantity + 1):
+        fc_modules_2.append(ModbusRTUModule(i, port_2, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc{i}_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc{i}_ao_')]))
+
     # if post_quantity in (5, 6, 7, 8):
     #     modules = [do_1, do_2, do_3, do_4, di_1, ai_1, ai_2]
     # else:
@@ -107,8 +116,8 @@ def gen_tagsrv_config(post_quantity=8):
         'disp_1': ParallelDispatcher(
             modules=(do_1, do_2, dio_1)
         ),
-        # 'mb_disp1': SerialDispatcher(modules=fc_modules_1),
-        # 'mb_disp2': SerialDispatcher(modules=fc_modules_2)
+        'mb_disp1': SerialDispatcher(modules=fc_modules_1),
+        'mb_disp2': SerialDispatcher(modules=fc_modules_2)
     }
 
     return {
