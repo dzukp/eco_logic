@@ -47,14 +47,15 @@ def gen_tagsrv_config(post_quantity=8):
         tags['in'].update(
             {
                 f'{pref}ai_1': InTag(50199),
-                f'{pref}ai_2': InTag(50299),
-
-                f'{pref}ao_1': InTag(49999),
-                f'{pref}ao_2': InTag(50009)
+                f'{pref}ai_2': InTag(50299)
             }
-            # dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)])
         )
-        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+        tags['out'].update(
+            {
+                f'{pref}ao_1': OutTag(49999),
+                f'{pref}ao_2': OutTag(50009)
+            }
+        )
 
     # ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.7.251',
     #                    timeout=0.03)
