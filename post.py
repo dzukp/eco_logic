@@ -31,7 +31,7 @@ class Post(IoObject, ModbusDataObject):
         self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
-        # self.pump = None
+        self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
         self.func_frequencies = {
@@ -52,7 +52,8 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timer = Ton()
         self.alarm = False
         self.mb_cells_idx = None
-        self.func_steps = dict([(name, MultiValveSteps(f'{name}_steps')) for name in FuncNames.all_funcs()])
+        self.func_steps = dict([(name, MultiValveSteps(f'{name}_steps'))
+                                for name in FuncNames.all_funcs() if name != FuncNames.STOP])
         self.disabled_funcs = []
 
     def init(self):
@@ -74,8 +75,7 @@ class Post(IoObject, ModbusDataObject):
                     step.pump_link = [self.valve_cold_water]
                 step.set_config(config)
 
-        # self.pump.reset()
-        # self.pump.reset()
+        self.pump.reset()
 
     def process(self):
         for func_name, step in self.func_steps.items():
@@ -84,10 +84,16 @@ class Post(IoObject, ModbusDataObject):
                     step.start()
             else:
                 step.stop()
-        # pump = False
-        # freq = 0.0
+        pump = False
+        freq = 0.0
         for func_name, step in self.func_steps.items():
             step.process()
+            if step.pump:
+                pump = True
+                try:
+                    freq = self.func_frequencies[func_name]
+                except KeyError:
+                    self.logger.error(f'No frequency task for function `{func_name}`')
 
         all_valves = set()
         opened_valves = set()
@@ -101,12 +107,12 @@ class Post(IoObject, ModbusDataObject):
         for valve in opened_valves:
             valve.open()
 
-        # if pump:
-        #     self.pump.start()
-        #     self.pump.set_frequency(freq)
-        # else:
-        #     self.pump.stop()
-        #     self.pump.set_frequency(0.0)
+        if pump:
+            self.pump.start()
+            self.pump.set_frequency(freq)
+        else:
+            self.pump.stop()
+            self.pump.set_frequency(0.0)
         # no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
         #                                    timeout=self.pressure_timeout)
         # if not self.alarm:
