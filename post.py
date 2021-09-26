@@ -60,18 +60,18 @@ class Post(IoObject, ModbusDataObject):
         config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
                   'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
-            FuncNames.FOAM: [self.valve_foam, self.valve_hot_water, self.valve_osmos, self.valve_shampoo],
-            FuncNames.SHAMPOO: [self.valve_shampoo, self.valve_hot_water],
+            FuncNames.FOAM: [self.valve_foam, ],
+            FuncNames.SHAMPOO: [self.valve_shampoo, ],
             FuncNames.WAX: [self.valve_wax],
             FuncNames.HOT_WATER: [self.valve_hot_water],
-            FuncNames.COLD_WATER: [],
+            FuncNames.COLD_WATER: [self.valve_cold_water, ],
             FuncNames.OSMOSIS: [self.valve_osmos],
             FuncNames.INTENSIVE: [self.valve_intensive]
         }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
-                if func_name != FuncNames.INTENSIVE:
+                if func_name == FuncNames.FOAM:
                     step.pump_link = [self.valve_cold_water]
                 step.set_config(config)
 

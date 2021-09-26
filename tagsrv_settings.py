@@ -23,7 +23,7 @@ def gen_tagsrv_config(post_quantity=8):
 
     # ai_names = (,)
     do_names = ('do_1_', 'do_2_',)
-    dio_names = ('dio_1_',)
+    dio_names = ('dio_1_', 'dio_2_')
 
     # generate ai_1_1 - ai_2_8
     # for pref in ai_names:
@@ -61,9 +61,12 @@ def gen_tagsrv_config(post_quantity=8):
     #                    timeout=0.03)
     # ai_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_')], ip='192.168.200.20',
     #                    timeout=0.03)
-    dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')] + \
+    dio1_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')] + \
                [tag for name, tag in tags['in'].items() if name.startswith('dio_1_i_')]
-    dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
+    dio_1 = OwenDiDoMk210(tags=dio1_tags, ip='192.168.200.30', timeout=0.03)
+    dio2_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_2_o_')] + \
+               [tag for name, tag in tags['in'].items() if name.startswith('dio_2_i_')]
+    dio_2 = OwenDiDoMk210(tags=dio2_tags, ip='192.168.200.31', timeout=0.03)
     # di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10',
     #                    timeout=0.03)
     # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')

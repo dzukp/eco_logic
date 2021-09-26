@@ -559,7 +559,7 @@ def get_object(post_quantity=8):
         obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 4}'
         obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 5}'
         obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 6}'
-        obj['children']['valve_intensive']['do_open'] = f'dio_1_o_{post_number}'
+        obj['children']['valve_intensive']['do_open'] = f'dio_{module_number}_o_{(post_number - 1) % 4 + 1}'
         obj['children']['valve_out_water']['do_open'] = None
         obj['children']['valve_out_foam']['do_open'] = None
 
