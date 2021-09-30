@@ -186,6 +186,10 @@ class OwenFc1(Altivar212):
     MASK_FORWARD_RUN = 0x0800
     MASK_ALARM = 0x0008
 
+    def process(self):
+        super(OwenFc1, self).process()
+        self.ao_frequency.val = self.ao_frequency.val / 5000.0 * 16384.0
+
 
 def trans_divide_10(value):
     return value / 10.0

@@ -47,7 +47,7 @@ def gen_tagsrv_config(post_quantity=8):
         tags['in'].update(
             {
                 f'{pref}ai_1': InTag(50199),
-                f'{pref}ai_2': InTag(50209)
+                f'{pref}ai_2': InTag(16129)
             }
         )
         tags['out'].update(
