@@ -100,7 +100,7 @@ def get_object(post_quantity=8):
                         }
                     }
                 },
-                'post_8': {
+                'post_1': {
                     'class': Post,
                     'ai_pressure': None,
                     'di_flow': None,
@@ -162,7 +162,7 @@ def get_object(post_quantity=8):
                         # }
                     }
                 },
-                'post_7': {
+                'post_2': {
                     'class': Post,
                     'ai_pressure': None,
                     'di_flow': None,
@@ -214,7 +214,7 @@ def get_object(post_quantity=8):
                         # }
                     }
                 },
-                'post_6': {
+                'post_3': {
                     'class': Post,
                     'ai_pressure': None,
                     'di_flow': None,
@@ -266,7 +266,7 @@ def get_object(post_quantity=8):
                         # }
                     }
                 },
-                'post_5': {
+                'post_4': {
                     'class': Post,
                     'ai_pressure': None,
                     'di_flow': None,
@@ -324,7 +324,7 @@ def get_object(post_quantity=8):
 
     if post_quantity > 4:
         posts5_8 = {
-            'post_4': {
+            'post_5': {
                 'class': Post,
                 'ai_pressure': None,
                 'di_flow': None,
@@ -376,7 +376,7 @@ def get_object(post_quantity=8):
                     # }
                 }
             },
-            'post_3': {
+            'post_6': {
                 'class': Post,
                 'ai_pressure': None,
                 'di_flow': None,
@@ -428,110 +428,110 @@ def get_object(post_quantity=8):
                     # }
                 }
             },
-            'post_2': {
-                'class': Post,
-                'ai_pressure': None,
-                'di_flow': None,
-                'children': {
-                    'valve_foam': {
-                        'class': Valve,
-                        'do_open': 'do_3_17'
-                    },
-                    'valve_wax': {
-                        'class': Valve,
-                        'do_open': 'do_3_18'
-                    },
-                    'valve_shampoo': {
-                        'class': Valve,
-                        'do_open': 'do_3_19'
-                    },
-                    'valve_cold_water': {
-                        'class': Valve,
-                        'do_open': 'do_3_20'
-                    },
-                    'valve_hot_water': {
-                        'class': Valve,
-                        'do_open': 'do_3_21'
-                    },
-                    'valve_osmos': {
-                        'class': Valve,
-                        'do_open': 'do_3_22'
-                    },
-                    'valve_out_water': {
-                        'class': Valve,
-                        'do_open': 'do_3_23'
-                    },
-                    'valve_out_foam': {
-                        'class': Valve,
-                        'do_open': 'do_3_24'
-                    },
-                    'valve_intensive': {
-                        'class': Valve,
-                        'do_open': 'do_2_10'
-                    },
-                    # 'pump': {
-                    #     'class': Altivar212,
-                    #     'ao_command': 'fc7_ao_1',
-                    #     'ao_frequency': 'fc7_ao_2',
-                    #     'ai_status': 'fc7_ai_1',
-                    #     'ai_frequency': 'fc7_ai_2',
-                    #     'ai_alarm_code': 'fc7_ai_3',
-                    #     'mb_cells_idx': None
-                    # }
-                }
-            },
-            'post_1': {
-                'class': Post,
-                'ai_pressure': None,
-                'di_flow': None,
-                'children': {
-                    'valve_foam': {
-                        'class': Valve,
-                        'do_open': 'do_4_1'
-                    },
-                    'valve_wax': {
-                        'class': Valve,
-                        'do_open': 'do_4_2'
-                    },
-                    'valve_shampoo': {
-                        'class': Valve,
-                        'do_open': 'do_4_3'
-                    },
-                    'valve_cold_water': {
-                        'class': Valve,
-                        'do_open': 'do_4_4'
-                    },
-                    'valve_hot_water': {
-                        'class': Valve,
-                        'do_open': 'do_4_5'
-                    },
-                    'valve_osmos': {
-                        'class': Valve,
-                        'do_open': 'do_4_6'
-                    },
-                    'valve_out_water': {
-                        'class': Valve,
-                        'do_open': 'do_4_7'
-                    },
-                    'valve_out_foam': {
-                        'class': Valve,
-                        'do_open': 'do_4_8'
-                    },
-                    'valve_intensive': {
-                        'class': Valve,
-                        'do_open': 'do_2_9'
-                    },
-                    # 'pump': {
-                    #     'class': Altivar212,
-                    #     'ao_command': 'fc8_ao_1',
-                    #     'ao_frequency': 'fc8_ao_2',
-                    #     'ai_status': 'fc8_ai_1',
-                    #     'ai_frequency': 'fc8_ai_2',
-                    #     'ai_alarm_code': 'fc8_ai_3',
-                    #     'mb_cells_idx': None
-                    # }
-                }
-            }
+            # 'post_7': {
+            #     'class': Post,
+            #     'ai_pressure': None,
+            #     'di_flow': None,
+            #     'children': {
+            #         'valve_foam': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_17'
+            #         },
+            #         'valve_wax': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_18'
+            #         },
+            #         'valve_shampoo': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_19'
+            #         },
+            #         'valve_cold_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_20'
+            #         },
+            #         'valve_hot_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_21'
+            #         },
+            #         'valve_osmos': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_22'
+            #         },
+            #         'valve_out_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_23'
+            #         },
+            #         'valve_out_foam': {
+            #             'class': Valve,
+            #             'do_open': 'do_3_24'
+            #         },
+            #         'valve_intensive': {
+            #             'class': Valve,
+            #             'do_open': 'do_2_10'
+            #         },
+            #         # 'pump': {
+            #         #     'class': Altivar212,
+            #         #     'ao_command': 'fc7_ao_1',
+            #         #     'ao_frequency': 'fc7_ao_2',
+            #         #     'ai_status': 'fc7_ai_1',
+            #         #     'ai_frequency': 'fc7_ai_2',
+            #         #     'ai_alarm_code': 'fc7_ai_3',
+            #         #     'mb_cells_idx': None
+            #         # }
+            #     }
+            # },
+            # 'post_8': {
+            #     'class': Post,
+            #     'ai_pressure': None,
+            #     'di_flow': None,
+            #     'children': {
+            #         'valve_foam': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_1'
+            #         },
+            #         'valve_wax': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_2'
+            #         },
+            #         'valve_shampoo': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_3'
+            #         },
+            #         'valve_cold_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_4'
+            #         },
+            #         'valve_hot_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_5'
+            #         },
+            #         'valve_osmos': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_6'
+            #         },
+            #         'valve_out_water': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_7'
+            #         },
+            #         'valve_out_foam': {
+            #             'class': Valve,
+            #             'do_open': 'do_4_8'
+            #         },
+            #         'valve_intensive': {
+            #             'class': Valve,
+            #             'do_open': 'do_2_9'
+            #         },
+            #         # 'pump': {
+            #         #     'class': Altivar212,
+            #         #     'ao_command': 'fc8_ao_1',
+            #         #     'ao_frequency': 'fc8_ao_2',
+            #         #     'ai_status': 'fc8_ai_1',
+            #         #     'ai_frequency': 'fc8_ai_2',
+            #         #     'ai_alarm_code': 'fc8_ai_3',
+            #         #     'mb_cells_idx': None
+            #         # }
+            #     }
+            # }
         }
         objects['top']['children'].update(posts5_8)
 
@@ -559,7 +559,7 @@ def get_object(post_quantity=8):
         obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 4}'
         obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 5}'
         obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 6}'
-        obj['children']['valve_intensive']['do_open'] = f'dio_1_o_{post_number}'
+        obj['children']['valve_intensive']['do_open'] = f'do_2_{post_number + 18}'
         obj['children']['valve_out_water']['do_open'] = None
         obj['children']['valve_out_foam']['do_open'] = None
 
