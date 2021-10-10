@@ -174,8 +174,6 @@ class OsmosisTankFiller(TankFiller):
 
     def __init__(self, name):
         super().__init__(name)
-        self.pump1 = None
-        self.pump2 = None
         self.valve_inlet = None
         self.di_pressure = None
         self.timer = Timer()
@@ -188,8 +186,6 @@ class OsmosisTankFiller(TankFiller):
         # no filling
         if self._state == 0:
             self.valve_inlet.close()
-            self.pump1.stop()
-            self.pump2.stop()
             self.pid_pump.stop()
             self.valve.close()
             if self.started and self.external_enable and self.need_fill():
@@ -198,8 +194,6 @@ class OsmosisTankFiller(TankFiller):
         # open inlet valve
         elif self._state == 1:
             self.valve_inlet.open()
-            self.pump1.stop()
-            self.pump2.stop()
             self.pid_pump.stop()
             self.valve.close()
             self.timer.start(5.0)
@@ -213,8 +207,6 @@ class OsmosisTankFiller(TankFiller):
         # start 1 pump and open valve
         elif self._state == 2:
             self.valve_inlet.open()
-            self.pump1.start()
-            self.pump2.stop()
             self.pid_pump.start()
             self.valve.open()
             self.timer.start(2.0)
@@ -230,8 +222,6 @@ class OsmosisTankFiller(TankFiller):
         # start 2 pump
         elif self._state == 3:
             self.valve_inlet.open()
-            self.pump1.start()
-            self.pump2.start()
             self.pid_pump.start()
             self.valve.open()
             # if not self.di_pressure.val:

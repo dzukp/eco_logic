@@ -4,7 +4,8 @@ function selectPost(number) {
 	getGlobalVar('post_cmd').setBindSpeaker(getTag('main', prefix + 'cmd'))
 	getGlobalVar('post_status').setBindSpeaker(getTag('main', prefix + 'status'))
 	getGlobalVar('post_pressure').setBindSpeaker(getTag('main', prefix + 'pressure'))
-	getGlobalVar('post_number').setBindSpeaker(getTag('main', prefix + 'number'))
+	getGlobalVar('post_function').setBindSpeaker(getTag('main', prefix + 'number'))
+	getGlobalVar('post_number').setIntData(number)
 
 	var mechs = ['foam', 'wax', 'shampoo', 'cold_water', 'hot_water', 'osmos', 'out_water', 'out_foam', 'intensive']
 	for (var i = 0; i < mechs.length; i++ ) {

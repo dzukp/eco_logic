@@ -11,25 +11,23 @@ import sys
 from pylogic.main import main
 from pylogic.logged_object import DEFAULT_LOGGER
 from pylogic.modbus_supervisor import ModbusSupervisor
-from objects import get_object, get_simulator_object
+from objects import get_object
+from simulator_objects import get_simulator_objects
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
 
 
 def start():
-    post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8
-    version = '1.1'
-    for a in sys.argv:
-        if a.startswith('v'):
-            version = a.lstrip('v')
-    sim_obj = get_simulator_object(version=version, post_quantity=post_quantity) if '--simulator' in sys.argv else {}
+    # post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 12
+    post_quantity = (6, 6)
+    sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():
         makedirs(log_dir.absolute())
     config = {
-        'objects': get_object(version=version, post_quantity=post_quantity),
+        'objects': get_object(post_quantity),
         'simulators': sim_obj,
-        'tagsrv_settings': gen_tagsrv_config(version=version, post_quantity=post_quantity),
+        'tagsrv_settings': gen_tagsrv_config(post_quantity),
         'logging_conf': logging_config,
         'supervisors': {'supervis_modbus': ModbusSupervisor,}
     }

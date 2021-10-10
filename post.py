@@ -24,11 +24,11 @@ class Post(IoObject, ModbusDataObject):
         self.di_flow = InChannel(False)
         self.valve_foam = None
         self.valve_wax = None
-        self.valve_shampoo = None
+        self.valve_solution = None
         self.valve_cold_water = None
-        self.valve_hot_water = None
+        # self.valve_hot_water = None
         self.valve_osmos = None
-        self.valve_intensive = None
+        # self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
         self.pump = None
@@ -53,8 +53,9 @@ class Post(IoObject, ModbusDataObject):
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
-        self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+                                for name in FuncNames.all_funcs() if name not in (
+                                    FuncNames.STOP, FuncNames.INTENSIVE, FuncNames.HOT_WATER)])
+        # self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
         self.disabled_funcs = []
 
     def init(self):
@@ -62,12 +63,12 @@ class Post(IoObject, ModbusDataObject):
                   'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
             FuncNames.FOAM: self.valve_foam,
-            FuncNames.SHAMPOO: self.valve_shampoo,
+            FuncNames.SHAMPOO: self.valve_solution,
             FuncNames.WAX: self.valve_wax,
-            FuncNames.HOT_WATER: self.valve_hot_water,
+            # FuncNames.HOT_WATER: self.valve_hot_water,
             FuncNames.COLD_WATER: self.valve_cold_water,
             FuncNames.OSMOSIS: self.valve_osmos,
-            FuncNames.INTENSIVE: self.valve_intensive
+            # FuncNames.INTENSIVE: self.valve_intensive
         }
         for func_name, step in self.func_steps.items():
             step.valve = valves[func_name]
@@ -197,6 +198,3 @@ class Post(IoObject, ModbusDataObject):
             }
         else:
             return {}
-
-def simulate_pressure(value):
-    return 50.0
