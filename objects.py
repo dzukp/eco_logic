@@ -22,36 +22,36 @@ def get_object(post_quantity=(6, 6)):
     supplier = {
         'class': WaterPreparing,
         'di_press_1': None,
-        'ai_pe_1': None,
+        'ai_pe_1': 'ai_1_2_1',
         'di_press_2': None,
-        'ai_pe_2': None,
+        'ai_pe_2': 'ai_1_2_2',
         'di_press_3': None,
-        'ai_pe_3': None,
+        'ai_pe_3': 'ai_1_2_8',
         'mb_cells_idx': 0,
         'children': {
             'pump_n1': {
                 'class': Engine,
-                'do_start': None,
+                'do_start': 'do_1_2_13',
                 'mb_cells_idx': 30,
             },
             'pump_n2': {
                 'class': Engine,
-                'do_start': None,
+                'do_start': 'do_1_2_14',
                 'mb_cells_idx': 32
             },
             'pump_n1_2': {
                 'class': Engine,
-                'do_start': None,
+                'do_start': 'do_1_2_18',
                 'mb_cells_idx': 493
             },
             'pump_n3': {
                 'class': Engine,
-                'do_start': None,
+                'do_start': 'do_1_2_19',
                 'mb_cells_idx': 497
             },
             'pump_os': {
                 'class': PidEngine,
-                'ai_sensor': None,
+                'ai_sensor': 'ai_1_2_4',
                 'mb_cells_idx': 471,
                 'children': {
                     'fc': {
@@ -65,11 +65,6 @@ def get_object(post_quantity=(6, 6)):
                     }
                 }
             },
-            'pump_i1': {
-                'class': Engine,
-                'do_start': None,
-                'mb_cells_idx': 38
-            },
             'valve_water_os': {
                 'class': Valve,
                 'do_open': None,
@@ -82,12 +77,12 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_b1': {
                 'class': Valve,
-                'do_open': None,
+                'do_open': 'do_1_2_20',
                 'mb_cells_idx': 44
             },
             'valve_b2': {
                 'class': Valve,
-                'do_open': None,
+                'do_open': 'do_1_2_21',
                 'mb_cells_idx': 46
             },
             'valve_b3': {
@@ -201,6 +196,10 @@ def get_object(post_quantity=(6, 6)):
             
             start_addr = 60 + (post_number - 1) * 32
             new_post['mb_cells_idx'] = start_addr
+
+            new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
+            new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
+
             children = new_post['children']
             children['valve_foam']['mb_cells_idx'] = start_addr + 5
             children['valve_wax']['mb_cells_idx'] = start_addr + 7
@@ -222,11 +221,11 @@ def get_object(post_quantity=(6, 6)):
             children['valve_foam']['do_open'] = f'do_{side}_{module}_{6 + d}'
             children['valve_out_water']['do_open'] = None
             children['valve_out_foam']['do_open'] = None
-            children['pump']['ao_command'] = f'fc_{side}_{post_number}_ao_1',
-            children['pump']['ao_frequency'] = f'fc_{side}_{post_number}_ao_2',
-            children['pump']['ai_status'] = f'fc_{side}_{post_number}_ai_1',
-            children['pump']['ai_frequency'] = f'fc_{side}_{post_number}_ai_2',
-            children['pump']['ai_alarm_code'] = f'fc_{side}_{post_number}_ai_3',
+            children['pump']['ao_command'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_1'
+            children['pump']['ao_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_2'
+            children['pump']['ai_status'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_1'
+            children['pump']['ai_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_2'
+            children['pump']['ai_alarm_code'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_3'
 
     return objects
 

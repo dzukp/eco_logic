@@ -172,11 +172,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def is_ready_for_cold_water(self):
         return self.water_supplier.is_can_supply()
 
-    def is_ready_for_hot_water(self):
+    def is_ready_for_brush(self):
         return self.water_supplier.is_can_supply()
-
-    def is_ready_for_intensive(self):
-        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
 
     def is_ready_for_osmosis(self):
         return self.osmos_supplier.is_can_supply()
@@ -208,22 +205,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.stop_foam()
             return False
 
-    def try_intensive(self):
-        if self.is_ready_for_intensive():
-            # self.valve_dose_intensive.open()
-            self.pump_i1.start()
-            self.active_functions.add(FuncNames.INTENSIVE)
+    def try_brush(self):
+        if self.is_ready_for_brush():
+            self.active_functions.add(FuncNames.BRUSH)
             return True
         else:
-            self.stop_intensive()
-            return False
-
-    def try_hot_water(self):
-        if self.is_ready_for_hot_water():
-            self.active_functions.add(FuncNames.HOT_WATER)
-            return True
-        else:
-            self.stop_hot_water()
+            self.stop_brush()
             return False
 
     def try_cold_water(self):
@@ -254,13 +241,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.active_functions.discard(FuncNames.FOAM)
         # self.valve_dose_foam.close()
 
-    def stop_intensive(self):
-        self.active_functions.discard(FuncNames.INTENSIVE)
-        # self.valve_dose_intensive.close()
-        self.pump_i1.stop()
-
-    def stop_hot_water(self):
-        self.active_functions.discard(FuncNames.HOT_WATER)
+    def stop_brush(self):
+        self.active_functions.discard(FuncNames.BRUSH)
 
     def stop_cold_water(self):
         self.active_functions.discard(FuncNames.COLD_WATER)

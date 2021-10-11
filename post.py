@@ -1,11 +1,9 @@
-import time
-
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import SimplePostFunctionSteps, PostIntensiveSteps
+from post_function import SimplePostFunctionSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -18,17 +16,13 @@ class Post(IoObject, ModbusDataObject):
     def __init__(self, name, parent):
         super().__init__(name, parent)
         self.ai_pressure = InChannel(0.0)
-
-        # self.ai_pressure.set_trans(simulate_pressure)
-
         self.di_flow = InChannel(False)
         self.valve_foam = None
         self.valve_wax = None
         self.valve_solution = None
         self.valve_cold_water = None
-        # self.valve_hot_water = None
+        self.valve_brush = None
         self.valve_osmos = None
-        # self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
         self.pump = None
@@ -38,7 +32,7 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.FOAM: 25.0,
             FuncNames.SHAMPOO: 40.0,
             FuncNames.WAX: 40.0,
-            FuncNames.HOT_WATER: 40.0,
+            FuncNames.BRUSH: 40.0,
             FuncNames.COLD_WATER: 40.0,
             FuncNames.OSMOSIS: 40.0,
         }
@@ -54,8 +48,7 @@ class Post(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
                                 for name in FuncNames.all_funcs() if name not in (
-                                    FuncNames.STOP, FuncNames.INTENSIVE, FuncNames.HOT_WATER)])
-        # self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+                                    FuncNames.STOP, FuncNames.BRUSH)])
         self.disabled_funcs = []
 
     def init(self):
@@ -65,15 +58,13 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.FOAM: self.valve_foam,
             FuncNames.SHAMPOO: self.valve_solution,
             FuncNames.WAX: self.valve_wax,
-            # FuncNames.HOT_WATER: self.valve_hot_water,
+            FuncNames.BRUSH: self.valve_brush,
             FuncNames.COLD_WATER: self.valve_cold_water,
-            FuncNames.OSMOSIS: self.valve_osmos,
-            # FuncNames.INTENSIVE: self.valve_intensive
+            FuncNames.OSMOSIS: self.valve_osmos
         }
         for func_name, step in self.func_steps.items():
             step.valve = valves[func_name]
-            if func_name != FuncNames.INTENSIVE:
-                step.set_config(config)
+            step.set_config(config)
 
         self.pump.reset()
         self.pump.reset()

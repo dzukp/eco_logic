@@ -70,19 +70,12 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.supplier.stop_foam()
 
-        if FuncNames.INTENSIVE in wished_funcs:
-            if not self.supplier.try_intensive():
-                prepared_funcs.remove(FuncNames.INTENSIVE)
-                self.logger.debug(f'It not ready for function `{FuncNames.INTENSIVE}`')
+        if FuncNames.BRUSH in wished_funcs:
+            if not self.supplier.try_brush():
+                prepared_funcs.remove(FuncNames.BRUSH)
+                self.logger.debug(f'It not ready for function `{FuncNames.BRUSH}`')
         else:
-            self.supplier.stop_intensive()
-
-        if FuncNames.HOT_WATER in wished_funcs:
-            if not self.supplier.try_hot_water():
-                prepared_funcs.remove(FuncNames.HOT_WATER)
-                self.logger.debug(f'It not ready for function `{FuncNames.HOT_WATER}`')
-        else:
-            self.supplier.stop_hot_water()
+            self.supplier.stop_brush()
 
         if FuncNames.COLD_WATER in wished_funcs:
             if not self.supplier.try_cold_water():
@@ -153,8 +146,8 @@ class Top(IoObject, ModbusDataObject):
                 self.supplier.is_ready_for_osmosis() and self.posts[post_name].is_func_allowed(FuncNames.OSMOSIS),
             FuncNames.COLD_WATER:
                 self.supplier.is_ready_for_cold_water() and self.posts[post_name].is_func_allowed(FuncNames.COLD_WATER),
-            FuncNames.HOT_WATER:
-                self.supplier.is_ready_for_hot_water() and self.posts[post_name].is_func_allowed(FuncNames.HOT_WATER)
+            FuncNames.BRUSH:
+                self.supplier.is_ready_for_brush() and self.posts[post_name].is_func_allowed(FuncNames.BRUSH)
         }
 
     def get_post_function(self, post_name):
@@ -180,8 +173,8 @@ class Top(IoObject, ModbusDataObject):
                     p.set_func_pump_frequency(FuncNames.SHAMPOO, data[self.mb_cells_idx - start_addr + 4])
                 if data[self.mb_cells_idx - start_addr + 5] != p.func_frequencies[FuncNames.WAX]:
                     p.set_func_pump_frequency(FuncNames.WAX, data[self.mb_cells_idx - start_addr + 5])
-                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.HOT_WATER]:
-                    p.set_func_pump_frequency(FuncNames.HOT_WATER, data[self.mb_cells_idx - start_addr + 6])
+                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.BRUSH]:
+                    p.set_func_pump_frequency(FuncNames.BRUSH, data[self.mb_cells_idx - start_addr + 6])
                 if data[self.mb_cells_idx - start_addr + 7] != p.func_frequencies[FuncNames.COLD_WATER]:
                     p.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
                 if data[self.mb_cells_idx - start_addr + 8] != p.func_frequencies[FuncNames.OSMOSIS]:
@@ -198,7 +191,7 @@ class Top(IoObject, ModbusDataObject):
                 int(self.posts['post_1'].func_frequencies[FuncNames.FOAM]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.SHAMPOO]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.WAX]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.HOT_WATER]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.BRUSH]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.COLD_WATER]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.OSMOSIS]),
                 int(self.posts['post_1'].pressure_timeout),
