@@ -88,18 +88,19 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
 
     ports = {1: SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
              2: SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)}
-    fc_modules = []
+    fc_modules = {1: [], 2: []}
 
+    slave = 0
     for section_num, section_post_quantity in enumerate(post_quantity, start=1):
         for i in range(1, section_post_quantity + 1):
-            slave = i * section_num
-            fc_modules.append(ModbusRTUModule(slave, ports[section_num], io_tags=[], max_answ_len=5,
+            slave += 1
+            fc_modules[section_num].append(ModbusRTUModule(slave, ports[section_num], io_tags=[], max_answ_len=5,
                                               in_tags=[tag for name, tag in tags['in'].items() if
                                                        name.startswith(f'fc_{section_num}_{i}_ai_')],
                                               out_tags=[tag for name, tag in tags['out'].items() if
                                                         name.startswith(f'fc_{section_num}_{i}_ao_')]))
 
-    fc_modules.append(ModbusRTUModule(30, ports[1], io_tags=[], max_answ_len=5,
+    fc_modules[1].append(ModbusRTUModule(30, ports[1], io_tags=[], max_answ_len=5,
                                      in_tags=[tag for name, tag in tags['in'].items() if
                                               name.startswith(f'fc_os_ai_')],
                                      out_tags=[tag for name, tag in tags['out'].items() if
@@ -112,7 +113,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         'disp_1': ParallelDispatcher(
             modules=modules
         ),
-        'mb_disp': SerialDispatcher(modules=fc_modules)
+        'mb_disp_1': SerialDispatcher(modules=fc_modules[1]),
+        'mb_disp_2': SerialDispatcher(modules=fc_modules[2])
     }
 
     return {
