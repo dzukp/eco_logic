@@ -92,16 +92,16 @@ def get_object(post_quantity=(6, 6)):
             },
             'tank_b1': {
                 'class': Tank,
-                'di_low_level': 'dio_1_1_3',
-                'di_mid_level': 'dio_1_1_2',
-                'di_hi_level': 'dio_1_1_1',
+                'di_low_level': 'dio_1_1_i_3',
+                'di_mid_level': 'dio_1_1_i_2',
+                'di_hi_level': 'dio_1_1_i_1',
                 'mb_cells_idx': 48
             },
             'tank_b2': {
                 'class': Tank,
-                'di_low_level': 'dio_1_1_6',
-                'di_mid_level': 'dio_1_1_5',
-                'di_hi_level': 'dio_1_1_4',
+                'di_low_level': 'dio_1_1_i_6',
+                'di_mid_level': 'dio_1_1_i_5',
+                'di_hi_level': 'dio_1_1_i_4',
                 'mb_cells_idx': 50
             },
             'tank_b3': {
