@@ -162,11 +162,27 @@ def get_object(post_quantity=(6, 6)):
                 'class': Valve,
                 'do_open': 'do_1_1_6',
             },
-            'valve_out_water': {
+            'valve_wheel_black': {
                 'class': Valve,
                 'do_open': None
             },
-            'valve_out_foam': {
+            'valve_air': {
+                'class': Valve,
+                'do_open': None
+            },
+            'valve_polish': {
+                'class': Valve,
+                'do_open': None
+            },
+            'valve_glass': {
+                'class': Valve,
+                'do_open': None
+            },
+            'valve_hoover': {
+                'class': Valve,
+                'do_open': None
+            },
+            'valve_shell': {
                 'class': Valve,
                 'do_open': None
             },
@@ -199,6 +215,9 @@ def get_object(post_quantity=(6, 6)):
 
             new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
+            new_post['di_hoover'] = f'dio_p_{post_number}_i_1'
+            new_post['di_car_inside'] = f'dio_p_{post_number}_i_2'
+            new_post['do_car_inside'] = f'dio_p_{post_number}_o_8'
 
             children = new_post['children']
             children['valve_foam']['mb_cells_idx'] = start_addr + 5
@@ -207,8 +226,12 @@ def get_object(post_quantity=(6, 6)):
             children['valve_cold_water']['mb_cells_idx'] = start_addr + 11
             children['valve_brush']['mb_cells_idx'] = start_addr + 13
             children['valve_osmos']['mb_cells_idx'] = start_addr + 15
-            children['valve_out_water']['mb_cells_idx'] = start_addr + 17
-            children['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+            children['valve_wheel_black']['mb_cells_idx'] = start_addr + 17
+            children['valve_air']['mb_cells_idx'] = start_addr + 19
+            children['valve_polish']['mb_cells_idx'] = start_addr + 21
+            children['valve_glass']['mb_cells_idx'] = None
+            children['valve_hoover']['mb_cells_idx'] = None
+            children['valve_shell']['mb_cells_idx'] = None
             children['pump']['mb_cells_idx'] = start_addr + 23
 
             module = int((post_number - 1) / 2) % 3 + 1
@@ -219,8 +242,12 @@ def get_object(post_quantity=(6, 6)):
             children['valve_brush']['do_open'] = f'do_{side}_{module}_{4 + d}'
             children['valve_wax']['do_open'] = f'do_{side}_{module}_{5 + d}'
             children['valve_foam']['do_open'] = f'do_{side}_{module}_{6 + d}'
-            children['valve_out_water']['do_open'] = None
-            children['valve_out_foam']['do_open'] = None
+            children['valve_wheel_black']['do_open'] = f'dio_p_{post_number}_o_2'
+            children['valve_air']['do_open'] = f'dio_p_{post_number}_o_3'
+            children['valve_polish']['do_open'] = f'dio_p_{post_number}_o_4'
+            children['valve_glass']['do_open'] = f'dio_p_{post_number}_o_5'
+            children['valve_hoover']['do_open'] = f'dio_p_{post_number}_o_6'
+            children['valve_shell']['do_open'] = f'dio_p_{post_number}_o_7'
             children['pump']['ao_command'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_1'
             children['pump']['ao_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_2'
             children['pump']['ai_status'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_1'

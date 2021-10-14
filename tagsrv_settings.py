@@ -16,7 +16,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     ai_names = ('ai_1_1_', 'ai_1_2_', 'ai_2_1_', 'ai_2_2_')
     do_names = ('do_1_1_', 'do_1_2_', 'do_1_3_', 'do_2_1_', 'do_2_2_', 'do_2_3_')
     di_names = ('di_1_1_', 'di_2_1_')
-    dio_names = ('dio_1_1_', 'dio_2_1_')
+    dio_names = ['dio_1_1_', 'dio_2_1_']
+    dio_names2 = tuple([f'dio_p_{i}_' for i in range(1, 13)])
     fc_names = tuple([f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + \
                      [f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + \
                      [f'fc_os_']
@@ -39,6 +40,11 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     for pref in dio_names:
         tags['in'].update(dict([(f'{pref}i_{i}', InTag(i)) for i in range(1, 13)]))
         tags['out'].update(dict([(f'{pref}o_{i}', OutTag(i)) for i in range(1, 5)]))
+    # generate dio_1_i_1 - di_12_i_12
+    # generate dio_1_o_1 - di_12_o_4
+    for pref in dio_names2:
+        tags['in'].update(dict([(f'{pref}i_{i}', InTag(i)) for i in range(1, 7)]))
+        tags['out'].update(dict([(f'{pref}o_{i}', OutTag(i)) for i in range(1, 9)]))
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
@@ -79,6 +85,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                [tag for name, tag in tags['in'].items() if name.startswith('dio_2_1_')]
     dio_2_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.31', timeout=0.03)
 
+    dio_post = []
+    for i in range(1, 12):
+        dio_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'dio_p_{i}_')] + \
+                   [tag for name, tag in tags['in'].items() if name.startswith(f'dio_p_{i}_')]
+        dio_post.append(OwenDiDoMk210(tags=dio_tags, ip=f'192.168.200.{100 + i}', timeout=0.03))
+
     if os.name == 'posix':
         com_port1_name = 'fc1_serial'
         com_port2_name = 'fc2_serial'
@@ -107,7 +119,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                                name.startswith(f'fc_os_ao_')]))
 
     modules = [do_1_1, do_1_2, do_1_3, do_2_1, do_2_2, do_2_3, di_1_1, di_2_1, ai_1_1, ai_1_2, ai_2_1, ai_2_2,
-               dio_1_1, dio_2_1]
+               dio_1_1, dio_2_1] + dio_post
 
     dispatchers = {
         'disp_1': ParallelDispatcher(

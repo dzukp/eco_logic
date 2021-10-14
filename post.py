@@ -1,5 +1,5 @@
 from pylogic.io_object import IoObject
-from pylogic.channel import InChannel
+from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
@@ -15,6 +15,9 @@ class Post(IoObject, ModbusDataObject):
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
+        self.di_hoover = InChannel(False)
+        self.di_car_inside = InChannel(False)
+        self.do_car_inside = OutChannel(False)
         self.ai_pressure = InChannel(0.0)
         self.di_flow = InChannel(False)
         self.valve_foam = None
@@ -23,8 +26,12 @@ class Post(IoObject, ModbusDataObject):
         self.valve_cold_water = None
         self.valve_brush = None
         self.valve_osmos = None
-        self.valve_out_water = None
-        self.valve_out_foam = None
+        self.valve_wheel_black = None
+        self.valve_air = None
+        self.valve_polish = None
+        self.valve_glass = None
+        self.valve_hoover = None
+        self.valve_shell = None
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
@@ -70,6 +77,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump.reset()
 
     def process(self):
+        self.do_car_inside.val = self.di_car_inside.val
         for func_name, step in self.func_steps.items():
             if func_name == self.current_func:
                 if not step.is_active():
@@ -78,8 +86,6 @@ class Post(IoObject, ModbusDataObject):
                 step.stop()
         pump = False
         freq = 0.0
-        water_out_valve = False
-        foam_out_valve = False
         for func_name, step in self.func_steps.items():
             step.process()
             if step.pump:
@@ -88,27 +94,15 @@ class Post(IoObject, ModbusDataObject):
                     freq = self.func_frequencies[func_name]
                 except KeyError:
                     self.logger.error(f'No frequency task for function `{func_name}`')
-            if step.out_valve:
-                if func_name == FuncNames.FOAM:
-                    foam_out_valve = True
-                else:
-                    water_out_valve = True
-        if pump:
+        if pump and self.di_flow.val:
             self.pump.start()
             self.pump.set_frequency(freq)
         else:
             self.pump.stop()
             self.pump.set_frequency(0.0)
-        if foam_out_valve:
-            self.valve_out_foam.open()
-        else:
-            self.valve_out_foam.close()
-        if water_out_valve:
-            self.valve_out_water.open()
-        else:
-            self.valve_out_water.close()
-        no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
-                                           timeout=self.pressure_timeout)
+
+        no_pressure = self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
+                                                  timeout=self.pressure_timeout)
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()
@@ -178,7 +172,10 @@ class Post(IoObject, ModbusDataObject):
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
-            status = int(self.alarm) * (1 << 0)
+            status = int(self.alarm) * (1 << 0) + \
+                     int(self.di_flow.val) * (1 << 1) + \
+                     int(self.di_car_inside.val) * (1 << 2) + \
+                     int(self.di_hoover.val) * (1 << 3)
             p1, p2 = floats_to_modbus_cells((self.ai_pressure.val,))
             return {
                 self.mb_cells_idx - start_addr: 0xFF00,
