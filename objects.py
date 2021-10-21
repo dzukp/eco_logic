@@ -14,7 +14,7 @@ def get_object(post_quantity=(6, 6)):
     objects = {
         'top': {
             'class': Top,
-            'mb_cells_idx': 500,
+            'mb_cells_idx': 680,
             'children': {
             }
         }
@@ -42,17 +42,17 @@ def get_object(post_quantity=(6, 6)):
             'pump_n1_2': {
                 'class': Engine,
                 'do_start': 'do_1_2_18',
-                'mb_cells_idx': 493
+                'mb_cells_idx': 34
             },
             'pump_n3': {
                 'class': Engine,
                 'do_start': 'do_1_2_19',
-                'mb_cells_idx': 497
+                'mb_cells_idx': 36
             },
             'pump_os': {
                 'class': PidEngine,
                 'ai_sensor': 'ai_1_2_4',
-                'mb_cells_idx': 471,
+                'mb_cells_idx': 38,
                 'children': {
                     'fc': {
                         'class': Altivar212,
@@ -61,55 +61,55 @@ def get_object(post_quantity=(6, 6)):
                         'ai_status': 'fc_os_ai_1',
                         'ai_frequency': 'fc_os_ai_2',
                         'ai_alarm_code': 'fc_os_ai_3',
-                        'mb_cells_idx': 483
+                        'mb_cells_idx': 47
                     }
                 }
             },
             'valve_water_os': {
                 'class': Valve,
                 'do_open': None,
-                'mb_cells_idx': 40
+                'mb_cells_idx': 56
             },
             'valve_wash_osmos': {
                 'class': Valve,
                 'do_open': None,
-                'mb_cells_idx': 42
+                'mb_cells_idx': 58
             },
             'valve_b1': {
                 'class': Valve,
                 'do_open': 'do_1_2_20',
-                'mb_cells_idx': 44
+                'mb_cells_idx': 66
             },
             'valve_b2': {
                 'class': Valve,
                 'do_open': 'do_1_2_21',
-                'mb_cells_idx': 46
+                'mb_cells_idx': 68
             },
             'valve_b3': {
                 'class': Valve,
                 'do_open': None,
-                'mb_cells_idx': 52
+                'mb_cells_idx': 70
             },
             'tank_b1': {
                 'class': Tank,
                 'di_low_level': 'dio_1_1_i_3',
                 'di_mid_level': 'dio_1_1_i_2',
                 'di_hi_level': 'dio_1_1_i_1',
-                'mb_cells_idx': 48
+                'mb_cells_idx': 62
             },
             'tank_b2': {
                 'class': Tank,
                 'di_low_level': 'dio_1_1_i_6',
                 'di_mid_level': 'dio_1_1_i_5',
                 'di_hi_level': 'dio_1_1_i_4',
-                'mb_cells_idx': 50
+                'mb_cells_idx': 64
             },
             'tank_b3': {
                 'class': Tank,
                 'di_low_level': None,
                 'di_mid_level': None,
                 'di_hi_level': None,
-                'mb_cells_idx': 54
+                'mb_cells_idx': 66
             },
             # 'valve_dose_foam': {
             #     'class': Valve,
@@ -140,27 +140,27 @@ def get_object(post_quantity=(6, 6)):
         'children': {
             'valve_osmos': {
                 'class': Valve,
-                'do_open': 'do_1_1_1',
+                'do_open': None,
             },
             'valve_cold_water': {
                 'class': Valve,
-                'do_open': 'do_1_1_2',
+                'do_open': None,
             },
             'valve_solution': {
                 'class': Valve,
-                'do_open': 'do_1_1_3',
+                'do_open': None,
             },
             'valve_brush': {
                 'class': Valve,
-                'do_open': 'do_1_1_4',
+                'do_open': None,
             },
             'valve_wax': {
                 'class': Valve,
-                'do_open': 'do_1_1_5',
+                'do_open': None,
             },
             'valve_foam': {
                 'class': Valve,
-                'do_open': 'do_1_1_6',
+                'do_open': None,
             },
             'valve_wheel_black': {
                 'class': Valve,
@@ -210,7 +210,7 @@ def get_object(post_quantity=(6, 6)):
             post_name = f'post_{str(post_number)}'
             objects['top']['children'][post_name] = new_post
             
-            start_addr = 60 + (post_number - 1) * 32
+            start_addr = 72 + (post_number - 1) * 38
             new_post['mb_cells_idx'] = start_addr
 
             new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
@@ -229,10 +229,10 @@ def get_object(post_quantity=(6, 6)):
             children['valve_wheel_black']['mb_cells_idx'] = start_addr + 17
             children['valve_air']['mb_cells_idx'] = start_addr + 19
             children['valve_polish']['mb_cells_idx'] = start_addr + 21
-            children['valve_glass']['mb_cells_idx'] = None
-            children['valve_hoover']['mb_cells_idx'] = None
-            children['valve_shell']['mb_cells_idx'] = None
-            children['pump']['mb_cells_idx'] = start_addr + 23
+            children['valve_glass']['mb_cells_idx'] = start_addr + 23
+            children['valve_hoover']['mb_cells_idx'] = start_addr + 25
+            children['valve_shell']['mb_cells_idx'] = start_addr + 27
+            children['pump']['mb_cells_idx'] = start_addr + 29
 
             module = int((post_number - 1) / 2) % 3 + 1
             d = ((post_number - 1) % 2) * 6

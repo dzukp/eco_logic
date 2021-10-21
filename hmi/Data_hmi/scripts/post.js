@@ -7,7 +7,7 @@ function selectPost(number) {
 	getGlobalVar('post_function').setBindSpeaker(getTag('main', prefix + 'number'))
 	getGlobalVar('post_number').setIntData(number)
 
-	var mechs = ['foam', 'wax', 'shampoo', 'cold_water', 'hot_water', 'osmos', 'out_water', 'out_foam', 'intensive']
+	var mechs = ['foam', 'wax', 'solution', 'cold_water', 'brush', 'osmos', 'wheel_black', 'air', 'polish', 'glass', 'hoover', 'shell']
 	for (var i = 0; i < mechs.length; i++ ) {
 		var s = mechs[i]
 
