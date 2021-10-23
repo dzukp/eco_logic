@@ -100,7 +100,7 @@ class Hoover(IoObject, ModbusDataObject):
                           self.pid_k_2, self.pid_i_2, self.pid_d_2, self.set_point, self.filter_diff_limit)
             float_data = struct.pack('f' * len(float_data), *float_data)
             float_data = struct.unpack('H' * (len(float_data) // 2), float_data)
-            float_data = {i + 1: val for i, val in enumerate(float_data)}
+            float_data = {self.mb_cells_idx - start_addr + i + 1: val for i, val in enumerate(float_data)}
             out_data = {
                 self.mb_cells_idx - start_addr: status
             }

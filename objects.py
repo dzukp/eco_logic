@@ -16,8 +16,7 @@ def get_object(post_quantity=(6, 6)):
         'top': {
             'class': Top,
             'mb_cells_idx': 729,
-            'children': {
-            }
+            'children': {}
         }
     }
     supplier = {
@@ -118,6 +117,7 @@ def get_object(post_quantity=(6, 6)):
         'class': Hoover,
         'ai_press_1': 'ai_3_1',
         'ai_press_2': 'ai_3_2',
+        'mb_cells_idx': 72,
         'children': {
             'flap': {
                 'class': Valve,
@@ -135,15 +135,14 @@ def get_object(post_quantity=(6, 6)):
             },
             'fc_2': {
                 'class': Altivar212,
-                'ao_command': 'fc_hoover_1_ao_1',
-                'ao_frequency': 'fc_hoover_1_ao_2',
-                'ai_status': 'fc_hoover_1_ai_1',
-                'ai_frequency': 'fc_hoover_1_ai_2',
-                'ai_alarm_code': 'fc_hoover_1_ai_3',
+                'ao_command': 'fc_hoover_2_ao_1',
+                'ao_frequency': 'fc_hoover_2_ao_2',
+                'ai_status': 'fc_hoover_2_ai_1',
+                'ai_frequency': 'fc_hoover_2_ai_2',
+                'ai_alarm_code': 'fc_hoover_2_ai_3',
                 'mb_cells_idx': 112
             }
-        },
-        'mb_cells_idx': 72
+        }
     }
     post = {
         'class': Post,
