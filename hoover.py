@@ -12,14 +12,14 @@ class Hoover(IoObject, ModbusDataObject):
 
     def __init__(self, *args, **kwargs):
         super(Hoover, self).__init__(*args, **kwargs)
-        self.started = False
+        self.started = True
         self.fc_1 = None
         self.fc_2 = None
         self.ai_press_1 = InChannel(0.0)
         self.ai_press_2 = InChannel(0.0)
         self.flap = None
-        self.set_point = 0.0
-        self.filter_diff_limit = 0.0
+        self.set_point = -1000.0
+        self.filter_diff_limit = 100.0
         self.pid_k_1 = 1.0
         self.pid_i_1 = 2.0
         self.pid_d_1 = 0.0
@@ -60,9 +60,16 @@ class Hoover(IoObject, ModbusDataObject):
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
-            float_data = struct.unpack('ffff',
-                                       struct.pack('HHHHHHHH',
-                                                   *tuple(data[self.mb_cells_idx + 3: self.mb_cells_idx + 11])))
+            mb_cell_addr = self.mb_cells_idx - start_addr
+            cmd = data[mb_cell_addr]
+            if cmd & 0x0001:
+                self.start()
+            if cmd & 0x0002:
+                self.stop()
+            float_cnt = 8
+            float_data = struct.unpack('f' * float_cnt,
+                                       struct.pack('HH' * float_cnt,
+                                                   *tuple(data[mb_cell_addr + 7: mb_cell_addr + 7 + float_cnt * 2])))
             if self.pid_k_1 != float_data[0]:
                 self.pid_k_1 = float_data[0]
                 self.logger.info(f'Set Pid 1 K = {self.pid_k_1}')
@@ -75,34 +82,41 @@ class Hoover(IoObject, ModbusDataObject):
                 self.pid_d_1 = float_data[2]
                 self.logger.info(f'Set Pid 1 K = {self.pid_d_1}')
                 self.save()
-            if self.pid_k_1 != float_data[0]:
-                self.pid_k_1 = float_data[0]
-                self.logger.info(f'Set Pid 1 K = {self.pid_k_1}')
+            if self.pid_k_2 != float_data[3]:
+                self.pid_k_2 = float_data[3]
+                self.logger.info(f'Set Pid 2 K = {self.pid_k_2}')
                 self.save()
-            if self.pid_i_1 != float_data[1]:
-                self.pid_i_1 = float_data[1]
-                self.logger.info(f'Set Pid 1 I = {self.pid_i_1}')
+            if self.pid_i_2 != float_data[4]:
+                self.pid_i_2 = float_data[4]
+                self.logger.info(f'Set Pid 2 I = {self.pid_i_2}')
                 self.save()
-            if self.pid_d_1 != float_data[2]:
-                self.pid_d_1 = float_data[2]
-                self.logger.info(f'Set Pid 1 K = {self.pid_d_1}')
+            if self.pid_d_2 != float_data[5]:
+                self.pid_d_2 = float_data[5]
+                self.logger.info(f'Set Pid 2 K = {self.pid_d_2}')
                 self.save()
-            if self.set_point != float_data[3]:
-                self.set_point = float_data[3]
+            if self.set_point != float_data[6]:
+                self.set_point = float_data[6]
                 self.logger.info(f'Set pressure task = {self.set_point}')
+                self.save()
+            if self.filter_diff_limit != float_data[7]:
+                self.filter_diff_limit = float_data[7]
+                self.logger.info(f'Set filter diff limit = {self.filter_diff_limit}')
                 self.save()
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
+            mb_cell_addr = self.mb_cells_idx - start_addr
             status = int(self.started) * (1 << 0) | \
                      0xD000
             float_data = (self.ai_press_1.val, self.ai_press_2.val, self.pid_k_1, self.pid_i_1, self.pid_d_1,
                           self.pid_k_2, self.pid_i_2, self.pid_d_2, self.set_point, self.filter_diff_limit)
             float_data = struct.pack('f' * len(float_data), *float_data)
             float_data = struct.unpack('H' * (len(float_data) // 2), float_data)
-            float_data = {self.mb_cells_idx - start_addr + i + 1: val for i, val in enumerate(float_data)}
+            float_data = {mb_cell_addr + 3 + i: val for i, val in enumerate(float_data)}
             out_data = {
-                self.mb_cells_idx - start_addr: status
+                mb_cell_addr: 0xFF00,
+                mb_cell_addr + 1: status,
+                mb_cell_addr + 2: 0,
             }
             out_data.update(float_data)
             return out_data

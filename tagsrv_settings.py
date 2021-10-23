@@ -126,12 +126,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                      out_tags=[tag for name, tag in tags['out'].items() if
                                                name.startswith(f'fc_os_ao_')]))
 
-    fc_modules[1].append(ModbusRTUModule(40, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(ModbusRTUModule(40, ports[3], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_1_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_1_ao_')]))
-    fc_modules[1].append(ModbusRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(ModbusRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_2_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
@@ -145,7 +145,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
             modules=modules
         ),
         'mb_disp_1': SerialDispatcher(modules=fc_modules[1]),
-        'mb_disp_2': SerialDispatcher(modules=fc_modules[2])
+        'mb_disp_2': SerialDispatcher(modules=fc_modules[2]),
+        'mb_disp_3': SerialDispatcher(modules=fc_modules[3])
     }
 
     return {

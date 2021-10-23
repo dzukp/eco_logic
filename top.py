@@ -13,7 +13,7 @@ class Top(IoObject, ModbusDataObject):
     def __init__(self, *args):
         super().__init__(*args)
         self.supplier = None
-        self.nofrost = None
+        self.hoover = None
         self.posts = {}
         self.post_function = {}
         self.new_function = {}
