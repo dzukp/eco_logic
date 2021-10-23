@@ -60,7 +60,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     ai_2_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_2_')],
                          ip='192.168.200.23', timeout=0.03)
     ai_3 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_3_')],
-                       ip='192.168.200.24', timeout=0.03)
+                       ip='192.168.200.81', timeout=0.03)
 
     di_1_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_1_')],
                          ip='192.168.200.10', timeout=0.03)
@@ -88,7 +88,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     dio_2_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.31', timeout=0.03)
     dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_3_')] + \
                [tag for name, tag in tags['in'].items() if name.startswith('dio_3_')]
-    dio_3 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.32', timeout=0.03)
+    dio_3 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.80', timeout=0.03)
 
     dio_post = []
     for i in range(1, 12):
