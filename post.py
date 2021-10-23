@@ -3,7 +3,7 @@ from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import SimplePostFunctionSteps
+from post_function import SimplePostFunctionSteps, PostIntensiveSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -55,7 +55,8 @@ class Post(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
                                 for name in FuncNames.all_funcs() if name not in (
-                                    FuncNames.STOP, FuncNames.BRUSH)])
+                                    FuncNames.STOP, FuncNames.HOOVER)])
+        self.func_steps[FuncNames.HOOVER] = PostIntensiveSteps('hoover_steps')
         self.disabled_funcs = []
 
     def init(self):
@@ -67,7 +68,12 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.WAX: self.valve_wax,
             FuncNames.BRUSH: self.valve_brush,
             FuncNames.COLD_WATER: self.valve_cold_water,
-            FuncNames.OSMOSIS: self.valve_osmos
+            FuncNames.OSMOSIS: self.valve_osmos,
+            FuncNames.POLISH: self.valve_polish,
+            FuncNames.GLASS: self.valve_glass,
+            FuncNames.WHEEL_BLACK: self.valve_wheel_black,
+            FuncNames.HOOVER: self.valve_hoover,
+            FuncNames.AIR: self.valve_air
         }
         for func_name, step in self.func_steps.items():
             step.valve = valves[func_name]

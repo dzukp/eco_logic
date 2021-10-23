@@ -13,6 +13,7 @@ class Hoover(IoObject, ModbusDataObject):
     def __init__(self, *args, **kwargs):
         super(Hoover, self).__init__(*args, **kwargs)
         self.started = True
+        self.enabled = True
         self.fc_1 = None
         self.fc_2 = None
         self.ai_press_1 = InChannel(0.0)
@@ -34,6 +35,7 @@ class Hoover(IoObject, ModbusDataObject):
         self.pid_2.output_limits = tuple(self.freq_limits)
         self.pid_2.tunings = (self.pid_k_2, self.pid_i_2, self.pid_d_2)
         self.min_freq_timer = Timer()
+        self.post_count = 0
         self.mb_cells_idx = None
 
     def start(self):
@@ -45,15 +47,39 @@ class Hoover(IoObject, ModbusDataObject):
         if self.started:
             self.started = False
             self.logger.info('Stop')
+        self.post_count = 0
+
+    def enable(self, enable):
+        if self.enabled != enable:
+            self.enabled = enable
+            self.logger.info('Enable' if enable else 'Disable')
 
     def process(self):
         if self.started:
-            pass
+            self.fc_1.start()
+            self.fc_1.set_frequency(40 + 20 / 6 * min(6, self.post_count))
+            if self.post_count > 6:
+                self.fc_2.start()
+                self.fc_2.set_frequency(40 + 20 / 6 * (self.post_count - 6))
+            else:
+                self.fc_2.stop()
+                self.fc_2.set_frequency(0)
         else:
             self.fc_1.stop()
             self.pid_1.reset()
+            self.fc_1.set_frequency(0)
             self.fc_2.stop()
             self.pid_2.reset()
+            self.fc_2.set_frequency(0)
+
+    def try_hoover(self, post_count):
+        self.post_count = post_count
+        if self.is_ready():
+            self.start()
+            return True
+
+    def is_ready(self):
+        return (not self.fc_1.is_alarm_state() or not self.fc_2.is_alarm_state()) and self.enabled
 
     def mb_cells(self):
         return [self.mb_cells_idx, self.mb_cells_idx + 1]
@@ -63,9 +89,9 @@ class Hoover(IoObject, ModbusDataObject):
             mb_cell_addr = self.mb_cells_idx - start_addr
             cmd = data[mb_cell_addr]
             if cmd & 0x0001:
-                self.start()
+                self.enable(1)
             if cmd & 0x0002:
-                self.stop()
+                self.enable(0)
             float_cnt = 8
             float_data = struct.unpack('f' * float_cnt,
                                        struct.pack('HH' * float_cnt,
@@ -106,7 +132,8 @@ class Hoover(IoObject, ModbusDataObject):
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
             mb_cell_addr = self.mb_cells_idx - start_addr
-            status = int(self.started) * (1 << 0) | \
+            status = int(self.enabled) * (1 << 0) | \
+                     int(self.started) * (1 << 1) | \
                      0xD000
             float_data = (self.ai_press_1.val, self.ai_press_2.val, self.pid_k_1, self.pid_i_1, self.pid_d_1,
                           self.pid_k_2, self.pid_i_2, self.pid_d_2, self.set_point, self.filter_diff_limit)

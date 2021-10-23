@@ -91,6 +91,14 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.supplier.stop_osmosis()
 
+        if FuncNames.HOOVER in wished_funcs:
+            hoover_cnt = sum([int(func == FuncNames.HOOVER) for func in self.post_function.values()])
+            if not self.hoover.try_hoover(hoover_cnt):
+                prepared_funcs.remove(FuncNames.HOOVER)
+                self.logger.debug(f'It not ready for function `{FuncNames.HOOVER}`')
+        else:
+            self.hoover.stop()
+
         for post, func in self.post_function.items():
             if func in prepared_funcs:
                 if not post.set_function(func):
@@ -140,14 +148,15 @@ class Top(IoObject, ModbusDataObject):
                 self.supplier.is_ready_for_shampoo() and self.posts[post_name].is_func_allowed(FuncNames.SHAMPOO),
             FuncNames.FOAM:
                 self.supplier.is_ready_for_foam() and self.posts[post_name].is_func_allowed(FuncNames.FOAM),
-            FuncNames.INTENSIVE:
-                self.supplier.is_ready_for_intensive() and self.posts[post_name].is_func_allowed(FuncNames.INTENSIVE),
             FuncNames.OSMOSIS:
                 self.supplier.is_ready_for_osmosis() and self.posts[post_name].is_func_allowed(FuncNames.OSMOSIS),
             FuncNames.COLD_WATER:
                 self.supplier.is_ready_for_cold_water() and self.posts[post_name].is_func_allowed(FuncNames.COLD_WATER),
             FuncNames.BRUSH:
-                self.supplier.is_ready_for_brush() and self.posts[post_name].is_func_allowed(FuncNames.BRUSH)
+                self.supplier.is_ready_for_brush() and self.posts[post_name].is_func_allowed(FuncNames.BRUSH),
+            FuncNames.HOOVER:
+                self.hoover.is_ready() and self.posts[post_name].is_func_allowed(FuncNames.HOOVER)
+
         }
 
     def get_post_function(self, post_name):
