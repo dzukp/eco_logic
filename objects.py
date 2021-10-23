@@ -8,13 +8,14 @@ from post import Post
 from waterpreparing import WaterPreparing
 from subsystems import PidEngine
 from top import Top
+from hoover import Hoover
 
 
 def get_object(post_quantity=(6, 6)):
     objects = {
         'top': {
             'class': Top,
-            'mb_cells_idx': 680,
+            'mb_cells_idx': 729,
             'children': {
             }
         }
@@ -78,60 +79,71 @@ def get_object(post_quantity=(6, 6)):
             'valve_b1': {
                 'class': Valve,
                 'do_open': 'do_1_2_20',
-                'mb_cells_idx': 66
+                'mb_cells_idx': 60
             },
             'valve_b2': {
                 'class': Valve,
                 'do_open': 'do_1_2_21',
-                'mb_cells_idx': 68
+                'mb_cells_idx': 62
             },
             'valve_b3': {
                 'class': Valve,
                 'do_open': None,
-                'mb_cells_idx': 70
+                'mb_cells_idx': 64
             },
             'tank_b1': {
                 'class': Tank,
                 'di_low_level': 'dio_1_1_i_3',
                 'di_mid_level': 'dio_1_1_i_2',
                 'di_hi_level': 'dio_1_1_i_1',
-                'mb_cells_idx': 62
+                'mb_cells_idx': 66
             },
             'tank_b2': {
                 'class': Tank,
                 'di_low_level': 'dio_1_1_i_6',
                 'di_mid_level': 'dio_1_1_i_5',
                 'di_hi_level': 'dio_1_1_i_4',
-                'mb_cells_idx': 64
+                'mb_cells_idx': 68
             },
             'tank_b3': {
                 'class': Tank,
                 'di_low_level': None,
                 'di_mid_level': None,
                 'di_hi_level': None,
-                'mb_cells_idx': 66
-            },
-            # 'valve_dose_foam': {
-            #     'class': Valve,
-            #     'do_open': None,
-            #     'mb_cells_idx': 52
-            # },
-            # 'valve_dose_wax': {
-            #     'class': Valve,
-            #     'do_open': None,
-            #     'mb_cells_idx': 54
-            # },
-            # 'valve_dose_shampoo': {
-            #     'class': Valve,
-            #     'do_open': None,
-            #     'mb_cells_idx': 56
-            # },
-            # 'valve_dose_intensive': {
-            #     'class': Valve,
-            #     'do_open': None,
-            #     'mb_cells_idx': 58
-            # }
+                'mb_cells_idx': 70
+            }
         }
+    }
+    hoover = {
+        'class': Hoover,
+        'ai_press_1': 'ai_3_1',
+        'ai_press_2': 'ai_3_2',
+        'children': {
+            'flap': {
+                'class': Valve,
+                'do_open': 'dio_3_o_1',
+                'mb_cells_idx': 101
+            },
+            'fc_1': {
+                'class': Altivar212,
+                'ao_command': 'fc_hoover_1_ao_1',
+                'ao_frequency': 'fc_hoover_1_ao_2',
+                'ai_status': 'fc_hoover_1_ai_1',
+                'ai_frequency': 'fc_hoover_1_ai_2',
+                'ai_alarm_code': 'fc_hoover_1_ai_3',
+                'mb_cells_idx': 103
+            },
+            'fc_2': {
+                'class': Altivar212,
+                'ao_command': 'fc_hoover_1_ao_1',
+                'ao_frequency': 'fc_hoover_1_ao_2',
+                'ai_status': 'fc_hoover_1_ai_1',
+                'ai_frequency': 'fc_hoover_1_ai_2',
+                'ai_alarm_code': 'fc_hoover_1_ai_3',
+                'mb_cells_idx': 112
+            }
+        },
+        'mb_cells_idx': 72
     }
     post = {
         'class': Post,
@@ -198,6 +210,7 @@ def get_object(post_quantity=(6, 6)):
     }
 
     objects['top']['children']['supplier'] = supplier
+    objects['top']['children']['hoover'] = hoover
 
     post_quantity = post_quantity if isinstance(post_quantity, (list, tuple)) else (post_quantity,)
     post_number = 0
@@ -210,7 +223,7 @@ def get_object(post_quantity=(6, 6)):
             post_name = f'post_{str(post_number)}'
             objects['top']['children'][post_name] = new_post
             
-            start_addr = 72 + (post_number - 1) * 38
+            start_addr = 121 + (post_number - 1) * 38
             new_post['mb_cells_idx'] = start_addr
 
             new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'

@@ -3,7 +3,7 @@
 class FuncNames:
     STOP = 'stop'
     FOAM = 'foam'
-    SHAMPOO = 'shampoo'
+    SHAMPOO = 'solution'
     WAX = 'wax'
     OSMOSIS = 'osmosis'
     COLD_WATER = 'cold_water'
