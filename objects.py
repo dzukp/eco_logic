@@ -9,13 +9,14 @@ from waterpreparing import WaterPreparing
 from subsystems import PidEngine
 from top import Top
 from hoover import Hoover
+from bottom_wash import BottomWash
 
 
 def get_object(post_quantity=(6, 6)):
     objects = {
         'top': {
             'class': Top,
-            'mb_cells_idx': 729,
+            'mb_cells_idx': 808,
             'children': {}
         }
     }
@@ -144,6 +145,19 @@ def get_object(post_quantity=(6, 6)):
             }
         }
     }
+    bottom_wash = {
+        'class': BottomWash,
+        'di_in_sens': None,
+        'di_out_sens': None,
+        'children': {
+            'valve_wash': {
+                'class': Valve,
+                'do_open': None,
+                'mb_cells_idx': 123,
+            }
+        },
+        'mb_cells_idx': 121
+    }
     post = {
         'class': Post,
         'ai_pressure': None,
@@ -210,6 +224,7 @@ def get_object(post_quantity=(6, 6)):
 
     objects['top']['children']['supplier'] = supplier
     objects['top']['children']['hoover'] = hoover
+    objects['top']['children']['bottom_wash'] = bottom_wash
 
     post_quantity = post_quantity if isinstance(post_quantity, (list, tuple)) else (post_quantity,)
     post_number = 0
@@ -222,7 +237,7 @@ def get_object(post_quantity=(6, 6)):
             post_name = f'post_{str(post_number)}'
             objects['top']['children'][post_name] = new_post
             
-            start_addr = 121 + (post_number - 1) * 38
+            start_addr = 200 + (post_number - 1) * 38
             new_post['mb_cells_idx'] = start_addr
 
             new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
