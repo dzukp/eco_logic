@@ -3,7 +3,7 @@ from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import SimplePostFunctionSteps, PostIntensiveSteps
+from post_function import MultiValveSteps, MultiValvePumpSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -53,33 +53,42 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timer = Ton()
         self.alarm = False
         self.mb_cells_idx = None
-        self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name not in (
-                                    FuncNames.STOP, FuncNames.HOOVER)])
-        self.func_steps[FuncNames.HOOVER] = PostIntensiveSteps('hoover_steps')
+        self.func_steps = {}
+        for name in FuncNames.all_funcs():
+            if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.BRUSH, FuncNames.COLD_WATER,
+                            FuncNames.OSMOSIS, FuncNames.POLISH, FuncNames.WHEEL_BLACK):
+                self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps')
+            elif name in (FuncNames.AIR, FuncNames.HOOVER):
+                self.func_steps[name] = MultiValveSteps(f'{name}_steps')
         self.disabled_funcs = []
+        self.all_valves = set()
 
     def init(self):
         config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
                   'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
-            FuncNames.FOAM: self.valve_foam,
-            FuncNames.SHAMPOO: self.valve_solution,
-            FuncNames.WAX: self.valve_wax,
-            FuncNames.BRUSH: self.valve_brush,
-            FuncNames.COLD_WATER: self.valve_cold_water,
-            FuncNames.OSMOSIS: self.valve_osmos,
-            FuncNames.POLISH: self.valve_polish,
-            FuncNames.GLASS: self.valve_glass,
-            FuncNames.WHEEL_BLACK: self.valve_wheel_black,
-            FuncNames.HOOVER: self.valve_hoover,
-            FuncNames.AIR: self.valve_air
+            FuncNames.FOAM: [self.valve_foam],
+            FuncNames.SHAMPOO: [self.valve_solution],
+            FuncNames.WAX: [self.valve_wax],
+            FuncNames.BRUSH: [self.valve_brush],
+            FuncNames.COLD_WATER: [self.valve_cold_water],
+            FuncNames.OSMOSIS: [self.valve_osmos],
+            FuncNames.POLISH: [self.valve_polish],
+            FuncNames.GLASS: [self.valve_glass],
+            FuncNames.WHEEL_BLACK: [self.valve_wheel_black],
+            FuncNames.HOOVER: [self.valve_hoover],
+            FuncNames.AIR: [self.valve_air]
         }
         for func_name, step in self.func_steps.items():
-            step.valve = valves[func_name]
-            step.set_config(config)
+            if func_name in valves:
+                step.valves_link = valves[func_name]
+                if func_name not in (FuncNames.HOOVER, FuncNames.AIR):
+                    step.pump_link = [self.pump]
+                step.set_config(config)
 
-        self.pump.reset()
+        for valves in valves.values():
+            self.all_valves.update(valves)
+
         self.pump.reset()
 
     def process(self):
@@ -94,12 +103,18 @@ class Post(IoObject, ModbusDataObject):
         freq = 0.0
         for func_name, step in self.func_steps.items():
             step.process()
-            if step.pump:
-                pump = True
-                try:
-                    freq = self.func_frequencies[func_name]
-                except KeyError:
-                    self.logger.error(f'No frequency task for function `{func_name}`')
+
+        opened_valves = set()
+        for func_name, step in self.func_steps.items():
+            opened_valves = opened_valves.union(set(step.get_opened_valves()))
+            pump = pump or step.is_pump_started()
+        closed_valves = self.all_valves.difference(opened_valves)
+
+        for valve in closed_valves:
+            valve.close()
+        for valve in opened_valves:
+            valve.open()
+
         if pump and self.di_flow.val:
             self.pump.start()
             self.pump.set_frequency(freq)
@@ -107,8 +122,8 @@ class Post(IoObject, ModbusDataObject):
             self.pump.stop()
             self.pump.set_frequency(0.0)
 
-        no_pressure = self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
-                                                  timeout=self.pressure_timeout)
+        no_pressure = False#self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
+                            #                      timeout=self.pressure_timeout)
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()

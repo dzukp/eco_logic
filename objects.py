@@ -247,12 +247,12 @@ def get_object(post_quantity=(6, 6)):
             new_post['do_car_inside'] = f'dio_p_{post_number}_o_8'
 
             children = new_post['children']
-            children['valve_foam']['mb_cells_idx'] = start_addr + 5
-            children['valve_wax']['mb_cells_idx'] = start_addr + 7
+            children['valve_osmos']['mb_cells_idx'] = start_addr + 5
+            children['valve_cold_water']['mb_cells_idx'] = start_addr + 7
             children['valve_solution']['mb_cells_idx'] = start_addr + 9
-            children['valve_cold_water']['mb_cells_idx'] = start_addr + 11
-            children['valve_brush']['mb_cells_idx'] = start_addr + 13
-            children['valve_osmos']['mb_cells_idx'] = start_addr + 15
+            children['valve_brush']['mb_cells_idx'] = start_addr + 11
+            children['valve_wax']['mb_cells_idx'] = start_addr + 13
+            children['valve_foam']['mb_cells_idx'] = start_addr + 15
             children['valve_wheel_black']['mb_cells_idx'] = start_addr + 17
             children['valve_air']['mb_cells_idx'] = start_addr + 19
             children['valve_polish']['mb_cells_idx'] = start_addr + 21

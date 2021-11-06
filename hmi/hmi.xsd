@@ -9080,7 +9080,7 @@
                 </StandartProperies>
                 <Text string="||"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <IconSizeElem AutoIconResize="2"/>
+                <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_308" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="583" rect.bottom="606" rect.left="808" rect.right="908"/>
@@ -9159,7 +9159,7 @@
                 </StandartProperies>
                 <Text string=">"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <IconSizeElem AutoIconResize="2"/>
+                <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_311" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="403" rect.bottom="426" rect.left="436" rect.right="536"/>
@@ -12201,53 +12201,53 @@
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_status" Units="....." Location="8" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_status" Units="....." Location="9" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_cmd" Units="....." Location="9" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_cmd" Units="....." Location="10" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_status" Units="....." Location="10" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_status" Units="....." Location="11" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_cmd" Units="....." Location="11" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_cmd" Units="....." Location="12" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_hi_press" Units="....." Location="12" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_hi_press" Units="....." Location="13" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_4"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_low_press" Units="....." Location="14" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_low_press" Units="....." Location="15" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_1"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_min_press" Units="....." Location="16" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_min_press" Units="....." Location="17" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_6"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_hi_press" Units="....." Location="18" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_hi_press" Units="....." Location="19" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_11"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_low_press" Units="....." Location="20" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_low_press" Units="....." Location="21" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_10"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_min_press" Units="....." Location="22" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_min_press" Units="....." Location="23" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_12"/>
                     </ListenersList>
@@ -12430,9 +12430,6 @@
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_54"/>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_55"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_66"/>
-                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_52"/>
-                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_54"/>
-                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_55"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>

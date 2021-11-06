@@ -16,5 +16,5 @@ class FuncNames:
 
     @classmethod
     def all_funcs(cls):
-        return cls.STOP, cls.FOAM, cls.SHAMPOO, cls.WAX, cls.OSMOSIS, cls.COLD_WATER, cls.BRUSH, cls.HOOVER, #\
-               #cls.AIR, cls.POLISH, cls.GLASS, cls.WHEEL_BLACK
+        return cls.STOP, cls.FOAM, cls.SHAMPOO, cls.WAX, cls.OSMOSIS, cls.COLD_WATER, cls.BRUSH, cls.HOOVER, \
+               cls.AIR, cls.POLISH, cls.GLASS, cls.WHEEL_BLACK
