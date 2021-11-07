@@ -27,6 +27,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         # self.pump_n1_3 = None
         self.pump_n2 = None
         self.pump_n3 = None
+        self.pump_n4 = None
+        self.pump_n5 = None
+        self.pump_n6 = None
         self.pump_os1 = None
         self.pump_os2 = None
         self.pump_os = None
@@ -141,24 +144,18 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmos_supplier.process()
 
         # Functions
-        # if FuncNames.WAX in self.active_functions:
-        #     self.valve_dose_wax.open()
-        # else:
-        #     self.valve_dose_wax.close()
-        # if FuncNames.SHAMPOO in self.active_functions:
-        #     self.valve_dose_shampoo.open()
-        # else:
-        #     self.valve_dose_shampoo.close()
-        # if FuncNames.FOAM in self.active_functions:
-        #     self.valve_dose_foam.open()
-        # else:
-        #     self.valve_dose_foam.close()
-        # if FuncNames.INTENSIVE in self.active_functions:
-        #     self.valve_dose_intensive.open()
-        #     self.pump_i1.start()
-        # else:
-        #     self.valve_dose_intensive.close()
-        #     self.pump_i1.stop()
+        if FuncNames.WHEEL_BLACK in self.active_functions:
+            self.pump_n4.start()
+        else:
+            self.pump_n4.stop()
+        if FuncNames.POLISH in self.active_functions:
+            self.pump_n5.start()
+        else:
+            self.pump_n5.stop()
+        if FuncNames.GLASS in self.active_functions:
+            self.pump_n6.start()
+        else:
+            self.pump_n6.stop()
 
     def is_ready_for_foam(self):
         return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
@@ -229,6 +226,21 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.stop_osmosis()
             return False
 
+    def try_wheel_black(self):
+        self.pump_n4.start()
+        self.active_functions.add(FuncNames.WHEEL_BLACK)
+        return True
+
+    def try_polish(self):
+        self.pump_n5.start()
+        self.active_functions.add(FuncNames.POLISH)
+        return True
+
+    def try_glass(self):
+        self.pump_n6.start()
+        self.active_functions.add(FuncNames.GLASS)
+        return True
+
     def stop_wax(self):
         self.active_functions.discard(FuncNames.WAX)
         # self.valve_dose_wax.close()
@@ -249,6 +261,21 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def stop_osmosis(self):
         self.active_functions.discard(FuncNames.OSMOSIS)
+
+    def stop_wheel_black(self):
+        self.pump_n4.stop()
+        self.active_functions.discard(FuncNames.WHEEL_BLACK)
+        return True
+
+    def stop_polish(self):
+        self.pump_n5.stop()
+        self.active_functions.discard(FuncNames.POLISH)
+        return True
+
+    def stop_glass(self):
+        self.pump_n6.stop()
+        self.active_functions.discard(FuncNames.GLASS)
+        return True
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:

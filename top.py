@@ -99,6 +99,27 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.hoover.stop()
 
+        if FuncNames.WHEEL_BLACK in wished_funcs:
+            if not self.supplier.try_wheel_black():
+                prepared_funcs.remove(FuncNames.WHEEL_BLACK)
+                self.logger.debug(f'It not ready for function `{FuncNames.WHEEL_BLACK}`')
+        else:
+            self.supplier.stop_wheel_black()
+
+        if FuncNames.POLISH in wished_funcs:
+            if not self.supplier.try_polish():
+                prepared_funcs.remove(FuncNames.POLISH)
+                self.logger.debug(f'It not ready for function `{FuncNames.POLISH}`')
+        else:
+            self.supplier.stop_polish()
+
+        if FuncNames.GLASS in wished_funcs:
+            if not self.supplier.try_glass():
+                prepared_funcs.remove(FuncNames.GLASS)
+                self.logger.debug(f'It not ready for function `{FuncNames.GLASS}`')
+        else:
+            self.supplier.stop_glass()
+
         for post, func in self.post_function.items():
             if func in prepared_funcs:
                 if not post.set_function(func):

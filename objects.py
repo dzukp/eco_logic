@@ -104,19 +104,34 @@ def get_object(post_quantity=(6, 6)):
                 'di_mid_level': 'dio_1_1_i_5',
                 'di_hi_level': 'dio_1_1_i_4',
                 'mb_cells_idx': 70
-            }
+            },
+            'pump_n4': {
+                'class': Engine,
+                'do_start': 'do_1_2_15',
+                'mb_cells_idx': 72
+            },
+            'pump_n5': {
+                'class': Engine,
+                'do_start': 'do_1_2_16',
+                'mb_cells_idx': 74
+            },
+            'pump_n6': {
+                'class': Engine,
+                'do_start': 'do_1_2_17',
+                'mb_cells_idx': 76
+            },
         }
     }
     hoover = {
         'class': Hoover,
         'ai_press_1': 'ai_3_1',
         'ai_press_2': 'ai_3_2',
-        'mb_cells_idx': 72,
+        'mb_cells_idx': 78,
         'children': {
             'flap': {
                 'class': Valve,
                 'do_open': 'dio_3_o_1',
-                'mb_cells_idx': 101
+                'mb_cells_idx': 107
             },
             'fc_1': {
                 'class': Altivar212,
@@ -125,7 +140,7 @@ def get_object(post_quantity=(6, 6)):
                 'ai_status': 'fc_hoover_1_ai_1',
                 'ai_frequency': 'fc_hoover_1_ai_2',
                 'ai_alarm_code': 'fc_hoover_1_ai_3',
-                'mb_cells_idx': 103
+                'mb_cells_idx': 109
             },
             'fc_2': {
                 'class': Altivar212,
@@ -134,7 +149,7 @@ def get_object(post_quantity=(6, 6)):
                 'ai_status': 'fc_hoover_2_ai_1',
                 'ai_frequency': 'fc_hoover_2_ai_2',
                 'ai_alarm_code': 'fc_hoover_2_ai_3',
-                'mb_cells_idx': 112
+                'mb_cells_idx': 118
             }
         }
     }
@@ -142,48 +157,48 @@ def get_object(post_quantity=(6, 6)):
         'class': BottomWash,
         'di_in_sens': None,
         'di_out_sens': None,
+        'mb_cells_idx': 127,
         'children': {
             'pump_wash': {
                 'class': Engine,
                 'do_start': 'dio_4_o_1',
-                'mb_cells_idx': 123,
+                'mb_cells_idx': 129,
             },
             'pump_circle_water': {
                 'class': Engine,
                 'do_start': 'dio_4_o_2',
-                'mb_cells_idx': 125,
+                'mb_cells_idx': 131,
             },
             'valve_circle_water': {
                 'class': Valve,
                 'do_open': 'dio_4_o_3',
-                'mb_cells_idx': 127,
+                'mb_cells_idx': 133,
             },
             'valve_wash_sand_tank': {
                 'class': Valve,
                 'do_open': 'dio_4_o_4',
-                'mb_cells_idx': 129,
+                'mb_cells_idx': 135,
             },
             'valve_drainage': {
                 'class': Valve,
                 'do_open': 'dio_4_o_5',
-                'mb_cells_idx': 131,
+                'mb_cells_idx': 137,
             },
             'tank_wash': {
                 'class': Tank,
                 'di_low_level': 'dio_4_i_4',
                 'di_mid_level': 'dio_4_i_4',
                 'di_hi_level': 'dio_4_i_5',
-                'mb_cells_idx': 133
+                'mb_cells_idx': 139
             },
             'tank_circle_water': {
                 'class': Tank,
                 'di_low_level': 'dio_4_i_1',
                 'di_mid_level': 'dio_4_i_2',
                 'di_hi_level': 'dio_4_i_3',
-                'mb_cells_idx': 135
+                'mb_cells_idx': 141
             }
-        },
-        'mb_cells_idx': 121
+        }
     }
     post = {
         'class': Post,

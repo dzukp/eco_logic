@@ -122,8 +122,8 @@ class Post(IoObject, ModbusDataObject):
             self.pump.stop()
             self.pump.set_frequency(0.0)
 
-        no_pressure = False#self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
-                            #                      timeout=self.pressure_timeout)
+        no_pressure = self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
+                                                  timeout=self.pressure_timeout)
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()
