@@ -10,16 +10,32 @@ class BottomWash(IoObject, ModbusDataObject):
         super().__init__(*args)
         self.di_in_sens = InChannel(False)
         self.di_out_sens = InChannel(False)
-        self.valve_wash = None
+        self.pump_wash = None
+        self.tank_wash = None
+        self.pump_circle_water = None
+        self.tank_circle_water = None
+        self.valve_circle_water = None
+        self.valve_drainage = None
+        self.valve_wash_sand_tank = None
         self.func_state = self.__state_wait
-        self.enabled = False
+        self.need_drainage = False
+        self.enabled = True
         self.mb_cells_idx = None
 
     def process(self):
+        self.drainage_check()
         if self.enabled:
             self.func_state()
+            self.process_circle_water_tank()
+            self.process_wash_tank()
+            self.process_drainage()
         else:
-            self.valve_wash.close()
+            self.pump_wash.stop()
+            self.valve_circle_water.close()
+            self.pump_circle_water.stop()
+            self.valve_circle_water.close()
+            self.valve_drainage.close()
+            self.valve_wash_sand_tank.close()
             self.func_state = self.__state_wait
 
     def enable(self):
@@ -32,20 +48,49 @@ class BottomWash(IoObject, ModbusDataObject):
             self.enabled = False
             self.logger.info('Disabled')
 
+    def drainage_check(self):
+        if self.tank_circle_water.is_full() and self.tank_wash.is_full():
+            if not self.need_drainage:
+                self.logger.debug('Need drainage')
+                self.need_drainage = True
+        else:
+            if self.need_drainage:
+                self.logger.debug('Not need drainage')
+                self.need_drainage = False
+
+    def process_circle_water_tank(self):
+        if self.tank_circle_water.is_want_water():
+            self.valve_circle_water.open()
+        else:
+            self.valve_circle_water.close()
+
+    def process_wash_tank(self):
+        if self.tank_wash.is_want_water() and not self.tank_circle_water.is_empty():
+            self.pump_circle_water.start()
+        elif not self.need_drainage:
+            self.pump_circle_water.stop()
+
+    def process_drainage(self):
+        if self.need_drainage:
+            self.pump_circle_water.start()
+            self.valve_drainage.open()
+        else:
+            self.valve_drainage.close()
+
     def __state_wait(self):
-        self.valve_wash.close()
+        self.pump_wash.stop()
         if self.di_in_sens.val:
             self.logger.info('sens 1 on')
             self.func_state = self.__state_wash_1
 
     def __state_wash_1(self):
-        self.valve_wash.open()
+        self.pump_wash.start()
         if self.di_out_sens.val and self.di_out_sens.val:
             self.logger.info('sens 1 off and sens 2 on')
             self.func_state = self.__state_wash_2
 
     def __state_wash_2(self):
-        self.valve_wash.open()
+        self.pump_wash.start()
         if not self.di_out_sens.val:
             self.logger.info('sens 2 off')
             self.func_state = self.__state_wait
