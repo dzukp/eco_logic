@@ -22,12 +22,12 @@ def get_object(post_quantity=(6, 6)):
     }
     supplier = {
         'class': WaterPreparing,
-        'di_press_1': None,
+        'di_press_1': 'di_1_2_1',
         'ai_pe_1': 'ai_1_2_1',
         'di_press_2': None,
         'ai_pe_2': 'ai_1_2_2',
         'di_press_3': None,
-        'ai_pe_3': 'ai_1_2_8',
+        'ai_pe_3': 'ai_1_2_3',
         'mb_cells_idx': 0,
         'children': {
             'pump_n1': {
