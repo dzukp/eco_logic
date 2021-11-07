@@ -89,6 +89,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_3_')] + \
                [tag for name, tag in tags['in'].items() if name.startswith('dio_3_')]
     dio_3 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.80', timeout=0.03)
+    dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_4_')] + \
+               [tag for name, tag in tags['in'].items() if name.startswith('dio_4_')]
     dio_4 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.90', timeout=0.03)
 
     dio_post = []
