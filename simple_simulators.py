@@ -8,7 +8,7 @@ class TankSimulator(IoObject):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.level = 0.0
+        self.level = 50.0
         self.speed = 0.0
         self.last_time = time.time()
         self.do_low = OutChannel(False)

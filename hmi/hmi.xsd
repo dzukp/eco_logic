@@ -264,7 +264,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -386,7 +386,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
@@ -957,7 +957,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -1308,7 +1308,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -1463,7 +1463,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -1814,7 +1814,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -5694,7 +5694,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
@@ -5899,7 +5899,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -6025,7 +6025,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -6151,7 +6151,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -6590,7 +6590,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -6787,7 +6787,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -7073,7 +7073,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -7497,7 +7497,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -8995,7 +8995,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -9121,7 +9121,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem AutoIconResize="1"/>
             </MnemoObject>
@@ -10124,7 +10124,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -11751,11 +11751,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTrend" Name="Trend_3" ToolTip="" MnemoLayer="general">
@@ -11812,11 +11812,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
         </MnemoScreen>
@@ -11883,11 +11883,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTrend" Name="Trend_2" ToolTip="" MnemoLayer="general">
@@ -11920,11 +11920,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
         </MnemoScreen>
@@ -12415,7 +12415,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -12462,7 +12462,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <Text string=">"/>
+                <Text string="&gt;"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -12967,11 +12967,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_31" ToolTip="" MnemoLayer="general">
@@ -13066,11 +13066,11 @@
                     <Range rangeId="10-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="30-min" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
                     <Range rangeId="1-hour" baseTemplate="hh:mm:ss" extraTemplate="mm:ss"/>
-                    <Range rangeId="3-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="8-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="12-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="24-hours" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm:ss"/>
-                    <Range rangeId="7-days" baseTemplate="hh:mm&#xa;dd.MM" extraTemplate="hh:mm&#xa;dd.MM"/>
+                    <Range rangeId="3-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="8-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="12-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="24-hours" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm:ss"/>
+                    <Range rangeId="7-days" baseTemplate="hh:mm&#10;dd.MM" extraTemplate="hh:mm&#10;dd.MM"/>
                 </TimeRanges>
             </MnemoObject>
         </MnemoScreen>
@@ -13131,37 +13131,37 @@
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_hi_press" Units="....." Location="14" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_hi_press" Units="....." Location="13" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_4"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_low_press" Units="....." Location="16" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_low_press" Units="....." Location="15" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_1"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_min_press" Units="....." Location="18" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_water_min_press" Units="....." Location="17" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_6"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_hi_press" Units="....." Location="20" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_hi_press" Units="....." Location="19" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_11"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_low_press" Units="....." Location="22" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_low_press" Units="....." Location="21" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_10"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_min_press" Units="....." Location="24" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_osm_min_press" Units="....." Location="25" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_12"/>
                     </ListenersList>
@@ -16141,38 +16141,38 @@
     <PopumMsgList/>
     <UserManagerList>
         <UserRights>
-            <UserRight Number="0" Name="&lt;0>"/>
-            <UserRight Number="1" Name="&lt;1>"/>
-            <UserRight Number="2" Name="&lt;2>"/>
-            <UserRight Number="3" Name="&lt;3>"/>
-            <UserRight Number="4" Name="&lt;4>"/>
-            <UserRight Number="5" Name="&lt;5>"/>
-            <UserRight Number="6" Name="&lt;6>"/>
-            <UserRight Number="7" Name="&lt;7>"/>
-            <UserRight Number="8" Name="&lt;8>"/>
-            <UserRight Number="9" Name="&lt;9>"/>
-            <UserRight Number="10" Name="&lt;10>"/>
-            <UserRight Number="11" Name="&lt;11>"/>
-            <UserRight Number="12" Name="&lt;12>"/>
-            <UserRight Number="13" Name="&lt;13>"/>
-            <UserRight Number="14" Name="&lt;14>"/>
-            <UserRight Number="15" Name="&lt;15>"/>
-            <UserRight Number="16" Name="&lt;16>"/>
-            <UserRight Number="17" Name="&lt;17>"/>
-            <UserRight Number="18" Name="&lt;18>"/>
-            <UserRight Number="19" Name="&lt;19>"/>
-            <UserRight Number="20" Name="&lt;20>"/>
-            <UserRight Number="21" Name="&lt;21>"/>
-            <UserRight Number="22" Name="&lt;22>"/>
-            <UserRight Number="23" Name="&lt;23>"/>
-            <UserRight Number="24" Name="&lt;24>"/>
-            <UserRight Number="25" Name="&lt;25>"/>
-            <UserRight Number="26" Name="&lt;26>"/>
-            <UserRight Number="27" Name="&lt;27>"/>
-            <UserRight Number="28" Name="&lt;28>"/>
-            <UserRight Number="29" Name="&lt;29>"/>
-            <UserRight Number="30" Name="&lt;30>"/>
-            <UserRight Number="31" Name="&lt;31>"/>
+            <UserRight Number="0" Name="&lt;0&gt;"/>
+            <UserRight Number="1" Name="&lt;1&gt;"/>
+            <UserRight Number="2" Name="&lt;2&gt;"/>
+            <UserRight Number="3" Name="&lt;3&gt;"/>
+            <UserRight Number="4" Name="&lt;4&gt;"/>
+            <UserRight Number="5" Name="&lt;5&gt;"/>
+            <UserRight Number="6" Name="&lt;6&gt;"/>
+            <UserRight Number="7" Name="&lt;7&gt;"/>
+            <UserRight Number="8" Name="&lt;8&gt;"/>
+            <UserRight Number="9" Name="&lt;9&gt;"/>
+            <UserRight Number="10" Name="&lt;10&gt;"/>
+            <UserRight Number="11" Name="&lt;11&gt;"/>
+            <UserRight Number="12" Name="&lt;12&gt;"/>
+            <UserRight Number="13" Name="&lt;13&gt;"/>
+            <UserRight Number="14" Name="&lt;14&gt;"/>
+            <UserRight Number="15" Name="&lt;15&gt;"/>
+            <UserRight Number="16" Name="&lt;16&gt;"/>
+            <UserRight Number="17" Name="&lt;17&gt;"/>
+            <UserRight Number="18" Name="&lt;18&gt;"/>
+            <UserRight Number="19" Name="&lt;19&gt;"/>
+            <UserRight Number="20" Name="&lt;20&gt;"/>
+            <UserRight Number="21" Name="&lt;21&gt;"/>
+            <UserRight Number="22" Name="&lt;22&gt;"/>
+            <UserRight Number="23" Name="&lt;23&gt;"/>
+            <UserRight Number="24" Name="&lt;24&gt;"/>
+            <UserRight Number="25" Name="&lt;25&gt;"/>
+            <UserRight Number="26" Name="&lt;26&gt;"/>
+            <UserRight Number="27" Name="&lt;27&gt;"/>
+            <UserRight Number="28" Name="&lt;28&gt;"/>
+            <UserRight Number="29" Name="&lt;29&gt;"/>
+            <UserRight Number="30" Name="&lt;30&gt;"/>
+            <UserRight Number="31" Name="&lt;31&gt;"/>
         </UserRights>
         <UserRoles/>
         <Queries useDb="0"/>
