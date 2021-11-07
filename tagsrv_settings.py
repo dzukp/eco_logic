@@ -16,8 +16,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     ai_names = ('ai_1_1_', 'ai_1_2_', 'ai_2_1_', 'ai_2_2_', 'ai_3_')
     do_names = ('do_1_1_', 'do_1_2_', 'do_1_3_', 'do_2_1_', 'do_2_2_', 'do_2_3_')
     di_names = ('di_1_1_', 'di_2_1_')
-    dio_names = ['dio_1_1_', 'dio_2_1_', 'dio_3_', 'dio_4_']
-    dio_names2 = tuple([f'dio_p_{i}_' for i in range(1, 13)])
+    dio_names = ('dio_1_1_', 'dio_2_1_', 'dio_3_')
+    dio_names2 = tuple([f'dio_p_{i}_' for i in range(1, 13)] + ['dio_4_'])
     fc_names = tuple([f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + \
                      [f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + \
                      ['fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']

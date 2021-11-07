@@ -25,7 +25,7 @@ class BottomWash(IoObject, ModbusDataObject):
     def process(self):
         self.drainage_check()
         if self.enabled:
-            self.func_state()
+            self.process_bottom_wash()
             self.process_circle_water_tank()
             self.process_wash_tank()
             self.process_drainage()
@@ -57,6 +57,12 @@ class BottomWash(IoObject, ModbusDataObject):
             if self.need_drainage:
                 self.logger.debug('Not need drainage')
                 self.need_drainage = False
+
+    def process_bottom_wash(self):
+        if self.di_in_sens.val:
+            self.pump_wash.start()
+        else:
+            self.pump_wash.stop()
 
     def process_circle_water_tank(self):
         if self.tank_circle_water.is_want_water():

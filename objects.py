@@ -155,7 +155,7 @@ def get_object(post_quantity=(6, 6)):
     }
     bottom_wash = {
         'class': BottomWash,
-        'di_in_sens': None,
+        'di_in_sens': 'dio_4_i_6',
         'di_out_sens': None,
         'mb_cells_idx': 127,
         'children': {
