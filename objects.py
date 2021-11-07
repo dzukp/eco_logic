@@ -145,7 +145,7 @@ def get_object(post_quantity=(6, 6)):
         'children': {
             'pump_wash': {
                 'class': Engine,
-                'do_open': 'dio_4_o_1',
+                'do_start': 'dio_4_o_1',
                 'mb_cells_idx': 123,
             },
             'pump_circle_water': {
@@ -155,17 +155,17 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_circle_water': {
                 'class': Valve,
-                'do_start': 'dio_4_o_3',
+                'do_open': 'dio_4_o_3',
                 'mb_cells_idx': 127,
             },
             'valve_wash_sand_tank': {
                 'class': Valve,
-                'do_start': 'dio_4_o_4',
+                'do_open': 'dio_4_o_4',
                 'mb_cells_idx': 129,
             },
             'valve_drainage': {
                 'class': Valve,
-                'do_start': 'dio_4_o_5',
+                'do_open': 'dio_4_o_5',
                 'mb_cells_idx': 131,
             },
             'tank_wash': {
