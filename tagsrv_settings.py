@@ -97,6 +97,10 @@ def gen_tagsrv_config(post_quantity=8):
     fc_modules_1 = []
     fc_modules_2 = []
 
+    if post_quantity <= 6:
+        fc_modules_2 = fc_modules_1
+        port_2 = port_1
+
     for i in range(1, (post_quantity + 1, 5)[post_quantity // 5]):
         fc_modules_1.append(ModbusRTUModule(i, port_1, io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
@@ -120,9 +124,11 @@ def gen_tagsrv_config(post_quantity=8):
         'disp_1': ParallelDispatcher(
             modules=(do_1, do_2, dio_1, dio_2)
         ),
-        'mb_disp1': SerialDispatcher(modules=fc_modules_1),
-        'mb_disp2': SerialDispatcher(modules=fc_modules_2)
+        'mb_disp1': SerialDispatcher(modules=fc_modules_1)
     }
+
+    if post_quantity > 6:
+        dispatchers['mb_disp2'] = SerialDispatcher(modules=fc_modules_2)
 
     return {
         'tags': tags,
