@@ -11,7 +11,7 @@ from func_names import FuncNames
 class Post(IoObject, ModbusDataObject):
 
     _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs')
+                   'disabled_funcs', 'no_flow_frequency')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -46,9 +46,10 @@ class Post(IoObject, ModbusDataObject):
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
         self.hi_press_valve_off_timeout = 2.0
-        self.pressure_timeout = 3.0
+        self.pressure_timeout = 5.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
+        self.no_flow_frequency = 15.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.alarm = False
@@ -100,7 +101,6 @@ class Post(IoObject, ModbusDataObject):
             else:
                 step.stop()
         pump = False
-        freq = 0.0
         for func_name, step in self.func_steps.items():
             step.process()
 
@@ -115,9 +115,13 @@ class Post(IoObject, ModbusDataObject):
         for valve in opened_valves:
             valve.open()
 
-        if pump and self.di_flow.val:
+        if pump:
             self.pump.start()
+            freq = self.func_frequencies.get(self.current_func, 0)
+            if not self.di_flow.val and freq > 0:
+                freq = self.no_flow_frequency
             self.pump.set_frequency(freq)
+            print(freq)
         else:
             self.pump.stop()
             self.pump.set_frequency(0.0)
