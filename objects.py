@@ -138,7 +138,7 @@ def get_object(post_quantity=8):
                 'class': Valve,
                 'do_open': None
             },
-            'valve_out_foam': {
+            'valve_air': {
                 'class': Valve,
                 'do_open': None
             },
@@ -174,7 +174,7 @@ def get_object(post_quantity=8):
         obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
-        obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+        obj['children']['valve_air']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
@@ -190,7 +190,10 @@ def get_object(post_quantity=8):
         else:
             obj['children']['valve_intensive']['do_open'] = f'do_2_{post_number + 18}'
         obj['children']['valve_out_water']['do_open'] = None
-        obj['children']['valve_out_foam']['do_open'] = None
+        if post_quantity > 6:
+            obj['children']['valve_air']['do_open'] = None
+        else:
+            obj['children']['valve_air']['do_open'] = f'do_2_{post_number + 12}'
 
         obj['children']['pump']['do_open'] = None
         obj['children']['pump']['ao_command'] = f'fc{post_number}_ao_1'
