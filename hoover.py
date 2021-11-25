@@ -7,6 +7,8 @@ from pylogic.utils import Hysteresis
 from simple_pid import PID
 from pylogic.channel import InChannel
 
+from hoover_steps import CascadeSteps
+
 
 class Hoover(IoObject, ModbusDataObject):
 
@@ -27,15 +29,11 @@ class Hoover(IoObject, ModbusDataObject):
         self.pid_k_2 = 1.0
         self.pid_i_2 = 2.0
         self.pid_d_2 = 0.0
-        self.freq_limits = [40.0, 60.0]
+        self.min_freq_limits, self.max_freq_limits = (40.0, 60.0)
         self.pid_1 = PID(sample_time=0.5)
         self.pid_2 = PID(sample_time=0.5)
-        self.pid_1.output_limits = tuple(self.freq_limits)
-        self.pid_1.tunings = (self.pid_k_1, self.pid_i_1, self.pid_d_1)
-        self.pid_2.output_limits = tuple(self.freq_limits)
-        self.pid_2.tunings = (self.pid_k_2, self.pid_i_2, self.pid_d_2)
-        self.min_freq_timer = Timer()
         self.post_count = 0
+        self.cascade_steps = CascadeSteps(owner=self)
         self.mb_cells_idx = None
 
     def start(self):
@@ -55,15 +53,13 @@ class Hoover(IoObject, ModbusDataObject):
             self.logger.info('Enable' if enable else 'Disable')
 
     def process(self):
+        self.pid_1.output_limits = (self.min_freq_limits, self.max_freq_limits)
+        self.pid_1.tunings = (self.pid_k_1, self.pid_i_1, self.pid_d_1)
+        self.pid_2.output_limits = (self.min_freq_limits, self.max_freq_limits)
+        self.pid_2.tunings = (self.pid_k_2, self.pid_i_2, self.pid_d_2)
         if self.started:
-            self.fc_1.start()
-            self.fc_1.set_frequency(40 + 20 / 6 * min(6, self.post_count))
-            if self.post_count > 6:
-                self.fc_2.start()
-                self.fc_2.set_frequency(40 + 20 / 6 * (self.post_count - 6))
-            else:
-                self.fc_2.stop()
-                self.fc_2.set_frequency(0)
+            self.cascade_steps.start()
+            self.cascade_steps.process()
         else:
             self.fc_1.stop()
             self.pid_1.reset()

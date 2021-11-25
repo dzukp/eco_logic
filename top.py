@@ -176,8 +176,11 @@ class Top(IoObject, ModbusDataObject):
             FuncNames.BRUSH:
                 self.supplier.is_ready_for_brush() and self.posts[post_name].is_func_allowed(FuncNames.BRUSH),
             FuncNames.HOOVER:
-                self.hoover.is_ready() and self.posts[post_name].is_func_allowed(FuncNames.HOOVER)
-
+                self.hoover.is_ready() and self.posts[post_name].is_func_allowed(FuncNames.HOOVER),
+            FuncNames.AIR: self.posts[post_name].is_func_allowed(FuncNames.AIR),
+            FuncNames.WHEEL_BLACK: self.posts[post_name].is_func_allowed(FuncNames.WHEEL_BLACK),
+            FuncNames.POLISH: self.posts[post_name].is_func_allowed(FuncNames.POLISH),
+            FuncNames.GLASS: self.posts[post_name].is_func_allowed(FuncNames.GLASS),
         }
 
     def get_post_function(self, post_name):
