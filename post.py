@@ -53,6 +53,7 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.alarm = False
+        self.func_timer = Ton()
         self.mb_cells_idx = None
         self.func_steps = {}
         for name in FuncNames.all_funcs():
@@ -115,18 +116,18 @@ class Post(IoObject, ModbusDataObject):
         for valve in opened_valves:
             valve.open()
 
-        if pump:
+        push_pump = not self.func_timer.process(self.current_func != FuncNames.STOP, timeout=3.0)
+        if pump and not self.di_flow.val and self.current_func != FuncNames.STOP and push_pump:
             self.pump.start()
-            freq = self.func_frequencies.get(self.current_func, 0)
-            if not self.di_flow.val and freq > 0:
-                freq = self.no_flow_frequency
-            self.pump.set_frequency(freq)
-            print(freq)
+            self.pump.set_frequency(10.0)
+        elif pump and self.di_flow.val:
+            self.pump.start()
+            self.pump.set_frequency(self.func_frequencies.get(self.current_func, 0.0))
         else:
             self.pump.stop()
             self.pump.set_frequency(0.0)
 
-        no_pressure = self.pressure_timer.process(run=pump and self.ai_pressure.val < self.min_pressure,
+        no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
                                                   timeout=self.pressure_timeout)
         if not self.alarm:
             if self.pump.is_alarm_state():
