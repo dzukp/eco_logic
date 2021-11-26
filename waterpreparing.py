@@ -78,7 +78,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.ai_pressure = self.ai_pe_2
         # self.water_supplier.di_pressure = self.di_press_1
         self.water_supplier.pump = self.pump_n1
-        self.pre_filter_supplier.ai_pressure = self.ai_pe_1
+        self.pre_filter_supplier.ai_pressure = self.ai_pe_2
         self.pre_filter_supplier.tank = self.tank_b1
         self.pre_filter_supplier.pump = self.pump_n1_2
         self.osmos_supplier.tank = self.tank_b2
