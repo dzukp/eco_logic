@@ -5,7 +5,7 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import SimplePostFunctionSteps, PostIntensiveSteps, MultiValveSteps, SharedValveSteps
+from post_function import SimplePostFunctionSteps, PostIntensiveSteps, MultiValveSteps, MultiValveNoPumpSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -53,7 +53,14 @@ class Post(IoObject, ModbusDataObject):
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, MultiValveSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name != FuncNames.STOP])
+                                for name in FuncNames.all_funcs() if name in (
+                                    FuncNames.WAX, FuncNames.HOT_WATER, FuncNames.COLD_WATER, FuncNames.OSMOSIS
+        )])
+        self.func_steps.update({
+            FuncNames.FOAM: MultiValveNoPumpSteps('foam_steps'),
+            FuncNames.SHAMPOO: MultiValveNoPumpSteps('foam_shampoo'),
+            FuncNames.INTENSIVE: MultiValveNoPumpSteps('foam_intensive'),
+        })
         self.disabled_funcs = []
 
     def init(self):
@@ -61,18 +68,16 @@ class Post(IoObject, ModbusDataObject):
                   'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
             FuncNames.FOAM: [self.valve_foam],
-            FuncNames.SHAMPOO: [self.valve_shampoo],
+            FuncNames.SHAMPOO: [self.valve_shampoo, self.valve_air],
             FuncNames.WAX: [self.valve_wax],
             FuncNames.HOT_WATER: [self.valve_hot_water],
-            FuncNames.COLD_WATER: [self.valve_cold_water, self.valve_air],
+            FuncNames.COLD_WATER: [self.valve_cold_water],
             FuncNames.OSMOSIS: [self.valve_osmos],
             FuncNames.INTENSIVE: [self.valve_intensive, self.valve_air]
         }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
-                if func_name == FuncNames.FOAM:
-                    step.pump_link = [self.valve_cold_water]
                 step.set_config(config)
 
         self.pump.reset()

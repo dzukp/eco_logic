@@ -154,6 +154,13 @@ class MultiValveSteps(Steps):
         return res
 
 
+class MultiValveNoPumpSteps(MultiValveSteps):
+    def step_open_valve(self):
+        res = super().step_open_valve()
+        self.pump = False
+        return res
+
+
 class SharedValveSteps(Steps):
 
     def __init__(self, name):
