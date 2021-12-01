@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from pylogic.timer import Ton
+from pylogic.timer import Ton, Timer
 
 from post_function import MultiValveSteps, MultiValvePumpSteps
 from utils import floats_to_modbus_cells
@@ -59,9 +59,9 @@ class Post(IoObject, ModbusDataObject):
         for name in FuncNames.all_funcs():
             if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.BRUSH, FuncNames.COLD_WATER,
                             FuncNames.OSMOSIS, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
-                self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps')
+                self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps', self)
             elif name in (FuncNames.AIR, FuncNames.HOOVER):
-                self.func_steps[name] = MultiValveSteps(f'{name}_steps')
+                self.func_steps[name] = MultiValveSteps(f'{name}_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
 
@@ -101,14 +101,14 @@ class Post(IoObject, ModbusDataObject):
                     step.start()
             else:
                 step.stop()
-        pump = False
         for func_name, step in self.func_steps.items():
             step.process()
 
+        pump = 0
         opened_valves = set()
         for func_name, step in self.func_steps.items():
             opened_valves = opened_valves.union(set(step.get_opened_valves()))
-            pump = pump or step.is_pump_started()
+            pump = max(step.is_pump_started(), pump)
         closed_valves = self.all_valves.difference(opened_valves)
 
         for valve in closed_valves:
@@ -116,11 +116,10 @@ class Post(IoObject, ModbusDataObject):
         for valve in opened_valves:
             valve.open()
 
-        push_pump = not self.func_timer.process(self.current_func != FuncNames.STOP, timeout=3.0)
-        if pump and not self.di_flow.val and self.current_func != FuncNames.STOP and push_pump:
+        if pump == 1:
             self.pump.start()
             self.pump.set_frequency(10.0)
-        elif pump and self.di_flow.val:
+        elif pump == 2:
             self.pump.start()
             self.pump.set_frequency(self.func_frequencies.get(self.current_func, 0.0))
         else:

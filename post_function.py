@@ -14,10 +14,11 @@ class BaseSteps(Steps):
 
 class MultiValveSteps(BaseSteps):
 
-    def __init__(self, name):
+    def __init__(self, name, owner, *args, **kwargs):
         super().__init__(name)
+        self.owner = owner
         self.valve = None
-        self.pump = False
+        self.pump = 0
         self.need_stop = False
         self.ton = Ton()
         self.valve_off_timeout = 1.0
@@ -33,7 +34,7 @@ class MultiValveSteps(BaseSteps):
         return self.current_step in (self.step_first, self.step_open_valve)
 
     def idle(self):
-        self.pump = False
+        self.pump = 0
         self.valve = False
         self.need_stop = False
 
@@ -41,13 +42,14 @@ class MultiValveSteps(BaseSteps):
         return self.step_open_valve
 
     def step_open_valve(self):
-        self.pump = True
+        self.pump = 0
         self.valve = True
         if self.need_stop:
+            self.ton.reset()
             return self.step_close_valve
 
     def step_close_valve(self):
-        self.pump = False
+        self.pump = 0
         if self.ton.process(run=True, timeout=self.valve_off_timeout):
             self.valve = False
             self.ton.reset()
@@ -60,29 +62,38 @@ class MultiValveSteps(BaseSteps):
         return res
 
     def is_pump_started(self):
-        return False
+        return self.pump
 
 
 class MultiValvePumpSteps(MultiValveSteps):
 
-    def __init__(self, name):
-        super().__init__(name)
-        self.pump = False
-
-    def idle(self):
-        self.pump = False
-        super(MultiValvePumpSteps, self).idle()
-
-    def step_first(self):
-        return self.step_open_valve
-
     def step_open_valve(self):
-        self.pump = True
-        return super(MultiValvePumpSteps, self).step_open_valve()
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        if res:
+            return res
+        self.pump = 1
+        return self.wait_press
 
-    def step_close_valve(self):
-        self.pump = False
-        return super(MultiValvePumpSteps, self).step_close_valve()
+    def wait_press(self):
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        if res:
+            return res
+        self.pump = 1
+        if self.owner.di_flow.val:
+            return self.full_work
+        if self.owner.ai_pressure.val > 120:
+            return self.wait_flow
 
-    def is_pump_started(self):
-        return self.pump
+    def wait_flow(self):
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        if res:
+            return res
+        self.pump = 0
+        if self.owner.di_flow.val:
+            return self.full_work
+
+    def full_work(self):
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        if res:
+            return res
+        self.pump = 2
