@@ -178,15 +178,15 @@ def get_object(post_quantity=8):
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        module_number = ((post_number - 1) // 4) + 1
-        obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 1}'
-        obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 2}'
-        obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 3}'
-        obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 4}'
-        obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 5}'
-        obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 6}'
+        module_number = ((post_number - 1) // 2) + 1
+        obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 1}'
+        obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 2}'
+        obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 3}'
+        obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 4}'
+        obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 5}'
+        obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 6 + 6}'
         if post_quantity > 6:
-            obj['children']['valve_intensive']['do_open'] = f'dio_{module_number}_o_{(post_number - 1) % 4 + 1}'
+            obj['children']['valve_intensive']['do_open'] = f'dio_{module_number}_o_{(post_number - 1) % 2 + 1}'
         else:
             obj['children']['valve_intensive']['do_open'] = f'do_2_{post_number + 18}'
         obj['children']['valve_out_water']['do_open'] = None
