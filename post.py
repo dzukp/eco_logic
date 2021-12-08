@@ -118,7 +118,7 @@ class Post(IoObject, ModbusDataObject):
 
         if pump == 1:
             self.pump.start()
-            self.pump.set_frequency(10.0)
+            self.pump.set_frequency(5.0)
         elif pump == 2:
             self.pump.start()
             self.pump.set_frequency(self.func_frequencies.get(self.current_func, 0.0))

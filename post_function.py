@@ -81,7 +81,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.pump = 1
         if self.owner.di_flow.val:
             return self.full_work
-        if self.owner.ai_pressure.val > 120:
+        if self.owner.ai_pressure.val > 50:
             return self.wait_flow
 
     def wait_flow(self):
@@ -96,4 +96,6 @@ class MultiValvePumpSteps(MultiValveSteps):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
+        if not self.owner.di_flow.val:
+            return self.wait_press
         self.pump = 2
