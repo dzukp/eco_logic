@@ -33,8 +33,11 @@ class Hoover(IoObject, ModbusDataObject):
         self.pid_1 = PID(sample_time=0.5)
         self.pid_2 = PID(sample_time=0.5)
         self.post_count = 0
-        self.cascade_steps = CascadeSteps(owner=self)
+        self.cascade_steps = None
         self.mb_cells_idx = None
+
+    def init(self):
+        self.cascade_steps = CascadeSteps(owner=self)
 
     def start(self):
         if not self.started:
