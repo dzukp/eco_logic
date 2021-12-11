@@ -12,6 +12,8 @@ from hoover_steps import CascadeSteps
 
 class Hoover(IoObject, ModbusDataObject):
 
+    _save_attrs = ('pid_k_1', 'pid_i_1', 'pid_d_1', 'pid_k_2', 'pid_i_2', 'pid_d_2', 'min_freq_limits', 'max_freq_limits')
+
     def __init__(self, *args, **kwargs):
         super(Hoover, self).__init__(*args, **kwargs)
         self.started = True
@@ -23,11 +25,11 @@ class Hoover(IoObject, ModbusDataObject):
         self.flap = None
         self.set_point = -1000.0
         self.filter_diff_limit = 100.0
-        self.pid_k_1 = 1.0
-        self.pid_i_1 = 2.0
+        self.pid_k_1 = 0.1
+        self.pid_i_1 = 0.2
         self.pid_d_1 = 0.0
-        self.pid_k_2 = 1.0
-        self.pid_i_2 = 2.0
+        self.pid_k_2 = 0.1
+        self.pid_i_2 = 0.2
         self.pid_d_2 = 0.0
         self.min_freq_limits, self.max_freq_limits = (40.0, 60.0)
         self.pid_1 = PID(sample_time=0.5)
@@ -62,14 +64,15 @@ class Hoover(IoObject, ModbusDataObject):
         self.pid_2.tunings = (self.pid_k_2, self.pid_i_2, self.pid_d_2)
         if self.started:
             self.cascade_steps.start()
-            self.cascade_steps.process()
         else:
+            self.cascade_steps.stop()
             self.fc_1.stop()
             self.pid_1.reset()
             self.fc_1.set_frequency(0)
             self.fc_2.stop()
             self.pid_2.reset()
             self.fc_2.set_frequency(0)
+        self.cascade_steps.process()
 
     def try_hoover(self, post_count):
         self.post_count = post_count

@@ -28,3 +28,26 @@ class TankSimulator(IoObject):
 
     def reset_speed(self):
         self.speed = 0.0
+
+
+class FcSimulator(IoObject):
+
+    def __init__(self, *args):
+        super(FcSimulator, self).__init__(*args)
+        self.cmd_start_mask = 0xC400
+        self.cmd_reset_mask = 0xF000
+        self.status_run_mask = 0x0400
+        self.status_stop_mask = 0x0000
+        self.ai_cmd = InChannel(0)
+        self.ai_freq = InChannel(0)
+        self.ao_status = OutChannel(0)
+        self.ao_freq = OutChannel(0)
+
+    def process(self):
+        if (self.ai_cmd.val & self.cmd_start_mask) == self.cmd_start_mask:
+            self.ao_status.val = self.status_run_mask
+        elif (self.ai_cmd.val & self.cmd_reset_mask) == self.cmd_reset_mask:
+            self.ao_status.val = 0
+        else:
+            self.ao_status.val = 0
+        self.ao_freq.val = self.ai_freq.val

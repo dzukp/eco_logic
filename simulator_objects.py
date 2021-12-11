@@ -1,5 +1,5 @@
 from top_simulator import TopSimulator
-from simple_simulators import TankSimulator
+from simple_simulators import *
 
 
 def get_simulator_objects(post_quantity):
@@ -34,8 +34,35 @@ def get_simulator_objects(post_quantity):
                     'do_low': 'dio_1_1_i_6',
                     'do_mid': 'dio_1_1_i_5',
                     'do_hi': 'dio_1_1_i_4',
+                },
+                'hoover_fc1': {
+                    'class': FcSimulator,
+                    'ai_cmd': 'fc_hoover_1_ao_1',
+                    'ai_freq': 'fc_hoover_1_ao_2',
+                    'ao_status': 'fc_hoover_1_ai_1',
+                    'ao_freq': 'fc_hoover_1_ai_2'
+                },
+                'hoover_fc2': {
+                    'class': FcSimulator,
+                    'ai_cmd': 'fc_hoover_2_ao_1',
+                    'ai_freq': 'fc_hoover_2_ao_2',
+                    'ao_status': 'fc_hoover_2_ai_1',
+                    'ao_freq': 'fc_hoover_2_ai_2'
                 }
             }
         }
     }
+
+    side = 1
+    for posts in post_quantity:
+        for post in range(1, posts + 1):
+            simulators['top_simulator']['children'][f'fc_{post * side}'] = {
+                'class': FcSimulator,
+                'ai_cmd': f'fc_{side}_{post}_ao_1',
+                'ai_freq': f'fc_{side}_{post}_ao_2',
+                'ao_status': f'fc_{side}_{post}_ai_1',
+                'ao_freq': f'fc_{side}_{post}_ai_2'
+            }
+        side += 1
+
     return simulators

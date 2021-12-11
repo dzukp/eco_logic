@@ -22,16 +22,22 @@ class CascadeSteps(Steps):
         self.idle()
         if self.owner.post_count > 0:
             self.fc_index = 0
+            self.ton_max_freq.reset()
+            self.ton_min_freq.reset()
             self.logger.debug('start')
             return self.run
 
     def run(self):
-        frequency = self.pid[self.fc_index](-self.owner.set_point)
+        self.pid[self.fc_index].setpoint = -self.owner.set_point
+        frequency = self.pid[self.fc_index](-self.owner.ai_press_1.val)
         self.fc[self.fc_index].start()
         self.fc[self.fc_index].set_frequency(frequency)
         for fc, pid in zip(self.fc[:self.fc_index], self.pid[:self.fc_index]):
             fc.start()
             fc.set_frequency(self.owner.max_freq_limits)
+        for fc, pid in zip(self.fc[self.fc_index + 1:], self.pid[self.fc_index + 1:]):
+            fc.stop()
+            fc.set_frequency(0)
 
         is_max_freq = self.owner.max_freq_limits - frequency < 0.1
         if self.ton_max_freq.process(is_max_freq, 3.0):
@@ -40,7 +46,7 @@ class CascadeSteps(Steps):
                 self.logger.debug(f'incr fc count, work {self.fc_index + 1}')
 
         is_min_freq = frequency - self.owner.min_freq_limits < 0.1
-        if self.ton_max_freq.process(is_min_freq, 5.0):
+        if self.ton_min_freq.process(is_min_freq, 5.0):
             if self.fc_index > 0:
                 self.fc_index -= 1
                 self.logger.debug(f'decr fc count, work {self.fc_index + 1}')

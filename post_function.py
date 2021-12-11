@@ -67,6 +67,10 @@ class MultiValveSteps(BaseSteps):
 
 class MultiValvePumpSteps(MultiValveSteps):
 
+    def __init__(self, *args, **kwargs):
+        super(MultiValvePumpSteps, self).__init__(*args, **kwargs)
+        self.no_flow_press = 0
+
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
@@ -80,6 +84,7 @@ class MultiValvePumpSteps(MultiValveSteps):
             return res
         self.pump = 1
         if self.owner.di_flow.val:
+            self.ton.reset()
             return self.full_work
         if self.owner.ai_pressure.val > 50:
             return self.wait_flow
@@ -90,12 +95,20 @@ class MultiValvePumpSteps(MultiValveSteps):
             return res
         self.pump = 0
         if self.owner.di_flow.val:
+            self.logger.info('di_flow')
+            self.ton.reset()
+            return self.full_work
+        if self.no_flow_press - self.owner.ai_pressure.val > 20.0:
+            self.logger.info('self.owner.ai_pressure.val - self.no_flow_press > 20.0')
+            self.ton.reset()
             return self.full_work
 
     def full_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
-        if not self.owner.di_flow.val:
+        if self.ton.process(run=True, timeout=2.0) and not self.owner.di_flow.val:
+            self.no_flow_press = self.owner.ai_pressure.val
+            self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
         self.pump = 2
