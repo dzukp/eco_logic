@@ -14,6 +14,7 @@ class TopSimulator(IoObject):
         self.di_n1 = InChannel(False)
         self.ao_p1 = OutChannel(0.0)
         self.ao_p2 = OutChannel(0.0)
+        self.ao_p7 = OutChannel(0.0)
         self.do_press1 = OutChannel(False)
         self.di_water_os = InChannel(False)
         self.do_press2 = OutChannel(False)
@@ -27,6 +28,7 @@ class TopSimulator(IoObject):
         self.di_n3 = InChannel(False)
         self.do_press4 = OutChannel(False)
         self.n3_timer = Timer()
+        self.di_n7 = InChannel(False)
         self.do_1_brush = OutChannel(True)
         self.do_1_hoover = OutChannel(True)
         self.brush_timer = Timer()
@@ -54,6 +56,7 @@ class TopSimulator(IoObject):
                     self.b2.add_speed(1.0)
                 if self.di_os2.val:
                     self.b2.add_speed(1.0)
+
         if self.di_n2.val:
             self.b2.add_speed(-1.0)
         if self.di_n2.val:
@@ -70,6 +73,11 @@ class TopSimulator(IoObject):
             self.do_press4.val = False
         elif self.n3_timer.elapsed() > 2.0:
             self.do_press4.val = True
+
+        if self.di_n7.val:
+            self.ao_p7.val = min(6.0, self.ao_p7.val + 0.027) + get_about_0_rand(0.01)
+        else:
+            self.ao_p7.val = max(0.0, self.ao_p7.val - 0.027) + random.random() * 0.01
 
         self.brush_timer.start(40)
         if self.brush_timer.is_end():

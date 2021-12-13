@@ -12,7 +12,8 @@ from hoover_steps import CascadeSteps
 
 class Hoover(IoObject, ModbusDataObject):
 
-    _save_attrs = ('pid_k_1', 'pid_i_1', 'pid_d_1', 'pid_k_2', 'pid_i_2', 'pid_d_2', 'min_freq_limits', 'max_freq_limits')
+    _save_attrs = ('pid_k_1', 'pid_i_1', 'pid_d_1', 'pid_k_2', 'pid_i_2', 'pid_d_2',
+                   'min_freq_limits', 'max_freq_limits')
 
     def __init__(self, *args, **kwargs):
         super(Hoover, self).__init__(*args, **kwargs)
@@ -23,7 +24,7 @@ class Hoover(IoObject, ModbusDataObject):
         self.ai_press_1 = InChannel(0.0)
         self.ai_press_2 = InChannel(0.0)
         self.flap = None
-        self.set_point = -1000.0
+        self.set_point = -150.0
         self.filter_diff_limit = 100.0
         self.pid_k_1 = 0.1
         self.pid_i_1 = 0.2
