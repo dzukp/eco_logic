@@ -58,9 +58,9 @@ class Post(IoObject, ModbusDataObject):
         self.func_steps = {}
         for name in FuncNames.all_funcs():
             if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.BRUSH, FuncNames.COLD_WATER,
-                            FuncNames.OSMOSIS, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
+                            FuncNames.OSMOSIS):
                 self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps', self)
-            elif name in (FuncNames.AIR, FuncNames.HOOVER):
+            elif name in (FuncNames.AIR, FuncNames.HOOVER, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
                 self.func_steps[name] = MultiValveSteps(f'{name}_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
