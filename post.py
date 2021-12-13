@@ -16,6 +16,7 @@ class Post(IoObject, ModbusDataObject):
     def __init__(self, name, parent):
         super().__init__(name, parent)
         self.di_hoover = InChannel(False)
+        self.di_brush = InChannel(False)
         self.di_car_inside = InChannel(False)
         self.do_car_inside = OutChannel(False)
         self.ai_pressure = InChannel(0.0)
@@ -186,6 +187,12 @@ class Post(IoObject, ModbusDataObject):
     def is_func_allowed(self, func_name):
         return func_name not in self.disabled_funcs
 
+    def is_hoover_valve_open(self):
+        return self.di_hoover.val
+
+    def is_brush_valve_open(self):
+        return self.di_brush.val
+
     def mb_cells(self):
         return self.mb_output(0).keys()
 
@@ -199,8 +206,9 @@ class Post(IoObject, ModbusDataObject):
         if self.mb_cells_idx is not None:
             status = int(self.alarm) * (1 << 0) + \
                      int(self.di_flow.val) * (1 << 1) + \
-                     int(self.di_car_inside.val) * (1 << 2) + \
-                     int(self.di_hoover.val) * (1 << 3)
+                     int(self.di_brush.val) * (1 << 2) + \
+                     int(self.di_hoover.val) * (1 << 3) + \
+                     int(self.di_car_inside.val) * (1 << 4)
             p1, p2 = floats_to_modbus_cells((self.ai_pressure.val,))
             return {
                 self.mb_cells_idx - start_addr: 0xFF00,

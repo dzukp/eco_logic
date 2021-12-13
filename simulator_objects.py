@@ -22,6 +22,7 @@ def get_simulator_objects(post_quantity):
             'do_press3': None,
             'di_n3': 'do_1_2_13',
             'do_press4': 'di_1_6',
+            'ao_press_1': 'ai_1_1_1',
             'children': {
                 'b1': {
                     'class': TankSimulator,
@@ -63,6 +64,8 @@ def get_simulator_objects(post_quantity):
                 'ao_status': f'fc_{side}_{post}_ai_1',
                 'ao_freq': f'fc_{side}_{post}_ai_2'
             }
+            simulators['top_simulator'][f'do_{post}_hoover'] = f'dio_p_{post}_i_1'
+            simulators['top_simulator'][f'do_{post}_brush'] = f'dio_p_{post}_i_2'
         side += 1
 
     return simulators

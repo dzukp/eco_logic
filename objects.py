@@ -285,7 +285,7 @@ def get_object(post_quantity=(6, 6)):
             new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['di_hoover'] = f'dio_p_{post_number}_i_1'
-            new_post['di_car_inside'] = f'dio_p_{post_number}_i_2'
+            new_post['di_brush'] = f'dio_p_{post_number}_i_2'
             new_post['do_car_inside'] = f'dio_p_{post_number}_o_8'
 
             children = new_post['children']
