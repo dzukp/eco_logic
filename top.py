@@ -70,8 +70,8 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.supplier.stop_foam()
 
-        any_brush_valve = any([post.is_brush_valve_open() for post in self.posts.values()])
-        if FuncNames.BRUSH in wished_funcs and any_brush_valve:
+        any_brush_valve = any([post.is_brush_ready() for post in self.posts.values()])
+        if (FuncNames.BRUSH in wished_funcs) and any_brush_valve:
             if not self.supplier.try_brush():
                 self.supplier.stop_brush()
                 prepared_funcs.remove(FuncNames.BRUSH)
@@ -93,13 +93,16 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.supplier.stop_osmosis()
 
-        any_hoover_valve = any([post.is_hoover_valve_open() for post in self.posts.values()])
-        if FuncNames.HOOVER in wished_funcs and any_hoover_valve:
+        if FuncNames.HOOVER in wished_funcs:
             hoover_cnt = sum([int(func == FuncNames.HOOVER) for func in self.post_function.values()])
             if not self.hoover.try_hoover(hoover_cnt):
                 prepared_funcs.remove(FuncNames.HOOVER)
                 self.hoover.stop()
                 self.logger.debug(f'It not ready for function `{FuncNames.HOOVER}`')
+
+        any_hoover_valve = any([post.is_need_hoover() for post in self.posts.values()])
+        if any_hoover_valve:
+            self.hoover.start()
         else:
             self.hoover.stop()
 

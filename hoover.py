@@ -78,7 +78,6 @@ class Hoover(IoObject, ModbusDataObject):
     def try_hoover(self, post_count):
         self.post_count = post_count
         if self.is_ready():
-            self.start()
             return True
 
     def is_ready(self):

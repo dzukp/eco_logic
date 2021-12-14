@@ -187,11 +187,11 @@ class Post(IoObject, ModbusDataObject):
     def is_func_allowed(self, func_name):
         return func_name not in self.disabled_funcs
 
-    def is_hoover_valve_open(self):
-        return self.di_hoover.val
+    def is_need_hoover(self):
+        return not self.di_hoover.val and self.current_func == FuncNames.HOOVER
 
-    def is_brush_valve_open(self):
-        return self.di_brush.val
+    def is_brush_ready(self):
+        return not self.di_brush.val and self.current_func == FuncNames.BRUSH
 
     def mb_cells(self):
         return self.mb_output(0).keys()
