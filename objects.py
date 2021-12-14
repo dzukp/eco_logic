@@ -181,9 +181,9 @@ def get_object(post_quantity=8):
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
         module_number = ((post_number - 1) // 4) + 1
-        obj['children']['pump']['do_fc_1'] = f'do_3_{post_number}'
-        obj['children']['pump']['do_fc_2'] = f'do_3_{post_number + 6}'
-        obj['children']['pump']['do_fc_3'] = f'do_3_{post_number + 12}'
+        obj['children']['pump']['do_speed_1'] = f'do_3_{post_number}'
+        obj['children']['pump']['do_speed_2'] = f'do_3_{post_number + 6}'
+        obj['children']['pump']['do_speed_3'] = f'do_3_{post_number + 12}'
         obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 1}'
         obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 2}'
         obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 3}'
