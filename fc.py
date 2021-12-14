@@ -176,5 +176,102 @@ class Altivar212(Mechanism, ModbusDataObject):
             return {}
 
 
+class DoFc(Mechanism, ModbusDataObject):
+
+    def __init__(self, *args):
+        super(DoFc, self).__init__(*args)
+        self.do_speed_1 = OutChannel(False)
+        self.do_speed_2 = OutChannel(False)
+        self.do_speed_3 = OutChannel(False)
+        self.auto_speed = 0
+        self.man_speed = 0
+        self.state = 0
+        self.speed = 0
+        self.mb_cells_idx = None
+
+    def process(self):
+        self.do_speed_1.val = False
+        self.do_speed_2.val = False
+        self.do_speed_3.val = False
+        if self.state == 1:
+            self.speed = self.man_speed if self.manual else self.auto_speed
+            if self.speed == 1:
+                self.do_speed_1.val = True
+            elif self.speed == 2:
+                self.do_speed_2.val = True
+            elif self.speed == 3:
+                self.do_speed_3.val = True
+        else:
+            self.speed = 0
+
+    def start(self, manual=False):
+        if manual == self.manual:
+            if self.state == 0:
+                self.state = 1
+                self.logger.info(f'{self.name}: start command {"manual" if self.manual else "automate"}')
+
+    def stop(self, manual=False):
+        if manual == self.manual:
+            if self.state == 1:
+                self.state = 0
+                self.logger.info(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
+
+    def reset(self):
+        if not self.reset_alarm:
+            self.reset_alarm = True
+            self.logger.info(f'{self.name}: reset command')
+
+    def set_speed(self, speed, manual=False):
+        if manual:
+            if speed != self.man_speed:
+                self.man_speed = speed
+                self.logger.info(f'set manual speed task: {speed}')
+        else:
+            if speed != self.auto_speed:
+                self.auto_speed = speed
+                self.logger.debug(f'set auto speed task: {speed}')
+
+    def mb_cells(self):
+        return self.mb_output(0).keys()
+
+    def mb_input(self, start_addr, data):
+        if self.mb_cells_idx is not None:
+            cmd = data[- start_addr + self.mb_cells_idx ]
+            if cmd & 0x0001:
+                self.set_manual(True)
+            if cmd & 0x0002:
+                self.set_manual(False)
+            if cmd & 0x0004:
+                self.start(manual=True)
+            if cmd & 0x0008:
+                self.stop(manual=True)
+            if cmd & 0x0010:
+                self.reset()
+            float_data = struct.unpack('fff', struct.pack('HHHHHH', *tuple(data[self.mb_cells_idx + 2: self.mb_cells_idx + 8])))
+            self.set_speed(round(float_data[1]), manual=True)
+
+    def mb_output(self, start_addr):
+        if self.mb_cells_idx is not None:
+            cmd = 0
+            status = int(self.manual) * (1 << 0) | \
+                     int(self.state) * (1 << 1) | \
+                     int(0) * (1 << 2) | \
+                     int(0) * (1 << 3) | \
+                     0
+            float_data2 = struct.pack('fff', self.speed, self.man_speed, self.auto_speed)
+            float_data = struct.unpack('HHHHHH', float_data2)
+            return {-start_addr + self.mb_cells_idx: cmd,
+                    -start_addr + self.mb_cells_idx + 1: status,
+                    -start_addr + self.mb_cells_idx + 2: float_data[0],
+                    -start_addr + self.mb_cells_idx + 3: float_data[1],
+                    -start_addr + self.mb_cells_idx + 4: float_data[2],
+                    -start_addr + self.mb_cells_idx + 5: float_data[3],
+                    -start_addr + self.mb_cells_idx + 6: float_data[4],
+                    -start_addr + self.mb_cells_idx + 7: float_data[5]
+                    }
+        else:
+            return {}
+
+
 def trans_divide_10(value):
     return value / 10.0
