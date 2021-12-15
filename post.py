@@ -19,9 +19,6 @@ class Post(IoObject, ModbusDataObject):
         super().__init__(name, parent)
         self.ai_pressure = InChannel(0.0)
         self.di_flow = InChannel(False)
-        self.do_fc_1 = OutChannel(True)
-        self.do_fc_2 = OutChannel(True)
-        self.do_fc_3 = OutChannel(True)
         self.valve_foam = None
         self.valve_wax = None
         self.valve_shampoo = None

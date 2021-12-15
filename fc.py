@@ -183,6 +183,7 @@ class DoFc(Mechanism, ModbusDataObject):
         self.do_speed_1 = OutChannel(False)
         self.do_speed_2 = OutChannel(False)
         self.do_speed_3 = OutChannel(False)
+        self.do_start = OutChannel(False)
         self.auto_speed = 0
         self.man_speed = 0
         self.state = 0
@@ -194,6 +195,7 @@ class DoFc(Mechanism, ModbusDataObject):
         self.do_speed_2.val = False
         self.do_speed_3.val = False
         if self.state == 1:
+            self.do_start.val = True
             self.speed = self.man_speed if self.manual else self.auto_speed
             if self.speed == 1:
                 self.do_speed_1.val = True
@@ -203,6 +205,7 @@ class DoFc(Mechanism, ModbusDataObject):
                 self.do_speed_3.val = True
         else:
             self.speed = 0
+            self.do_start.val = False
 
     def start(self, manual=False):
         if manual == self.manual:
