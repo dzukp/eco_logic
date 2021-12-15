@@ -70,8 +70,7 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.supplier.stop_foam()
 
-        any_brush_valve = any([post.is_brush_ready() for post in self.posts.values()])
-        if (FuncNames.BRUSH in wished_funcs) and any_brush_valve:
+        if FuncNames.BRUSH in wished_funcs:
             if not self.supplier.try_brush():
                 self.supplier.stop_brush()
                 prepared_funcs.remove(FuncNames.BRUSH)

@@ -3,7 +3,7 @@ from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton, Timer
 
-from post_function import MultiValveSteps, MultiValvePumpSteps
+from post_function import MultiValveSteps, MultiValvePumpSteps, BrushSteps, HooverSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -58,11 +58,14 @@ class Post(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
         self.func_steps = {}
         for name in FuncNames.all_funcs():
-            if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.BRUSH, FuncNames.COLD_WATER,
-                            FuncNames.OSMOSIS):
+            if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.COLD_WATER, FuncNames.OSMOSIS):
                 self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps', self)
-            elif name in (FuncNames.AIR, FuncNames.HOOVER, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
+            elif name in (FuncNames.AIR, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
                 self.func_steps[name] = MultiValveSteps(f'{name}_steps', self)
+            elif name == FuncNames.BRUSH:
+                self.func_steps[name] = BrushSteps(f'{name}_steps', self)
+            elif name == FuncNames.HOOVER:
+                self.func_steps[name] = HooverSteps(f'{name}_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
 

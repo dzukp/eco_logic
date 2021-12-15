@@ -112,3 +112,24 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
         self.pump = 2
+
+
+class BrushSteps(MultiValvePumpSteps):
+
+    def is_pump_started(self):
+        if self.owner.di_brush.val:
+            return 0
+        return super(BrushSteps, self).is_pump_started()
+
+    def get_opened_valves(self):
+        if self.owner.di_brush.val:
+            return []
+        return super(BrushSteps, self).get_opened_valves()
+
+
+class HooverSteps(MultiValveSteps):
+
+    def get_opened_valves(self):
+        if self.owner.di_hoover.val:
+            return []
+        return super(HooverSteps, self).get_opened_valves()
