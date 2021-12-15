@@ -31,8 +31,10 @@ class TopSimulator(IoObject):
         self.di_n7 = InChannel(False)
         self.do_1_brush = OutChannel(True)
         self.do_1_hoover = OutChannel(True)
+        self.do_1_car_inside = OutChannel(True)
         self.brush_timer = Timer()
         self.ao_press_1 = OutChannel(0.0)
+        self.do_2_car_inside = OutChannel(True)
 
     def process(self):
         # Water
@@ -88,6 +90,8 @@ class TopSimulator(IoObject):
             self.do_1_brush.val = True
         self.do_1_hoover.val = not self.do_1_brush.val
         self.ao_press_1.val = self.children[4].ao_freq.val / 40
+
+        self.do_2_car_inside.val = 10 < self.brush_timer.elapsed() < 30
 
 
 def get_about_0_rand(range_):

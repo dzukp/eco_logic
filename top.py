@@ -42,7 +42,7 @@ class Top(IoObject, ModbusDataObject):
     def function_process(self):
         wished_funcs = set()
         for post, func in self.post_function.items():
-            if not post.alarm:
+            if post.is_ready():
                 wished_funcs.add(func)
             elif func != FuncNames.STOP:
                 self.logger.debug(f'Stop function `{post.name}` because it is alarm')
@@ -158,6 +158,9 @@ class Top(IoObject, ModbusDataObject):
             return False
         elif post_name not in self.posts:
             self.logger.error(f'Hasn\'t post `{post_name}`')
+            return False
+        elif not self.posts[post_name].is_ready():
+            self.logger.debug(f'Post `{post_name}` not ready')
             return False
         # elif not self.get_readiness_functions(post_name)[function]:
         #     self.logger.info(f'Can\'t start function {function} on `{post_name}`. Function not ready.')

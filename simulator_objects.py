@@ -68,6 +68,7 @@ def get_simulator_objects(post_quantity):
             }
             simulators['top_simulator'][f'do_{post}_hoover'] = f'dio_p_{post}_i_1'
             simulators['top_simulator'][f'do_{post}_brush'] = f'dio_p_{post}_i_2'
+            simulators['top_simulator'][f'do_{post}_car_inside'] = f'dio_p_{post}_i_3'
         side += 1
 
     return simulators

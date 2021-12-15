@@ -18,7 +18,8 @@ class Post(IoObject, ModbusDataObject):
         self.di_hoover = InChannel(False)
         self.di_brush = InChannel(False)
         self.di_car_inside = InChannel(False)
-        self.do_car_inside = OutChannel(False)
+        self.do_green_light = OutChannel(False)
+        self.do_red_light = OutChannel(False)
         self.ai_pressure = InChannel(0.0)
         self.di_flow = InChannel(False)
         self.valve_foam = None
@@ -54,6 +55,7 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.alarm = False
+        self.car_inside = False
         self.func_timer = Ton()
         self.mb_cells_idx = None
         self.func_steps = {}
@@ -98,7 +100,6 @@ class Post(IoObject, ModbusDataObject):
         self.pump.reset()
 
     def process(self):
-        self.do_car_inside.val = self.di_car_inside.val
         for func_name, step in self.func_steps.items():
             if func_name == self.current_func:
                 if not step.is_active():
@@ -143,9 +144,17 @@ class Post(IoObject, ModbusDataObject):
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')
             self.reset_alarm()
+        self.car_inside_process()
+
+    def car_inside_process(self):
+        if self.car_inside != self.di_car_inside.val:
+            self.logger.info('Car inside' if self.di_car_inside.val else 'Post empty')
+        self.car_inside = self.di_car_inside.val
+        self.do_green_light.val = not self.car_inside
+        self.do_red_light.val = self.car_inside
 
     def set_function(self, func_name):
-        if not self.alarm and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
+        if self.is_ready() and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
                 self.logger.debug(f'New function {func_name}')
             self.current_func = func_name
@@ -196,6 +205,9 @@ class Post(IoObject, ModbusDataObject):
     def is_brush_ready(self):
         return not self.di_brush.val and self.current_func == FuncNames.BRUSH
 
+    def is_ready(self):
+        return not self.alarm and self.car_inside
+
     def mb_cells(self):
         return self.mb_output(0).keys()
 
@@ -211,7 +223,9 @@ class Post(IoObject, ModbusDataObject):
                      int(self.di_flow.val) * (1 << 1) + \
                      int(self.di_brush.val) * (1 << 2) + \
                      int(self.di_hoover.val) * (1 << 3) + \
-                     int(self.di_car_inside.val) * (1 << 4)
+                     int(self.di_car_inside.val) * (1 << 4) + \
+                     int(self.do_green_light.val) * (1 << 5) + \
+                     int(self.do_red_light.val) * (1 << 6)
             p1, p2 = floats_to_modbus_cells((self.ai_pressure.val,))
             return {
                 self.mb_cells_idx - start_addr: 0xFF00,

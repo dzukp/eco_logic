@@ -260,10 +260,6 @@ def get_object(post_quantity=(6, 6)):
                 'class': Valve,
                 'do_open': None
             },
-            'valve_shell': {
-                'class': Valve,
-                'do_open': None
-            },
             'pump': {
                 'class': Altivar212,
                 'ao_command': 'fc_1_1_ao_1',
@@ -297,7 +293,9 @@ def get_object(post_quantity=(6, 6)):
             new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['di_hoover'] = f'dio_p_{post_number}_i_1'
             new_post['di_brush'] = f'dio_p_{post_number}_i_2'
-            new_post['do_car_inside'] = f'dio_p_{post_number}_o_8'
+            new_post['di_car_inside'] = f'dio_p_{post_number}_i_3'
+            new_post['do_green_light'] = f'dio_p_{post_number}_o_6'
+            new_post['do_red_light'] = f'dio_p_{post_number}_o_7'
 
             children = new_post['children']
             children['valve_osmos']['mb_cells_idx'] = start_addr + 5
@@ -311,7 +309,7 @@ def get_object(post_quantity=(6, 6)):
             children['valve_polish']['mb_cells_idx'] = start_addr + 21
             children['valve_glass']['mb_cells_idx'] = start_addr + 23
             children['valve_hoover']['mb_cells_idx'] = start_addr + 25
-            children['valve_shell']['mb_cells_idx'] = start_addr + 27
+            # children['valve_shell']['mb_cells_idx'] = start_addr + 27
             children['pump']['mb_cells_idx'] = start_addr + 29
 
             module = int((post_number - 1) / 2) % 3 + 1
@@ -327,7 +325,6 @@ def get_object(post_quantity=(6, 6)):
             children['valve_polish']['do_open'] = f'dio_p_{post_number}_o_3'
             children['valve_glass']['do_open'] = f'dio_p_{post_number}_o_4'
             children['valve_hoover']['do_open'] = f'dio_p_{post_number}_o_5'
-            children['valve_shell']['do_open'] = f'dio_p_{post_number}_o_6'
             children['pump']['ao_command'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_1'
             children['pump']['ao_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_2'
             children['pump']['ai_status'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_1'
