@@ -203,7 +203,7 @@ class Post(IoObject, ModbusDataObject):
         return not self.di_hoover.val and self.current_func == FuncNames.HOOVER
 
     def is_brush_ready(self):
-        return not self.di_brush.val and self.current_func == FuncNames.BRUSH
+        return self.di_brush.val and self.current_func == FuncNames.BRUSH
 
     def is_ready(self):
         return not self.alarm and self.car_inside

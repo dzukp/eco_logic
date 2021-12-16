@@ -117,12 +117,12 @@ class MultiValvePumpSteps(MultiValveSteps):
 class BrushSteps(MultiValvePumpSteps):
 
     def is_pump_started(self):
-        if self.owner.di_brush.val:
+        if not self.owner.di_brush.val:
             return 0
         return super(BrushSteps, self).is_pump_started()
 
     def get_opened_valves(self):
-        if self.owner.di_brush.val:
+        if not self.owner.di_brush.val:
             return []
         return super(BrushSteps, self).get_opened_valves()
 
