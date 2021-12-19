@@ -170,6 +170,27 @@ class PumpTankFiller(TankFiller):
                 self.pump_state = -1
 
 
+class PumpsTankFiller(TankFiller):
+    """  """
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.pumps = []
+        self.tank = None
+        self.source_tank = None
+
+    def process(self):
+        if self.started and self.external_enable and self.need_fill() and not self.source_tank.is_empty():
+            for pump in self.pumps:
+                pump.start()
+        else:
+            for pump in self.pumps:
+                pump.stop()
+
+    def need_fill(self):
+        return self.tank.is_want_water()
+
+
 class OsmosisTankFiller(TankFiller):
 
     def __init__(self, name):

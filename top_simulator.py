@@ -12,6 +12,7 @@ class TopSimulator(IoObject):
         self.di_valve_b1 = InChannel(False)
         self.b1 = None
         self.di_n1 = InChannel(False)
+        self.di_n1_2 = InChannel(False)
         self.ao_p1 = OutChannel(0.0)
         self.ao_p2 = OutChannel(0.0)
         self.ao_p7 = OutChannel(0.0)
@@ -21,6 +22,7 @@ class TopSimulator(IoObject):
         self.di_os1 = InChannel(False)
         self.di_os2 = InChannel(False)
         self.di_valve_b2 = InChannel(False)
+        self.b1_1 = None
         self.b2 = None
         self.di_n2 = InChannel(False)
         self.ao_p3 = OutChannel(0.0)
@@ -29,6 +31,7 @@ class TopSimulator(IoObject):
         self.do_press4 = OutChannel(False)
         self.n3_timer = Timer()
         self.di_n7 = InChannel(False)
+        self.di_n7_1 = InChannel(False)
         self.do_1_brush = OutChannel(True)
         self.do_1_hoover = OutChannel(True)
         self.do_1_car_inside = OutChannel(True)
@@ -41,14 +44,21 @@ class TopSimulator(IoObject):
         self.b1.reset_speed()
         if self.di_valve_b1.val:
             self.b1.add_speed(2.0)
-        if self.di_n1.val:
+        if self.di_n1_2.val:
             self.ao_p1.val = min(6.0, self.ao_p1.val + 0.027) + get_about_0_rand(0.01)
         else:
             self.ao_p1.val = max(0.0, self.ao_p1.val - 0.027) + random.random() * 0.01
         self.ao_p2.val = max(0.0, self.ao_p1.val - 0.3 + get_about_0_rand(0.3))
         self.do_press1.val = self.ao_p1.val > 0.5
-        if self.di_n1.val:
+        if self.di_n1_2.val:
             self.b1.add_speed(-1.0)
+        # B1.1
+        self.b1_1.reset_speed()
+        if self.di_n7.val:
+            self.b1_1.add_speed(5.0)
+        else:
+            self.b1_1.add_speed(-2.0)
+
         # Osmosis
         self.do_press2.val = self.di_water_os.val and self.ao_p2.val > 1.0
         self.b2.reset_speed()
@@ -76,7 +86,7 @@ class TopSimulator(IoObject):
         elif self.n3_timer.elapsed() > 2.0:
             self.do_press4.val = True
 
-        if self.di_n7.val:
+        if self.di_n7_1.val:
             self.ao_p7.val = min(6.0, self.ao_p7.val + 0.027) + get_about_0_rand(0.01)
         else:
             self.ao_p7.val = max(0.0, self.ao_p7.val - 0.027) + random.random() * 0.01

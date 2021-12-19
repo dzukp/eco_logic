@@ -9,6 +9,7 @@ def get_simulator_objects(post_quantity):
             'version': '2.0',
             'di_valve_b1': 'do_1_2_20',
             'di_n1': 'do_1_2_13',
+            'di_n1_2': 'do_1_2_18',
             'ao_p1': 'ai_1_2_1',
             'ao_p2': 'ai_1_2_2',
             'do_press1': None,
@@ -25,12 +26,19 @@ def get_simulator_objects(post_quantity):
             'ao_press_1': 'ai_1_1_1',
             'ao_p7': 'ai_2_2_1',
             'di_n7': 'do_2_2_13',
+            'di_n7_1': 'do_2_2_14',
             'children': {
                 'b1': {
                     'class': TankSimulator,
                     'do_low': 'dio_1_1_i_3',
                     'do_mid': 'dio_1_1_i_2',
                     'do_hi': 'dio_1_1_i_1',
+                },
+                'b1_1': {
+                    'class': TankSimulator,
+                    'do_low': 'dio_2_1_i_3',
+                    'do_mid': 'dio_2_1_i_2',
+                    'do_hi': 'dio_2_1_i_1',
                 },
                 'b2': {
                     'class': TankSimulator,

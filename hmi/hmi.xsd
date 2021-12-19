@@ -9139,7 +9139,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_312" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_312" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="241" rect.bottom="264" rect.left="623" rect.right="723"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9153,7 +9153,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_313" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_313" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="297" rect.bottom="321" rect.left="598" rect.right="629"/>
                 <StandartProperies Freeze="0">
@@ -9177,7 +9177,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_314" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_314" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
                 <Geometry rect.top="270" rect.bottom="279" rect.left="715" rect.right="724"/>
                 <StandartProperies Freeze="0">
@@ -9195,7 +9195,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_315" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_315" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="3"/>
                 <Geometry rect.top="270" rect.bottom="279" rect.left="740" rect.right="749"/>
                 <StandartProperies Freeze="0">
@@ -9534,7 +9534,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_296" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_296" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="278" rect.bottom="301" rect.left="686" rect.right="727"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9548,9 +9548,9 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_296" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_296" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="306" rect.bottom="315" rect.left="701" rect.right="710"/>
+                <Geometry rect.top="305" rect.bottom="314" rect.left="701" rect.right="710"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9566,7 +9566,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_297" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_297" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="324" rect.bottom="333" rect.left="701" rect.right="710"/>
                 <StandartProperies Freeze="0">
@@ -9584,7 +9584,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_302" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_302" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
                 <Geometry rect.top="342" rect.bottom="351" rect.left="701" rect.right="710"/>
                 <StandartProperies Freeze="0">
@@ -9602,7 +9602,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_303" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_303" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="314" rect.bottom="343" rect.left="720" rect.right="749"/>
                 <StandartProperies Freeze="0">
@@ -9620,7 +9620,7 @@
                     <State g="128" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_300" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_300" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="315" rect.bottom="338" rect.left="749" rect.right="796"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9634,7 +9634,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_305" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_305" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="271" rect.bottom="294" rect.left="562" rect.right="603"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9648,7 +9648,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_304" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_304" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="2"/>
                 <Geometry rect.top="305" rect.bottom="314" rect.left="578" rect.right="587"/>
                 <StandartProperies Freeze="0">
@@ -9666,7 +9666,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_305" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_305" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="323" rect.bottom="332" rect.left="578" rect.right="587"/>
                 <StandartProperies Freeze="0">
@@ -9684,7 +9684,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_306" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_306" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="0"/>
                 <Geometry rect.top="341" rect.bottom="350" rect.left="578" rect.right="587"/>
                 <StandartProperies Freeze="0">
@@ -9702,7 +9702,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_307" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_307" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="334" rect.bottom="363" rect.left="598" rect.right="627"/>
                 <StandartProperies Freeze="0">
@@ -9720,7 +9720,7 @@
                     <State g="128" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_308" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_308" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
                 <Geometry rect.top="382" rect.bottom="406" rect.left="598" rect.right="629"/>
                 <StandartProperies Freeze="0">
@@ -9744,7 +9744,7 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_307" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_307" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="335" rect.bottom="358" rect.left="628" rect.right="672"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9758,7 +9758,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_309" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_309" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="382" rect.bottom="405" rect.left="632" rect.right="689"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9772,7 +9772,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_310" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_310" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="298" rect.bottom="321" rect.left="633" rect.right="690"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -9786,7 +9786,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_310" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_312">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_310" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="235" rect.bottom="421" rect.left="558" rect.right="798"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
@@ -10573,6 +10573,88 @@
                 <States>
                     <State g="128" r="128" a="255" b="128"/>
                     <State g="128" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_342" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="395" rect.bottom="418" rect.left="375" rect.right="416"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Б1.1" format=""/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_346" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="484" rect.bottom="507" rect.left="365" rect.right="421"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Text" format="%x"/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_347" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="2"/>
+                <Geometry rect.top="424" rect.bottom="433" rect.left="389" rect.right="398"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <Properties StarFactor="1.481817361578526e-264" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="145440272" FirstPointAngle="0" PenWidth="1">
+                    <PenColor g="0" r="0" a="255" b="0"/>
+                </Properties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="255" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_348" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="1"/>
+                <Geometry rect.top="443" rect.bottom="452" rect.left="389" rect.right="398"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <Properties StarFactor="1.163366205906632e-266" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="146276864" FirstPointAngle="0" PenWidth="1">
+                    <PenColor g="0" r="0" a="255" b="0"/>
+                </Properties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="255" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_349" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="0"/>
+                <Geometry rect.top="461" rect.bottom="470" rect.left="389" rect.right="398"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <Properties StarFactor="6.150520950140681e-295" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="47918400" FirstPointAngle="0" PenWidth="1">
+                    <PenColor g="0" r="0" a="255" b="0"/>
+                </Properties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
         </MnemoScreen>
@@ -13778,6 +13860,9 @@
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_111"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_112"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_113"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_343"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_344"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_345"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -14102,6 +14187,13 @@
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_304"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_305"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_306"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_296"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_297"/>
+                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_302"/>
+                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_347"/>
+                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_348"/>
+                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_349"/>
+                        <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_346"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -16456,21 +16548,16 @@
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_279"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_282"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_283"/>
-                    <Listener Path="" Type="XMnemoShape" Name="Ellipse_282"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_340"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_341"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_status(4-240)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_cmd(4-239)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_function" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_206"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_number(4-241)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_number" Value="0">
@@ -16481,169 +16568,130 @@
             <GlobalVariable Retained="0" Type="Float" Marker="0" Comments="" Name="post_pressure" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_205"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_pressure(4-242)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_foam_cmd(4-254)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_15"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_17"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_18"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_foam_status(4-255)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_wax_cmd(4-252)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_122"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_119"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_121"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_wax_status(4-253)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_solution_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_solution_cmd(4-248)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_solution_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_129"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_126"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_128"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_solution_status(4-249)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_cold_water_cmd(4-246)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_136"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_135"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_133"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_cold_water_status(4-247)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_brush_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_brush_cmd(4-250)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_brush_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_143"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_140"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_142"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_brush_status(4-251)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_osmos_cmd(4-244)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_150"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_147"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_149"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_osmos_status(4-245)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wheel_black_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_wheel_black_cmd(4-256)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wheel_black_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_157"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_154"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_156"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_wheel_black_status(4-257)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_air_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_air_cmd(4-258)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_air_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_164"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_161"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_163"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_air_status(4-259)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_polish_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_polish_cmd(4-260)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_polish_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_171"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_168"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_170"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_polish_status(4-261)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_glass_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_glass_cmd(4-262)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_glass_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_287"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_285"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_288"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_glass_status(4-263)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hoover_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_hoover_cmd(4-264)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hoover_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_295"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_292"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_294"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_hoover_status(4-265)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shell_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_shell_cmd(4-266)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shell_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_302"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_299"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_301"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_v_shell_status(4-267)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_cmd" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_cmd(4-268)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_status" Value="0">
                 <ListenersList>
@@ -16651,30 +16699,23 @@
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_10"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_11"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_22"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_status(4-269)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_out_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_109"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_out_freq(4-270)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_man_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_214"/>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_man_freq(4-272)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_auto_freq" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_auto_freq(4-274)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_alarm" Value="0">
-                <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p2_pump_alarm(4-276)"/>
-                </ListenersList>
+                <ListenersList/>
             </GlobalVariable>
         </Group>
     </GlobalVariablesList>

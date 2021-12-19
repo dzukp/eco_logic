@@ -131,6 +131,13 @@ def get_object(post_quantity=(6, 6)):
                 'do_start': 'do_2_2_14',
                 'mb_cells_idx': 100
             },
+            'tank_b1_1': {
+                'class': Tank,
+                'di_low_level': 'dio_2_1_i_3',
+                'di_mid_level': 'dio_2_1_i_2',
+                'di_hi_level': 'dio_2_1_i_1',
+                'mb_cells_idx': 163
+            },
         }
     }
     hoover = {
@@ -200,14 +207,14 @@ def get_object(post_quantity=(6, 6)):
                 'di_low_level': 'dio_4_i_4',
                 'di_mid_level': 'dio_4_i_4',
                 'di_hi_level': 'dio_4_i_5',
-                'mb_cells_idx': 163
+                'mb_cells_idx': 165
             },
             'tank_circle_water': {
                 'class': Tank,
                 'di_low_level': 'dio_4_i_1',
                 'di_mid_level': 'dio_4_i_2',
                 'di_hi_level': 'dio_4_i_3',
-                'mb_cells_idx': 165
+                'mb_cells_idx': 167
             }
         }
     }
