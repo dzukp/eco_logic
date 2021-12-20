@@ -10,6 +10,7 @@ from subsystems import PidEngine
 from top import Top
 from hoover import Hoover
 from bottom_wash import BottomWash
+from brush_washer import BrushWasher
 
 
 def get_object(post_quantity=(6, 6)):
@@ -44,7 +45,7 @@ def get_object(post_quantity=(6, 6)):
             'pump_n1_2': {
                 'class': Engine,
                 'do_start': 'do_1_2_18',
-                'mb_cells_idx': 34
+                'mb_cells_idx': 54
             },
             'pump_n3': {
                 'class': Engine,
@@ -136,7 +137,12 @@ def get_object(post_quantity=(6, 6)):
                 'di_low_level': 'dio_2_1_i_3',
                 'di_mid_level': 'dio_2_1_i_2',
                 'di_hi_level': 'dio_2_1_i_1',
-                'mb_cells_idx': 163
+                'mb_cells_idx': 102
+            },
+            'pump_n8': {
+                'class': Engine,
+                'do_start': 'do_1_2_23',
+                'mb_cells_idx': 104
             },
         }
     }
@@ -144,12 +150,12 @@ def get_object(post_quantity=(6, 6)):
         'class': Hoover,
         'ai_press_1': 'ai_3_1',
         'ai_press_2': 'ai_3_2',
-        'mb_cells_idx': 102,
+        'mb_cells_idx': 106,
         'children': {
             'flap': {
                 'class': Valve,
                 'do_open': 'dio_3_o_1',
-                'mb_cells_idx': 131
+                'mb_cells_idx': 135
             },
             'fc_1': {
                 'class': Altivar212,
@@ -158,7 +164,7 @@ def get_object(post_quantity=(6, 6)):
                 'ai_status': 'fc_hoover_1_ai_1',
                 'ai_frequency': 'fc_hoover_1_ai_2',
                 'ai_alarm_code': 'fc_hoover_1_ai_3',
-                'mb_cells_idx': 133
+                'mb_cells_idx': 137
             },
             'fc_2': {
                 'class': Altivar212,
@@ -167,7 +173,7 @@ def get_object(post_quantity=(6, 6)):
                 'ai_status': 'fc_hoover_2_ai_1',
                 'ai_frequency': 'fc_hoover_2_ai_2',
                 'ai_alarm_code': 'fc_hoover_2_ai_3',
-                'mb_cells_idx': 142
+                'mb_cells_idx': 146
             }
         }
     }
@@ -175,46 +181,56 @@ def get_object(post_quantity=(6, 6)):
         'class': BottomWash,
         'di_in_sens': 'dio_4_i_6',
         'di_out_sens': None,
-        'mb_cells_idx': 151,
+        'mb_cells_idx': 155,
         'children': {
             'pump_wash': {
                 'class': Engine,
                 'do_start': 'dio_4_o_1',
-                'mb_cells_idx': 153,
+                'mb_cells_idx': 157,
             },
             'pump_circle_water': {
                 'class': Engine,
                 'do_start': 'dio_4_o_2',
-                'mb_cells_idx': 155,
+                'mb_cells_idx': 159,
             },
             'valve_circle_water': {
                 'class': Valve,
                 'do_open': 'dio_4_o_3',
-                'mb_cells_idx': 157,
+                'mb_cells_idx': 161,
             },
             'valve_wash_sand_tank': {
                 'class': Valve,
                 'do_open': 'dio_4_o_4',
-                'mb_cells_idx': 159,
+                'mb_cells_idx': 163,
             },
             'valve_drainage': {
                 'class': Valve,
                 'do_open': 'dio_4_o_5',
-                'mb_cells_idx': 161,
+                'mb_cells_idx': 165,
             },
             'tank_wash': {
                 'class': Tank,
                 'di_low_level': 'dio_4_i_4',
                 'di_mid_level': 'dio_4_i_4',
                 'di_hi_level': 'dio_4_i_5',
-                'mb_cells_idx': 165
+                'mb_cells_idx': 167
             },
             'tank_circle_water': {
                 'class': Tank,
                 'di_low_level': 'dio_4_i_1',
                 'di_mid_level': 'dio_4_i_2',
                 'di_hi_level': 'dio_4_i_3',
-                'mb_cells_idx': 167
+                'mb_cells_idx': 169
+            }
+        }
+    }
+    brush_washer = {
+        'class': BrushWasher,
+        'mb_cells_idx': None,
+        'children': {
+            'valve': {
+                'class': Valve,
+                'do_open': None,
             }
         }
     }
@@ -267,6 +283,10 @@ def get_object(post_quantity=(6, 6)):
                 'class': Valve,
                 'do_open': None
             },
+            'valve_shell': {
+                'class': Valve,
+                'do_open': None
+            },
             'pump': {
                 'class': Altivar212,
                 'ao_command': 'fc_1_1_ao_1',
@@ -281,6 +301,15 @@ def get_object(post_quantity=(6, 6)):
     objects['top']['children']['supplier'] = supplier
     objects['top']['children']['hoover'] = hoover
     objects['top']['children']['bottom_wash'] = bottom_wash
+    objects['top']['children']['brush_wash_1'] = copy.deepcopy(brush_washer)
+    objects['top']['children']['brush_wash_2'] = copy.deepcopy(brush_washer)
+
+    objects['top']['children']['brush_wash_1']['children']['valve']['do_open'] = 'do_1_2_22'
+    objects['top']['children']['brush_wash_1']['mb_cells_idx'] = 171
+    objects['top']['children']['brush_wash_1']['children']['valve']['mb_cells_idx'] = 175
+    objects['top']['children']['brush_wash_2']['children']['valve']['do_open'] = 'do_2_2_22'
+    objects['top']['children']['brush_wash_2']['mb_cells_idx'] = 177
+    objects['top']['children']['brush_wash_2']['children']['valve']['mb_cells_idx'] = 181
 
     post_quantity = post_quantity if isinstance(post_quantity, (list, tuple)) else (post_quantity,)
     post_number = 0

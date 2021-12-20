@@ -88,6 +88,10 @@ class RpcPostServer(LoggedObject):
                     self.logger.exception(f'get_state({post_number})')
                     return 'EXCEPTION'
 
+            @server.register_function
+            def get_posts():
+                return [post.replace('post_', '') for post in self.top_object.posts.keys()]
+
             server.register_multicall_functions()
             server.serve_forever()
 

@@ -1,6 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.modbus_supervisor import ModbusDataObject
 from post import Post
+from brush_washer import BrushWasher
 from func_names import FuncNames
 from rpc_post_server import RpcPostServer
 
@@ -20,6 +21,8 @@ class Top(IoObject, ModbusDataObject):
         self.rpc_server = RpcPostServer()
         self.mb_cells_idx = None
         self.counter = 0
+        self.side_posts = {'1': set(), '2': set()}
+        self.side_brush_wash = {}
 
     def init(self):
         for child in self.children:
@@ -27,6 +30,18 @@ class Top(IoObject, ModbusDataObject):
                 self.posts[child.name] = child
                 self.post_function[child] = FuncNames.STOP
                 # self.new_function[child] = FuncNames.STOP
+            elif isinstance(child, BrushWasher):
+                if child.name.endswith('1'):
+                    self.side_brush_wash['1'] = child
+                elif child.name.endswith('2'):
+                    self.side_brush_wash['2'] = child
+        posts = sorted(self.posts.values(), key=lambda p: int(p.name[5:]))
+        self.side_posts['1'].update(posts[:len(posts) // 2])
+        self.side_posts['2'].update(posts[len(posts) // 2:])
+        for post in self.side_posts['1']:
+            self.side_brush_wash['1'].add_post(post)
+        for post in self.side_posts['2']:
+            self.side_brush_wash['2'].add_post(post)
         self.rpc_server.set_top_object(self)
         self.rpc_server.start()
 
@@ -134,23 +149,6 @@ class Top(IoObject, ModbusDataObject):
             else:
                 post.set_function(FuncNames.STOP)
                 self.post_function[post] = FuncNames.STOP
-
-    # def prepared_functions(self):
-    #     readed_funcs = set(FuncNames.all_funcs())
-    #     for func in FuncNames.all_funcs():
-    #         if FuncNames.WAX == func:
-    #             if not self.supplier.is_ready_for_wax():
-    #                 readed_funcs.remove(func)
-    #         elif FuncNames.SHAMPOO == func:
-    #             if not self.supplier.is_ready_for_shampoo():
-    #                 readed_funcs.remove(func)
-    #         elif FuncNames.FOAM == func:
-    #             if not self.supplier.is_ready_for_foam():
-    #                 readed_funcs.remove(func)
-    #         elif FuncNames.INTENSIVE == func:
-    #             if not self.supplier.is_ready_for_intensive():
-    #                 readed_funcs.remove(func)
-    #     return readed_funcs
 
     def set_function(self, post_name, function):
         if function not in FuncNames.all_funcs():
