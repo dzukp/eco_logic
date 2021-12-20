@@ -94,7 +94,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     dio_4 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.90', timeout=0.03)
 
     dio_post = []
-    for i in range(1, 12):
+    for i in range(1, 13):
         dio_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'dio_p_{i}_')] + \
                    [tag for name, tag in tags['in'].items() if name.startswith(f'dio_p_{i}_')]
         dio_post.append(OwenDiDoMk210(tags=dio_tags, ip=f'192.168.200.{100 + i}', timeout=0.03))
