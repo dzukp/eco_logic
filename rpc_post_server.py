@@ -80,10 +80,12 @@ class RpcPostServer(LoggedObject):
                 self.logger.debug(f'get state from post #{post_number} ')
                 self.post_state.logger.info(f'get state from post #{post_number} ')
                 try:
-                    return {
+                    result = {
                         'readiness': self.top_object.get_readiness_functions(post_name),
                         'function': self.top_object.get_post_function(post_name)
                     }
+                    result.update(self.top_object.get_extra_rpc_data(post_name))
+                    return result
                 except:
                     self.logger.exception(f'get_state({post_number})')
                     return 'EXCEPTION'

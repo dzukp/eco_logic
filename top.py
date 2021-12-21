@@ -197,6 +197,17 @@ class Top(IoObject, ModbusDataObject):
         else:
             return ''
 
+    def get_extra_rpc_data(self, post_name):
+        if post_name in self.posts:
+            post = self.posts[post_name]
+            return {
+                'brush_on': post.di_brush.val,
+                'hoover_on': not post.di_hoover.val,
+                'car_inside': post.di_car_inside.val
+            }
+        else:
+            return {}
+
     def mb_cells(self):
         return [0, self.mb_cells_idx + len(self.mb_output(self.mb_cells_idx))]
 
