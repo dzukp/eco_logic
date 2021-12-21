@@ -35,6 +35,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.pump_n6 = None
         self.pump_n7 = None
         self.pump_n7_1 = None
+        self.pump_n8 = None
         self.pump_os1 = None
         self.pump_os2 = None
         self.pump_os = None
@@ -44,6 +45,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.tank_b2 = None
         self.valve_b1 = None
         self.valve_b2 = None
+        self.valve_b1_1 = None
         self.valve_water_os = None
         # self.valve_dose_wax = None
         # self.valve_dose_shampoo = None
@@ -61,7 +63,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_2_1_pump_on_press = 3.0
         self.water_2_1_pump_off_press = 4.0
         self.b1_filler = PumpTankFiller('b1_filler')
-        self.b1_1_filler = PumpsTankFiller('b1_1_filler')
+        self.b1_1_filler = PumpTankFiller('b1_1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
         # self.water_supplier_2 = WaterSupplier('cold_water_2')
@@ -80,12 +82,13 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b1_filler.tank = self.tank_b1
         self.b1_filler.valve = self.valve_b1
         self.b1_filler.pump = self.pump_n3
+        self.b1_filler.pump2 = self.pump_n8
         self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b1_1_filler.tank = self.tank_b1_1
-        self.b1_1_filler.source_tank = self.tank_b1
-        self.b1_1_filler.pumps.append(self.pump_n1)
-        self.b1_1_filler.pumps.append(self.pump_n7)
+        self.b1_1_filler.valve = self.valve_b1_1
+        self.b1_1_filler.pump = self.pump_n1
+        self.b1_1_filler.pump2 = self.pump_n7
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
         self.b2_filler.pump1 = self.pump_os1
@@ -141,6 +144,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.process()
 
         # Filling Water Tank B1.1
+        if self.tank_b1.is_empty():
+            self.b1_1_filler.disable()
+        else:
+            self.b1_1_filler.enable()
         if self.start_b1_1:
             self.b1_1_filler.start()
         else:

@@ -88,9 +88,9 @@ def get_object(post_quantity=(6, 6)):
                 'do_open': 'do_1_2_21',
                 'mb_cells_idx': 84
             },
-            'valve_b3': {
+            'valve_b1_1': {
                 'class': Valve,
-                'do_open': None,
+                'do_open': 'do_2_2_20',
                 'mb_cells_idx': 86
             },
             'tank_b1': {

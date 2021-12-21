@@ -113,6 +113,7 @@ class PumpTankFiller(TankFiller):
     def __init__(self, name):
         super().__init__(name)
         self.pump = None
+        self.pump2 = None
         self.di_press = None
         self.do_no_press_signal = None
         self.no_pump_timer = Timer()
@@ -149,12 +150,16 @@ class PumpTankFiller(TankFiller):
         if self.pump_state == -1:
             # Ожидание после отключения из-за давления
             self.pump.stop()
+            if self.pump2:
+                self.pump2.stop()
             self.wait_after_no_press_timer.start(30.0)
             if self.wait_after_no_press_timer.is_end():
                 self.pump_state = 0
         elif self.pump_state == 0:
             # Бездействие
             self.pump.stop()
+            if self.pump2:
+                self.pump2.stop()
             if start:
                 self.pump_state = 1
                 self.no_press_timer.reset()
@@ -162,8 +167,10 @@ class PumpTankFiller(TankFiller):
             # Работа
             self.pump.start()
             self.no_press_timer.start(5.0)
-            if self.di_press.val:
+            if not self.di_press or self.di_press.val:
                 self.no_press_timer.restart()
+                if self.pump2:
+                    self.pump2.start()
             elif self.no_press_timer.is_end():
                 self.logger.info('no pressure after pump start')
                 self.wait_after_no_press_timer.reset()
