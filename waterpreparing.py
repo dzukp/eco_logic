@@ -63,7 +63,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_2_1_pump_on_press = 3.0
         self.water_2_1_pump_off_press = 4.0
         self.b1_filler = PumpTankFiller('b1_filler')
-        self.b1_1_filler = PumpTankFiller('b1_1_filler')
+        self.b1_1_filler = PumpsTankFiller('b1_1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
         # self.water_supplier_2 = WaterSupplier('cold_water_2')
@@ -86,9 +86,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b1_1_filler.tank = self.tank_b1_1
-        self.b1_1_filler.valve = self.valve_b1_1
-        self.b1_1_filler.pump = self.pump_n1
-        self.b1_1_filler.pump2 = self.pump_n7
+        self.b1_1_filler.source_tank = self.tank_b1
+        self.b1_1_filler.valves = [self.valve_b1_1]
+        self.b1_1_filler.pumps = [self.pump_n1, self.pump_n7]
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
         self.b2_filler.pump1 = self.pump_os1

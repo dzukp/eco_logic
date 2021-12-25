@@ -183,6 +183,7 @@ class PumpsTankFiller(TankFiller):
     def __init__(self, name):
         super().__init__(name)
         self.pumps = []
+        self.valves = []
         self.tank = None
         self.source_tank = None
 
@@ -190,9 +191,13 @@ class PumpsTankFiller(TankFiller):
         if self.started and self.external_enable and self.need_fill() and not self.source_tank.is_empty():
             for pump in self.pumps:
                 pump.start()
+            for valve in self.valves:
+                valve.open()
         else:
             for pump in self.pumps:
                 pump.stop()
+            for valve in self.valves:
+                valve.close()
 
     def need_fill(self):
         return self.tank.is_want_water()
