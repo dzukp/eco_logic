@@ -59,10 +59,10 @@ class Top(IoObject, ModbusDataObject):
     def function_process(self):
         wished_funcs = set()
         for post, func in self.post_function.items():
-            if post.is_ready():
+            if post.is_ready(self.post_service[post.name]):
                 wished_funcs.add(func)
             elif func != FuncNames.STOP:
-                self.logger.debug(f'Stop function `{post.name}` because it is alarm')
+                self.logger.debug(f'Stop function `{post.name}` because it is not ready')
 
         prepared_funcs = wished_funcs.copy()
 
