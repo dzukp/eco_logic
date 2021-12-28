@@ -18,6 +18,7 @@ class Top(IoObject, ModbusDataObject):
         self.posts = {}
         self.post_function = {}
         self.new_function = {}
+        self.post_service = {}
         self.rpc_server = RpcPostServer()
         self.mb_cells_idx = None
         self.counter = 0
@@ -29,6 +30,7 @@ class Top(IoObject, ModbusDataObject):
             if isinstance(child, Post):
                 self.posts[child.name] = child
                 self.post_function[child] = FuncNames.STOP
+                self.post_service[child.name] = False
                 # self.new_function[child] = FuncNames.STOP
             elif isinstance(child, BrushWasher):
                 if child.name.endswith('1'):
@@ -143,21 +145,23 @@ class Top(IoObject, ModbusDataObject):
 
         for post, func in self.post_function.items():
             if func in prepared_funcs:
-                if not post.set_function(func):
+                if not post.set_function(func, self.post_service[post.name]):
                     self.post_function[post] = FuncNames.STOP
+                    self.post_service[post.name] = False
                     self.logger.debug(f'Post {post.name} didn\'t start function {func}')
             else:
                 post.set_function(FuncNames.STOP)
                 self.post_function[post] = FuncNames.STOP
+                self.post_service[post.name] = False
 
-    def set_function(self, post_name, function):
+    def set_function(self, post_name, function, service=False):
         if function not in FuncNames.all_funcs():
             self.logger.error(f'Hasn\'t function `{function}`')
             return False
         elif post_name not in self.posts:
             self.logger.error(f'Hasn\'t post `{post_name}`')
             return False
-        elif not self.posts[post_name].is_ready():
+        elif not self.posts[post_name].is_ready(service):
             self.logger.debug(f'Post `{post_name}` not ready')
             return False
         # elif not self.get_readiness_functions(post_name)[function]:
@@ -166,6 +170,7 @@ class Top(IoObject, ModbusDataObject):
         else:
             self.logger.info(f'New function for `{post_name}` is {function}')
             self.new_function[self.posts[post_name]] = function
+            self.post_service[post_name] = service
             return True
 
     def get_readiness_functions(self, post_name):

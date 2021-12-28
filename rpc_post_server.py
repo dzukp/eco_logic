@@ -50,7 +50,7 @@ class RpcPostServer(LoggedObject):
             server.register_introspection_functions()
 
             @server.register_function
-            def start_function(post_number, function_name):
+            def start_function(post_number, function_name, service=False):
                 """
                 Старт с терминала
 
@@ -64,7 +64,7 @@ class RpcPostServer(LoggedObject):
                 """
                 try:
                     self.logger.info(f'start function `{function_name}` from post #{post_number} ')
-                    return self.start_function(post_number, function_name)
+                    return self.start_function(post_number, function_name, service)
                 except:
                     self.logger.exception(f'get_state({post_number})')
                     return 'EXCEPTION'
@@ -97,14 +97,14 @@ class RpcPostServer(LoggedObject):
             server.register_multicall_functions()
             server.serve_forever()
 
-    def start_function(self, post_number, function_name):
+    def start_function(self, post_number, function_name, service):
         post_name = f'post_{post_number}'
         post = self.top_object.find_child_by_name(post_name)
         if not post:
             return 'POST_NOT_FOUND'
         if function_name not in FuncNames.all_funcs():
             return 'FUNC_NOT_FOUND'
-        if self.top_object.set_function(post_name, function_name):
+        if self.top_object.set_function(post_name, function_name, service):
             return 'OK'
         return 'FAIL'
 

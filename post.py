@@ -153,8 +153,8 @@ class Post(IoObject, ModbusDataObject):
         self.do_green_light.val = not self.car_inside
         self.do_red_light.val = self.car_inside
 
-    def set_function(self, func_name):
-        if self.is_ready() and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
+    def set_function(self, func_name, service=False):
+        if self.is_ready(service) and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
                 self.logger.debug(f'New function {func_name}')
             self.current_func = func_name
@@ -205,8 +205,8 @@ class Post(IoObject, ModbusDataObject):
     def is_brush_ready(self):
         return self.di_brush.val and self.current_func == FuncNames.BRUSH
 
-    def is_ready(self):
-        return not self.alarm and self.car_inside
+    def is_ready(self, service=False):
+        return not self.alarm and (self.car_inside or service)
 
     def mb_cells(self):
         return self.mb_output(0).keys()
