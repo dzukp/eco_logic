@@ -99,9 +99,12 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.ton.reset()
             return self.full_work
         if self.no_flow_press - self.owner.ai_pressure.val > 20.0:
-            self.logger.info('self.owner.ai_pressure.val - self.no_flow_press > 20.0')
+            self.logger.info(f'self.owner.ai_pressure.val - self.no_flow_press ({round(self.owner.ai_pressure.val - self.no_flow_press, 2)}) > 20.0')
             self.ton.reset()
             return self.full_work
+        if self.owner.ai_pressure.val < 50:
+            self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < 50')
+            return self.wait_press
 
     def full_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
