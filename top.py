@@ -208,7 +208,7 @@ class Top(IoObject, ModbusDataObject):
             return {
                 'brush_on': post.di_brush.val,
                 'hoover_on': not post.di_hoover.val,
-                'car_inside': post.di_car_inside.val
+                'car_inside': post.is_car_inside()
             }
         else:
             return {}

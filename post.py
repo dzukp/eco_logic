@@ -54,6 +54,8 @@ class Post(IoObject, ModbusDataObject):
         self.no_flow_frequency = 15.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
+        self.car_inside_on_timer = Ton()
+        self.car_inside_off_timer = Ton()
         self.alarm = False
         self.car_inside = False
         self.func_timer = Ton()
@@ -149,7 +151,12 @@ class Post(IoObject, ModbusDataObject):
     def car_inside_process(self):
         if self.car_inside != self.di_car_inside.val:
             self.logger.info('Car inside' if self.di_car_inside.val else 'Post empty')
-        self.car_inside = self.di_car_inside.val
+        on = self.car_inside_on_timer.process(self.di_car_inside.val, 3)
+        off = self.car_inside_off_timer.process(not self.di_car_inside.val, 3)
+        if on:
+            self.car_inside = True
+        elif off:
+            self.car_inside = False
         self.do_green_light.val = not self.car_inside
         self.do_red_light.val = self.car_inside
 
@@ -204,6 +211,9 @@ class Post(IoObject, ModbusDataObject):
 
     def is_brush_ready(self):
         return self.di_brush.val and self.current_func == FuncNames.BRUSH
+
+    def is_car_inside(self):
+        return self.car_inside
 
     def is_ready(self, service=False):
         return not self.alarm and (self.car_inside or service)
