@@ -58,6 +58,7 @@ class Post(IoObject, ModbusDataObject):
         self.car_inside_off_timer = Ton()
         self.alarm = False
         self.car_inside = False
+        self.service_mode = False
         self.func_timer = Ton()
         self.mb_cells_idx = None
         self.func_steps = {}
@@ -149,23 +150,25 @@ class Post(IoObject, ModbusDataObject):
         self.car_inside_process()
 
     def car_inside_process(self):
-        if self.car_inside != self.di_car_inside.val:
-            self.logger.info('Car inside' if self.di_car_inside.val else 'Post empty')
         on = self.car_inside_on_timer.process(self.di_car_inside.val, 3)
         off = self.car_inside_off_timer.process(not self.di_car_inside.val, 3)
-        if on:
+        if on and not self.car_inside:
             self.car_inside = True
-        elif off:
+            self.logger.info('Car inside')
+        elif off and self.car_inside:
             self.car_inside = False
-        self.do_green_light.val = not self.car_inside
-        self.do_red_light.val = self.car_inside
+            self.logger.info('Post is empty')
+        self.do_green_light.val = not self.car_inside and not self.service_mode
+        self.do_red_light.val = self.car_inside or self.service_mode
 
     def set_function(self, func_name, service=False):
         if self.is_ready(service) and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
-                self.logger.debug(f'New function {func_name}')
+                self.logger.debug(f'New function {func_name}, service={service}')
+            self.service_mode = service
             self.current_func = func_name
         else:
+            self.service_mode = False
             self.current_func = FuncNames.STOP
         self.func_number = FuncNames.all_funcs().index(self.current_func)
         return self.current_func == func_name

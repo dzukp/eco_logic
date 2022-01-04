@@ -122,14 +122,16 @@ class Altivar212(Mechanism, ModbusDataObject):
     def set_frequency(self, freq, manual=False, no_log=False):
         if manual:
             if freq != self.man_frequency_task:
+                changed = abs(freq - self.man_frequency_task) >= 0.5
                 self.man_frequency_task = freq
-                if not no_log:
-                    self.logger.info(f'set manual frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.info(f'set manual frequency task: {round(freq, 2)}')
         else:
             if freq != self.auto_frequency_task:
+                changed = abs(freq - self.auto_frequency_task) >= 0.5
                 self.auto_frequency_task = freq
-                if not no_log:
-                    self.logger.debug(f'set auto frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.debug(f'set auto frequency task: {round(freq, 2)}')
 
     def is_alarm_state(self):
         return self.state_alarm == self.func_state
