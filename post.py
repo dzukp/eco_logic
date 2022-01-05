@@ -165,7 +165,7 @@ class Post(IoObject, ModbusDataObject):
         if self.is_ready(service) and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
                 self.logger.debug(f'New function {func_name}, service={service}')
-            self.service_mode = service
+            self.service_mode = service and func_name != FuncNames.STOP
             self.current_func = func_name
         else:
             self.service_mode = False
