@@ -27,8 +27,10 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc{i}_' for i in range(1, post_quantity + 1)]
 
-    if version in ('1.1',):
+    if version in ('1.1', '1.2'):
         fc_names.append('fc_os_')
+
+    fc_names.append('fc_foam_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -75,8 +77,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com_port1_name = 'fc_serial1'
         com_port2_name = 'fc_serial2'
     else:
-        com_port1_name = 'COM3'
-        com_port2_name = 'COM4'
+        com_port1_name = 'COM5'
+        com_port2_name = 'COM6'
 
     sources = {
         'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
@@ -108,7 +110,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
-    if version in ('1.1',) and 'port_2' in sources:
+    if version in ('1.1', '1.2') and 'port_2' in sources:
         fc_modules_2.append(ModbusRTUModule(30, sources['port_2'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc_os_ai_')],

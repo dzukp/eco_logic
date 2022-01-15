@@ -31,6 +31,7 @@ class Post(IoObject, ModbusDataObject):
         self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
+        self.valve_solution_2 = None
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
