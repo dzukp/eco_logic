@@ -34,7 +34,7 @@ class Post(IoObject, ModbusDataObject):
         self.valve_solution_2 = None
         self.pump = None
         self.current_func = FuncNames.STOP
-        self.func_number = len(FuncNames.all_funcs())
+        self.func_number = len(FuncNames.all_funcs()) 
         self.func_frequencies = {
             FuncNames.FOAM: 25.0,
             FuncNames.SHAMPOO: 40.0,

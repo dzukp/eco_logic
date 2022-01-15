@@ -31,7 +31,7 @@ class Engine(Mechanism, ModbusDataObject):
                 self.logger.info(f'{self.name}: stop command {"manual" if self.manual else "automate"}')
 
     def mb_cells(self):
-        return [self.mb_cells_idx, self.mb_cells_idx + 1]
+        return self.mb_output(0).keys()
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:

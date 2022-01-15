@@ -67,6 +67,10 @@ class TopSimulator(IoObject):
         elif self.n3_timer.elapsed() > 2.0:
             self.do_press4.val = True
 
+        self.ao_p1.val = 3.1
+        self.ao_p2.val = 3.3
+        self.ao_p3.val = 3.8
+
 
 
 def get_about_0_rand(range_):

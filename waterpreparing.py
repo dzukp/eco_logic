@@ -40,6 +40,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.valve_dose_shampoo = None
         self.valve_dose_foam = None
         self.valve_dose_intensive = None
+        self.valve_dose_water_intensive = None
+        self.valve_dose_osmos_intensive = None
         self.water_enough_press = 2.0
         self.water_pump_on_press = 3.0
         self.water_pump_off_press = 4.0
@@ -141,24 +143,36 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.osmos_supplier.stop()
         self.osmos_supplier.process()
 
-        # Functions
+        self.func_suply()
+
+    def func_suply(self):
         if FuncNames.WAX in self.active_functions:
             self.valve_dose_wax.open()
         else:
             self.valve_dose_wax.close()
+
         if FuncNames.SHAMPOO in self.active_functions:
             self.valve_dose_shampoo.open()
         else:
             self.valve_dose_shampoo.close()
+
         if FuncNames.FOAM in self.active_functions:
             self.valve_dose_foam.open()
         else:
             self.valve_dose_foam.close()
-        if FuncNames.INTENSIVE in self.active_functions:
+
+        if FuncNames.INTENSIVE in self.active_functions or FuncNames.FOAM in self.active_functions:
             self.valve_dose_intensive.open()
-            self.pump_i1.start()
+            self.valve_dose_water_intensive.open()
+            self.valve_dose_osmos_intensive.open()
         else:
             self.valve_dose_intensive.close()
+            self.valve_dose_water_intensive.close()
+            self.valve_dose_osmos_intensive.close()
+
+        if FuncNames.INTENSIVE in self.active_functions:
+            self.pump_i1.start()
+        else:
             self.pump_i1.stop()
 
     def is_ready_for_foam(self):
@@ -184,7 +198,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def try_wax(self):
         if self.is_ready_for_wax():
-            self.valve_dose_wax.open()
             self.active_functions.add(FuncNames.WAX)
             return True
         else:
@@ -202,7 +215,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def try_foam(self):
         if self.is_ready_for_foam():
-            self.valve_dose_foam.open()
             self.active_functions.add(FuncNames.FOAM)
             return True
         else:
@@ -211,12 +223,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def try_intensive(self):
         if self.is_ready_for_intensive():
-            self.valve_dose_intensive.open()
-            self.pump_i1.start()
             self.active_functions.add(FuncNames.INTENSIVE)
             return True
         else:
-            self.stop_intensive()
             return False
 
     def try_hot_water(self):
@@ -245,20 +254,15 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def stop_wax(self):
         self.active_functions.discard(FuncNames.WAX)
-        self.valve_dose_wax.close()
 
     def stop_shampoo(self):
         self.active_functions.discard(FuncNames.SHAMPOO)
-        self.valve_dose_shampoo.close()
 
     def stop_foam(self):
         self.active_functions.discard(FuncNames.FOAM)
-        self.valve_dose_foam.close()
 
     def stop_intensive(self):
         self.active_functions.discard(FuncNames.INTENSIVE)
-        self.valve_dose_intensive.close()
-        self.pump_i1.stop()
 
     def stop_hot_water(self):
         self.active_functions.discard(FuncNames.HOT_WATER)
