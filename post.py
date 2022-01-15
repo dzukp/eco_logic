@@ -42,6 +42,7 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: 40.0,
             FuncNames.COLD_WATER: 40.0,
             FuncNames.OSMOSIS: 40.0,
+            FuncNames.SOLUTION_2: 40.0,
         }
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
@@ -68,7 +69,8 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: self.valve_hot_water,
             FuncNames.COLD_WATER: self.valve_cold_water,
             FuncNames.OSMOSIS: self.valve_osmos,
-            FuncNames.INTENSIVE: self.valve_intensive
+            FuncNames.INTENSIVE: self.valve_intensive,
+            FuncNames.SOLUTION_2: self.valve_solution_2
         }
         for func_name, step in self.func_steps.items():
             step.valve = valves[func_name]
