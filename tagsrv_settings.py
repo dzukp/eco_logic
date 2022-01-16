@@ -27,8 +27,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
 
-    if version in ('1.1', '1.2'):
-        fc_names.append('fc_os_')
+    # if version in ('1.1', '1.2'):
+    #     fc_names.append('fc_os_')
 
     fc_names.append('fc_foam_')
 

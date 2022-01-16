@@ -99,7 +99,7 @@ def get_object(post_quantity=10):
                         'valve_b2': {
                             'class': Valve,
                             'do_open': None,
-                            'mb_cells_idx': 46
+                            'mb_cells_idx': None
                         },
                         'tank_b1': {
                             'class': Tank,
@@ -144,6 +144,11 @@ def get_object(post_quantity=10):
                             'class': Valve,
                             'do_open': 'do_3_14',
                             'mb_cells_idx': 40
+                        },
+                        'valve_dose_foam_2': {
+                            'class': Valve,
+                            'do_open': 'do_3_17',
+                            'mb_cells_idx': 46
                         }
                     }
                 }
