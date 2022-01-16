@@ -6,11 +6,16 @@ logging_config = {
             'propagate': False,
             'level': 'DEBUG',
         },
-        'TagSrv.serial_port_COM3': {
+        'TagSrv.serial_port_COM5': {
             'handlers':['comport_file', 'tagsrv_console'],
             'propagate': False,
             'level': 'DEBUG',
 
+        },
+        'TagSrv.serial_port_COM6': {
+            'handlers':['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
         },
         'TagSrv.serial_port_fc_serial': {
             'handlers': ['comport_file'],
