@@ -63,12 +63,12 @@ class Post(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
         self.func_steps = {}
         for name in FuncNames.all_funcs():
-            if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.COLD_WATER, FuncNames.OSMOSIS):
+            if name in (FuncNames.FOAM, FuncNames.SHAMPOO, FuncNames.WAX, FuncNames.COLD_WATER, FuncNames.OSMOSIS, FuncNames.BRUSH):
                 self.func_steps[name] = MultiValvePumpSteps(f'{name}_steps', self)
             elif name in (FuncNames.AIR, FuncNames.POLISH, FuncNames.WHEEL_BLACK, FuncNames.GLASS):
                 self.func_steps[name] = MultiValveSteps(f'{name}_steps', self)
-            elif name == FuncNames.BRUSH:
-                self.func_steps[name] = BrushSteps(f'{name}_steps', self)
+            # elif name == FuncNames.BRUSH:
+            #     self.func_steps[name] = BrushSteps(f'{name}_steps', self)
             elif name == FuncNames.HOOVER:
                 self.func_steps[name] = HooverSteps(f'{name}_steps', self)
         self.disabled_funcs = []
@@ -213,7 +213,7 @@ class Post(IoObject, ModbusDataObject):
         return not self.di_hoover.val and self.current_func == FuncNames.HOOVER
 
     def is_brush_ready(self):
-        return self.di_brush.val and self.current_func == FuncNames.BRUSH
+        return self.current_func == FuncNames.BRUSH
 
     def is_car_inside(self):
         return self.car_inside
