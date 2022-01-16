@@ -27,10 +27,11 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
 
-    # if version in ('1.1', '1.2'):
-    #     fc_names.append('fc_os_')
+    if version in ('1.1',):
+        fc_names.append('fc_os_')
 
-    fc_names.append('fc_foam_')
+    if version in ('1.2',):
+        fc_names.append('fc_foam_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -92,7 +93,9 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     fc_modules_2 = []
 
     # if quantity pumps > 4 use both serial ports
-    if post_quantity > 4:
+    if version == '1.2':
+        com1_end = 6
+    elif post_quantity > 4:
         com1_end = post_quantity // 2
     else:
         com1_end = post_quantity
@@ -102,6 +105,11 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                                    name.startswith(f'fc_{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
+    fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc_foam_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc_foam_ao_')]))
 
     for i in range(com1_end + 1, post_quantity + 1):
         fc_modules_2.append(ModbusRTUModule(i, sources['port_2'], io_tags=[], max_answ_len=5,
@@ -110,7 +118,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
 
-    if version in ('1.1', '1.2') and 'port_2' in sources:
+    if version in ('1.1',) and 'port_2' in sources:
         fc_modules_2.append(ModbusRTUModule(30, sources['port_2'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc_os_ai_')],

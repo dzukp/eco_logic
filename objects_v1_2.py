@@ -81,6 +81,15 @@ def get_object(post_quantity=10):
                                 }
                             }
                         },
+                        'pump_foam': {
+                            'class': Altivar212,
+                            'ao_command': 'fc_foam_ao_1',
+                            'ao_frequency': 'fc_foam_ao_2',
+                            'ai_status': 'fc_os_foam_1',
+                            'ai_frequency': 'fc_foam_ai_2',
+                            'ai_alarm_code': 'fc_foam_ai_3',
+                            'mb_cells_idx': 483
+                        },
                         'pump_i1': {
                             'class': Engine,
                             'do_start': 'do_3_23',

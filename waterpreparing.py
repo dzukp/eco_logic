@@ -30,6 +30,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.pump_os1 = None
         self.pump_os2 = None
         self.pump_os = None
+        self.pump_foam = None
         self.pump_i1 = None
         self.tank_b1 = None
         self.tank_b2 = None
@@ -160,9 +161,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
         if FuncNames.FOAM in self.active_functions:
             self.valve_dose_foam.open()
             self.valve_dose_foam_2.open()
+            self.pump_foam.start()
+            self.pump_foam.set_frequency(40)
         else:
             self.valve_dose_foam.close()
             self.valve_dose_foam_2.close()
+            self.pump_foam.stop()
 
         if FuncNames.INTENSIVE in self.active_functions or FuncNames.FOAM in self.active_functions:
             self.valve_dose_water_intensive.open()
