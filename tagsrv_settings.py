@@ -77,7 +77,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com_port1_name = 'fc_serial1'
         com_port2_name = 'fc_serial2'
     else:
-        com_port1_name = 'COM4'
+        com_port1_name = 'COM5'
         com_port2_name = 'COM6'
 
     sources = {
