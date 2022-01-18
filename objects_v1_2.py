@@ -136,8 +136,18 @@ def get_object(post_quantity=10):
                         },
                         'valve_dose_shampoo': {
                             'class': Valve,
-                            'do_open': None,
-                            'mb_cells_idx': None
+                            'do_open': 'do_3_22',
+                            'mb_cells_idx': 56
+                        },
+                        'valve_dose_water_shampoo': {
+                            'class': Valve,
+                            'do_open': 'do_3_19',
+                            'mb_cells_idx': 512
+                        },
+                        'valve_dose_hot_water_shampoo': {
+                            'class': Valve,
+                            'do_open': 'do_3_21',
+                            'mb_cells_idx': 514
                         },
                         'valve_dose_intensive': {
                             'class': Valve,
@@ -147,7 +157,7 @@ def get_object(post_quantity=10):
                         'valve_dose_water_intensive': {
                             'class': Valve,
                             'do_open': 'do_3_15',
-                            'mb_cells_idx': 56
+                            'mb_cells_idx': 516
                         },
                         'valve_dose_osmos_intensive': {
                             'class': Valve,

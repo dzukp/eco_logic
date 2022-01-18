@@ -39,6 +39,9 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.valve_water_os = None
         self.valve_dose_wax = None
         self.valve_dose_shampoo = None
+        self.valve_dose_water_shampoo = None
+        self.valve_dose_hot_water_shampoo = None
+        self.valve_dose_shampoo = None
         self.valve_dose_foam = None
         self.valve_dose_foam_2 = None
         self.valve_dose_intensive = None
@@ -155,8 +158,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
         if FuncNames.SHAMPOO in self.active_functions:
             self.valve_dose_shampoo.open()
+            self.valve_dose_water_shampoo.open()
+            self.valve_dose_hot_water_shampoo.open()
         else:
             self.valve_dose_shampoo.close()
+            self.valve_dose_water_shampoo.close()
+            self.valve_dose_hot_water_shampoo.close()
 
         if FuncNames.FOAM in self.active_functions:
             self.valve_dose_foam.open()
