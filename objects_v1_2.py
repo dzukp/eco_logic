@@ -25,7 +25,7 @@ def get_object(post_quantity=10):
                     'di_press_2': None,
                     'ai_pe_2': 'ai_2_6',
                     'di_press_3': None,
-                    'ai_pe_3': 'ai_2_4',
+                    'ai_pe_3': 'ai_2_7',
                     'di_press_4': None,
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -67,7 +67,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': None,
+                            'ai_sensor': 'ai_2_4',
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
