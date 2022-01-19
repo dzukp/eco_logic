@@ -141,7 +141,7 @@ def get_object(post_quantity=10):
                         },
                         'valve_dose_water_shampoo': {
                             'class': Valve,
-                            'do_open': 'do_3_19',
+                            'do_open': 'do_3_20',
                             'mb_cells_idx': 512
                         },
                         'valve_dose_hot_water_shampoo': {
