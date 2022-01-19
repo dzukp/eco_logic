@@ -84,7 +84,7 @@ def get_object(post_quantity=10):
                         'pump_foam': {
                             'class': PidEngine,
                             'ai_sensor': 'ai_2_4',
-                            'set_point': 4.0,
+                            'set_point': 10.0,
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
