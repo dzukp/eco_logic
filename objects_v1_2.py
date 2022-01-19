@@ -67,8 +67,8 @@ def get_object(post_quantity=10):
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_4',
-                            'mb_cells_idx': 471,
+                            'ai_sensor': None,
+                            'mb_cells_idx': None,
                             'children': {
                                 'fc': {
                                     'class': Altivar212,
@@ -82,13 +82,21 @@ def get_object(post_quantity=10):
                             }
                         },
                         'pump_foam': {
-                            'class': Altivar212,
-                            'ao_command': 'fc_foam_ao_1',
-                            'ao_frequency': 'fc_foam_ao_2',
-                            'ai_status': 'fc_os_foam_1',
-                            'ai_frequency': 'fc_foam_ai_2',
-                            'ai_alarm_code': 'fc_foam_ai_3',
-                            'mb_cells_idx': 483
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_4',
+                            'set_point': 4.0,
+                            'mb_cells_idx': 471,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_foam_ao_1',
+                                    'ao_frequency': 'fc_foam_ao_2',
+                                    'ai_status': 'fc_os_foam_1',
+                                    'ai_frequency': 'fc_foam_ai_2',
+                                    'ai_alarm_code': 'fc_foam_ai_3',
+                                    'mb_cells_idx': 483
+                                }
+                            }
                         },
                         'pump_i1': {
                             'class': Engine,

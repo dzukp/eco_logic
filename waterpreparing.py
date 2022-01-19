@@ -169,7 +169,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.valve_dose_foam.open()
             self.valve_dose_foam_2.open()
             self.pump_foam.start()
-            self.pump_foam.set_frequency(40)
         else:
             self.valve_dose_foam.close()
             self.valve_dose_foam_2.close()
