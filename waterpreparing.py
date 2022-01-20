@@ -30,23 +30,11 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.pump_os1 = None
         self.pump_os2 = None
         self.pump_os = None
-        self.pump_foam = None
-        self.pump_i1 = None
         self.tank_b1 = None
         self.tank_b2 = None
         self.valve_b1 = None
         self.valve_b2 = None
         self.valve_water_os = None
-        self.valve_dose_wax = None
-        self.valve_dose_shampoo = None
-        self.valve_dose_water_shampoo = None
-        self.valve_dose_hot_water_shampoo = None
-        self.valve_dose_shampoo = None
-        self.valve_dose_foam = None
-        self.valve_dose_foam_2 = None
-        self.valve_dose_intensive = None
-        self.valve_dose_water_intensive = None
-        self.valve_dose_osmos_intensive = None
         self.water_enough_press = 2.0
         self.water_pump_on_press = 3.0
         self.water_pump_off_press = 4.0
@@ -62,6 +50,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.start_b2 = True
         self.start_water_press = True
         self.start_osmos_press = True
+        self.sides = {}
+        self.side_suppliers = {}
         self.mb_cells_idx = None
         self.active_functions = set()
 
@@ -94,6 +84,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
         self.water_supplier.set_logger(self.logger.getChild(self.water_supplier.name))
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
+        self.sides = {post: self.find_child_by_name(side) for post, side in self.sides.items()}
+        # for c in self.children:
+        #     if c.name in self.sides:
+        #         self.side_suppliers[c.name] = c
 
     def process(self):
         # Filling Water Tank
@@ -148,46 +142,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.osmos_supplier.stop()
         self.osmos_supplier.process()
 
-        self.func_suply()
-
-    def func_suply(self):
-        if FuncNames.WAX in self.active_functions:
-            self.valve_dose_wax.open()
-        else:
-            self.valve_dose_wax.close()
-
-        if FuncNames.SHAMPOO in self.active_functions:
-            self.valve_dose_shampoo.open()
-            self.valve_dose_water_shampoo.open()
-            self.valve_dose_hot_water_shampoo.open()
-        else:
-            self.valve_dose_shampoo.close()
-            self.valve_dose_water_shampoo.close()
-            self.valve_dose_hot_water_shampoo.close()
-
-        if FuncNames.FOAM in self.active_functions:
-            self.valve_dose_foam.open()
-            self.valve_dose_foam_2.open()
-            self.pump_foam.start()
-        else:
-            self.valve_dose_foam.close()
-            self.valve_dose_foam_2.close()
-            self.pump_foam.stop()
-
-        if FuncNames.INTENSIVE in self.active_functions or FuncNames.FOAM in self.active_functions:
-            self.valve_dose_water_intensive.open()
-            self.valve_dose_osmos_intensive.open()
-        else:
-            self.valve_dose_water_intensive.close()
-            self.valve_dose_osmos_intensive.close()
-
-        if FuncNames.INTENSIVE in self.active_functions:
-            self.valve_dose_intensive.open()
-            self.pump_i1.start()
-        else:
-            self.valve_dose_intensive.close()
-            self.pump_i1.stop()
-
     def is_ready_for_foam(self):
         return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
 
@@ -219,7 +173,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def try_shampoo(self):
         if self.is_ready_for_shampoo():
-            self.valve_dose_shampoo.open()
             self.active_functions.add(FuncNames.SHAMPOO)
             return True
         else:
@@ -285,6 +238,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def stop_osmosis(self):
         self.active_functions.discard(FuncNames.OSMOSIS)
+
+    def add_function(self, post_name, func):
+        if post_name not in self.sides:
+            self.logger.error(f'Add function. No side supplier for post `{post_name}`')
+        sup_name = self.sides[post_name]
+        self.sides[sup_name].add_function(func)
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
