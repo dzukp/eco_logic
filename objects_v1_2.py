@@ -306,9 +306,14 @@ def get_object(post_quantity=10):
             obj['children']['valve_out_water']['do_open'] = None
             obj['children']['valve_out_foam']['do_open'] = None
 
-        module2_number = 3 if post_number <= 6 else 5
-        obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 1}'
-        obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 2}'
+        if post_number <= 6:
+            module2_number = 3
+            obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 1}'
+            obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 2}'
+        else:
+            module2_number = 5
+            obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 7) * 2 + 1}'
+            obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 7) * 2 + 2}'
 
         obj['children']['pump']['ao_command'] = f'fc_{post_number}_ao_1'
         obj['children']['pump']['ao_frequency'] = f'fc_{post_number}_ao_2'
