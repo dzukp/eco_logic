@@ -102,8 +102,9 @@ class Top(IoObject, ModbusDataObject):
             if func in prepared_funcs:
                 if not post.set_function(func):
                     self.post_function[post] = FuncNames.STOP
-                    self.supplier.add_function(post.name, func)
                     self.logger.debug(f'Post {post.name} didn\'t start function {func}')
+                else:
+                    self.supplier.add_function(post.name, func)
             else:
                 post.set_function(FuncNames.STOP)
                 self.post_function[post] = FuncNames.STOP

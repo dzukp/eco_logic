@@ -242,8 +242,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def add_function(self, post_name, func):
         if post_name not in self.sides:
             self.logger.error(f'Add function. No side supplier for post `{post_name}`')
-        sup_name = self.sides[post_name]
-        self.sides[sup_name].add_function(func)
+        self.sides[post_name].add_function(func)
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
