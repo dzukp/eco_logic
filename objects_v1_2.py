@@ -129,7 +129,7 @@ def get_object(post_quantity=10):
                     'class': PidEngine,
                     'ai_sensor': 'ai_2_4' if i == 1 else 'ai_3_5',
                     'set_point': 10.0,
-                    'mb_cells_idx': 471 if i == 1 else None,
+                    'mb_cells_idx': 471 if i == 1 else 517,
                     'children': {
                         'fc': {
                             'class': Altivar212,
