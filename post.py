@@ -55,8 +55,10 @@ class Post(IoObject, ModbusDataObject):
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
+                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE,
+                                                                                  FuncNames.FOAM)])
         self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+        self.func_steps[FuncNames.FOAM] = PostIntensiveSteps('foam_steps')
         self.disabled_funcs = []
 
     def init(self):
