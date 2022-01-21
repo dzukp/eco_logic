@@ -9230,6 +9230,23 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="2"/>
             </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_286" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="387" rect.bottom="410" rect.left="1063" rect.right="1127"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Text" format="%.2f бар"/>
+                <Transparency Value="0"/>
+                <Border Width="1" Value="1">
+                    <BorderColor g="0" r="0" a="255" b="0"/>
+                </Border>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
         </MnemoScreen>
         <MnemoScreen FullName="Settings">
             <Properties>
@@ -10539,7 +10556,6 @@
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_69"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_180"/>
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_278"/>
-                        <Listener Path="" Type="XMnemoShape" Name="Ellipse_278"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -10661,171 +10677,115 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_cmd" Units="....." Location="61" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_status" Units="....." Location="62" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_number" Units="....." Location="63" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_number"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pressure" Units="....." Location="64" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pressure"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_cmd" Units="....." Location="66" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_status" Units="....." Location="67" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_cmd" Units="....." Location="68" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_status" Units="....." Location="69" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_cmd" Units="....." Location="70" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_status" Units="....." Location="71" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_cmd" Units="....." Location="72" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_status" Units="....." Location="73" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_cmd" Units="....." Location="74" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_status" Units="....." Location="75" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_cmd" Units="....." Location="76" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_status" Units="....." Location="77" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_cmd" Units="....." Location="78" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_status" Units="....." Location="79" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_cmd" Units="....." Location="80" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_status" Units="....." Location="81" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_cmd" Units="....." Location="82" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_status" Units="....." Location="83" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_cmd" Units="....." Location="84" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_cmd"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_status" Units="....." Location="85" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_status"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_out_freq" Units="....." Location="86" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_out_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_man_freq" Units="....." Location="88" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_man_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_auto_freq" Units="....." Location="90" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_auto_freq"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_alarm" Units="....." Location="92" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_alarm"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_cmd" Units="....." Location="93" IsReadTag="0">
@@ -11389,115 +11349,171 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_cmd" Units="....." Location="253" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_status" Units="....." Location="254" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_number" Units="....." Location="255" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_number"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pressure" Units="....." Location="256" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pressure"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_cmd" Units="....." Location="258" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_status" Units="....." Location="259" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_cmd" Units="....." Location="260" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_status" Units="....." Location="261" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_cmd" Units="....." Location="262" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_status" Units="....." Location="263" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_cmd" Units="....." Location="264" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_status" Units="....." Location="265" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_cmd" Units="....." Location="266" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_status" Units="....." Location="267" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_cmd" Units="....." Location="268" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_status" Units="....." Location="269" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_cmd" Units="....." Location="270" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_status" Units="....." Location="271" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_cmd" Units="....." Location="272" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_status" Units="....." Location="273" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_cmd" Units="....." Location="274" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_status" Units="....." Location="275" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_cmd" Units="....." Location="276" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_status" Units="....." Location="277" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_out_freq" Units="....." Location="278" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_out_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_man_freq" Units="....." Location="280" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_man_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_auto_freq" Units="....." Location="282" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_auto_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_alarm" Units="....." Location="284" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_alarm"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_cmd" Units="....." Location="285" IsReadTag="0">
@@ -11983,6 +11999,7 @@
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="pump_os_ai_press" Units="....." Location="473" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_274"/>
+                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_274"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -12040,6 +12057,12 @@
                     </ListenersList>
                     <FilterList/>
                 </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="pump_os_2_ai_press" Units="....." Location="519" IsReadTag="0">
+                    <ListenersList>
+                        <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_286"/>
+                    </ListenersList>
+                    <FilterList/>
+                </Tag>
             </TagsList>
             <Device/>
             <ParamVarGroup>
@@ -12068,29 +12091,29 @@
         <Group Marker="0" Name="Post">
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_status" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_status(4-62)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_status(4-254)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_cmd(4-61)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_cmd(4-253)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_number" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_206"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_number(4-63)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_number(4-255)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Float" Marker="0" Comments="" Name="post_pressure" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_205"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pressure(4-64)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pressure(4-256)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_cmd(4-66)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_foam_cmd(4-258)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_status" Value="0">
@@ -12098,12 +12121,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_15"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_17"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_18"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_status(4-67)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_foam_status(4-259)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_cmd(4-68)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_wax_cmd(4-260)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_status" Value="0">
@@ -12111,12 +12134,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_122"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_119"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_121"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_status(4-69)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_wax_status(4-261)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_cmd(4-70)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_shampoo_cmd(4-262)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_status" Value="0">
@@ -12124,12 +12147,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_129"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_126"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_128"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_status(4-71)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_shampoo_status(4-263)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_cmd(4-72)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_cold_water_cmd(4-264)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_status" Value="0">
@@ -12137,12 +12160,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_136"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_135"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_133"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_status(4-73)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_cold_water_status(4-265)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_cmd(4-74)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_hot_water_cmd(4-266)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_status" Value="0">
@@ -12150,12 +12173,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_143"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_140"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_142"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_status(4-75)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_hot_water_status(4-267)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_cmd(4-76)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_osmos_cmd(4-268)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_status" Value="0">
@@ -12163,12 +12186,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_150"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_147"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_149"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_status(4-77)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_osmos_status(4-269)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_cmd(4-78)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_out_water_cmd(4-270)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_status" Value="0">
@@ -12176,12 +12199,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_157"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_154"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_156"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_status(4-79)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_out_water_status(4-271)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_cmd(4-80)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_out_foam_cmd(4-272)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_status" Value="0">
@@ -12189,12 +12212,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_164"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_161"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_163"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_status(4-81)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_out_foam_status(4-273)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_cmd(4-82)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_intensive_cmd(4-274)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_status" Value="0">
@@ -12202,12 +12225,12 @@
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_171"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_168"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_170"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_status(4-83)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_v_intensive_status(4-275)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_cmd" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_cmd(4-84)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_cmd(4-276)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_status" Value="0">
@@ -12216,29 +12239,29 @@
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_10"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_11"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_22"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_status(4-85)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_status(4-277)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_out_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_109"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_out_freq(4-86)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_out_freq(4-278)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_man_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_214"/>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_man_freq(4-88)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_man_freq(4-280)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_auto_freq" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_auto_freq(4-90)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_auto_freq(4-282)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_alarm" Value="0">
                 <ListenersList>
-                    <Listener Path="main\" Type="Output register" Name="p1_pump_alarm(4-92)"/>
+                    <Listener Path="main\" Type="Output register" Name="p7_pump_alarm(4-284)"/>
                 </ListenersList>
             </GlobalVariable>
         </Group>
