@@ -14,11 +14,11 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.di_press_1 = InChannel(False)  # дискретный датчик давления после насоса p1
-        self.ai_pe_1 = InChannel(0.0)  # аналоговый датчик давления после насоса П1
-        self.di_press_2 = InChannel(False)  # дискретный датчик давления после П2
-        self.ai_pe_2 = InChannel(0.0)  # аналоговый датчик давления после фильтра
-        self.ai_pe_3 = InChannel(0.0)  # аналоговый датчик давления после насоса П2
+        self.di_press_1 = InChannel(False)
+        self.ai_pe_1 = InChannel(0.0)
+        self.di_press_2 = InChannel(False)
+        self.ai_pe_2 = InChannel(0.0)
+        self.ai_pe_3 = InChannel(0.0)
         self.di_press_3 = InChannel(False)
         self.di_press_4 = InChannel(True)
         self.do_no_n3_press_signal = OutChannel(False)
@@ -32,8 +32,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.pump_os = None
         self.tank_b1 = None
         self.tank_b2 = None
+        self.tank_b3 = None
         self.valve_b1 = None
         self.valve_b2 = None
+        self.valve_b3 = None
         self.valve_water_os = None
         self.water_enough_press = 2.0
         self.water_pump_on_press = 3.0
@@ -41,13 +43,15 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_enough_press = 2.0
         self.osmosis_pump_on_press = 3.0
         self.osmosis_pump_off_press = 4.0
-        self.b1_filler = PumpTankFiller('b1_filler')
+        self.b1_filler = TankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
+        self.b3_filler = TankFiller('b3_filler')
         self.water_supplier = TwoPumpWaterSupplier('cold_water')
         self.pre_filter_supplier = WaterSupplier('pre_filter')
         self.osmos_supplier = WaterSupplier('osmosis')
         self.start_b1 = True
         self.start_b2 = True
+        self.start_b3 = True
         self.start_water_press = True
         self.start_osmos_press = True
         self.sides = {}
@@ -58,8 +62,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
     def init(self):
         self.b1_filler.tank = self.tank_b1
         self.b1_filler.valve = self.valve_b1
-        self.b1_filler.pump = self.pump_n3
-        self.b1_filler.di_press = self.di_press_4
+        # self.b1_filler.pump = self.pump_n3
+        # self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
@@ -68,6 +72,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.pid_pump = self.pump_os
         self.b2_filler.valve_inlet = self.valve_water_os
         self.b2_filler.di_pressure = self.di_press_2
+        self.b3_filler.tank = self.tank_b3
+        self.b3_filler.valve = self.valve_b3
         self.water_supplier.tank = self.tank_b1
         self.water_supplier.ai_pressure = self.ai_pe_2
         self.water_supplier.di_pressure = self.di_press_1
@@ -82,6 +88,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmos_supplier.pump = self.pump_n2
         self.b1_filler.set_logger(self.logger.getChild(self.b1_filler.name))
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
+        self.b3_filler.set_logger(self.logger.getChild(self.b3_filler.name))
         self.water_supplier.set_logger(self.logger.getChild(self.water_supplier.name))
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
         self.sides = {post: self.find_child_by_name(side) for post, side in self.sides.items()}
@@ -96,6 +103,13 @@ class WaterPreparing(IoObject, ModbusDataObject):
         else:
             self.b1_filler.stop()
         self.b1_filler.process()
+
+        # Filling Water B3 Tank
+        if self.start_b3:
+            self.b3_filler.start()
+        else:
+            self.b3_filler.stop()
+        self.b3_filler.process()
 
         # Filling Osmosis Tank
         if self.start_b2:

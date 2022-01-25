@@ -42,7 +42,12 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     for pref in do_names:
         tags['out'].update(dict([(pref + str(i), OutTag(i)) for i in range(1, 25)]))
 
-    if version in ('1.0',):
+    if version == '1.2':
+        for pref in ('dio_1_',):
+            tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 13)]))
+            tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 5)]))
+
+    if version in ('1.0', '1.2'):
         # generate di_1_1 - do_1_20
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
@@ -61,10 +66,16 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_3 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_3_')], ip='192.168.200.13',
                        timeout=0.03)
-    if version in ('1.0',):
+    if version in ('1.0', '1.2'):
         di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10', timeout=0.03)
     else:
         di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.30', timeout=0.03)
+
+    dio_1 = None
+    if version == '1.2':
+        dio_tags = [tag for name, tag in tags['in'].items() if name.startswith('dio_1_i_')] + \
+                   [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')]
+        dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.40', timeout=0.03)
     # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
     do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')], ip='192.168.200.1',
                            timeout=0.03)
@@ -141,6 +152,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         modules = [do_1, do_2, do_3, do_4, di_1, ai_1, ai_2]
     elif post_quantity in (9, 10):
         modules = [do_1, do_2, do_3, do_4, do_5, di_1, ai_1, ai_2, ai_3]
+        if version == '1.2':
+            modules.append(dio_1)
     else:
         modules = [do_1, do_2, di_1, ai_1]
 

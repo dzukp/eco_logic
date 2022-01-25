@@ -22,13 +22,13 @@ def get_object(post_quantity=10):
                 'supplier': {
                     'class': WaterPreparing,
                     'sides': {},
-                    'di_press_1': None,
+                    'di_press_1': 'di_1_14',
                     'ai_pe_1': 'ai_1_5',
                     'di_press_2': None,
                     'ai_pe_2': 'ai_1_6',
-                    'di_press_3': None,
+                    'di_press_3': 'di_1_15',
                     'ai_pe_3': 'ai_1_7',
-                    'di_press_4': None,
+                    'di_press_4': 'di_1_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
@@ -60,7 +60,7 @@ def get_object(post_quantity=10):
                         'pump_os1': {
                             'class': Engine,
                             'do_start': None,
-                            'mb_cells_idx': 34
+                            'mb_cells_idx': None
                         },
                         'pump_os2': {
                             'class': Engine,
@@ -74,11 +74,11 @@ def get_object(post_quantity=10):
                             'children': {
                                 'fc': {
                                     'class': Altivar212,
-                                    # 'ao_command': 'fc_os_ao_1',
-                                    # 'ao_frequency': 'fc_os_ao_2',
-                                    # 'ai_status': 'fc_os_ai_1',
-                                    # 'ai_frequency': 'fc_os_ai_2',
-                                    # 'ai_alarm_code': 'fc_os_ai_3',
+                                    'ao_command': 'fc_os_ao_1',
+                                    'ao_frequency': 'fc_os_ao_2',
+                                    'ai_status': 'fc_os_ai_1',
+                                    'ai_frequency': 'fc_os_ai_2',
+                                    'ai_alarm_code': 'fc_os_ai_3',
                                     'mb_cells_idx': 483
                                 }
                             }
@@ -90,13 +90,18 @@ def get_object(post_quantity=10):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': None,
+                            'do_open': 'dio_1_o_1',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
                             'class': Valve,
-                            'do_open': None,
-                            'mb_cells_idx': None
+                            'do_open': 'dio_1_o_3',
+                            'mb_cells_idx': 46
+                        },
+                        'valve_b3': {
+                            'class': Valve,
+                            'do_open': 'dio_1_o_2',
+                            'mb_cells_idx': 42
                         },
                         'tank_b1': {
                             'class': Tank,
@@ -107,10 +112,17 @@ def get_object(post_quantity=10):
                         },
                         'tank_b2': {
                             'class': Tank,
-                            'di_low_level': 'di_1_4',
-                            'di_mid_level': 'di_1_5',
-                            'di_hi_level': 'di_1_6',
+                            'di_low_level': 'di_1_9',
+                            'di_mid_level': 'di_1_10',
+                            'di_hi_level': 'di_1_11',
                             'mb_cells_idx': 50
+                        },
+                        'tank_b3': {
+                            'class': Tank,
+                            'di_low_level': 'di_1_5',
+                            'di_mid_level': 'di_1_6',
+                            'di_hi_level': 'di_1_7',
+                            'mb_cells_idx': 558
                         }
                     }
                 }
@@ -190,7 +202,7 @@ def get_object(post_quantity=10):
                 'valve_dose_foam_2': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_17',
-                    'mb_cells_idx': 46 if i == 1 else None
+                    'mb_cells_idx': 34 if i == 1 else None
                 }
             }
         }
