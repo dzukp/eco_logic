@@ -45,12 +45,11 @@ class FcSimulator(IoObject):
         self.ao_pressure = OutChannel(0)
 
     def process(self):
-        if (self.ai_cmd.val & self.cmd_start_mask) == self.cmd_start_mask:
+        if self.ai_cmd.val is not None and (self.ai_cmd.val & self.cmd_start_mask) == self.cmd_start_mask:
             self.ao_status.val = self.status_run_mask
-        elif (self.ai_cmd.val & self.cmd_reset_mask) == self.cmd_reset_mask:
+        elif self.ai_cmd.val is not None and (self.ai_cmd.val & self.cmd_reset_mask) == self.cmd_reset_mask:
             self.ao_status.val = 0
         else:
             self.ao_status.val = 0
         self.ao_freq.val = self.ai_freq.val if self.ao_status.val == self.status_run_mask else 0.0
         self.ao_pressure.val = self.ao_freq.val * 3.623 / 100
-

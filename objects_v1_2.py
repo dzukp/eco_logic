@@ -23,9 +23,9 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_1_5',
+                    'ai_pe_1': 'ai_1_6',
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_1_6',
+                    'ai_pe_2': 'ai_1_5',
                     'di_press_3': 'di_1_15',
                     'ai_pe_3': 'ai_1_7',
                     'di_press_4': 'di_1_13',
@@ -57,6 +57,38 @@ def get_object(post_quantity=10):
                             'do_start': None,
                             'mb_cells_idx': 497
                         },
+                        'pump_water_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_1_5',
+                            'mb_cells_idx': None,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_water_ao_1',
+                                    'ao_frequency': 'fc_water_ao_2',
+                                    'ai_status': 'fc_water_ai_1',
+                                    'ai_frequency': 'fc_water_ai_2',
+                                    'ai_alarm_code': 'fc_water_ai_3',
+                                    'mb_cells_idx': None
+                                }
+                            }
+                        },
+                        'pump_osmos_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_1_7',
+                            'mb_cells_idx': None,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_osmos_ao_1',
+                                    'ao_frequency': 'fc_osmos_ao_2',
+                                    'ai_status': 'fc_osmos_ai_1',
+                                    'ai_frequency': 'fc_osmos_ai_2',
+                                    'ai_alarm_code': 'fc_osmos_ai_3',
+                                    'mb_cells_idx': None
+                                }
+                            }
+                        },
                         'pump_os1': {
                             'class': Engine,
                             'do_start': None,
@@ -69,7 +101,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': None,
+                            'ai_sensor': 'ai_4_1',
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
@@ -105,23 +137,23 @@ def get_object(post_quantity=10):
                         },
                         'tank_b1': {
                             'class': Tank,
-                            'di_low_level': 'di_1_1',
-                            'di_mid_level': 'di_1_2',
-                            'di_hi_level': 'di_1_3',
+                            'di_low_level': 'di_1_2',
+                            'di_mid_level': 'di_1_3',
+                            'di_hi_level': 'di_1_4',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {
                             'class': Tank,
-                            'di_low_level': 'di_1_9',
-                            'di_mid_level': 'di_1_10',
-                            'di_hi_level': 'di_1_11',
+                            'di_low_level': 'di_1_10',
+                            'di_mid_level': 'di_1_11',
+                            'di_hi_level': 'di_1_12',
                             'mb_cells_idx': 50
                         },
                         'tank_b3': {
                             'class': Tank,
-                            'di_low_level': 'di_1_5',
-                            'di_mid_level': 'di_1_6',
-                            'di_hi_level': 'di_1_7',
+                            'di_low_level': 'di_1_6',
+                            'di_mid_level': 'di_1_7',
+                            'di_hi_level': 'di_1_8',
                             'mb_cells_idx': 558
                         }
                     }

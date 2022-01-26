@@ -257,8 +257,8 @@ class PidEngine(IoObject, ModbusDataObject):
         self.ai_sensor = InChannel(0.0)
         self.set_point = 0.0
         self.pid_k = 1.0
-        self.pid_i = 2.0
-        self.pid_d = 0.0
+        self.pid_i = 1.0
+        self.pid_d = 0.5
         self.freq_limits = [20.0, 50.0]
         self.pid = PID(sample_time=0.5)
         self.pid.output_limits = tuple(self.freq_limits)
@@ -343,3 +343,28 @@ class PidEngine(IoObject, ModbusDataObject):
             }
         else:
             return {}
+
+
+class PidWaterSupplier(Subsystem):
+    """ Pump, tank, pressure sensor, pressure relay """
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.pid_pump = None
+        self.tank = None
+        self.last_can_supply = None
+        self.enough_pressure = 0
+
+    def process(self):
+        if self.started and self.external_enable and not self.tank.is_empty():
+            self.pid_pump.start()
+        else:
+            self.pid_pump.stop()
+        is_can_supply = self.is_can_supply()
+        if self.last_can_supply != is_can_supply:
+            self.last_can_supply = is_can_supply
+            self.logger.debug('Can supply' if is_can_supply else 'Can\'t supply')
+
+    def is_can_supply(self):
+        press = self.pid_pump.ai_sensor.val
+        return press > self.enough_pressure
