@@ -23,11 +23,11 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_1_6',
+                    'ai_pe_1': 'ai_2_7',
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_1_5',
+                    'ai_pe_2': 'ai_2_5',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_1_7',
+                    'ai_pe_3': 'ai_2_6',
                     'di_press_4': 'di_1_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -59,8 +59,8 @@ def get_object(post_quantity=10):
                         },
                         'pump_water_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_1_5',
-                            'mb_cells_idx': None,
+                            'ai_sensor': 'ai_2_5',
+                            'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
                                     'class': Altivar212,
@@ -69,14 +69,14 @@ def get_object(post_quantity=10):
                                     'ai_status': 'fc_water_ai_1',
                                     'ai_frequency': 'fc_water_ai_2',
                                     'ai_alarm_code': 'fc_water_ai_3',
-                                    'mb_cells_idx': None
+                                    'mb_cells_idx': 560
                                 }
                             }
                         },
                         'pump_osmos_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_1_7',
-                            'mb_cells_idx': None,
+                            'ai_sensor': 'ai_2_6',
+                            'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
                                     'class': Altivar212,
@@ -85,7 +85,7 @@ def get_object(post_quantity=10):
                                     'ai_status': 'fc_osmos_ai_1',
                                     'ai_frequency': 'fc_osmos_ai_2',
                                     'ai_alarm_code': 'fc_osmos_ai_3',
-                                    'mb_cells_idx': None
+                                    'mb_cells_idx': 580
                                 }
                             }
                         },
