@@ -14932,7 +14932,6 @@
                     <ListenersList>
                         <Listener Path="fc" Type="XMnemoTextLabel" Name="TextLabel_37"/>
                         <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_43"/>
-                        <Listener Path="fc" Type="XMnemoTextLabel" Name="TextLabel_43"/>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_322"/>
                     </ListenersList>
                     <FilterList/>
@@ -14999,6 +14998,7 @@
                     <ListenersList>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_320"/>
                         <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_320"/>
+                        <Listener Path="fc" Type="XMnemoTextLabel" Name="TextLabel_43"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
