@@ -24,6 +24,7 @@ class Top(IoObject, ModbusDataObject):
         self.counter = 0
         self.side_posts = {'1': set(), '2': set()}
         self.side_brush_wash = {}
+        self.hmi_post_number = 1
 
     def init(self):
         for child in self.children:
@@ -218,41 +219,55 @@ class Top(IoObject, ModbusDataObject):
 
     def mb_input(self, start_addr, data):
         if self.mb_cells_idx is not None:
-            for p in self.posts.values():
-                if data[self.mb_cells_idx - start_addr + 1] * 0.001 != p.pump_on_timeout:
-                    p.set_pump_on_timeout(float(data[self.mb_cells_idx - start_addr + 1]) * 0.001)
-                if p.valve_off_timeout != data[self.mb_cells_idx - start_addr + 2] * 0.001:
-                    p.set_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 2]) * 0.001)
-                if data[self.mb_cells_idx - start_addr + 3] != p.func_frequencies[FuncNames.FOAM]:
-                    p.set_func_pump_frequency(FuncNames.FOAM, data[self.mb_cells_idx - start_addr + 3])
-                if data[self.mb_cells_idx - start_addr + 4] != p.func_frequencies[FuncNames.SHAMPOO]:
-                    p.set_func_pump_frequency(FuncNames.SHAMPOO, data[self.mb_cells_idx - start_addr + 4])
-                if data[self.mb_cells_idx - start_addr + 5] != p.func_frequencies[FuncNames.WAX]:
-                    p.set_func_pump_frequency(FuncNames.WAX, data[self.mb_cells_idx - start_addr + 5])
-                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.BRUSH]:
-                    p.set_func_pump_frequency(FuncNames.BRUSH, data[self.mb_cells_idx - start_addr + 6])
-                if data[self.mb_cells_idx - start_addr + 7] != p.func_frequencies[FuncNames.COLD_WATER]:
-                    p.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
-                if data[self.mb_cells_idx - start_addr + 8] != p.func_frequencies[FuncNames.OSMOSIS]:
-                    p.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
-                if p.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
-                    p.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
+            post = self.posts.get(f'post_{self.hmi_post_number}')
+            if post:
+                if data[self.mb_cells_idx - start_addr + 1] * 0.001 != post.pump_on_timeout:
+                    post.set_pump_on_timeout(float(data[self.mb_cells_idx - start_addr + 1]) * 0.001)
+                if post.valve_off_timeout != data[self.mb_cells_idx - start_addr + 2] * 0.001:
+                    post.set_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 2]) * 0.001)
+                if data[self.mb_cells_idx - start_addr + 3] != post.func_frequencies[FuncNames.FOAM]:
+                    post.set_func_pump_frequency(FuncNames.FOAM, data[self.mb_cells_idx - start_addr + 3])
+                if data[self.mb_cells_idx - start_addr + 4] != post.func_frequencies[FuncNames.SHAMPOO]:
+                    post.set_func_pump_frequency(FuncNames.SHAMPOO, data[self.mb_cells_idx - start_addr + 4])
+                if data[self.mb_cells_idx - start_addr + 5] != post.func_frequencies[FuncNames.WAX]:
+                    post.set_func_pump_frequency(FuncNames.WAX, data[self.mb_cells_idx - start_addr + 5])
+                if data[self.mb_cells_idx - start_addr + 6] != post.func_frequencies[FuncNames.BRUSH]:
+                    post.set_func_pump_frequency(FuncNames.BRUSH, data[self.mb_cells_idx - start_addr + 6])
+                if data[self.mb_cells_idx - start_addr + 7] != post.func_frequencies[FuncNames.COLD_WATER]:
+                    post.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
+                if data[self.mb_cells_idx - start_addr + 8] != post.func_frequencies[FuncNames.OSMOSIS]:
+                    post.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
+                if post.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
+                    post.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
+            n = data[self.mb_cells_idx - start_addr + 12]
+            if f'post_{n}' in self.posts:
+                self.hmi_post_number = n
 
     def mb_output(self, start_addr):
         if self.mb_cells_idx is not None:
+            post = self.posts.get(f'post_{self.hmi_post_number}')
+            if post:
+                post_data = [
+                    int(post.pump_on_timeout * 1000),
+                    int(post.valve_off_timeout * 1000),
+                    int(post.func_frequencies[FuncNames.FOAM]),
+                    int(post.func_frequencies[FuncNames.SHAMPOO]),
+                    int(post.func_frequencies[FuncNames.WAX]),
+                    int(post.func_frequencies[FuncNames.BRUSH]),
+                    int(post.func_frequencies[FuncNames.COLD_WATER]),
+                    int(post.func_frequencies[FuncNames.OSMOSIS]),
+                    int(post.pressure_timeout),
+                    int(post.min_pressure * 100),
+                    int(post.hi_press_valve_off_timeout * 1000),
+                ]
+            else:
+                post_data = [0] * 11
+
             data = [
                 self.counter,
-                int(self.posts['post_1'].pump_on_timeout * 1000),
-                int(self.posts['post_1'].valve_off_timeout * 1000),
-                int(self.posts['post_1'].func_frequencies[FuncNames.FOAM]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.SHAMPOO]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.WAX]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.BRUSH]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.COLD_WATER]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.OSMOSIS]),
-                int(self.posts['post_1'].pressure_timeout),
-                int(self.posts['post_1'].min_pressure * 100),
-                int(self.posts['post_1'].hi_press_valve_off_timeout * 1000),
+            ] + post_data + [
+                self.hmi_post_number,
+                11111
             ]
             result = dict([(self.mb_cells_idx - start_addr + i, val) for i, val in zip(range(len(data)), data)])
             return result
