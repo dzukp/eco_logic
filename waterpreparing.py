@@ -209,7 +209,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.pump_n4.start()
         else:
             self.pump_n4.stop()
-        if FuncNames.POLISH in self.active_functions:
+        if FuncNames.POLISH in self.active_functions or FuncNames.WHEEL_BLACK in self.active_functions:
             self.pump_n5.start()
         else:
             self.pump_n5.stop()
