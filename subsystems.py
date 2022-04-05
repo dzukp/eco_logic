@@ -89,6 +89,32 @@ class TwoPumpWaterSupplier(WaterSupplier):
         return not self.hysteresis2.process(self.ai_pressure.val)
 
 
+class ThreePumpWaterSupplier(TwoPumpWaterSupplier):
+
+    def __init__(self, name):
+        super(ThreePumpWaterSupplier, self).__init__(name)
+        self.pump3 = None
+        self.hysteresis3 = Hysteresis(low=self.pump_on_press, hi=self.pump_off_press)
+
+    def process(self):
+        super(ThreePumpWaterSupplier, self).process()
+        if self.started and self.external_enable and self.need_pump_3() and not self.tank.is_empty():
+            self.pump3.start()
+        else:
+            self.pump3.stop()
+
+    def need_pump_2(self):
+        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.33
+        self.hysteresis2.hi = self.pump_off_press
+        return not self.hysteresis2.process(self.ai_pressure.val)
+
+    def need_pump_3(self):
+        self.hysteresis3.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.66
+        self.hysteresis3.hi = self.pump_off_press
+        return not self.hysteresis3.process(self.ai_pressure.val)
+
+
+
 class TankFiller(Subsystem):
     """  """
 
