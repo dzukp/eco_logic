@@ -84,7 +84,7 @@ class TwoPumpWaterSupplier(WaterSupplier):
             self.pump2.stop()
 
     def need_pump_2(self):
-        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.5
+        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.3
         self.hysteresis2.hi = self.pump_off_press
         return not self.hysteresis2.process(self.ai_pressure.val)
 
@@ -104,12 +104,12 @@ class ThreePumpWaterSupplier(TwoPumpWaterSupplier):
             self.pump3.stop()
 
     def need_pump_2(self):
-        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.33
+        self.hysteresis2.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.15
         self.hysteresis2.hi = self.pump_off_press
         return not self.hysteresis2.process(self.ai_pressure.val)
 
     def need_pump_3(self):
-        self.hysteresis3.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.66
+        self.hysteresis3.low = self.pump_on_press + (self.pump_off_press - self.pump_on_press) * 0.30
         self.hysteresis3.hi = self.pump_off_press
         return not self.hysteresis3.process(self.ai_pressure.val)
 
