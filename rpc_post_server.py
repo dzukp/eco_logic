@@ -14,11 +14,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 
 class MyXMLRPCServer(SimpleXMLRPCServer):
-    """"
-    MyXMLRPCServer
-
-    MyXMLRPCServer Description
-    """
     def process_request(self, request, client_address):
         self.client_address = client_address
         return SimpleXMLRPCServer.process_request(
@@ -45,8 +40,7 @@ class RpcPostServer(LoggedObject):
         self.server_thread.start()
 
     def run(self):
-        with MyXMLRPCServer(self.host, requestHandler=RequestHandler) as server:
-
+        with MyXMLRPCServer(self.host, requestHandler=RequestHandler, logRequests=False) as server:
             server.register_introspection_functions()
 
             @server.register_function
