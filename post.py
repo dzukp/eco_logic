@@ -65,13 +65,12 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: [self.valve_hot_water],
             FuncNames.COLD_WATER: [],
             FuncNames.OSMOSIS: [self.valve_osmos],
-            FuncNames.INTENSIVE: [self.valve_intensive, self.valve_osmos, self.valve_foam]
+            FuncNames.INTENSIVE: [self.valve_intensive, self.valve_osmos, self.valve_hot_water]
         }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
-                if func_name != FuncNames.INTENSIVE:
-                    step.pump_link = [self.valve_cold_water]
+                step.pump_link = [self.valve_cold_water]
                 step.set_config(config)
 
         # self.pump.reset()
