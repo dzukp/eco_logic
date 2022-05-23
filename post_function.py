@@ -112,7 +112,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
-        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > 130.0:
+        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > 140.0:
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
