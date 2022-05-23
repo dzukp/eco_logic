@@ -83,21 +83,23 @@ class MultiValvePumpSteps(MultiValveSteps):
         if res:
             return res
         self.pump = 1
-        if self.owner.di_flow.val:
-            self.ton.reset()
-            return self.full_work
+        # if self.owner.di_flow.val:
+        #     self.ton.reset()
+        #     return self.full_work
         if self.owner.ai_pressure.val > 50:
             return self.wait_flow
+        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < 50.0:
+            return self.full_work
 
     def wait_flow(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
         self.pump = 0
-        if self.owner.di_flow.val:
-            self.logger.info('di_flow')
-            self.ton.reset()
-            return self.full_work
+        # if self.owner.di_flow.val:
+        #     self.logger.info('di_flow')
+        #     self.ton.reset()
+        #     return self.full_work
         if self.no_flow_press - self.owner.ai_pressure.val > 20.0:
             self.logger.info(f'self.owner.ai_pressure.val - self.no_flow_press ({round(self.owner.ai_pressure.val - self.no_flow_press, 2)}) > 20.0')
             self.ton.reset()
@@ -110,7 +112,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
-        if self.ton.process(run=True, timeout=2.0) and not self.owner.di_flow.val:
+        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > 130.0:
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
