@@ -40,7 +40,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
-        self.reset_timer.set_timeout(2.0)
+        self.reset_timer.set_timeout(6.0)
         self.alarm_auto_reset_timeout = 5.0
         self.alarm_auto_reset_timer = Ton()
         self.mb_cells_idx = None
