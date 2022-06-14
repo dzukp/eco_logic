@@ -74,7 +74,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         if self.is_run:
             self.func_state = self.state_run
             self.logger.debug(f'{self.name}: run state')
-        if self.timer.process(not self.is_run):
+        if self.timer.process(0):
             self.func_state = self.state_alarm
             self.timer.reset()
             self.logger.debug(f'{self.name}: alarm state from starting state, don\'t run signal in timeout')
@@ -82,7 +82,7 @@ class Altivar212(Mechanism, ModbusDataObject):
     def state_run(self):
         self.ao_command.val = self.CMD_FORWARD_START
         self.ao_frequency.val = self.man_frequency_task * 100.0 if self.manual else self.auto_frequency_task * 100.0
-        if self.timer.process(not self.is_run):
+        if self.timer.process(0):
             self.func_state = self.state_alarm
             self.timer.reset()
             self.logger.debug(f'{self.name}: alarm state from run state, don\'t run signal in timeout')
