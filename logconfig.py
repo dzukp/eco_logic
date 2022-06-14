@@ -41,6 +41,11 @@ logging_config = {
             'handlers': ['rpc_post_server_file'],
             'propagate': False,
             'level': 'INFO'
+        },
+        'PylogicLogger.rpc_post_state': {
+            'handlers': ['rpc_post_state_file'],
+            'propagate': False,
+            'level': 'ERROR'
         }
         # 'modbus_tk': {
         #     'handlers': ['common_console'],
@@ -90,6 +95,14 @@ logging_config = {
             'maxBytes': 1024*1024,
             'backupCount': 100,
             'filename': 'logs/rpc.log'
+        },
+        'rpc_post_state_file': {
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 200 * 1024 * 1024,
+            'backupCount': 2,
+            'filename': 'logs/rpc_state.log'
         },
         'tmp_file': {
             'level': 'DEBUG',
