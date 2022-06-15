@@ -15,13 +15,14 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
 
     ai_names = ('ai_1_1_', 'ai_1_2_', 'ai_2_1_', 'ai_2_2_', 'ai_3_')
     do_names = ('do_1_1_', 'do_1_2_', 'do_1_3_', 'do_2_1_', 'do_2_2_', 'do_2_3_')
-    di_names = ('di_1_1_', 'di_2_1_')
+    di_names = ('di_1_', 'di_2_')
     dio_names = ('dio_1_1_', 'dio_2_1_', 'dio_3_')
     dio_names2 = tuple([f'dio_p_{i}_' for i in range(1, 13)] + ['dio_4_'])
-    fc_names = tuple([f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + \
-                     [f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + \
-                     ['fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']
-            )
+    fc_names = tuple([
+        f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + [
+        f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
+        f'fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']
+    )
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -54,17 +55,17 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     ai_1_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_1_')],
                          ip='192.168.200.20', timeout=0.03)
     ai_1_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_2_')],
-                         ip='192.168.200.21', timeout=0.03)
-    ai_2_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_1_')],
                          ip='192.168.200.22', timeout=0.03)
+    ai_2_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_1_')],
+                         ip='192.168.200.21', timeout=0.03)
     ai_2_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_2_')],
                          ip='192.168.200.23', timeout=0.03)
     ai_3 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_3_')],
                        ip='192.168.200.81', timeout=0.03)
 
-    di_1_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_1_')],
+    di_1_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
                          ip='192.168.200.10', timeout=0.03)
-    di_2_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_2_1_')],
+    di_2_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_2_')],
                          ip='192.168.200.11', timeout=0.03)
 
     do_1_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_1_')],
@@ -80,12 +81,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     do_2_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_3_')],
                              ip='192.168.200.6', timeout=0.03)
 
-    dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_1_')] + \
-               [tag for name, tag in tags['in'].items() if name.startswith('dio_1_1_')]
-    dio_1_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
-    dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_2_1_')] + \
-               [tag for name, tag in tags['in'].items() if name.startswith('dio_2_1_')]
-    dio_2_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.31', timeout=0.03)
+    # dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_1_')] + \
+    #            [tag for name, tag in tags['in'].items() if name.startswith('dio_1_1_')]
+    # dio_1_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
+    # dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_2_1_')] + \
+    #            [tag for name, tag in tags['in'].items() if name.startswith('dio_2_1_')]
+    # dio_2_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.31', timeout=0.03)
     dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_3_')] + \
                [tag for name, tag in tags['in'].items() if name.startswith('dio_3_')]
     dio_3 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.80', timeout=0.03)
@@ -141,7 +142,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                                    name.startswith(f'fc_hoover_2_ao_')]))
 
     modules = [do_1_1, do_1_2, do_1_3, do_2_1, do_2_2, do_2_3, di_1_1, di_2_1, ai_1_1, ai_1_2, ai_2_1, ai_2_2, ai_3,
-               dio_1_1, dio_2_1, dio_3, dio_4] + dio_post
+               dio_3, dio_4] + dio_post
 
     dispatchers = {
         'disp_1': ParallelDispatcher(

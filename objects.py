@@ -23,7 +23,7 @@ def get_object(post_quantity=(6, 6)):
     }
     supplier = {
         'class': WaterPreparing,
-        'di_press_1': 'di_1_2_1',
+        'di_press_1': None,
         'ai_pe_1': 'ai_1_2_1',
         'di_press_2': None,
         'ai_pe_2': 'ai_1_2_2',
@@ -95,16 +95,16 @@ def get_object(post_quantity=(6, 6)):
             },
             'tank_b1': {
                 'class': Tank,
-                'di_low_level': 'dio_1_1_i_3',
-                'di_mid_level': 'dio_1_1_i_2',
-                'di_hi_level': 'dio_1_1_i_1',
+                'di_low_level': 'di_1_3',
+                'di_mid_level': 'di_1_2',
+                'di_hi_level': 'di_1_1',
                 'mb_cells_idx': 88
             },
             'tank_b2': {
                 'class': Tank,
-                'di_low_level': 'dio_1_1_i_6',
-                'di_mid_level': 'dio_1_1_i_5',
-                'di_hi_level': 'dio_1_1_i_4',
+                'di_low_level': 'di_1_6',
+                'di_mid_level': 'di_1_5',
+                'di_hi_level': 'di_1_4',
                 'mb_cells_idx': 90
             },
             'pump_n4': {
@@ -134,9 +134,9 @@ def get_object(post_quantity=(6, 6)):
             },
             'tank_b1_1': {
                 'class': Tank,
-                'di_low_level': 'dio_2_1_i_3',
-                'di_mid_level': 'dio_2_1_i_2',
-                'di_hi_level': 'dio_2_1_i_1',
+                'di_low_level': 'di_2_3',
+                'di_mid_level': 'di_2_2',
+                'di_hi_level': 'di_2_1',
                 'mb_cells_idx': 102
             },
             'pump_n8': {
@@ -177,53 +177,6 @@ def get_object(post_quantity=(6, 6)):
             }
         }
     }
-    bottom_wash = {
-        'class': BottomWash,
-        'di_in_sens': 'dio_4_i_6',
-        'di_out_sens': None,
-        'mb_cells_idx': 155,
-        'children': {
-            'pump_wash': {
-                'class': Engine,
-                'do_start': 'dio_4_o_1',
-                'mb_cells_idx': 157,
-            },
-            'pump_circle_water': {
-                'class': Engine,
-                'do_start': 'dio_4_o_2',
-                'mb_cells_idx': 159,
-            },
-            'valve_circle_water': {
-                'class': Valve,
-                'do_open': 'dio_4_o_3',
-                'mb_cells_idx': 161,
-            },
-            'valve_wash_sand_tank': {
-                'class': Valve,
-                'do_open': 'dio_4_o_4',
-                'mb_cells_idx': 163,
-            },
-            'valve_drainage': {
-                'class': Valve,
-                'do_open': 'dio_4_o_5',
-                'mb_cells_idx': 165,
-            },
-            'tank_wash': {
-                'class': Tank,
-                'di_low_level': 'dio_4_i_4',
-                'di_mid_level': 'dio_4_i_4',
-                'di_hi_level': 'dio_4_i_5',
-                'mb_cells_idx': 167
-            },
-            'tank_circle_water': {
-                'class': Tank,
-                'di_low_level': 'dio_4_i_1',
-                'di_mid_level': 'dio_4_i_2',
-                'di_hi_level': 'dio_4_i_3',
-                'mb_cells_idx': 169
-            }
-        }
-    }
     brush_washer = {
         'class': BrushWasher,
         'mb_cells_idx': None,
@@ -237,7 +190,6 @@ def get_object(post_quantity=(6, 6)):
     post = {
         'class': Post,
         'ai_pressure': None,
-        'di_flow': None,
         'children': {
             'valve_osmos': {
                 'class': Valve,
@@ -300,7 +252,6 @@ def get_object(post_quantity=(6, 6)):
 
     objects['top']['children']['supplier'] = supplier
     objects['top']['children']['hoover'] = hoover
-    objects['top']['children']['bottom_wash'] = bottom_wash
     objects['top']['children']['brush_wash_1'] = copy.deepcopy(brush_washer)
     objects['top']['children']['brush_wash_2'] = copy.deepcopy(brush_washer)
 
@@ -314,8 +265,6 @@ def get_object(post_quantity=(6, 6)):
     post_quantity = post_quantity if isinstance(post_quantity, (list, tuple)) else (post_quantity,)
     post_number = 0
     for side, post_q in enumerate(post_quantity, start=1):
-        # new_supplier = copy.deepcopy(supplier)
-        # objects['top']['children'][f'supplier_{str(side)}'] = new_supplier
         for i in range(1, post_q + 1):
             new_post = copy.deepcopy(post)
             post_number += 1
@@ -325,7 +274,6 @@ def get_object(post_quantity=(6, 6)):
             start_addr = 200 + (post_number - 1) * 38
             new_post['mb_cells_idx'] = start_addr
 
-            new_post['di_flow'] = f'di_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
             new_post['di_hoover'] = f'dio_p_{post_number}_i_1'
             new_post['di_brush'] = f'dio_p_{post_number}_i_2'
