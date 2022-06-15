@@ -16,10 +16,14 @@ class BaseOwenMx210(object):
         self.port = port
         self.slave = slave
         self.timeout = timeout
-        self.mb = modbus_tcp.TcpMaster(host=self.ip, port=self.port)
-        self.mb.set_timeout(min(0.02, self.timeout))
         self.tags = tags
         self.logger = logger.getChild(f'{type(self).__name__}_{ip.replace(".","")}_{port}')
+        self.mb = None
+        self.init()
+
+    def init(self):
+        self.mb = modbus_tcp.TcpMaster(host=self.ip, port=self.port)
+        self.mb.set_timeout(min(0.02, self.timeout))
 
     def set_logger(self, logger):
         self.logger = logger
@@ -33,6 +37,7 @@ class BaseOwenMx210(object):
                 self.logger.error('ModbusError')
             except socket.timeout:
                 self.logger.error('socket.timeout')
+                self.init()
             except Exception:
                 self.logger.exception('Unexpected exception')
             finally:
