@@ -34,9 +34,6 @@ class RpcPostServer(LoggedObject):
         self.server_thread = None
         self.host = ('0.0.0.0', 9876)
 
-        self.post_state = LoggedObject('PostState')
-        self.post_state.set_logger(self.post_state.logger.getChild('rpc_post_state'))
-
     def set_top_object(self, top_object: IoObject):
         self.top_object = top_object
 
