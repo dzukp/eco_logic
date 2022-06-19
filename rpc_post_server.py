@@ -6,6 +6,7 @@ from func_names import FuncNames
 from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 import threading
+import time
 import logging
 
 
@@ -31,11 +32,18 @@ class RpcPostServer(LoggedObject):
         super().__init__('RpcServer')
         self.set_logger(self.logger.getChild('rpc_post_server'))
         self.top_object = None
+        self.tag_srv = None
         self.server_thread = None
         self.host = ('0.0.0.0', 9876)
 
+        self.post_state = LoggedObject('PostState')
+        self.post_state.set_logger(self.post_state.logger.getChild('rpc_post_state'))
+
     def set_top_object(self, top_object: IoObject):
         self.top_object = top_object
+
+    def set_tag_server(self, tag_srv):
+        self.tag_srv = tag_srv
 
     def start(self):
         self.server_thread = threading.Thread(target=self.run, name='PostsRpcServer', daemon=True)
@@ -90,6 +98,18 @@ class RpcPostServer(LoggedObject):
             @server.register_function
             def get_posts():
                 return [post.replace('post_', '') for post in self.top_object.posts.keys()]
+
+            @server.register_function
+            def get_tagsrv_modules_state():
+                modules = []
+                for disp in self.tag_srv.dispatchers.values():
+                    for m in disp.modules:
+                        modules.append({
+                            'name': m.name,
+                            'ok': m.ok,
+                            'last_ok': round(time.time() - m.last_ok, 3)
+                        })
+                return modules
 
             server.register_multicall_functions()
             server.serve_forever()
