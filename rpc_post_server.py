@@ -114,7 +114,7 @@ class RpcPostServer(LoggedObject):
             server.register_multicall_functions()
             server.serve_forever()
 
-    def start_function(self, post_number, function_name, service):
+    def start_function(self, post_number, function_name, service=False):
         post_name = f'post_{post_number}'
         post = self.top_object.find_child_by_name(post_name)
         if not post:
