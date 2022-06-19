@@ -1,6 +1,5 @@
 from pylogic.logged_object import LoggedObject
 from pylogic.io_object import IoObject
-from pylogic.tagsrv import modbusrtu, owen_mx210
 
 from func_names import FuncNames
 
