@@ -17,7 +17,6 @@ class Top(IoObject, ModbusDataObject):
         self.posts = {}
         self.post_function = {}
         self.new_function = {}
-        self.rpc_server = RpcPostServer()
         self.mb_cells_idx = None
         self.counter = 0
 
@@ -27,8 +26,6 @@ class Top(IoObject, ModbusDataObject):
                 self.posts[child.name] = child
                 self.post_function[child] = FuncNames.STOP
                 # self.new_function[child] = FuncNames.STOP
-        self.rpc_server.set_top_object(self)
-        self.rpc_server.start()
 
     def process(self):
         for post, func in self.new_function.items():
