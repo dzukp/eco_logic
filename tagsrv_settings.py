@@ -48,7 +48,18 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
-        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
+        tags['in'].update({
+            f'{pref}ai_1': InTag(0x3000),
+            f'{pref}ai_2': InTag(0x1001),
+            f'{pref}ai_3': InTag(0x8000),
+
+        })
+        tags['out'].update({
+            f'{pref}ai_1': OutTag(0x2000),
+            f'{pref}ai_2': OutTag(0x1000)
+        })
+        [(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]
+        tags['in'].update(dict())
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
 
     ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.20',
@@ -79,11 +90,11 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com_port2_name = 'COM4'
 
     sources = {
-        'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+        'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='N', stopbits=1, timeout=0.1)
     }
 
     if post_quantity > 4:
-        sources['port_2'] = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1,
+        sources['port_2'] = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='N', stopbits=1,
                                          timeout=0.1)
 
     fc_modules_1 = []

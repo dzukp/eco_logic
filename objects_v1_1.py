@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
+from fc import InovanceMd310, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -69,7 +69,7 @@ def get_object(post_quantity=8):
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
-                                    'class': Altivar212,
+                                    'class': InovanceMd310,
                                     'ao_command': 'fc_os_ao_1',
                                     'ao_frequency': 'fc_os_ao_2',
                                     'ai_status': 'fc_os_ai_1',
@@ -178,7 +178,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_1_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc1_ao_1',
                             'ao_frequency': 'fc1_ao_2',
                             'ai_status': 'fc1_ai_1',
@@ -230,7 +230,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_1_18'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc2_ao_1',
                             'ao_frequency': 'fc2_ao_2',
                             'ai_status': 'fc2_ai_1',
@@ -282,7 +282,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_2_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc3_ao_1',
                             'ao_frequency': 'fc3_ao_2',
                             'ai_status': 'fc3_ai_1',
@@ -334,7 +334,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_2_18'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc4_ao_1',
                             'ao_frequency': 'fc4_ao_2',
                             'ai_status': 'fc4_ai_1',
@@ -386,7 +386,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_3_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc5_ao_1',
                             'ao_frequency': 'fc5_ao_2',
                             'ai_status': 'fc5_ai_1',
@@ -438,7 +438,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_3_18'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc6_ao_1',
                             'ao_frequency': 'fc6_ao_2',
                             'ai_status': 'fc6_ai_1',
@@ -497,7 +497,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_4_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc7_ao_1',
                             'ao_frequency': 'fc7_ao_2',
                             'ai_status': 'fc7_ai_1',
@@ -555,7 +555,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_4_18'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc8_ao_1',
                         'ao_frequency': 'fc8_ao_2',
                         'ai_status': 'fc8_ai_1',
@@ -613,7 +613,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_5_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc9_ao_1',
                             'ao_frequency': 'fc9_ao_2',
                             'ai_status': 'fc9_ai_1',
@@ -671,7 +671,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_5_18'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc10_ao_1',
                         'ao_frequency': 'fc10_ao_2',
                         'ai_status': 'fc10_ai_1',
