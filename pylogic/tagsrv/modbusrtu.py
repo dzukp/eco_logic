@@ -167,6 +167,7 @@ class ModbusRTUModule(BaseModule):
         self.serial = serial
         self.max_answ_len = max_answ_len
         self.timeout = timeout
+        self.tags = in_tags + io_tags + out_tags
         in_tags = self._forming_tag_list(list(in_tags + io_tags))
         out_tags = self._forming_tag_list(list(out_tags + io_tags))
         self.ireqs = []
@@ -198,6 +199,9 @@ class ModbusRTUModule(BaseModule):
 
     def set_logger(self, logger):
         self.logger = logger
+
+    def _value_to_str(self, value):
+        return f'{int(value):04x}' if value is not None else '----'
         
     def process(self):
         self.serial.read_all()
