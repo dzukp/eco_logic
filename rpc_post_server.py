@@ -98,10 +98,15 @@ class RpcPostServer(LoggedObject):
                 modules = []
                 for disp in self.tag_srv.dispatchers.values():
                     for m in disp.modules:
+                        try:
+                            values = m.tag_values()
+                        except Exception as ex:
+                            values = 'EXC'
                         modules.append({
                             'name': m.name,
                             'ok': m.ok,
-                            'last_ok': round(time.time() - m.last_ok, 3)
+                            'last_ok': round(time.time() - m.last_ok, 3),
+                            'tags': values
                         })
                 return modules
 
