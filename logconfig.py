@@ -111,7 +111,7 @@ logging_config = {
             'formatter': 'verbose',
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 200 * 1024 * 1024,
-            'backupCount': 10,
+            'backupCount': 2,
             'filename': 'logs/rpc_state.log'
         },
         'tmp_file': {

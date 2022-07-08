@@ -15,11 +15,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 
 class MyXMLRPCServer(SimpleXMLRPCServer):
-    """"
-    MyXMLRPCServer
-
-    MyXMLRPCServer Description
-    """
     def process_request(self, request, client_address):
         self.client_address = client_address
         return SimpleXMLRPCServer.process_request(
@@ -27,7 +22,7 @@ class MyXMLRPCServer(SimpleXMLRPCServer):
 
 
 class RpcPostServer(LoggedObject):
-    """RpcPostServer"""
+
     def __init__(self):
         super().__init__('RpcServer')
         self.set_logger(self.logger.getChild('rpc_post_server'))
@@ -50,23 +45,11 @@ class RpcPostServer(LoggedObject):
         self.server_thread.start()
 
     def run(self):
-        with MyXMLRPCServer(self.host, requestHandler=RequestHandler) as server:
-
+        with MyXMLRPCServer(self.host, requestHandler=RequestHandler, logRequests=False) as server:
             server.register_introspection_functions()
 
             @server.register_function
             def start_function(post_number, function_name):
-                """
-                Старт с терминала
-
-                :param post_number: номер поста
-                :return: 'Ok' если параметры коррекны и функция вызвана успешно,             return 'POST_NOT_FOUND'
-                if function_name not in FuncNames.all_funcs():
-                return 'FUNC_NOT_FOUND'
-                if self.top_object.set_function(post_name, function_name):
-                    return 'OK'
-                    return 'FAIL'
-                """
                 try:
                     self.logger.info(f'start function `{function_name}` from post #{post_number} ')
                     return self.start_function(post_number, function_name)
