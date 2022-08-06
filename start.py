@@ -19,8 +19,10 @@ from rpc_supervisor import RpcSupervisor
 
 
 def start():
-    # post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 12
-    post_quantity = (6, 6)
+    try:
+        post_quantity = (int(sys.argv[1]), int(sys.argv[2]))
+    except (IndexError, ValueError):
+        post_quantity = (6, 6)
     sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():

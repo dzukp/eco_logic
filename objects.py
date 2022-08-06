@@ -296,8 +296,8 @@ def get_object(post_quantity=(6, 6)):
             # children['valve_shell']['mb_cells_idx'] = start_addr + 27
             children['pump']['mb_cells_idx'] = start_addr + 29
 
-            module = int((post_number - 1) / 2) % 3 + 1
-            d = ((post_number - 1) % 2) * 6
+            module = (i - 1) // 2 + 1
+            d = (i - 1) % 2 * 6
             children['valve_osmos']['do_open'] = f'do_{side}_{module}_{1 + d}'
             children['valve_cold_water']['do_open'] = f'do_{side}_{module}_{2 + d}'
             children['valve_solution']['do_open'] = f'do_{side}_{module}_{3 + d}'
