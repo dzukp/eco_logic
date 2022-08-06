@@ -7,11 +7,13 @@ from time import time, sleep
 
 from .tagsrv_logger import logger
 from .tagsrv import InTag, OutTag
+from .module import BaseModule
 
 
-class BaseOwenMx210(object):
+class BaseOwenMx210(BaseModule):
 
     def __init__(self, tags, ip, port=502, slave=1, timeout=0.05):
+        super(BaseOwenMx210, self).__init__(name=f'{ip}')
         self.ip = ip
         self.port = port
         self.slave = slave
@@ -34,12 +36,18 @@ class BaseOwenMx210(object):
             try:
                 self.process()
             except modbus_tk.modbus.ModbusError:
+                self.ok = False
                 self.logger.error('ModbusError')
             except socket.timeout:
+                self.ok = False
                 self.logger.error('socket.timeout')
                 self.init()
             except Exception:
+                self.ok = False
                 self.logger.exception('Unexpected exception')
+            else:
+                self.ok = True
+                self.last_ok = time()
             finally:
                 sleep_time = max(0.0, t0 + self.timeout - time())
                 sleep(sleep_time)
@@ -67,6 +75,9 @@ class OwenDiMv210(BaseOwenMx210):
         for tag in self.tags:
             tag.value = (res & (1 << (tag.addr - 1))) != 0
 
+    def _value_to_str(self, value):
+        return str(int(value)) if value is not None else '-'
+
 
 class OwenDoMu210_401(BaseOwenMx210):
     """ Discrete output module МУ210-401 и МУ210-402 """
@@ -79,6 +90,9 @@ class OwenDoMu210_401(BaseOwenMx210):
         res = self.mb.execute(slave=self.slave, function_code=cst.WRITE_MULTIPLE_REGISTERS, starting_address=470,
                         quantity_of_x=1, output_value=(data,), data_format='>H')
         self.logger.debug(f'Write data request ok. data = {bin(data)[2:].zfill(16)}')
+
+    def _value_to_str(self, value):
+        return str(int(value)) if value is not None else '-'
 
 
 class OwenDoMu210_403(BaseOwenMx210):
@@ -93,6 +107,9 @@ class OwenDoMu210_403(BaseOwenMx210):
         res = self.mb.execute(slave=self.slave, function_code=cst.WRITE_MULTIPLE_REGISTERS, starting_address=470,
                         quantity_of_x=2, output_value=write_data, data_format='>HH')
         self.logger.debug(f'Write data request ok. data = {bin(data)[2:].zfill(16)}')
+
+    def _value_to_str(self, value):
+        return str(int(value)) if value is not None else '-'
 
 
 class OwenDiDoMk210(BaseOwenMx210):
@@ -120,6 +137,9 @@ class OwenDiDoMk210(BaseOwenMx210):
         res = self.mb.execute(slave=self.slave, function_code=cst.WRITE_MULTIPLE_REGISTERS, starting_address=470,
                         quantity_of_x=1, output_value=(data,), data_format='>H')
         self.logger.debug(f'Write data request ok. data = {bin(data)[2:].zfill(8)}')
+
+    def _value_to_str(self, value):
+        return str(int(value)) if value is not None else '-'
 
 
 class OwenAiMv210(BaseOwenMx210):

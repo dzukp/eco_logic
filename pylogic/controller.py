@@ -40,6 +40,7 @@ class Controller(LoggedObject):
             self.sim_object.init_all()
         self.test_channel_attaching()
         self.supervisor_manager.set_top_object(self.top_object)
+        self.supervisor_manager.set_tag_srv(self.tag_server)
         self.supervisor_manager.init()
 
     def test_channel_attaching(self):
@@ -71,6 +72,7 @@ class Controller(LoggedObject):
         if self.sim_object:
             self.sim_object.process_all()
         self.tag_server.write_all()
+        self.tag_server.process()
         self.supervisor_manager.send_data()
 
     def start_loop(self):
