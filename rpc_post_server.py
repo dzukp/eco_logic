@@ -15,11 +15,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 
 class MyXMLRPCServer(SimpleXMLRPCServer):
-    """"
-    MyXMLRPCServer
-
-    MyXMLRPCServer Description
-    """
     def process_request(self, request, client_address):
         self.client_address = client_address
         return SimpleXMLRPCServer.process_request(
@@ -27,7 +22,7 @@ class MyXMLRPCServer(SimpleXMLRPCServer):
 
 
 class RpcPostServer(LoggedObject):
-    """RpcPostServer"""
+
     def __init__(self):
         super().__init__('RpcServer')
         self.set_logger(self.logger.getChild('rpc_post_server'))
