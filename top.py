@@ -19,7 +19,6 @@ class Top(IoObject, ModbusDataObject):
         self.post_function = {}
         self.new_function = {}
         self.post_service = {}
-        self.rpc_server = RpcPostServer()
         self.mb_cells_idx = None
         self.counter = 0
         self.side_posts = {'1': set(), '2': set()}
