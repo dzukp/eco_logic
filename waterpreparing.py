@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, PumpsTankFiller
+from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, PumpsTankFiller, B1TankFiller
 from func_names import FuncNames
 from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
@@ -26,6 +26,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.di_press_4 = InChannel(True)
         self.do_no_n3_press_signal = OutChannel(False)
         self.pump_n1 = None
+        self.pump_n1_1 = None
         self.pump_n1_2 = None
         # self.pump_n1_3 = None
         self.pump_n2 = None
@@ -33,11 +34,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.pump_n4 = None
         self.pump_n5 = None
         self.pump_n6 = None
-        self.pump_n7 = None
-        self.pump_n7_1 = None
-        self.pump_n8 = None
-        self.pump_os1 = None
-        self.pump_os2 = None
+        # self.pump_n7 = None
+        # self.pump_n7_1 = None
+        # self.pump_os1 = None
+        # self.pump_os2 = None
         self.pump_os = None
         self.pump_i1 = None
         self.tank_b1 = None
@@ -62,12 +62,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_2_pump_off_press = 4.0
         self.water_2_1_pump_on_press = 3.0
         self.water_2_1_pump_off_press = 4.0
-        self.b1_filler = PumpTankFiller('b1_filler')
+        self.b1_filler = B1TankFiller('b1_filler')
         self.b1_1_filler = PumpsTankFiller('b1_1_filler')
-        self.b2_filler = OsmosisTankFiller('b2_filler')
+        self.b2_filler = PumpsTankFiller('b2_filler')
         self.water_supplier = WaterSupplier('cold_water')
         # self.water_supplier_2 = WaterSupplier('cold_water_2')
-        self.water_supplier_2_1 = WaterSupplier('cold_water_2.1')
+        # self.water_supplier_2_1 = WaterSupplier('cold_water_2.1')
         # self.pre_filter_supplier = WaterSupplier('pre_filter')
         self.osmos_supplier = WaterSupplier('osmosis')
         self.start_b1 = True
@@ -80,45 +80,34 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def init(self):
         self.b1_filler.tank = self.tank_b1
-        self.b1_filler.valve = self.valve_b1
-        self.b1_filler.pump = self.pump_n3
-        self.b1_filler.pump2 = self.pump_n8
-        self.b1_filler.di_press = self.di_press_4
-        self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
+        self.b1_filler.valve_1 = self.valve_b1_1
+        self.b1_filler.valve_2 = self.valve_b1
+        self.b1_filler.pump = self.pump_n1_1
+        self.b1_filler.source_tank = self.tank_b1_1
         self.b1_1_filler.tank = self.tank_b1_1
-        self.b1_1_filler.source_tank = self.tank_b1
-        self.b1_1_filler.valves = [self.valve_b1_1]
-        self.b1_1_filler.pumps = [self.pump_n1, self.pump_n7]
+        self.b1_1_filler.pumps = [self.pump_n3]
         self.b2_filler.tank = self.tank_b2
-        self.b2_filler.valve = self.valve_b2
-        self.b2_filler.pump1 = self.pump_os1
-        self.b2_filler.pump2 = self.pump_os2
-        self.b2_filler.pid_pump = self.pump_os
-        self.b2_filler.valve_inlet = self.valve_water_os
-        # self.b2_filler.di_pressure = self.di_press_2
-        self.water_supplier.tank = self.tank_b1_1
+        self.b2_filler.valves = [self.valve_water_os]
+        self.b2_filler.pumps = [self.pump_os]
+        self.b2_filler.source_tank = self.tank_b1
+
+        self.water_supplier.tank = self.tank_b1
         self.water_supplier.ai_pressure = self.ai_pe_2
-        # self.water_supplier.di_pressure = self.di_press_1
         self.water_supplier.pump = self.pump_n1_2
-        # self.pre_filter_supplier.ai_pressure = self.ai_pe_2
-        # self.pre_filter_supplier.tank = self.tank_b1
-        # self.pre_filter_supplier.pump = self.pump_n1_2
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
-        # self.osmos_supplier.di_pressure = self.di_press_2
         self.osmos_supplier.pump = self.pump_n2
-        # self.water_supplier_2.tank = self.tank_b1
-        # self.water_supplier_2.ai_pressure = self.ai_pe_7
-        # self.water_supplier_2.pump = self.pump_n7
-        self.water_supplier_2_1.tank = self.tank_b1_1
-        self.water_supplier_2_1.ai_pressure = self.ai_pe_7
-        self.water_supplier_2_1.pump = self.pump_n7_1
+        # self.water_supplier_2_1.tank = self.tank_b1_1
+        # self.water_supplier_2_1.ai_pressure = self.ai_pe_7
+        # self.water_supplier_2_1.pump = self.pump_n7_1
+        self.init_loggers()
+
+    def init_loggers(self):
         self.b1_filler.set_logger(self.logger.getChild(self.b1_filler.name))
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
         self.water_supplier.set_logger(self.logger.getChild(self.water_supplier.name))
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
-        # self.water_supplier_2.set_logger(self.logger.getChild(self.water_supplier_2.name))
-        self.water_supplier_2_1.set_logger(self.logger.getChild(self.water_supplier_2_1.name))
+        # self.water_supplier_2_1.set_logger(self.logger.getChild(self.water_supplier_2_1.name))
 
     def process(self):
         # Filling Water Tank
@@ -185,14 +174,14 @@ class WaterPreparing(IoObject, ModbusDataObject):
         # self.water_supplier_2.process()
 
         # Supplying water side 2.1
-        self.water_supplier_2_1.enough_pressure = self.water_2_enough_press
-        self.water_supplier_2_1.pump_on_press = self.water_2_1_pump_on_press
-        self.water_supplier_2_1.pump_off_press = self.water_2_1_pump_off_press
-        if self.start_water_press:
-            self.water_supplier_2_1.start()
-        else:
-            self.water_supplier_2_1.stop()
-        self.water_supplier_2_1.process()
+        # self.water_supplier_2_1.enough_pressure = self.water_2_enough_press
+        # self.water_supplier_2_1.pump_on_press = self.water_2_1_pump_on_press
+        # self.water_supplier_2_1.pump_off_press = self.water_2_1_pump_off_press
+        # if self.start_water_press:
+        #     self.water_supplier_2_1.start()
+        # else:
+        #     self.water_supplier_2_1.stop()
+        # self.water_supplier_2_1.process()
 
         # Supplying osmos
         self.osmos_supplier.enough_pressure = self.osmosis_enough_press

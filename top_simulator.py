@@ -54,7 +54,7 @@ class TopSimulator(IoObject):
             self.b1.add_speed(-1.0)
         # B1.1
         self.b1_1.reset_speed()
-        if self.di_n7.val:
+        if self.di_n3.val:
             self.b1_1.add_speed(2.0)
         else:
             self.b1_1.add_speed(-2.0)
