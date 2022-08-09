@@ -133,10 +133,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.process()
 
         # Filling Water Tank B1.1
-        if self.tank_b1.is_empty():
-            self.b1_1_filler.disable()
-        else:
-            self.b1_1_filler.enable()
         if self.start_b1_1:
             self.b1_1_filler.start()
         else:
