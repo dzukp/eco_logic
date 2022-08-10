@@ -1,7 +1,8 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, PumpsTankFiller, B1TankFiller
+from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, PumpsTankFiller, B1TankFiller, \
+    TwoPumpWaterSupplier
 from func_names import FuncNames
 from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
@@ -65,7 +66,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b1_filler = B1TankFiller('b1_filler')
         self.b1_1_filler = PumpsTankFiller('b1_1_filler')
         self.b2_filler = PumpsTankFiller('b2_filler')
-        self.water_supplier = WaterSupplier('cold_water')
+        self.water_supplier = TwoPumpWaterSupplier('cold_water')
         # self.water_supplier_2 = WaterSupplier('cold_water_2')
         # self.water_supplier_2_1 = WaterSupplier('cold_water_2.1')
         # self.pre_filter_supplier = WaterSupplier('pre_filter')
@@ -93,7 +94,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
         self.water_supplier.tank = self.tank_b1
         self.water_supplier.ai_pressure = self.ai_pe_2
-        self.water_supplier.pump = self.pump_n1_2
+        self.water_supplier.pump = self.pump_n1
+        self.water_supplier.pump2 = self.pump_n1_2
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
         self.osmos_supplier.pump = self.pump_n2

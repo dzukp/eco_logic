@@ -66,7 +66,7 @@ class WaterSupplier(Subsystem):
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):
-        return self.ai_pressure.val > self.enough_pressure
+        return self.ai_pressure.val > self.enough_pressure or self.enough_pressure < 0.1
 
 
 class TwoPumpWaterSupplier(WaterSupplier):
@@ -78,7 +78,8 @@ class TwoPumpWaterSupplier(WaterSupplier):
 
     def process(self):
         super(TwoPumpWaterSupplier, self).process()
-        if self.started and self.external_enable and self.need_pump_2() and not self.tank.is_empty():
+        need_extra_pump = self.need_pump_2()
+        if self.started and self.external_enable and need_extra_pump and not self.tank.is_empty():
             self.pump2.start()
         else:
             self.pump2.stop()
