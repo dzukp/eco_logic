@@ -51,7 +51,7 @@ class Post(IoObject, ModbusDataObject):
         self.pressure_timeout = 5.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
-        self.no_flow_frequency = 15.0
+        self.no_flow_frequency = 25.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.car_inside_on_timer = Ton()
@@ -126,7 +126,7 @@ class Post(IoObject, ModbusDataObject):
 
         if pump == 1:
             self.pump.start()
-            self.pump.set_frequency(10.0)
+            self.pump.set_frequency(self.no_flow_frequency)
         elif pump == 2:
             self.pump.start()
             self.pump.set_frequency(self.func_frequencies.get(self.current_func, 0.0))
