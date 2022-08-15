@@ -126,11 +126,14 @@ class B1TankFiller(Subsystem):
         pump = False
         if self.started and self.external_enable:
             if self.no_v1_ton.process(run=not self.tank.is_full()):
-                valve_1 = True
-            if self.tank.is_want_water():
-                valve_2 = True
                 if not self.source_tank or not self.source_tank.is_empty():
                     pump = True
+                else:
+                    valve_1 = True
+            if self.tank.is_want_water():
+                valve_2 = True
+                valve_1 = True
+                pump = True
         if valve_1:
             self.valve_1.open()
         else:
