@@ -2995,23 +2995,6 @@
                 <ValueType Value="0"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_114" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="373" rect.bottom="396" rect.left="223" rect.right="287"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <HTML html="0"/>
-                <Text Angle="0" string="Text" format="%.2f бар"/>
-                <Transparency Value="0"/>
-                <Border Width="1" Value="1">
-                    <BorderColor g="0" r="0" a="255" b="0"/>
-                </Border>
-                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <LabelProperties TextAlign="132"/>
-            </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_115" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="373" rect.bottom="396" rect.left="325" rect.right="389"/>
                 <StandartProperies Freeze="0">
@@ -13000,7 +12983,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Давл. P7 вкл. Н7" format=""/>
+                <Text Angle="0" string="Давл. вкл. Н1.2" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -13014,7 +12997,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Давл. P7 откл. Н7" format=""/>
+                <Text Angle="0" string="Давл. откл. Н1.2" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -13028,7 +13011,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Мин. давл. P7" format=""/>
+                <Text Angle="0" string="Мин. давл. P1" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -15158,7 +15141,7 @@
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_pe1" Units="....." Location="3" IsReadTag="0">
                     <ListenersList>
-                        <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_114"/>
+                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_114"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>

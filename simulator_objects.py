@@ -9,7 +9,7 @@ def get_simulator_objects(post_quantity):
             'version': '2.0',
             'di_valve_b1': 'do_1_2_20',
             'di_n1': 'do_1_2_13',
-            'di_n1_2': 'do_1_2_18',
+            'di_n1_2': 'do_1_1_20',
             'ao_p1': 'ai_1_2_1',
             'ao_p2': 'ai_1_2_2',
             'do_press1': None,
