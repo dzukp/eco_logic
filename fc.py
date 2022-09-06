@@ -209,6 +209,10 @@ class InovanceMd310(Altivar212):
     MASK_STOP_RUN = 3
     MASK_ALARM = 0
 
+    def process(self):
+        super().process()
+        self.ao_frequency.val = self.ao_frequency.val * 2
+
     def check_run(self):
         return self.ai_status.val == self.MASK_FORWARD_RUN
 
