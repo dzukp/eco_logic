@@ -1,7 +1,7 @@
 from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
-from fc import OwenFc1
+from fc import OwenFc1, InovanceMd310
 from tank import FakeTank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -522,7 +522,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_2_9'
                     },
                     'pump': {
-                        'class': OwenFc1,
+                        'class': InovanceMd310,
                         'ao_command': 'fc8_ao_1',
                         'ao_frequency': 'fc8_ao_2',
                         'ai_status': 'fc8_ai_1',

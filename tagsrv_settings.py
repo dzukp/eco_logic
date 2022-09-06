@@ -44,18 +44,30 @@ def gen_tagsrv_config(post_quantity=8):
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
-        tags['in'].update(
-            {
-                f'{pref}ai_1': InTag(50199),
-                f'{pref}ai_2': InTag(16129)
-            }
-        )
-        tags['out'].update(
-            {
-                f'{pref}ao_1': OutTag(49999),
-                f'{pref}ao_2': OutTag(50009)
-            }
-        )
+        if pref in ('fc1_',):
+            tags['in'].update({
+                f'{pref}ai_1': InTag(0x3000),
+                f'{pref}ai_2': InTag(0x1001),
+                f'{pref}ai_3': InTag(0x8000),
+
+            })
+            tags['out'].update({
+                f'{pref}ai_1': OutTag(0x2000),
+                f'{pref}ai_2': OutTag(0x1000)
+            })
+        else:
+            tags['in'].update(
+                {
+                    f'{pref}ai_1': InTag(50199),
+                    f'{pref}ai_2': InTag(16129)
+                }
+            )
+            tags['out'].update(
+                {
+                    f'{pref}ao_1': OutTag(49999),
+                    f'{pref}ao_2': OutTag(50009)
+                }
+            )
 
     # ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.7.251',
     #                    timeout=0.03)
