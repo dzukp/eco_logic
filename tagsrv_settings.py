@@ -52,8 +52,8 @@ def gen_tagsrv_config(post_quantity=8):
 
             })
             tags['out'].update({
-                f'{pref}ai_1': OutTag(0x2000),
-                f'{pref}ai_2': OutTag(0x1000)
+                f'{pref}ao_1': OutTag(0x2000),
+                f'{pref}ao_2': OutTag(0x1000)
             })
         else:
             tags['in'].update(
