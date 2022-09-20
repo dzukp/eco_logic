@@ -27,7 +27,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc{i}_' for i in range(1, post_quantity + 1)]
 
-    if version in ('1.1',):
+    if version in ('1.1', '1.2'):
         fc_names.append('fc_os_')
 
     # generate ai_1_1 - ai_2_8
@@ -55,10 +55,14 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_')], ip='192.168.200.21',
                        timeout=0.03)
-    if version in ('1.0',):
-        di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10', timeout=0.03)
+    if version in ('1.0', '1.2'):
+        di_1 = OwenDiMv210(
+            tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.10',
+            timeout=0.03)
     else:
-        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.30', timeout=0.03)
+        di_1 = OwenDiDoMk210(
+            tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')], ip='192.168.200.30',
+            timeout=0.03)
     # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
     do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')], ip='192.168.200.1',
                            timeout=0.03)
@@ -74,6 +78,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     if os.name == 'posix':
         com_port1_name = 'fc_serial1'
         com_port2_name = 'fc_serial2'
+        if not os.path.exists(com_port2_name):
+            com_port2_name = None
     else:
         com_port1_name = 'COM3'
         com_port2_name = 'COM4'
@@ -82,15 +88,15 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
     }
 
-    if post_quantity > 4:
-        sources['port_2'] = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1,
-                                         timeout=0.1)
+    if post_quantity > 4 and com_port2_name:
+        sources['port_2'] = SerialSource(
+            port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
 
     fc_modules_1 = []
     fc_modules_2 = []
 
     # if quantity pumps > 4 use both serial ports
-    if post_quantity > 4:
+    if post_quantity > 4 and com_port2_name:
         com1_end = post_quantity // 2
     else:
         com1_end = post_quantity
@@ -108,12 +114,17 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
-    if version in ('1.1',):
-        fc_modules_2.append(ModbusRTUModule(30, sources['port_2'], io_tags=[], max_answ_len=5,
-                                          in_tags=[tag for name, tag in tags['in'].items() if
-                                                   name.startswith(f'fc_os_ai_')],
-                                          out_tags=[tag for name, tag in tags['out'].items() if
-                                                    name.startswith(f'fc_os_ao_')]))
+    if version in ('1.1', '1.2'):
+        source = sources['port_2'] if com_port2_name else sources['port_1']
+        mb_os = ModbusRTUModule(
+            30, source, io_tags=[], max_answ_len=5,
+            in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')],
+            out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
+        )
+        if com_port2_name:
+            fc_modules_2.append(mb_os)
+        else:
+            fc_modules_1.append(mb_os)
 
     if post_quantity in (5, 6):
         modules = [do_1, do_2, do_3, di_1, ai_1, ai_2]
@@ -125,12 +136,11 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         modules = [do_1, do_2, di_1, ai_1]
 
     dispatchers = {
-        'disp_1': ParallelDispatcher(
-            modules=modules
-        ),
-        'mb_disp1': SerialDispatcher(modules=fc_modules_1),
-        'mb_disp2': SerialDispatcher(modules=fc_modules_2)
+        'disp_1': ParallelDispatcher(modules=modules),
+        'mb_disp1': SerialDispatcher(modules=fc_modules_1)
     }
+    if fc_modules_2:
+        dispatchers['mb_disp2'] = SerialDispatcher(modules=fc_modules_2)
 
     return {
         'tags': tags,
