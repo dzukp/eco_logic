@@ -14,6 +14,7 @@ from pylogic.modbus_supervisor import ModbusSupervisor
 from objects import get_object, get_simulator_object
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
+from rpc_supervisor import RpcSupervisor
 
 
 def start():
@@ -31,7 +32,7 @@ def start():
         'simulators': sim_obj,
         'tagsrv_settings': gen_tagsrv_config(version=version, post_quantity=post_quantity),
         'logging_conf': logging_config,
-        'supervisors': {'supervis_modbus': ModbusSupervisor,}
+        'supervisors': {'supervis_modbus': ModbusSupervisor, 'supervis_rpc': RpcSupervisor}
     }
     main(config)
 

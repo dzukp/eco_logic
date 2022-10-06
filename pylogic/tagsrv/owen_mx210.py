@@ -7,11 +7,13 @@ from time import time, sleep
 
 from .tagsrv_logger import logger
 from .tagsrv import InTag, OutTag
+from .module import BaseModule
 
 
-class BaseOwenMx210(object):
+class BaseOwenMx210(BaseModule):
 
     def __init__(self, tags, ip, port=502, slave=1, timeout=0.05):
+        super(BaseOwenMx210, self).__init__(name=f'{ip}')
         self.ip = ip
         self.port = port
         self.slave = slave
@@ -34,12 +36,18 @@ class BaseOwenMx210(object):
             try:
                 self.process()
             except modbus_tk.modbus.ModbusError:
+                self.ok = False
                 self.logger.error('ModbusError')
             except socket.timeout:
+                self.ok = False
                 self.logger.error('socket.timeout')
                 self.init()
             except Exception:
+                self.ok = False
                 self.logger.exception('Unexpected exception')
+            else:
+                self.ok = True
+                self.last_ok = time()
             finally:
                 sleep_time = max(0.0, t0 + self.timeout - time())
                 sleep(sleep_time)
