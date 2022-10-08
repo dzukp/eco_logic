@@ -169,9 +169,14 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     elif post_quantity in (9, 10):
         modules = [do_1, do_2, do_3, do_4, do_5, di_1, ai_1, ai_2, ai_3]
         if version == '1.2':
-            modules.extend([dio_1, ai_4])
+            modules.append(ai_4)
     else:
         modules = [do_1, do_2, di_1, ai_1]
+        if version == '1.2':
+            modules.append(ai_4)
+
+    if version == '1.2':
+        modules.extend([dio_1,])
 
     dispatchers = {
         'disp_1': ParallelDispatcher(
