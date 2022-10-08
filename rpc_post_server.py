@@ -50,17 +50,6 @@ class RpcPostServer(LoggedObject):
 
             @server.register_function
             def start_function(post_number, function_name):
-                """
-                Старт с терминала
-
-                :param post_number: номер поста
-                :return: 'Ok' если параметры коррекны и функция вызвана успешно,             return 'POST_NOT_FOUND'
-                if function_name not in FuncNames.all_funcs():
-                return 'FUNC_NOT_FOUND'
-                if self.top_object.set_function(post_name, function_name):
-                    return 'OK'
-                    return 'FAIL'
-                """
                 try:
                     self.logger.info(f'start function `{function_name}` from post #{post_number} ')
                     return self.start_function(post_number, function_name)
@@ -92,10 +81,15 @@ class RpcPostServer(LoggedObject):
                 modules = []
                 for disp in self.tag_srv.dispatchers.values():
                     for m in disp.modules:
+                        try:
+                            values = m.tag_values()
+                        except Exception as ex:
+                            values = 'EXC'
                         modules.append({
                             'name': m.name,
                             'ok': m.ok,
-                            'last_ok': round(time.time() - m.last_ok, 3)
+                            'last_ok': round(time.time() - m.last_ok, 3),
+                            'tags': values
                         })
                 return modules
 
