@@ -61,13 +61,13 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_2_enough_press = 2.0
         self.water_2_pump_on_press = 3.0
         self.water_2_pump_off_press = 4.0
-        # self.water_2_1_pump_on_press = 3.0
-        # self.water_2_1_pump_off_press = 4.0
+        self.water_2_1_pump_on_press = 3.0
+        self.water_2_1_pump_off_press = 4.0
         self.b1_filler = B1TankFiller('b1_filler')
         self.b1_1_filler = PumpsTankFiller('b1_1_filler')
         self.b2_filler = PumpsTankFiller('b2_filler')
-        self.water_supplier = WaterSupplier('cold_water')
-        self.water_supplier_2 = WaterSupplier('cold_water_2')
+        self.water_supplier = TwoPumpWaterSupplier('cold_water')
+        # self.water_supplier_2 = WaterSupplier('cold_water_2')
         # self.water_supplier_2_1 = WaterSupplier('cold_water_2.1')
         # self.pre_filter_supplier = WaterSupplier('pre_filter')
         self.osmos_supplier = WaterSupplier('osmosis')
@@ -95,20 +95,21 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.water_supplier.tank = self.tank_b1
         self.water_supplier.ai_pressure = self.ai_pe_2
         self.water_supplier.pump = self.pump_n1
+        self.water_supplier.pump2 = self.pump_n1_2
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
         self.osmos_supplier.pump = self.pump_n2
-        self.water_supplier_2.tank = self.tank_b1
-        self.water_supplier_2.ai_pressure = self.ai_pe_2
-        self.water_supplier_2.pump = self.pump_n1_2
+        # self.water_supplier_2_1.tank = self.tank_b1_1
+        # self.water_supplier_2_1.ai_pressure = self.ai_pe_7
+        # self.water_supplier_2_1.pump = self.pump_n7_1
         self.init_loggers()
 
     def init_loggers(self):
         self.b1_filler.set_logger(self.logger.getChild(self.b1_filler.name))
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
         self.water_supplier.set_logger(self.logger.getChild(self.water_supplier.name))
-        self.water_supplier_2.set_logger(self.logger.getChild(self.water_supplier_2.name))
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
+        # self.water_supplier_2_1.set_logger(self.logger.getChild(self.water_supplier_2_1.name))
 
     def process(self):
         # Filling Water Tank
@@ -160,15 +161,15 @@ class WaterPreparing(IoObject, ModbusDataObject):
         #     self.pre_filter_supplier.stop()
         # self.pre_filter_supplier.process()
 
-        # Supplying water side 2
-        self.water_supplier_2.enough_pressure = self.water_enough_press
-        self.water_supplier_2.pump_on_press = self.water_2_pump_on_press
-        self.water_supplier_2.pump_off_press = self.water_2_pump_off_press
-        if self.start_water_press:
-            self.water_supplier_2.start()
-        else:
-            self.water_supplier_2.stop()
-        self.water_supplier_2.process()
+        # # Supplying water side 2
+        # self.water_supplier_2.enough_pressure = self.water_2_enough_press
+        # self.water_supplier_2.pump_on_press = self.water_2_pump_on_press
+        # self.water_supplier_2.pump_off_press = self.water_2_pump_off_press
+        # if self.start_water_press:
+        #     self.water_supplier_2.start()
+        # else:
+        #     self.water_supplier_2.stop()
+        # self.water_supplier_2.process()
 
         # Supplying water side 2.1
         # self.water_supplier_2_1.enough_pressure = self.water_2_enough_press

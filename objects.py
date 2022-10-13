@@ -49,7 +49,7 @@ def get_object(post_quantity=(6, 6)):
             },
             'pump_n1_2': {
                 'class': Engine,
-                'do_start': 'do_1_1_20',
+                'do_start': 'do_1_2_18',
                 'mb_cells_idx': 54
             },
             'pump_n3': {
