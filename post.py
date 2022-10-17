@@ -140,9 +140,9 @@ class Post(IoObject, ModbusDataObject):
             if self.pump.is_alarm_state():
                 self.set_alarm()
                 self.logger.info('Set alarm because pump alarm')
-            if no_pressure:
-                self.set_alarm()
-                self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
+            #if no_pressure:
+            #    self.set_alarm()
+            #    self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
         # Alarm auto reset by timeout
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')

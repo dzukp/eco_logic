@@ -66,7 +66,7 @@ class WaterSupplier(Subsystem):
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):
-        return self.ai_pressure.val > self.enough_pressure
+        return self.ai_pressure.val > self.enough_pressure or self.enough_pressure < 0.1
 
 
 class TwoPumpWaterSupplier(WaterSupplier):
@@ -78,7 +78,8 @@ class TwoPumpWaterSupplier(WaterSupplier):
 
     def process(self):
         super(TwoPumpWaterSupplier, self).process()
-        if self.started and self.external_enable and self.need_pump_2() and not self.tank.is_empty():
+        need_extra_pump = self.need_pump_2()
+        if self.started and self.external_enable and need_extra_pump and not self.tank.is_empty():
             self.pump2.start()
         else:
             self.pump2.stop()
@@ -105,6 +106,46 @@ class TankFiller(Subsystem):
 
     def need_fill(self):
         return self.tank.is_want_water()
+
+
+class B1TankFiller(Subsystem):
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.valve_1 = None
+        self.valve_2 = None
+        self.pump = None
+        self.source_tank = None
+        self.tank = None
+        self.no_v1_ton = Ton()
+        self.no_v1_ton.set_timeout(15)
+
+    def process(self):
+        valve_1 = False
+        valve_2 = False
+        pump = False
+        if self.started and self.external_enable:
+            if self.no_v1_ton.process(run=not self.tank.is_full()):
+                if not self.source_tank or not self.source_tank.is_empty():
+                    pump = True
+                else:
+                    valve_1 = True
+            if self.tank.is_want_water():
+                valve_2 = True
+                valve_1 = True
+                pump = True
+        if valve_1:
+            self.valve_1.open()
+        else:
+            self.valve_1.close()
+        if valve_2:
+            self.valve_2.open()
+        else:
+            self.valve_2.close()
+        if pump:
+            self.pump.start()
+        else:
+            self.pump.stop()
 
 
 class PumpTankFiller(TankFiller):
@@ -177,7 +218,7 @@ class PumpTankFiller(TankFiller):
                 self.pump_state = -1
 
 
-class PumpsTankFiller(TankFiller):
+class PumpsTankFiller(Subsystem):
     """  """
 
     def __init__(self, name):
@@ -188,7 +229,8 @@ class PumpsTankFiller(TankFiller):
         self.source_tank = None
 
     def process(self):
-        if self.started and self.external_enable and self.need_fill() and not self.source_tank.is_empty():
+        no_source_water = self.source_tank and self.source_tank.is_empty()
+        if self.started and self.external_enable and self.need_fill() and not no_source_water:
             for pump in self.pumps:
                 pump.start()
             for valve in self.valves:

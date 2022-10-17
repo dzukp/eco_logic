@@ -2421,7 +2421,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_66" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="367" rect.bottom="391" rect.left="43" rect.right="74"/>
+                <Geometry rect.top="433" rect.bottom="457" rect.left="145" rect.right="176"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -2995,23 +2995,6 @@
                 <ValueType Value="0"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_114" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="373" rect.bottom="396" rect.left="223" rect.right="287"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <HTML html="0"/>
-                <Text Angle="0" string="Text" format="%.2f бар"/>
-                <Transparency Value="0"/>
-                <Border Width="1" Value="1">
-                    <BorderColor g="0" r="0" a="255" b="0"/>
-                </Border>
-                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <LabelProperties TextAlign="132"/>
-            </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_115" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="373" rect.bottom="396" rect.left="325" rect.right="389"/>
                 <StandartProperies Freeze="0">
@@ -3031,7 +3014,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_116" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="404" rect.bottom="433" rect.left="144" rect.right="173"/>
+                <Geometry rect.top="411" rect.bottom="440" rect.left="292" rect.right="321"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5192,7 +5175,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Width="0" Cursor="0" EndTipStyle="1" Comment="" Type="XMnemoLine" Name="Line_177" ToolTip="" MnemoLayer="general" Style="1">
-                <Geometry rect.top="417" rect.bottom="417" rect.left="175" rect.right="223"/>
+                <Geometry rect.top="421" rect.bottom="421" rect.left="179" rect.right="227"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -5201,8 +5184,8 @@
                 </StandartProperies>
                 <Color g="0" r="0" a="255" b="0"/>
                 <Points>
-                    <Point x="175" y="417"/>
-                    <Point x="223" y="417"/>
+                    <Point x="179" y="421"/>
+                    <Point x="227" y="421"/>
                 </Points>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_178" ToolTip="" MnemoLayer="general">
@@ -5571,8 +5554,8 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_208" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="467" rect.bottom="490" rect.left="76" rect.right="132"/>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_208" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_208">
+                <Geometry rect.top="497" rect.bottom="520" rect.left="225" rect.right="281"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -6704,7 +6687,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_242" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="408" rect.bottom="431" rect.left="120" rect.right="146"/>
+                <Geometry rect.top="414" rect.bottom="437" rect.left="260" rect.right="286"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7236,24 +7219,6 @@
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
-            </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_258" ToolTip="" MnemoLayer="general">
-                <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="405" rect.bottom="434" rect.left="287" rect.right="316"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <Color g="160" r="160" a="255" b="164"/>
-                <Properties StarFactor="7.576046763356358e-264" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="157347920" FirstPointAngle="0" PenWidth="1">
-                    <PenColor g="0" r="0" a="255" b="0"/>
-                </Properties>
-                <States>
-                    <State g="128" r="128" a="255" b="128"/>
-                    <State g="128" r="0" a="255" b="0"/>
-                </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_260" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="584" rect.bottom="613" rect.left="188" rect.right="212"/>
@@ -7953,20 +7918,6 @@
                     <Point x="326" y="417"/>
                     <Point x="364" y="417"/>
                 </Points>
-            </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_284" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="432" rect.bottom="455" rect.left="286" rect.right="312"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <HTML html="0"/>
-                <Text Angle="0" string="Н1.2" format=""/>
-                <Transparency Value="1"/>
-                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_285" ToolTip="" MnemoLayer="general">
                 <Geometry rect.top="759" rect.bottom="782" rect.left="879" rect.right="981"/>
@@ -9363,9 +9314,9 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_111" ToolTip="" MnemoLayer="general">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_111" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_208">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="445" rect.bottom="454" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="475" rect.bottom="484" rect.left="250" rect.right="259"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9381,9 +9332,9 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_112" ToolTip="" MnemoLayer="general">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_112" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_208">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="427" rect.bottom="436" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="457" rect.bottom="466" rect.left="250" rect.right="259"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9399,9 +9350,9 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_113" ToolTip="" MnemoLayer="general">
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_113" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_208">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="409" rect.bottom="418" rect.left="101" rect.right="110"/>
+                <Geometry rect.top="439" rect.bottom="448" rect.left="250" rect.right="259"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9417,8 +9368,8 @@
                     <State g="255" r="0" a="255" b="0"/>
                 </States>
             </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_179" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="378" rect.bottom="401" rect.left="86" rect.right="127"/>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_179" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_208">
+                <Geometry rect.top="408" rect.bottom="431" rect.left="235" rect.right="276"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9953,7 +9904,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_326" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="468" rect.bottom="497" rect.left="460" rect.right="489"/>
+                <Geometry rect.top="431" rect.bottom="460" rect.left="548" rect.right="577"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9970,7 +9921,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_327" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="441" rect.bottom="464" rect.left="460" rect.right="486"/>
+                <Geometry rect.top="432" rect.bottom="455" rect.left="519" rect.right="545"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9984,7 +9935,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_328" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="441" rect.bottom="464" rect.left="501" rect.right="527"/>
+                <Geometry rect.top="474" rect.bottom="497" rect.left="519" rect.right="545"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -9999,7 +9950,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_329" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="468" rect.bottom="497" rect.left="501" rect.right="530"/>
+                <Geometry rect.top="472" rect.bottom="501" rect.left="548" rect.right="577"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10016,7 +9967,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_330" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="441" rect.bottom="464" rect.left="541" rect.right="567"/>
+                <Geometry rect.top="516" rect.bottom="539" rect.left="519" rect.right="545"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10031,7 +9982,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_331" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="468" rect.bottom="497" rect.left="541" rect.right="570"/>
+                <Geometry rect.top="513" rect.bottom="542" rect.left="548" rect.right="577"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10040,24 +9991,6 @@
                 </StandartProperies>
                 <Color g="160" r="160" a="255" b="164"/>
                 <Properties StarFactor="3.817749155498519e-263" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="1848639980" FirstPointAngle="0" PenWidth="1">
-                    <PenColor g="0" r="0" a="255" b="0"/>
-                </Properties>
-                <States>
-                    <State g="128" r="128" a="255" b="128"/>
-                    <State g="128" r="0" a="255" b="0"/>
-                </States>
-            </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_333" ToolTip="" MnemoLayer="general">
-                <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="486" rect.bottom="515" rect.left="285" rect.right="314"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <Color g="160" r="160" a="255" b="164"/>
-                <Properties StarFactor="9.72383434142387e-310" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="6145" FirstPointAngle="0" PenWidth="1">
                     <PenColor g="0" r="0" a="255" b="0"/>
                 </Properties>
                 <States>
@@ -10084,7 +10017,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_336" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="485" rect.bottom="514" rect.left="142" rect.right="171"/>
+                <Geometry rect.top="482" rect.bottom="511" rect.left="291" rect.right="320"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10115,7 +10048,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_339" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="489" rect.bottom="512" rect.left="118" rect.right="144"/>
+                <Geometry rect.top="486" rect.bottom="509" rect.left="262" rect.right="288"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10123,21 +10056,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Н7" format=""/>
-                <Transparency Value="1"/>
-                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
-                <LabelProperties TextAlign="132"/>
-            </MnemoObject>
-            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_341" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="513" rect.bottom="536" rect.left="284" rect.right="310"/>
-                <StandartProperies Freeze="0">
-                    <Palette SystemPalette="1"/>
-                    <EventList/>
-                    <ActionList/>
-                    <ListenersList/>
-                </StandartProperies>
-                <HTML html="0"/>
-                <Text Angle="0" string="Н7.2" format=""/>
+                <Text Angle="0" string="Н1.2" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
@@ -10179,7 +10098,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_342" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_342">
-                <Geometry rect.top="401" rect.bottom="424" rect.left="234" rect.right="275"/>
+                <Geometry rect.top="395" rect.bottom="418" rect.left="81" rect.right="122"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10193,7 +10112,7 @@
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_346" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_342">
-                <Geometry rect.top="490" rect.bottom="513" rect.left="224" rect.right="280"/>
+                <Geometry rect.top="484" rect.bottom="507" rect.left="71" rect.right="127"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10208,7 +10127,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_347" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_342">
                 <Conversion Type="1" Bit="2"/>
-                <Geometry rect.top="430" rect.bottom="439" rect.left="248" rect.right="257"/>
+                <Geometry rect.top="424" rect.bottom="433" rect.left="95" rect.right="104"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10226,7 +10145,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_348" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_342">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="449" rect.bottom="458" rect.left="248" rect.right="257"/>
+                <Geometry rect.top="443" rect.bottom="452" rect.left="95" rect.right="104"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10244,7 +10163,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_349" ToolTip="" MnemoLayer="general" Group="Group_TextLabel_342">
                 <Conversion Type="1" Bit="0"/>
-                <Geometry rect.top="467" rect.bottom="476" rect.left="248" rect.right="257"/>
+                <Geometry rect.top="461" rect.bottom="470" rect.left="95" rect.right="104"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10896,7 +10815,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_342" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="476" rect.bottom="505" rect.left="43" rect.right="72"/>
+                <Geometry rect.top="465" rect.bottom="494" rect.left="145" rect.right="174"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10913,7 +10832,7 @@
                 </States>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_343" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="479" rect.bottom="502" rect.left="15" rect.right="41"/>
+                <Geometry rect.top="467" rect.bottom="490" rect.left="116" rect.right="142"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10921,13 +10840,13 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Н8" format=""/>
+                <Text Angle="0" string="Н1.1" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_344" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="224" rect.bottom="247" rect.left="813" rect.right="912"/>
+                <Geometry rect.top="223" rect.bottom="246" rect.left="814" rect.right="913"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -10935,7 +10854,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Text" format="Н8: %X"/>
+                <Text Angle="0" string="Text" format="Н1.1: %X"/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="132"/>
@@ -11420,7 +11339,7 @@
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_355" ToolTip="" MnemoLayer="general">
                 <Conversion Type="1" Bit="1"/>
-                <Geometry rect.top="362" rect.bottom="386" rect.left="144" rect.right="175"/>
+                <Geometry rect.top="405" rect.bottom="429" rect.left="145" rect.right="176"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -11633,6 +11552,160 @@
                     <ListenersList/>
                 </StandartProperies>
                 <Text string="16"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_361" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="406" rect.bottom="429" rect.left="117" rect.right="143"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="K1" format=""/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_362" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="434" rect.bottom="457" rect.left="118" rect.right="144"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="K1.1" format=""/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_361" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="355" rect.bottom="384" rect.left="983" rect.right="1012"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="512"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Controller tag">
+                                            <Tag Type="Source Tag" TagName="main\suppl_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="||"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_360" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="358" rect.bottom="381" rect.left="808" rect.right="908"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Б1.1" format=""/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="2"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoRectangle" Name="Rectangle_361" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="9"/>
+                <Geometry rect.top="361" rect.bottom="380" rect.left="917" rect.right="936"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <RectangleProperties Rounded="0" Brush="0" PenWidth="1" Frame="0">
+                    <PenColor g="0" r="0" a="255" b="0"/>
+                </RectangleProperties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="128" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_362" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="355" rect.bottom="384" rect.left="946" rect.right="975"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="256"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Controller tag">
+                                            <Tag Type="Source Tag" TagName="main\suppl_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string=">"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
@@ -12910,7 +12983,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Давл. P7 вкл. Н7" format=""/>
+                <Text Angle="0" string="Давл. вкл. Н1.2" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -12924,7 +12997,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Давл. P7 откл. Н7" format=""/>
+                <Text Angle="0" string="Давл. откл. Н1.2" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -12938,7 +13011,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <HTML html="0"/>
-                <Text Angle="0" string="Мин. давл. P7" format=""/>
+                <Text Angle="0" string="Мин. давл. P1" format=""/>
                 <Transparency Value="1"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <LabelProperties TextAlign="1"/>
@@ -15062,12 +15135,13 @@
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_225"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_229"/>
                         <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_275"/>
+                        <Listener Path="Common" Type="XMnemoRectangle" Name="Rectangle_361"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_pe1" Units="....." Location="3" IsReadTag="0">
                     <ListenersList>
-                        <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_114"/>
+                        <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_114"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -15210,7 +15284,7 @@
                         <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_246"/>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_244"/>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_247"/>
-                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_258"/>
+                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_336"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -15428,9 +15502,7 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_n7_status" Units="....." Location="100" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_336"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_n7_1_cmd" Units="....." Location="101" IsReadTag="0">
@@ -15438,9 +15510,7 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_n7_1_status" Units="....." Location="102" IsReadTag="0">
-                    <ListenersList>
-                        <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_333"/>
-                    </ListenersList>
+                    <ListenersList/>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="suppl_b1_1_cmd" Units="....." Location="103" IsReadTag="0">
@@ -17964,75 +18034,75 @@
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="top_counter" Units="....." Location="809" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="top_counter" Units="....." Location="810" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_175"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_pump_on_timeout" Units="....." Location="810" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_pump_on_timeout" Units="....." Location="811" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_14"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_valve_off_timeout" Units="....." Location="811" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_valve_off_timeout" Units="....." Location="812" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_16"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_foam" Units="....." Location="812" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_foam" Units="....." Location="813" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_18"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_shampoo" Units="....." Location="813" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_shampoo" Units="....." Location="814" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_20"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_wax" Units="....." Location="814" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_wax" Units="....." Location="815" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_22"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_hot_water" Units="....." Location="815" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_hot_water" Units="....." Location="816" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_24"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_cold_water" Units="....." Location="816" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_cold_water" Units="....." Location="817" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_26"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_osmos" Units="....." Location="817" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_freq_osmos" Units="....." Location="818" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_28"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_pressure_timeout" Units="....." Location="818" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_pressure_timeout" Units="....." Location="819" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_min_pressure" Units="....." Location="819" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_min_pressure" Units="....." Location="820" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_hi_press_valve_off_timeout" Units="....." Location="820" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_hi_press_valve_off_timeout" Units="....." Location="821" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_30"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="hmi_post_idx" Units="....." Location="821" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="hmi_post_idx" Units="....." Location="822" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_73"/>
                     </ListenersList>

@@ -17,7 +17,7 @@ def get_object(post_quantity=(6, 6)):
     objects = {
         'top': {
             'class': Top,
-            'mb_cells_idx': 808,
+            'mb_cells_idx': 809,
             'children': {}
         }
     }
@@ -36,6 +36,11 @@ def get_object(post_quantity=(6, 6)):
                 'class': Engine,
                 'do_start': 'do_1_2_13',
                 'mb_cells_idx': 50,
+            },
+            'pump_n1_1': {
+                'class': Engine,
+                'do_start': 'do_1_1_19',
+                'mb_cells_idx': 104
             },
             'pump_n2': {
                 'class': Engine,
@@ -70,27 +75,27 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_water_os': {
                 'class': Valve,
-                'do_open': None,
-                'mb_cells_idx': 68
+                'do_open': 'do_1_2_23',
+                'mb_cells_idx': 78
             },
             'valve_wash_osmos': {
                 'class': Valve,
-                'do_open': None,
-                'mb_cells_idx': 80
+                'do_open': 'do_1_2_24',
+                'mb_cells_idx': None
             },
             'valve_b1': {
                 'class': Valve,
-                'do_open': 'do_1_2_20',
+                'do_open': 'do_1_2_21',
                 'mb_cells_idx': 82
             },
-            'valve_b2': {
-                'class': Valve,
-                'do_open': 'do_1_2_21',
-                'mb_cells_idx': 84
-            },
+            # 'valve_b2': {
+            #     'class': Valve,
+            #     'do_open': None,
+            #     'mb_cells_idx': 84
+            # },
             'valve_b1_1': {
                 'class': Valve,
-                'do_open': 'do_2_2_20',
+                'do_open': 'do_1_2_20',
                 'mb_cells_idx': 86
             },
             'tank_b1': {
@@ -124,26 +129,26 @@ def get_object(post_quantity=(6, 6)):
             },
             'pump_n7': {
                 'class': Engine,
-                'do_start': 'do_2_2_13',
+                'do_start': None,
                 'mb_cells_idx': 98,
             },
-            'pump_n7_1': {
-                'class': Engine,
-                'do_start': 'do_2_2_14',
-                'mb_cells_idx': 100
-            },
+            # 'pump_n7_1': {
+            #     'class': Engine,
+            #     'do_start': 'do_2_2_14',
+            #     'mb_cells_idx': 100
+            # },
             'tank_b1_1': {
                 'class': Tank,
-                'di_low_level': 'di_2_3',
-                'di_mid_level': 'di_2_2',
-                'di_hi_level': 'di_2_1',
+                'di_low_level': 'di_1_9',
+                'di_mid_level': 'di_1_8',
+                'di_hi_level': 'di_1_7',
                 'mb_cells_idx': 102
             },
-            'pump_n8': {
-                'class': Engine,
-                'do_start': 'do_1_2_23',
-                'mb_cells_idx': 104
-            },
+            # 'pump_n8': {
+            #     'class': Engine,
+            #     'do_start': None,
+            #     'mb_cells_idx': 104
+            # },
         }
     }
     hoover = {
