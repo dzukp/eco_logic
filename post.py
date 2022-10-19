@@ -1,3 +1,5 @@
+import logging
+
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
@@ -97,6 +99,7 @@ class Post(IoObject, ModbusDataObject):
                 if func_name not in (FuncNames.HOOVER, FuncNames.AIR):
                     step.pump_link = [self.pump]
                 step.set_config(config)
+            step.set_logger(self.logger.getChild(step.name))
 
         for valves in valves.values():
             self.all_valves.update(valves)
