@@ -11,7 +11,7 @@ from func_names import FuncNames
 class Post(IoObject, ModbusDataObject):
 
     _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs', 'no_flow_frequency')
+                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -51,7 +51,8 @@ class Post(IoObject, ModbusDataObject):
         self.pressure_timeout = 5.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
-        self.no_flow_frequency = 15.0
+        self.no_flow_frequency = 10.0
+        self.begin_phase_timeout = 2.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.car_inside_on_timer = Ton()
@@ -126,23 +127,26 @@ class Post(IoObject, ModbusDataObject):
 
         if pump == 1:
             self.pump.start()
-            self.pump.set_frequency(10.0)
+            self.pump.set_frequency(self.no_flow_frequency)
         elif pump == 2:
             self.pump.start()
             self.pump.set_frequency(self.func_frequencies.get(self.current_func, 0.0))
+        elif pump == 3:
+            self.pump.start()
+            self.pump.set_frequency(50.0)
         else:
             self.pump.stop()
             self.pump.set_frequency(0.0)
 
-        no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
-                                                  timeout=self.pressure_timeout)
+        no_pressure = self.pump.is_run and self.min_pressure > self.ai_pressure.val and self.ai_pressure.val > -10
+        no_pressure = self.pressure_timer.process(run=no_pressure, timeout=self.pressure_timeout)
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()
                 self.logger.info('Set alarm because pump alarm')
-            #if no_pressure:
-            #    self.set_alarm()
-            #    self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
+            if no_pressure:
+                self.set_alarm()
+                self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
         # Alarm auto reset by timeout
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')
@@ -204,6 +208,12 @@ class Post(IoObject, ModbusDataObject):
         if self.hi_press_valve_off_timeout != timeout:
             self.hi_press_valve_off_timeout = timeout
             self.logger.info(f'Set hi pressure value off timeout {timeout}s')
+            self.save()
+
+    def set_begin_phase_timeout(self, timeout):
+        if self.begin_phase_timeout != timeout:
+            self.begin_phase_timeout = timeout
+            self.logger.info(f'Set begin phase timeout {timeout}s')
             self.save()
 
     def is_func_allowed(self, func_name):

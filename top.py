@@ -236,7 +236,9 @@ class Top(IoObject, ModbusDataObject):
                     post.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
                 if post.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
                     post.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
-            n = data[self.mb_cells_idx - start_addr + 12]
+                if data[self.mb_cells_idx - start_addr + 12] * 0.001 != post.begin_phase_timeout:
+                    post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]) * 0.001)
+            n = data[self.mb_cells_idx - start_addr + 13]
             if f'post_{n}' in self.posts:
                 self.hmi_post_number = n
 
@@ -256,9 +258,10 @@ class Top(IoObject, ModbusDataObject):
                     int(post.pressure_timeout),
                     int(post.min_pressure * 100),
                     int(post.hi_press_valve_off_timeout * 1000),
+                    int(post.begin_phase_timeout * 1000)
                 ]
             else:
-                post_data = [0] * 11
+                post_data = [0] * 12
 
             data = [
                 self.counter,

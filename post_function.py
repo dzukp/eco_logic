@@ -75,8 +75,14 @@ class MultiValvePumpSteps(MultiValveSteps):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if res:
             return res
-        self.pump = 1
-        return self.wait_press
+        self.no_flow_press = self.owner.ai_pressure.val
+        if self.owner.begin_phase_timeout > 0:
+            self.pump = 3
+            if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout):
+                return self.full_work
+        else:
+            self.pump = 1
+            return self.wait_press
 
     def wait_press(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
@@ -89,6 +95,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         if self.owner.ai_pressure.val > 50:
             return self.wait_flow
         if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < 50.0:
+            self.ton.reset()
             return self.full_work
 
     def wait_flow(self):
