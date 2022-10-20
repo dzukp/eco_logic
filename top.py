@@ -238,7 +238,9 @@ class Top(IoObject, ModbusDataObject):
                     post.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
                 if data[self.mb_cells_idx - start_addr + 12] * 0.001 != post.begin_phase_timeout:
                     post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]) * 0.001)
-            n = data[self.mb_cells_idx - start_addr + 13]
+                if data[self.mb_cells_idx - start_addr + 13] != post.no_flow_pressure:
+                    post.set_no_flow_pressure(data[self.mb_cells_idx - start_addr + 13])
+            n = data[self.mb_cells_idx - start_addr + 14]
             if f'post_{n}' in self.posts:
                 self.hmi_post_number = n
 
@@ -258,10 +260,11 @@ class Top(IoObject, ModbusDataObject):
                     int(post.pressure_timeout),
                     int(post.min_pressure * 100),
                     int(post.hi_press_valve_off_timeout * 1000),
-                    int(post.begin_phase_timeout * 1000)
+                    int(post.begin_phase_timeout * 1000),
+                    int(post.no_flow_pressure)
                 ]
             else:
-                post_data = [0] * 12
+                post_data = [0] * 13
 
             data = [
                 self.counter,

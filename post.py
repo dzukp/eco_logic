@@ -13,7 +13,7 @@ from func_names import FuncNames
 class Post(IoObject, ModbusDataObject):
 
     _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout')
+                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -54,6 +54,7 @@ class Post(IoObject, ModbusDataObject):
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
         self.no_flow_frequency = 10.0
+        self.no_flow_pressure = 150.0
         self.begin_phase_timeout = 2.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
@@ -217,6 +218,12 @@ class Post(IoObject, ModbusDataObject):
         if self.begin_phase_timeout != timeout:
             self.begin_phase_timeout = timeout
             self.logger.info(f'Set begin phase timeout {timeout}s')
+            self.save()
+
+    def set_no_flow_pressure(self, value):
+        if self.no_flow_pressure != float(value):
+            self.no_flow_pressure = float(value)
+            self.logger.info(f'Set no_flow_pressure {value}')
             self.save()
 
     def is_func_allowed(self, func_name):
