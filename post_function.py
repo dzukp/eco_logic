@@ -73,22 +73,17 @@ class MultiValvePumpSteps(MultiValveSteps):
 
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 1
         if res:
             return res
         self.no_flow_press = self.owner.ai_pressure.val
-        if self.owner.begin_phase_timeout > 0:
-            self.pump = 3
-            if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout):
-                return self.full_work
-        else:
-            self.pump = 1
-            return self.wait_press
+        return self.wait_press
 
     def wait_press(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 1
         if res:
             return res
-        self.pump = 1
         # if self.owner.di_flow.val:
         #     self.ton.reset()
         #     return self.full_work
@@ -100,9 +95,9 @@ class MultiValvePumpSteps(MultiValveSteps):
 
     def wait_flow(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 0
         if res:
             return res
-        self.pump = 0
         # if self.owner.di_flow.val:
         #     self.logger.info('di_flow')
         #     self.ton.reset()
@@ -117,13 +112,22 @@ class MultiValvePumpSteps(MultiValveSteps):
 
     def full_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 3
         if res:
             return res
-        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > 140.0:
+        if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout):
+            self.ton.reset()
+            return self.full_work_2
+
+    def full_work_2(self):
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 2
+        if res:
+            return res
+        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > 150.0:
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
-        self.pump = 2
 
 
 class BrushSteps(MultiValvePumpSteps):
