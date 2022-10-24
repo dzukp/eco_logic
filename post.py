@@ -5,6 +5,7 @@ from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton, Timer
 
+from channel_ext import InChannelExt
 from post_function import MultiValveSteps, MultiValvePumpSteps, BrushSteps, HooverSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
@@ -22,7 +23,7 @@ class Post(IoObject, ModbusDataObject):
         self.di_car_inside = InChannel(False)
         self.do_green_light = OutChannel(False)
         self.do_red_light = OutChannel(False)
-        self.ai_pressure = InChannel(0.0)
+        self.ai_pressure = InChannelExt(0.0)
         self.di_flow = InChannel(False)
         self.valve_foam = None
         self.valve_wax = None

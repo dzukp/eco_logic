@@ -63,7 +63,7 @@ class RpcPostServer(LoggedObject):
                     return 'FAIL'
                 """
                 try:
-                    self.logger.info(f'start function `{function_name}` from post #{post_number} ')
+                    self.logger.info(f'start func: `{function_name}` post: #{post_number} service: {service}')
                     return self.start_function(post_number, function_name, service)
                 except:
                     self.logger.exception(f'get_state({post_number})')
