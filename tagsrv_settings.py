@@ -38,7 +38,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     for pref in do_names:
         tags['out'].update(dict([(pref + str(i), OutTag(i)) for i in range(1, 25)]))
 
-    if version in ('1.0',):
+    if version in ('1.0', '1.2'):
         # generate di_1_1 - do_1_20
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))

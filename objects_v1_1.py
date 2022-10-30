@@ -19,12 +19,12 @@ def get_object(post_quantity=8):
                 'supplier': {
                     'class': WaterPreparing,
                     'di_press_1': None,
-                    'ai_pe_1': 'ai_2_5',
+                    'ai_pe_1': 'ai_2_5' if post_quantity > 6 else 'ai_1_6',
                     'di_press_2': None,
                     'ai_pe_2': 'ai_2_6',
-                    'di_press_3': None,
-                    'ai_pe_3': 'ai_2_4',
-                    'di_press_4': 'di_1_7',
+                    'di_press_3': 'di_1_10',
+                    'ai_pe_3': 'ai_2_4' if post_quantity > 6 else 'ai_1_7',
+                    'di_press_4': None,
                     'do_no_n3_press_signal': 'do_1_24',
                     'mb_cells_idx': 0,
                     'children': {
@@ -114,10 +114,17 @@ def get_object(post_quantity=8):
                             'di_hi_level': 'di_1_6',
                             'mb_cells_idx': 50
                         },
+                        'tank_b3': {
+                            'class': Tank,
+                            'di_low_level': 'di_1_7',
+                            'di_mid_level': 'di_1_8',
+                            'di_hi_level': 'di_1_9',
+                            'mb_cells_idx': 52
+                        },
                         'valve_dose_foam': {
                             'class': Valve,
                             'do_open': None,
-                            'mb_cells_idx': 52
+                            'mb_cells_idx': None
                         },
                         'valve_dose_wax': {
                             'class': Valve,
