@@ -75,13 +75,13 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.pump2 = self.pump_os2
         self.b2_filler.pid_pump = self.pump_os
         self.b2_filler.valve_inlet = self.valve_water_os
-        self.b2_filler.di_pressure = self.di_press_3
+        self.b2_filler.di_pressure = self.di_press_2
         self.water_supplier.ai_pressure = self.ai_pe_1
         self.water_supplier.tank = self.tank_b1
         self.water_supplier.pump = self.pump_n1
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
-        self.osmos_supplier.di_pressure = self.di_press_2
+        self.osmos_supplier.di_pressure = self.di_press_3
         self.osmos_supplier.pump = self.pump_n2
         self.b1_filler.set_logger(self.logger.getChild(self.b1_filler.name))
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
