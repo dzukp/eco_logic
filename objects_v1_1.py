@@ -25,7 +25,7 @@ def get_object(post_quantity=8):
                     'di_press_3': None,
                     'ai_pe_3': 'ai_2_4' if post_quantity > 6 else 'ai_1_7',
                     'di_press_4': None,
-                    'do_no_n3_press_signal': 'do_1_24',
+                    'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
                         'pump_n1': {
@@ -36,12 +36,12 @@ def get_object(post_quantity=8):
                         'pump_n1_2': {
                             'class': Engine,
                             'do_start': 'do_2_20',
-                            'mb_cells_idx': 493,
+                            'mb_cells_idx': 495,
                         },
                         'pump_n1_3': {
                             'class': Engine,
                             'do_start': 'do_2_21',
-                            'mb_cells_idx': 495,
+                            'mb_cells_idx': 493,
                         },
                         'pump_n2': {
                             'class': Engine,
@@ -97,6 +97,11 @@ def get_object(post_quantity=8):
                         'valve_b2': {
                             'class': Valve,
                             'do_open': None,
+                            'mb_cells_idx': None
+                        },
+                        'valve_b3': {
+                            'class': Valve,
+                            'do_open': 'do_1_24',
                             'mb_cells_idx': 46
                         },
                         'tank_b1': {

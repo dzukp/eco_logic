@@ -8,6 +8,7 @@ def get_simulator_objects(post_quantity):
             'class': TopSimulator,
             'version': '1.1',
             'di_valve_b1': 'do_2_19',
+            'di_valve_b3': 'do_1_24',
             'di_n1': 'do_1_19',
             'ao_p1': 'ai_2_5',
             'ao_p2': 'ai_2_6',
@@ -34,6 +35,12 @@ def get_simulator_objects(post_quantity):
                     'do_low': 'di_1_4',
                     'do_mid': 'di_1_5',
                     'do_hi': 'di_1_6',
+                },
+                'b3': {
+                    'class': TankSimulator,
+                    'do_low': 'di_1_7',
+                    'do_mid': 'di_1_8',
+                    'do_hi': 'di_1_9',
                 }
             }
         }

@@ -139,6 +139,7 @@ class PumpTankFiller(TankFiller):
             if self.valve:
                 self.valve.close()
             self.no_pump_timer.reset()
+            self.mid_level_ton.reset()
             self.wait_after_no_press_timer.reset()
 
         self.pump_process(pump_start)
@@ -172,6 +173,24 @@ class PumpTankFiller(TankFiller):
                     self.logger.info('no pressure after pump start')
                     self.wait_after_no_press_timer.reset()
                     self.pump_state = -1
+
+
+class PumpValveTankFiller(TankFiller):
+    def __init__(self, name):
+        super(PumpValveTankFiller, self).__init__(name)
+        self.pump = None
+        self.no_hi_level_ton = Ton()
+
+    def process(self):
+        super(PumpValveTankFiller, self).process()
+        need_pump = self.no_hi_level_ton.process(run=not self.tank.di_hi_level.val, timeout=1)
+        if self.started and self.external_enable:
+            if need_pump:
+                self.pump.start()
+            else:
+                self.pump.stop()
+        else:
+            self.pump.stop()
 
 
 class OsmosisTankFiller(TankFiller):

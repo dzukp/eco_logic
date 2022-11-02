@@ -1,7 +1,8 @@
 from pylogic.io_object import IoObject
 from pylogic.channel import InChannel, OutChannel
 from pylogic.modbus_supervisor import ModbusDataObject
-from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, TwoPumpWaterSupplier
+from subsystems import TankFiller, PumpTankFiller, OsmosisTankFiller, WaterSupplier, TwoPumpWaterSupplier, \
+    PumpValveTankFiller
 from func_names import FuncNames
 from utils import floats_to_modbus_cells, modbus_cells_to_floats
 
@@ -36,6 +37,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.tank_b3 = None
         self.valve_b1 = None
         self.valve_b2 = None
+        self.valve_b3 = None
         self.valve_water_os = None
         self.valve_dose_wax = None
         self.valve_dose_shampoo = None
@@ -49,7 +51,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_pump_off_press = 4.0
         self.b1_filler = PumpTankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
-        self.b3_filler = PumpTankFiller('b3_filler')
+        self.b3_filler = PumpValveTankFiller('b3_filler')
         self.water_supplier = WaterSupplier('cold_water')
         self.osmos_supplier = WaterSupplier('osmosis')
         self.start_b1 = True
@@ -67,8 +69,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b3_filler.tank = self.tank_b3
+        self.b3_filler.valve = self.valve_b3
         self.b3_filler.pump = self.pump_n1_2
-        self.b3_filler.di_press = self.di_press_4
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
         self.b2_filler.pump1 = self.pump_os1
@@ -77,7 +79,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.valve_inlet = self.valve_water_os
         self.b2_filler.di_pressure = self.di_press_2
         self.water_supplier.ai_pressure = self.ai_pe_1
-        self.water_supplier.tank = self.tank_b1
+        self.water_supplier.tank = self.tank_b3
         self.water_supplier.pump = self.pump_n1
         self.osmos_supplier.tank = self.tank_b2
         self.osmos_supplier.ai_pressure = self.ai_pe_3
@@ -104,6 +106,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.b3_filler.stop()
         if self.tank_b1.is_empty():
             self.b3_filler.disable()
+        else:
+            self.b3_filler.enable()
         self.b3_filler.process()
 
         # Filling Osmosis Tank
@@ -289,6 +293,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
                 self.start_b2 = False
             if cmd & 0x0080:
                 self.start_osmos_press = False
+            if cmd & 0x0100:
+                self.start_b3 = True
+            if cmd & 0x0200:
+                self.start_b3 = False
             floats = modbus_cells_to_floats(data[addr + 12:addr + 24])
             last_floats = self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, \
                           self.osmosis_pump_off_press, self.osmosis_pump_on_press, self.osmosis_enough_press
@@ -309,7 +317,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
                      int(self.start_water_press) * (1 << 5) | \
                      int(self.start_b2) * (1 << 6) | \
                      int(self.start_osmos_press) * (1 << 7) | \
-                     int(self.di_press_4.val) * (1 << 8)
+                     int(self.di_press_4.val) * (1 << 8) | \
+                     int(self.start_b3) * (1 << 9)
             tmp_data = floats_to_modbus_cells((self.ai_pe_1.val, self.ai_pe_2.val, self.ai_pe_3.val))
             water_suppl_status = 0
             osmos_suppl_status = 0

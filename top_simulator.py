@@ -12,6 +12,8 @@ class TopSimulator(IoObject):
         self.di_valve_b1 = InChannel(False)
         self.b1 = None
         self.di_n1 = InChannel(False)
+        self.b3 = None
+        self.di_valve_b3 = InChannel(False)
         self.ao_p1 = OutChannel(0.0)
         self.ao_p2 = OutChannel(0.0)
         self.do_press1 = OutChannel(False)
@@ -41,6 +43,9 @@ class TopSimulator(IoObject):
         self.do_press1.val = self.ao_p1.val > 0.5
         if self.di_n1.val:
             self.b1.add_speed(-1.0)
+            self.b3.add_speed(-0.3)
+        if self.di_valve_b3.val:
+            self.b3.add_speed(0.6)
         # Osmosis
         self.do_press2.val = self.di_water_os.val and self.ao_p2.val > 1.0
         self.b2.reset_speed()
