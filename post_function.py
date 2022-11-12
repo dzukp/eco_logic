@@ -73,10 +73,6 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.no_flow_press = 0
         self.flow_indicator = -50.0
 
-    def step_first(self):
-
-        return super(MultiValvePumpSteps, self).step_first()
-
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         self.pump = 1
@@ -94,6 +90,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         #     self.ton.reset()
         #     return self.full_work
         if self.owner.ai_pressure.val > 50:
+            self.ton.reset()
             return self.wait_flow
         if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < 50.0:
             self.ton.reset()
@@ -108,10 +105,14 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.logger.info(
                 f'self.owner.ai_pressure.rate() ({self.owner.ai_pressure.rate()} < {self.flow_indicator}) < {self.flow_indicator}')
             self.ton.reset()
-            return self.full_work
-        if self.owner.ai_pressure.val < 30:
+            return self.full_work_2
+        if self.owner.ai_pressure.val < 30 and self.owner.ai_pressure.rate() < self.flow_indicator * 0.3:
+            self.ton.reset()
+            return self.full_work_2
+        if self.ton.process(run=self.owner.ai_pressure.val < 30, timeout=1.0):
             self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < 30')
-            return self.wait_press
+            self.ton.reset()
+            return self.low_work
 
     def full_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
@@ -134,6 +135,18 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
+
+    def low_work(self):
+        res = super(MultiValvePumpSteps, self).step_open_valve()
+        self.pump = 1
+        if res:
+            return res
+        if self.owner.ai_pressure.val > 50:
+            self.logger.info(f'low pressuer {self.owner.ai_pressure.val} > 50')
+            self.ton.reset()
+            return self.wait_flow
+        if self.ton.process(run=True, timeout=3.0):
+            return self.full_work_2
 
 
 class BrushSteps(MultiValvePumpSteps):
