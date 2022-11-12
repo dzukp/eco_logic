@@ -71,7 +71,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         super(MultiValvePumpSteps, self).__init__(*args, **kwargs)
         self.need_max_power = True
         self.no_flow_press = 0
-        self.flow_indicator = -1000.0
+        self.flow_indicator = -50.0
 
     def step_first(self):
 
