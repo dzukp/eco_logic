@@ -44,8 +44,6 @@ class Top(IoObject, ModbusDataObject):
             self.side_brush_wash['1'].add_post(post)
         for post in self.side_posts['2']:
             self.side_brush_wash['2'].add_post(post)
-        self.rpc_server.set_top_object(self)
-        self.rpc_server.start()
 
     def process(self):
         for post, func in self.new_function.items():

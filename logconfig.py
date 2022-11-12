@@ -55,7 +55,7 @@ logging_config = {
         'PylogicLogger.rpc_post_state': {
             'handlers': ['rpc_post_state_file'],
             'propagate': False,
-            'level': 'INFO'
+            'level': 'ERROR'
         }
         # 'modbus_tk': {
         #     'handlers': ['common_console'],
