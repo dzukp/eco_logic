@@ -32,6 +32,6 @@ class InChannelExt(InChannel):
         if dtime < 0.25:
             return 0
         speeds = []
-        for v1, v2, in zip(values[:1], values[1:]):
+        for v1, v2, in zip(values[:-1], values[1:]):
             speeds.append((v2[0] - v1[0]) / (v2[1] - v1[1]))
-        return sum(speeds) / len(speeds) / dtime
+        return sum(speeds) / len(speeds)
