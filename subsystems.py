@@ -193,6 +193,43 @@ class PumpValveTankFiller(TankFiller):
             self.pump.stop()
 
 
+class Pump2ValvesTankFiller(TankFiller):
+    def __init__(self, name):
+        super().__init__(name)
+        self.valve2 = None
+        self.pump = None
+        self.no_hi_level_ton = Ton()
+        self.no_hi_level_timeout = 10.0
+
+    def process(self):
+        pump = 0
+        if self.started and self.external_enable:
+            if self.no_hi_level_ton.process(not self.tank.di_hi_level.val, timeout=self.no_hi_level_timeout):
+                if self.pump:
+                    self.pump.start()
+            if self.tank.di_hi_level.val:
+                if self.valve:
+                    self.valve.close()
+                if self.valve2:
+                    self.valve2.close()
+                if self.pump:
+                    self.pump.stop()
+            elif not self.tank.di_mid_level.val:
+                if self.valve:
+                    self.valve.open()
+            elif not self.tank.di_low_level.val:
+                if self.valve2:
+                    self.valve2.open()
+        else:
+            self.no_hi_level_ton.reset()
+            if self.valve:
+                self.valve.close()
+            if self.valve2:
+                self.valve2.close()
+            if pump:
+                self.pump.stop()
+
+
 class OsmosisTankFiller(TankFiller):
 
     def __init__(self, name):
