@@ -69,6 +69,7 @@ class MultiValvePumpSteps(MultiValveSteps):
 
     def __init__(self, *args, **kwargs):
         super(MultiValvePumpSteps, self).__init__(*args, **kwargs)
+        self.ton2 = Ton()
         self.need_max_power = True
         self.no_flow_press = 0
         self.flow_indicator = -50.0
@@ -76,6 +77,7 @@ class MultiValvePumpSteps(MultiValveSteps):
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         self.pump = 1
+        self.need_max_power = True
         if res:
             return res
         self.no_flow_press = self.owner.ai_pressure.val
@@ -105,9 +107,11 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.logger.info(
                 f'self.owner.ai_pressure.rate() ({self.owner.ai_pressure.rate()} < {self.flow_indicator}) < {self.flow_indicator}')
             self.ton.reset()
+            self.ton2.reset()
             return self.full_work_2
         if self.owner.ai_pressure.val < 30 and self.owner.ai_pressure.rate() < self.flow_indicator * 0.3:
             self.ton.reset()
+            self.ton2.reset()
             return self.full_work_2
         if self.ton.process(run=self.owner.ai_pressure.val < 30, timeout=1.0):
             self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < 30')
@@ -117,12 +121,16 @@ class MultiValvePumpSteps(MultiValveSteps):
     def full_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         if not self.need_max_power:
+            self.pump = 2
+            self.ton.reset()
+            self.ton2.reset()
             return self.full_work_2
         self.pump = 3
         if res:
             return res
         if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout):
             self.ton.reset()
+            self.ton2.reset()
             return self.full_work_2
 
     def full_work_2(self):
@@ -135,6 +143,9 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
+        if self.ton2.process(self.owner.ai_pressure.val < 75.0, timeout=5.0):
+            self.logger.info(f'low press during full_work_2, pressure={self.owner.ai_pressure.val}')
+            return self.wait_flow
 
     def low_work(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
@@ -146,6 +157,8 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.ton.reset()
             return self.wait_flow
         if self.ton.process(run=True, timeout=3.0):
+            self.ton.reset()
+            self.ton2.reset()
             return self.full_work_2
 
 
