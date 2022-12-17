@@ -227,12 +227,16 @@ class PumpsTankFiller(Subsystem):
         self.valves = []
         self.tank = None
         self.source_tank = None
+        self.di_press = None
 
     def process(self):
         no_source_water = self.source_tank and self.source_tank.is_empty()
         if self.started and self.external_enable and self.need_fill() and not no_source_water:
             for pump in self.pumps:
-                pump.start()
+                if not self.di_press or self.di_press.val:
+                    pump.start()
+                else:
+                    pump.stop()
             for valve in self.valves:
                 valve.open()
         else:

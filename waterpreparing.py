@@ -19,7 +19,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         super().__init__(*args)
         # self.di_press_1 = InChannel(False)  # дискретный датчик давления после насоса p1
         self.ai_pe_1 = InChannel(0.0)  # аналоговый датчик давления после насоса П1
-        # self.di_press_2 = InChannel(False)  # дискретный датчик давления после П2
+        self.di_press_2 = InChannel(False)  # дискретный датчик давления после П2
         self.ai_pe_2 = InChannel(0.0)  # аналоговый датчик давления после фильтра
         self.ai_pe_3 = InChannel(0.0)  # аналоговый датчик давления после насоса П2
         # self.di_press_3 = InChannel(False)
@@ -90,6 +90,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valves = [self.valve_water_os]
         self.b2_filler.pumps = [self.pump_os]
+        self.b2_filler.di_press = self.di_press_2
         self.b2_filler.source_tank = self.tank_b1
 
         self.water_supplier.tank = self.tank_b1
@@ -366,6 +367,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         if self.mb_cells_idx is not None:
             cmd = 0
             status = int(False) * (1 << 0) | \
+                     int(self.di_press_2.val) * (1 << 2) | \
                      int(self.start_b1) * (1 << 4) | \
                      int(self.start_water_press) * (1 << 5) | \
                      int(self.start_b2) * (1 << 6) | \
