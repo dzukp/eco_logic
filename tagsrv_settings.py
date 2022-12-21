@@ -21,8 +21,9 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     fc_names = tuple([
         f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + [
         f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
-        f'fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']
+        f'fc_os_']
     )
+    fc_innovance_names = ('fc_hoover_1_', 'fc_hoover_2_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -51,6 +52,18 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     for pref in fc_names:
         tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+
+    for pref in fc_innovance_names:
+        tags['in'].update({
+            f'{pref}ai_1': InTag(0x3000),
+            f'{pref}ai_2': InTag(0x1001),
+            f'{pref}ai_3': InTag(0x8000),
+
+        })
+        tags['out'].update({
+            f'{pref}ai_1': OutTag(0x2000),
+            f'{pref}ai_2': OutTag(0x1000)
+        })
 
     ai_1_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_1_')],
                          ip='192.168.200.20', timeout=0.03)
@@ -145,8 +158,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_2_ao_')]))
 
-    modules = [do_1_1, do_1_2, do_1_3, do_1_4, do_2_1, do_2_2, do_2_3, do_2_4, di_1_1, di_2_1, ai_1_1, ai_1_2, ai_2_1, ai_2_2, ai_3,
-               dio_3, dio_4] + dio_post
+    modules = [do_1_1, do_1_2, do_1_3, do_1_4, do_2_1, do_2_2, do_2_3, do_2_4, di_1_1, di_2_1, ai_1_1, ai_1_2, ai_2_1,
+               ai_2_2, ai_3, dio_3, dio_4] + dio_post
 
     dispatchers = {
         'disp_1': ParallelDispatcher(

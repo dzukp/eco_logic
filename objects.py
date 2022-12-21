@@ -2,7 +2,7 @@ import copy
 
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
+from fc import Altivar212, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -163,7 +163,7 @@ def get_object(post_quantity=(6, 6)):
                 'mb_cells_idx': 135
             },
             'fc_1': {
-                'class': Altivar212,
+                'class': InovanceMd310,
                 'ao_command': 'fc_hoover_1_ao_1',
                 'ao_frequency': 'fc_hoover_1_ao_2',
                 'ai_status': 'fc_hoover_1_ai_1',
@@ -172,7 +172,7 @@ def get_object(post_quantity=(6, 6)):
                 'mb_cells_idx': 137
             },
             'fc_2': {
-                'class': Altivar212,
+                'class': InovanceMd310,
                 'ao_command': 'fc_hoover_2_ao_1',
                 'ao_frequency': 'fc_hoover_2_ao_2',
                 'ai_status': 'fc_hoover_2_ai_1',
