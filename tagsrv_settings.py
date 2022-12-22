@@ -61,8 +61,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
 
         })
         tags['out'].update({
-            f'{pref}ai_1': OutTag(0x2000),
-            f'{pref}ai_2': OutTag(0x1000)
+            f'{pref}ao_1': OutTag(0x2000),
+            f'{pref}ao_2': OutTag(0x1000)
         })
 
     ai_1_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_1_')],
