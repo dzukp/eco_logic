@@ -72,7 +72,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.ton2 = Ton()
         self.need_max_power = True
         self.no_flow_press = 0
-        self.flow_indicator = -50.0
+        self.flow_indicator = -100.0
 
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
