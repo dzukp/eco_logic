@@ -101,6 +101,7 @@ class RpcPostServer(LoggedObject):
             return 'POST_NOT_FOUND'
         if function_name not in FuncNames.all_funcs():
             return 'FUNC_NOT_FOUND'
+        self.top_object.set_service(post_name, service)
         if self.top_object.set_function(post_name, function_name, service):
             return 'OK'
         return 'FAIL'

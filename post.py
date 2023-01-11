@@ -162,16 +162,21 @@ class Post(IoObject, ModbusDataObject):
         self.do_red_light.val = self.car_inside or self.service_mode
 
     def set_function(self, func_name, service=False):
-        if self.is_ready(service) and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
+        if self.is_ready() and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
             if self.current_func != func_name:
-                self.logger.debug(f'New function {func_name}, service={service}')
-            self.service_mode = service and func_name != FuncNames.STOP
+                self.logger.debug(f'New function {func_name}')
+            # self.service_mode = service and func_name != FuncNames.STOP
             self.current_func = func_name
         else:
-            self.service_mode = False
+            # self.service_mode = False
             self.current_func = FuncNames.STOP
         self.func_number = FuncNames.all_funcs().index(self.current_func)
         return self.current_func == func_name
+
+    def set_service(self, service):
+        if self.service_mode != service:
+            self.logger.debug(f'Set service, service={service}')
+        self.service_mode = service
 
     def set_alarm(self):
         self.alarm = True
@@ -219,7 +224,7 @@ class Post(IoObject, ModbusDataObject):
         return self.car_inside
 
     def is_ready(self, service=False):
-        return not self.alarm and (self.car_inside or service)
+        return not self.alarm and (self.car_inside or self.service_mode)
 
     def mb_cells(self):
         return self.mb_output(0).keys()

@@ -174,6 +174,12 @@ class Top(IoObject, ModbusDataObject):
             self.post_service[post_name] = service
             return True
 
+    def set_service(self, post_name, service):
+        if post_name not in self.posts:
+            self.logger.error(f'Hasn\'t post `{post_name}`')
+        else:
+            self.posts[post_name].set_service(service)
+
     def get_readiness_functions(self, post_name):
         return {
             FuncNames.WAX:

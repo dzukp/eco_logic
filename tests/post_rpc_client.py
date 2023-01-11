@@ -8,17 +8,17 @@ class PostRpcClient(object):
     def __init__(self, host='http://localhost:9876'):
         self.server = xmlrpc.client.ServerProxy(host)
 
-    def start_function(self, post, function):
+    def start_function(self, post, function, service=False):
         if isinstance(function, int):
             func = FuncNames.all_funcs()[function]
         else:
             func = function
-        print('>> start_function', post, func)
+        print('>> start_function', post, func, service)
         # запрос от поста номер {post: int} на запуск функции {func: str}
         # возвращает 'OK' - если команда принята
         # 'POST_NOT_FOUND' - если поста с таким номером нет
         # 'FUNC_NOT_FOUND' - если функции с таким именем нет
-        print(self.server.start_function(post, func))
+        print(self.server.start_function(post, func, service))
 
     def get_state(self, post):
         print('>> get_state', post)
