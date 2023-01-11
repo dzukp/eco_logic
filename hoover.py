@@ -7,7 +7,7 @@ from pylogic.utils import Hysteresis
 from simple_pid import PID
 from pylogic.channel import InChannel
 
-from hoover_steps import CascadeSteps
+from hoover_steps import CascadeSteps, StepsV2
 
 
 class Hoover(IoObject, ModbusDataObject):
@@ -32,7 +32,7 @@ class Hoover(IoObject, ModbusDataObject):
         self.pid_k_2 = 0.1
         self.pid_i_2 = 0.2
         self.pid_d_2 = 0.0
-        self.min_freq_limits, self.max_freq_limits = (40.0, 60.0)
+        self.min_freq_limits, self.max_freq_limits = (30.0, 60.0)
         self.pid_1 = PID(sample_time=0.5)
         self.pid_2 = PID(sample_time=0.5)
         self.post_count = 0
@@ -40,7 +40,7 @@ class Hoover(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
 
     def init(self):
-        self.cascade_steps = CascadeSteps(owner=self)
+        self.cascade_steps = StepsV2(owner=self)
 
     def start(self):
         if not self.started:

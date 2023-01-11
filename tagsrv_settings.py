@@ -1,3 +1,4 @@
+from custom_mbrtu import CustomInnovanceMbRTUModule
 from pylogic.tagsrv.tagsrv import InTag, OutTag
 from pylogic.tagsrv.module_dispatcher import ParallelDispatcher, SerialDispatcher
 from pylogic.tagsrv.owen_mx210 import OwenAiMv210, OwenDiMv210, OwenDoMu210_403, OwenDiDoMk210
@@ -61,8 +62,8 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
 
         })
         tags['out'].update({
-            f'{pref}ai_1': OutTag(0x2000),
-            f'{pref}ai_2': OutTag(0x1000)
+            f'{pref}ao_1': OutTag(0x2000),
+            f'{pref}ao_2': OutTag(0x1000)
         })
 
     ai_1_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_1_')],
@@ -152,7 +153,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                                   name.startswith(f'fc_hoover_1_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_1_ao_')]))
-    fc_modules[3].append(ModbusRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(CustomInnovanceMbRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_2_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
