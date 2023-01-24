@@ -31,15 +31,27 @@ class Post(IoObject, ModbusDataObject):
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
+        self.version = 1 if self.name in ('post_2', 'post_4', 'post_6') else 2
         self.func_frequencies = {
-            FuncNames.FOAM: 2,
-            FuncNames.WAX: 2,
-            FuncNames.SHAMPOO: 2,
+            FuncNames.FOAM: 0,
+            FuncNames.WAX: 0,
+            FuncNames.SHAMPOO: 0,
             FuncNames.COLD_WATER: 1,
             FuncNames.HOT_WATER: 1,
             FuncNames.OSMOSIS: 3,
-            FuncNames.INTENSIVE: 2
+            FuncNames.INTENSIVE: 0
         }
+        if self.version == 1:
+            self.func_frequencies = {
+                FuncNames.FOAM: 2,
+                FuncNames.WAX: 2,
+                FuncNames.SHAMPOO: 2,
+                FuncNames.COLD_WATER: 1,
+                FuncNames.HOT_WATER: 1,
+                FuncNames.OSMOSIS: 3,
+                FuncNames.INTENSIVE: 2
+            }
+
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
         self.hi_press_valve_off_timeout = 2.0
@@ -58,23 +70,28 @@ class Post(IoObject, ModbusDataObject):
         config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
                   'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
-            FuncNames.FOAM: [self.valve_foam, self.valve_out_foam],
-            FuncNames.WAX: [self.valve_wax, self.valve_out_foam],
-            FuncNames.SHAMPOO: [self.valve_shampoo, self.valve_out_foam],
-            FuncNames.COLD_WATER: [self.valve_cold_water, self.valve_osmos],
-            FuncNames.HOT_WATER: [self.valve_hot_water, self.valve_cold_water, self.valve_osmos, self.valve_out_foam],
+            FuncNames.FOAM: [self.valve_foam],
+            FuncNames.WAX: [self.valve_wax],
+            FuncNames.SHAMPOO: [self.valve_shampoo],
+            FuncNames.COLD_WATER: [self.valve_cold_water],
+            FuncNames.HOT_WATER: [self.valve_hot_water],
             FuncNames.OSMOSIS: [self.valve_osmos],
-            FuncNames.INTENSIVE: [self.valve_intensive, self.valve_out_foam]
+            FuncNames.INTENSIVE: [self.valve_intensive]
         }
+        if self.version == 1:
+            valves = {
+                FuncNames.FOAM: [self.valve_foam, self.valve_out_foam],
+                FuncNames.WAX: [self.valve_wax, self.valve_out_foam],
+                FuncNames.SHAMPOO: [self.valve_shampoo, self.valve_out_foam],
+                FuncNames.COLD_WATER: [self.valve_cold_water, self.valve_osmos],
+                FuncNames.HOT_WATER: [self.valve_hot_water, self.valve_cold_water, self.valve_osmos, self.valve_out_foam],
+                FuncNames.OSMOSIS: [self.valve_osmos],
+                FuncNames.INTENSIVE: [self.valve_intensive, self.valve_out_foam]
+            }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
-                # if func_name not in (FuncNames.INTENSIVE, FuncNames.FOAM):
-                #     step.pump_link = [self.valve_cold_water]
                 step.set_config(config)
-
-        # self.pump.reset()
-        # self.pump.reset()
 
     def process(self):
         for func_name, step in self.func_steps.items():
@@ -109,19 +126,6 @@ class Post(IoObject, ModbusDataObject):
         else:
             self.pump.stop()
             self.pump.set_speed(0)
-        # no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
-        #                                    timeout=self.pressure_timeout)
-        # if not self.alarm:
-        #     if self.pump.is_alarm_state():
-        #         self.set_alarm()
-        #         self.logger.info('Set alarm because pump alarm')
-        #     if no_pressure:
-        #         self.set_alarm()
-        #         self.logger.info(f'Set alarm because no pressure ({self.ai_pressure.val})')
-        # Alarm auto reset by timeout
-        # if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
-        #     self.logger.debug('Alarm reset by time')
-        #     self.reset_alarm()
 
     def set_function(self, func_name):
         if not self.alarm and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
