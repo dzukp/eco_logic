@@ -31,7 +31,6 @@ class Post(IoObject, ModbusDataObject):
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
-        self.version = 1 if self.name in ('post_2', 'post_4', 'post_6') else 2
         self.func_frequencies = {
             FuncNames.FOAM: 0,
             FuncNames.WAX: 2,
@@ -41,16 +40,6 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.OSMOSIS: 3,
             FuncNames.INTENSIVE: 0
         }
-        if self.version == 1:
-            self.func_frequencies = {
-                FuncNames.FOAM: 2,
-                FuncNames.WAX: 2,
-                FuncNames.SHAMPOO: 2,
-                FuncNames.COLD_WATER: 1,
-                FuncNames.HOT_WATER: 1,
-                FuncNames.OSMOSIS: 3,
-                FuncNames.INTENSIVE: 2
-            }
 
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
@@ -78,16 +67,6 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.OSMOSIS: [self.valve_osmos],
             FuncNames.INTENSIVE: [self.valve_intensive]
         }
-        if self.version == 1:
-            valves = {
-                FuncNames.FOAM: [self.valve_foam, self.valve_out_foam],
-                FuncNames.WAX: [self.valve_wax, self.valve_out_foam],
-                FuncNames.SHAMPOO: [self.valve_shampoo, self.valve_out_foam],
-                FuncNames.COLD_WATER: [self.valve_cold_water, self.valve_osmos],
-                FuncNames.HOT_WATER: [self.valve_hot_water, self.valve_cold_water, self.valve_osmos, self.valve_out_foam],
-                FuncNames.OSMOSIS: [self.valve_osmos],
-                FuncNames.INTENSIVE: [self.valve_intensive, self.valve_out_foam]
-            }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
@@ -146,7 +125,7 @@ class Post(IoObject, ModbusDataObject):
         self.logger.info('Reset alarm')
 
     def set_func_pump_frequency(self, func_name, task):
-        if func_name in self.func_frequencies and self.version == 2:
+        if func_name in self.func_frequencies:
             if self.func_frequencies[func_name] != round(task):
                 self.func_frequencies[func_name] = round(task)
                 self.logger.info(f'Set pump frequency for function `{func_name}` = {task}')
