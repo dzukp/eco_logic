@@ -15,7 +15,7 @@ from func_names import FuncNames
 class PostOne(Post):
 
     _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure')
+                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure', 'flow_indicator')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -56,6 +56,7 @@ class PostOne(Post):
         self.min_pressure = 10.0
         self.no_flow_frequency = 10.0
         self.no_flow_pressure = 150.0
+        self.flow_indicator = -1000
         self.begin_phase_timeout = 2.0
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()

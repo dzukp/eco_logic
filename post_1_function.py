@@ -71,7 +71,6 @@ class MultiValvePumpSteps(MultiValveSteps):
         super(MultiValvePumpSteps, self).__init__(*args, **kwargs)
         self.need_max_power = True
         self.no_flow_press = 0
-        self.flow_indicator = -1000.0
 
     def step_open_valve(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
@@ -100,9 +99,9 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.pump = 0
         if res:
             return res
-        if self.owner.ai_pressure.rate() < self.flow_indicator:
+        if self.owner.ai_pressure.rate() < self.owner.flow_indicator:
             self.logger.info(
-                f'self.owner.ai_pressure.rate() ({self.owner.ai_pressure.rate()} < {self.flow_indicator}) < {self.flow_indicator}')
+                f'self.owner.ai_pressure.rate() ({self.owner.ai_pressure.rate()} < {self.owner.flow_indicator})')
             self.ton.reset()
             return self.full_work
         if self.owner.ai_pressure.val < 30:
