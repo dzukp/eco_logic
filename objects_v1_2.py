@@ -285,10 +285,6 @@ def get_object(post_quantity=10):
                 'class': Valve,
                 'do_open': None
             },
-            'valve_extra': {
-                'class': Valve,
-                'do_open': None
-            },
             'pump': {
                 'class': Altivar212,
                 'ao_command': None,
@@ -306,6 +302,11 @@ def get_object(post_quantity=10):
     posts = dict([(f'post_{n}', copy.deepcopy(post)) for n in range(1, post_quantity + 1)])
     objects['top']['children'].update(posts)
     objects['top']['children']['post_1']['class'] = PostOne
+    objects['top']['children']['post_2']['class'] = PostOne
+    objects['top']['children']['post_3']['class'] = PostOne
+    objects['top']['children']['post_4']['class'] = PostOne
+    objects['top']['children']['post_5']['class'] = PostOne
+    objects['top']['children']['post_6']['class'] = PostOne
 
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):
@@ -370,7 +371,5 @@ def get_object(post_quantity=10):
         obj['children']['pump']['ai_status'] = f'fc_{post_number}_ai_1'
         obj['children']['pump']['ai_frequency'] = f'fc_{post_number}_ai_2'
         obj['children']['pump']['ai_alarm_code'] = None
-
-    objects['top']['children']['post_1']['children']['valve_extra']['do_open'] = 'do_1_1'
 
     return objects

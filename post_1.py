@@ -34,7 +34,6 @@ class PostOne(Post):
         self.valve_out_water = None
         self.valve_out_foam = None
         self.valve_solution_2 = None
-        self.valve_extra = None
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs()) 
@@ -69,16 +68,15 @@ class PostOne(Post):
         self.all_valves = set()
 
     def init(self):
-        config = {'pump_on_timeout': self.pump_on_timeout, 'valve_off_timeout': self.valve_off_timeout,
-                  'hi_press_valve_off_timeout': self.hi_press_valve_off_timeout}
         valves = {
-            FuncNames.FOAM: [self.valve_foam, self.valve_extra],
+            FuncNames.FOAM: [self.valve_foam, self.valve_solution_2],
             FuncNames.SHAMPOO: [self.valve_shampoo],
             FuncNames.WAX: [self.valve_wax],
             FuncNames.HOT_WATER: [self.valve_hot_water],
             FuncNames.COLD_WATER: [self.valve_cold_water],
             FuncNames.OSMOSIS: [self.valve_osmos],
-            FuncNames.SOLUTION_2: [self.valve_solution_2]
+            FuncNames.SOLUTION_2: [],
+            FuncNames.INTENSIVE: [self.valve_intensive]
         }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
