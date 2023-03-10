@@ -209,12 +209,12 @@ def get_object(post_quantity=10):
                 'valve_dose_water_shampoo': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_20',
-                    'mb_cells_idx': 512 if i == 1 else None
+                    'mb_cells_idx': 600 if i == 1 else None
                 },
                 'valve_dose_hot_water_shampoo': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_21',
-                    'mb_cells_idx': 514 if i == 1 else None
+                    'mb_cells_idx': 602 if i == 1 else None
                 },
                 'valve_dose_intensive': {
                     'class': Valve,
@@ -224,7 +224,7 @@ def get_object(post_quantity=10):
                 'valve_dose_water_intensive': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_15',
-                    'mb_cells_idx': 516 if i == 1 else None
+                    'mb_cells_idx': 604 if i == 1 else None
                 },
                 'valve_dose_osmos_intensive': {
                     'class': Valve,

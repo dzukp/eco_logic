@@ -179,6 +179,24 @@ class Post(IoObject, ModbusDataObject):
             self.logger.info(f'Set hi pressure value off timeout {timeout}s')
             self.save()
 
+    def set_begin_phase_timeout(self, timeout):
+        if self.begin_phase_timeout != timeout:
+            self.begin_phase_timeout = timeout
+            self.logger.info(f'Set begin phase timeout {timeout}s')
+            self.save()
+
+    def set_no_flow_pressure(self, value):
+        if self.no_flow_pressure != float(value):
+            self.no_flow_pressure = float(value)
+            self.logger.info(f'Set no_flow_pressure {value}')
+            self.save()
+
+    def set_flow_indicator(self, value):
+        if self.flow_indicator != value:
+            self.flow_indicator = value
+            self.logger.info(f'Set flow_indicator {value}')
+            self.save()
+
     def is_func_allowed(self, func_name):
         return func_name not in self.disabled_funcs
 
