@@ -6,7 +6,6 @@ from engine import Engine
 from fc import Altivar212
 from tank import Tank
 from post import Post
-from post_1 import PostOne
 from waterpreparing import WaterPreparing
 from nofrost import Nofrost
 from subsystems import PidEngine
@@ -301,12 +300,6 @@ def get_object(post_quantity=10):
 
     posts = dict([(f'post_{n}', copy.deepcopy(post)) for n in range(1, post_quantity + 1)])
     objects['top']['children'].update(posts)
-    objects['top']['children']['post_1']['class'] = PostOne
-    objects['top']['children']['post_2']['class'] = PostOne
-    objects['top']['children']['post_3']['class'] = PostOne
-    objects['top']['children']['post_4']['class'] = PostOne
-    objects['top']['children']['post_5']['class'] = PostOne
-    objects['top']['children']['post_6']['class'] = PostOne
 
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):
