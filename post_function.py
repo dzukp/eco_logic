@@ -90,9 +90,6 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.pump = 1
         if res:
             return res
-        # if self.owner.di_flow.val:
-        #     self.ton.reset()
-        #     return self.full_work
         if self.owner.ai_pressure.val > 50:
             return self.wait_flow
         if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < 50.0:
@@ -111,7 +108,10 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.logger.info(
                 f'self.owner.ai_pressure.rate() ({self.owner.ai_pressure.rate()} < {self.owner.flow_indicator})')
             self.ton.reset()
-            return self.full_work
+            if self.need_max_power:
+                return self.full_work
+            else:
+                return self.full_work_2
         if self.owner.ai_pressure.val < 30:
             self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < 30')
             return self.wait_press
