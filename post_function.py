@@ -122,13 +122,13 @@ class MultiValvePumpSteps(MultiValveSteps):
         if res:
             return res
         if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout):
-            self.need_max_power = False
             self.ton.reset()
             return self.full_work_2
 
     def full_work_2(self):
         res = super(MultiValvePumpSteps, self).step_open_valve()
         self.pump = 2
+        self.need_max_power = False
         if res:
             return res
         if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > self.owner.no_flow_pressure:
