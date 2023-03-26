@@ -123,9 +123,9 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         com_port2_name = 'fc2_serial'
         com_port3_name = 'fc3_serial'
     else:
-        com_port1_name = 'COM3'
+        com_port1_name = 'COM4'
         com_port2_name = 'COM5'
-        com_port3_name = 'COM4'
+        com_port3_name = 'COM6'
 
     ports = {1: SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
              2: SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
