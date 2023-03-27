@@ -245,7 +245,7 @@ def get_object(post_quantity=(6, 6)):
                 'do_open': None
             },
             'pump': {
-                'class': Altivar212,
+                'class': InovanceMd310,
                 'ao_command': 'fc_1_1_ao_1',
                 'ao_frequency': 'fc_1_1_ao_2',
                 'ai_status': 'fc_1_1_ai_1',

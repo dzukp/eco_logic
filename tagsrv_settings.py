@@ -19,12 +19,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     di_names = ('di_1_', 'di_2_')
     dio_names = ('dio_1_1_', 'dio_2_1_', 'dio_3_')
     dio_names2 = tuple([f'dio_p_{i}_' for i in range(1, sum(post_quantity) + 1)] + ['dio_4_'])
-    fc_names = tuple([
+    fc_innovance_names = tuple([
         f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + [
         f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
-        f'fc_os_']
+        'fc_hoover_1_', 'fc_hoover_2_']
     )
-    fc_innovance_names = ('fc_hoover_1_', 'fc_hoover_2_')
+    fc_names = (f'fc_os_',)
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -123,9 +123,9 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         com_port2_name = 'fc2_serial'
         com_port3_name = 'fc3_serial'
     else:
-        com_port1_name = 'COM4'
-        com_port2_name = 'COM5'
-        com_port3_name = 'COM6'
+        com_port1_name = 'COM5'
+        com_port2_name = 'COM3'
+        com_port3_name = None
 
     ports = {1: SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
              2: SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
@@ -148,12 +148,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                      out_tags=[tag for name, tag in tags['out'].items() if
                                                name.startswith(f'fc_os_ao_')]))
 
-    fc_modules[3].append(ModbusRTUModule(40, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(ModbusRTUModule(40, ports[2], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_1_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_1_ao_')]))
-    fc_modules[3].append(CustomInnovanceMbRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(ModbusRTUModule(41, ports[2], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_2_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
