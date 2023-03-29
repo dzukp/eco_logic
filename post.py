@@ -80,7 +80,6 @@ class Post(IoObject, ModbusDataObject):
                 step.set_config(config)
 
         self.pump.reset()
-        self.pump.reset()
 
     def process(self):
         for func_name, step in self.func_steps.items():

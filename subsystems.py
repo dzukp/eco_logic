@@ -266,6 +266,9 @@ class PidEngine(IoObject, ModbusDataObject):
         self.min_freq_timer = Timer()
         self.mb_cells_idx = None
 
+    def init(self):
+        self.fc.reset()
+
     def start(self):
         if not self.started:
             self.started = True

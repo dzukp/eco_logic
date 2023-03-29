@@ -46,13 +46,13 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
 
     if version == '1.2':
         for pref in ('dio_1_',):
-            tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 13)]))
+            tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 7)]))
             tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 5)]))
 
     if version in ('1.0', '1.2'):
         # generate di_1_1 - do_1_20
         for pref in ('di_1_',):
-            tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
+            tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 7)]))
     else:
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
@@ -71,7 +71,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
     if version in ('1.0', '1.2'):
-        di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
+        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
                            ip='192.168.200.16', timeout=0.03)
     else:
         di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],

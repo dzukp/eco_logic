@@ -10067,7 +10067,7 @@
                     <ListenersList/>
                 </StandartProperies>
                 <Color g="255" r="255" a="255" b="255"/>
-                <Properties StarFactor="-1.054089769071005e-309" BezierRadius="0" Brush="0" ShapeType="Free editable" VertexCount="4" FirstPointAngle="0" PenWidth="1">
+                <Properties StarFactor="-1.054089769071004e-309" BezierRadius="0" Brush="0" ShapeType="Free editable" VertexCount="4" FirstPointAngle="0" PenWidth="1">
                     <PenColor g="0" r="0" a="255" b="0"/>
                 </Properties>
                 <Points>
