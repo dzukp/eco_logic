@@ -44,6 +44,8 @@ class TopSimulator(IoObject):
         self.b1.reset_speed()
         if self.di_valve_b1.val:
             self.b1.add_speed(2.0)
+        if self.di_n1.val:
+            self.b1.add_speed(-1.0)
 
         n = int(self.di_n1_2.val) + int(self.di_n1.val)
         if n:
@@ -52,8 +54,6 @@ class TopSimulator(IoObject):
             self.ao_p1.val = max(0.0, self.ao_p1.val - 0.027) + random.random() * 0.01
         self.ao_p2.val = max(0.0, self.ao_p1.val - 0.3 + get_about_0_rand(0.3))
         self.do_press1.val = self.ao_p1.val > 0.5
-        if self.di_n1_2.val:
-            self.b1.add_speed(-1.0)
         # B1.1
         self.b1_1.reset_speed()
         if self.di_n3.val:
