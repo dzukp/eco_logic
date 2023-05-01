@@ -23,7 +23,7 @@ def get_object(version='1.0', post_quantity=8):
 def get_simulator_object(version='1.0', post_quantity=8):
     if version == '1.0':
         return get_simulator_objects_v1_0(post_quantity)
-    elif version == '1.1':
+    elif version in ('1.1', '1.2'):
         return get_simulator_objects_v1_1(post_quantity)
 
 

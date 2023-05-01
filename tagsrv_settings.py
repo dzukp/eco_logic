@@ -115,7 +115,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                                     name.startswith(f'fc{i}_ao_')]))
 
     if version in ('1.1', '1.2'):
-        source = sources['port_2'] if com_port2_name else sources['port_1']
+        source = sources.get('port_2', sources['port_1'])
         mb_os = ModbusRTUModule(
             30, source, io_tags=[], max_answ_len=5,
             in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')],
