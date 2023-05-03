@@ -31,6 +31,7 @@ class Post(IoObject, ModbusDataObject):
         self.valve_intensive = None
         self.valve_out_water = None
         self.valve_out_foam = None
+        self.valve_hoover = None
         self.pump = None
         self.current_func = FuncNames.STOP
         self.func_number = len(FuncNames.all_funcs())
@@ -45,7 +46,7 @@ class Post(IoObject, ModbusDataObject):
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
         self.hi_press_valve_off_timeout = 2.0
-        self.pressure_timeout = 3.0
+        self.pressure_timeout = 5.0
         self.pressure_timer = Ton()
         self.min_pressure = 10.0
         self.alarm_reset_timeout = 10.0
@@ -53,8 +54,9 @@ class Post(IoObject, ModbusDataObject):
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, SimplePostFunctionSteps(f'{name}_steps'))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
+                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP,)])
         self.func_steps[FuncNames.INTENSIVE] = PostIntensiveSteps('intensive_steps')
+        self.func_steps[FuncNames.HOOVER] = PostIntensiveSteps('hoover_steps')
         self.disabled_funcs = []
 
     def init(self):
@@ -67,14 +69,14 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: self.valve_hot_water,
             FuncNames.COLD_WATER: self.valve_cold_water,
             FuncNames.OSMOSIS: self.valve_osmos,
-            FuncNames.INTENSIVE: self.valve_intensive
+            FuncNames.INTENSIVE: self.valve_intensive,
+            FuncNames.HOOVER: self.valve_hoover,
         }
         for func_name, step in self.func_steps.items():
             step.valve = valves[func_name]
-            if func_name != FuncNames.INTENSIVE:
+            if func_name not in (FuncNames.INTENSIVE, FuncNames.HOOVER):
                 step.set_config(config)
 
-        self.pump.reset()
         self.pump.reset()
 
     def process(self):

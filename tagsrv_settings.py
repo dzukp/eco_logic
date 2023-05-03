@@ -25,10 +25,6 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     else:
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
-    fc_names = [f'fc{i}_' for i in range(1, post_quantity + 1)]
-
-    if version in ('1.1', '1.2'):
-        fc_names.append('fc_os_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -46,10 +42,23 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
-    # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
-    for pref in fc_names:
+    for pref in ['fc_os']:
         tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+
+    fc_names = [f'fc{i}_' for i in range(1, post_quantity + 1)]
+    fc_names.extend(['fc_hoover_1_'])
+    for pref in fc_names:
+        tags['in'].update({
+            f'{pref}ai_1': InTag(0x3000),
+            f'{pref}ai_2': InTag(0x1001),
+            f'{pref}ai_3': InTag(0x8000),
+
+        })
+        tags['out'].update({
+            f'{pref}ao_1': OutTag(0x2000),
+            f'{pref}ao_2': OutTag(0x1000)
+        })
 
     ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.20',
                        timeout=0.03)
@@ -81,8 +90,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         if not os.path.exists(com_port2_name):
             com_port2_name = None
     else:
-        com_port1_name = 'COM3'
-        com_port2_name = 'COM4'
+        com_port1_name = 'COM4'
+        com_port2_name = 'COM3'
 
     sources = {
         'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
@@ -114,17 +123,24 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc{i}_ao_')]))
 
-    if version in ('1.1', '1.2'):
-        source = sources.get('port_2', sources['port_1'])
-        mb_os = ModbusRTUModule(
-            30, source, io_tags=[], max_answ_len=5,
-            in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')],
-            out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
-        )
-        if com_port2_name:
-            fc_modules_2.append(mb_os)
-        else:
-            fc_modules_1.append(mb_os)
+
+    source = sources.get('port_2', sources['port_1'])
+    mb_os = ModbusRTUModule(
+        30, source, io_tags=[], max_answ_len=5,
+        in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')],
+        out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
+    )
+    if com_port2_name:
+        fc_modules_2.append(mb_os)
+    else:
+        fc_modules_1.append(mb_os)
+
+    mb_hoover = ModbusRTUModule(
+        40, sources['port_1'], io_tags=[], max_answ_len=5,
+        in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_hoover_1_ai_')],
+        out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc_hoover_1_ao_')]
+    )
+    fc_modules_1.append(mb_hoover)
 
     if post_quantity in (5, 6):
         modules = [do_1, do_2, do_3, di_1, ai_1, ai_2]

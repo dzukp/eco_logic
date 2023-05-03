@@ -1,7 +1,8 @@
+from hoover import Hoover
 from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
+from fc import Altivar212, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -40,7 +41,7 @@ def get_object(post_quantity=8):
                         },
                         'pump_n1_3': {
                             'class': Engine,
-                            'do_start': 'do_2_21',
+                            'do_start': None,
                             'mb_cells_idx': 493,
                         },
                         'pump_n2': {
@@ -55,7 +56,7 @@ def get_object(post_quantity=8):
                         },
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': 'do_2_22',
+                            'do_start': None,
                             'mb_cells_idx': 34
                         },
                         'pump_os2': {
@@ -189,8 +190,12 @@ def get_object(post_quantity=8):
                             'class': Valve,
                             'do_open': 'do_1_9'
                         },
+                        'valve_hoover': {
+                            'class': Valve,
+                            'do_open': 'do_2_21'
+                        },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc1_ao_1',
                             'ao_frequency': 'fc1_ao_2',
                             'ai_status': 'fc1_ai_1',
@@ -241,8 +246,12 @@ def get_object(post_quantity=8):
                             'class': Valve,
                             'do_open': 'do_1_18'
                         },
+                        'valve_hoover': {
+                            'class': Valve,
+                            'do_open': 'do_2_22'
+                        },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc2_ao_1',
                             'ao_frequency': 'fc2_ao_2',
                             'ai_status': 'fc2_ai_1',
@@ -293,8 +302,12 @@ def get_object(post_quantity=8):
                             'class': Valve,
                             'do_open': 'do_2_9'
                         },
+                        'valve_hoover': {
+                            'class': Valve,
+                            'do_open': 'do_2_23'
+                        },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc3_ao_1',
                             'ao_frequency': 'fc3_ao_2',
                             'ai_status': 'fc3_ai_1',
@@ -345,8 +358,12 @@ def get_object(post_quantity=8):
                             'class': Valve,
                             'do_open': 'do_2_18'
                         },
+                        'valve_hoover': {
+                            'class': Valve,
+                            'do_open': 'do_2_24'
+                        },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc4_ao_1',
                             'ao_frequency': 'fc4_ao_2',
                             'ai_status': 'fc4_ai_1',
@@ -404,7 +421,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_3_9'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc5_ao_1',
                         'ao_frequency': 'fc5_ao_2',
                         'ai_status': 'fc5_ai_1',
@@ -460,7 +477,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_3_18'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc6_ao_1',
                         'ao_frequency': 'fc6_ao_2',
                         'ai_status': 'fc6_ai_1',
@@ -517,7 +534,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_4_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc7_ao_1',
                             'ao_frequency': 'fc7_ao_2',
                             'ai_status': 'fc7_ai_1',
@@ -575,7 +592,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_4_18'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc8_ao_1',
                         'ao_frequency': 'fc8_ao_2',
                         'ai_status': 'fc8_ai_1',
@@ -633,7 +650,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_5_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': 'fc9_ao_1',
                             'ao_frequency': 'fc9_ao_2',
                             'ai_status': 'fc9_ai_1',
@@ -691,7 +708,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_5_18'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc10_ao_1',
                         'ao_frequency': 'fc10_ao_2',
                         'ai_status': 'fc10_ai_1',
@@ -703,6 +720,40 @@ def get_object(post_quantity=8):
             }
         })
         # objects['top']['children']['supplier']['ai_pe_1'] = 'ai_2_3'
+
+    hoover = {
+        'class': Hoover,
+        'ai_press_1': 'ai_1_5',
+        'ai_press_2': 'ai_1_6',
+        'mb_cells_idx': 627,
+        'children': {
+            'flap': {
+                'class': Valve,
+                'do_open': 'do_2_20',
+                'mb_cells_idx': 625
+            },
+            'fc_1': {
+                'class': InovanceMd310,
+                'ao_command': 'fc_hoover_1_ao_1',
+                'ao_frequency': 'fc_hoover_1_ao_2',
+                'ai_status': 'fc_hoover_1_ai_1',
+                'ai_frequency': 'fc_hoover_1_ai_2',
+                'ai_alarm_code': 'fc_hoover_1_ai_3',
+                'mb_cells_idx': 605
+            },
+            'fc_2': {
+                'class': InovanceMd310,
+                'ao_command': 'fc_hoover_2_ao_1',
+                'ao_frequency': 'fc_hoover_2_ao_2',
+                'ai_status': 'fc_hoover_2_ai_1',
+                'ai_frequency': 'fc_hoover_2_ai_2',
+                'ai_alarm_code': 'fc_hoover_2_ai_3',
+                'mb_cells_idx': 615
+            }
+        }
+    }
+
+    objects['top']['children']['hoover'] = hoover
 
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):
@@ -716,7 +767,8 @@ def get_object(post_quantity=8):
         obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
-        obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+        # obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+        obj['children']['valve_hoover']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
