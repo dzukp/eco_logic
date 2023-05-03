@@ -739,7 +739,7 @@ def get_object(post_quantity=8):
                 'ai_status': 'fc_hoover_1_ai_1',
                 'ai_frequency': 'fc_hoover_1_ai_2',
                 'ai_alarm_code': 'fc_hoover_1_ai_3',
-                'mb_cells_idx': 605
+                'mb_cells_idx': 604
             },
             'fc_2': {
                 'class': InovanceMd310,
@@ -748,7 +748,7 @@ def get_object(post_quantity=8):
                 'ai_status': 'fc_hoover_2_ai_1',
                 'ai_frequency': 'fc_hoover_2_ai_2',
                 'ai_alarm_code': 'fc_hoover_2_ai_3',
-                'mb_cells_idx': 615
+                'mb_cells_idx': 613
             }
         }
     }
