@@ -42,7 +42,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
-    for pref in ['fc_os']:
+    for pref in ['fc_os_']:
         tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
 
@@ -130,7 +130,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         in_tags=[tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')],
         out_tags=[tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
     )
-    if com_port2_name:
+    if fc_modules_2:
         fc_modules_2.append(mb_os)
     else:
         fc_modules_1.append(mb_os)
