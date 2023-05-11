@@ -20,7 +20,7 @@ def get_object(post_quantity=8):
                 'supplier': {
                     'class': WaterPreparing,
                     'di_press_1': None,
-                    'ai_pe_1': 'ai_2_5' if post_quantity > 6 else 'ai_1_6',
+                    'ai_pe_1': 'ai_2_5' if post_quantity > 6 else 'ai_1_8',
                     'di_press_2': 'di_1_10',
                     'ai_pe_2': 'ai_2_6',
                     'di_press_3': None,
