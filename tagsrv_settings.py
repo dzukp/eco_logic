@@ -94,7 +94,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com_port2_name = 'COM3'
 
     sources = {
-        'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+        'port_1': SerialSource(port=com_port1_name, baudrate=9600, bytesize=8, parity='N', stopbits=1, timeout=0.1)
     }
 
     if post_quantity > 4 and com_port2_name:

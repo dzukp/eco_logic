@@ -2,12 +2,24 @@ logging_config = {
     'version': 1,
     'loggers': {
         'TagSrv': {
-            'handlers':['tagsrv_file', 'tagsrv_console'],
+            'handlers': ['tagsrv_file', 'tagsrv_console'],
             'propagate': False,
             'level': 'DEBUG',
         },
         'TagSrv.serial_port_COM3': {
-            'handlers':['comport_file', 'tagsrv_console'],
+            'handlers': ['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
+
+        },
+        'TagSrv.serial_port_COM4': {
+            'handlers': ['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
+
+        },
+        'TagSrv.serial_port_COM5': {
+            'handlers': ['comport_file', 'tagsrv_console'],
             'propagate': False,
             'level': 'DEBUG',
 
