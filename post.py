@@ -177,6 +177,9 @@ class Post(IoObject, ModbusDataObject):
     def is_func_allowed(self, func_name):
         return func_name not in self.disabled_funcs
 
+    def is_need_hoover(self):
+        return self.current_func == FuncNames.HOOVER
+
     def mb_cells(self):
         return self.mb_output(0).keys()
 

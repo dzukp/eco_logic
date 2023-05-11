@@ -106,24 +106,6 @@ def get_object(post_quantity=8):
                         }
                     }
                 },
-                'nofrost': {
-                    'class': Nofrost,
-                    'ai_temp_1': '',
-                    'ai_temp_2': '',
-                    'mb_cells_idx': None,
-                    'children': {
-                        'valve_nc': {
-                            'class': Valve,
-                            'do_open': 'do_4_13',
-                            'mb_cells_idx': None
-                        },
-                        'valve_no': {
-                            'class': NOValve,
-                            'do_close': 'do_4_14',
-                            'mb_cells_idx': None
-                        },
-                    }
-                },
                 'post_8': {
                     'class': Post,
                     'ai_pressure': 'ai_1_1',

@@ -13,7 +13,7 @@ class Top(IoObject, ModbusDataObject):
     def __init__(self, *args):
         super().__init__(*args)
         self.supplier = None
-        self.nofrost = None
+        self.hoover = None
         self.posts = {}
         self.post_function = {}
         self.new_function = {}
@@ -94,6 +94,19 @@ class Top(IoObject, ModbusDataObject):
                 self.logger.debug(f'It not ready for function `{FuncNames.OSMOSIS}`')
         else:
             self.supplier.stop_osmosis()
+
+        if FuncNames.HOOVER in wished_funcs:
+            hoover_cnt = sum([int(func == FuncNames.HOOVER) for func in self.post_function.values()])
+            if not self.hoover.try_hoover(hoover_cnt):
+                prepared_funcs.remove(FuncNames.HOOVER)
+                self.hoover.stop()
+                self.logger.debug(f'It not ready for function `{FuncNames.HOOVER}`')
+
+        any_hoover_valve = any([post.is_need_hoover() for post in self.posts.values()])
+        if any_hoover_valve:
+            self.hoover.start()
+        else:
+            self.hoover.stop()
 
         for post, func in self.post_function.items():
             if func in prepared_funcs:
