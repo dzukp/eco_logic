@@ -767,8 +767,8 @@ def get_object(post_quantity=8):
         obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
-        # obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
-        obj['children']['valve_hoover']['mb_cells_idx'] = start_addr + 19
+        obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
+        # obj['children']['valve_hoover']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
