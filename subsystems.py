@@ -66,7 +66,7 @@ class WaterSupplier(Subsystem):
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):
-        return self.ai_pressure.val > self.enough_pressure
+        return self.ai_pressure.val > self.enough_pressure or round(self.enough_pressure, 1) == 0.0
 
 
 class TwoPumpWaterSupplier(WaterSupplier):
