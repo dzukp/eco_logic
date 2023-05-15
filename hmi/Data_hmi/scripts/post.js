@@ -8,7 +8,7 @@ function selectPost(number) {
 	getGlobalVar('post_pressure').setBindSpeaker(getTag('main', prefix + 'pressure'))
 	getGlobalVar('post_func_number').setBindSpeaker(getTag('main', prefix + 'number'))
 
-	var mechs = ['foam', 'wax', 'shampoo', 'cold_water', 'hot_water', 'osmos', 'out_water', 'out_foam', 'intensive']
+	var mechs = ['foam', 'wax', 'shampoo', 'cold_water', 'hot_water', 'osmos', 'out_water', 'out_foam', 'intensive', 'hoover']
 	for (var i = 0; i < mechs.length; i++ ) {
 		var s = mechs[i]
 

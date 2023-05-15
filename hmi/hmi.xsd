@@ -9393,6 +9393,259 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
                 <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
             </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_286" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="620" rect.bottom="643" rect.left="1268" rect.right="1370"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Text" format=" Пылесос: %X"/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_287" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="718" rect.bottom="747" rect.left="1284" rect.right="1316"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="4"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Global variable">
+                                            <Tag Type="Global Variable" TagName="GlobalVariable\post_v_hoover_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="Откр"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoShape" Name="Ellipse_288" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="1"/>
+                <Geometry rect.top="653" rect.bottom="676" rect.left="1289" rect.right="1312"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Color g="255" r="255" a="255" b="255"/>
+                <Properties StarFactor="5.432392115331682e-312" BezierRadius="0" Brush="0" ShapeType="Ellipse" VertexCount="0" FirstPointAngle="0" PenWidth="1">
+                    <PenColor g="255" r="255" a="255" b="255"/>
+                </Properties>
+                <States>
+                    <State g="128" r="128" a="255" b="128"/>
+                    <State g="128" r="0" a="255" b="0"/>
+                </States>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_289" ToolTip="" MnemoLayer="general">
+                <Conversion Type="1" Bit="0"/>
+                <Geometry rect.top="653" rect.bottom="676" rect.left="1320" rect.right="1347"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList>
+                        <Event Name="ShowOn">
+                            <Expanded Value="1"/>
+                            <Action Name="Condition">
+                                <Expanded Value="1"/>
+                                <Property Name="Condition">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Controller tag">
+                                            <Tag Type="Source Tag" TagName="main\p1_pump_status"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="0"/>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </ActionList>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="М" format="М: %X"/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="132"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_290" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="686" rect.bottom="715" rect.left="1284" rect.right="1316"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="1"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Global variable">
+                                            <Tag Type="Global Variable" TagName="GlobalVariable\post_v_hoover_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="РУЧ"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_291" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="686" rect.bottom="715" rect.left="1320" rect.right="1352"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="2"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Global variable">
+                                            <Tag Type="Global Variable" TagName="GlobalVariable\post_v_hoover_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="АВТ"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoButton" Name="Button_292" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="718" rect.bottom="747" rect.left="1320" rect.right="1352"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnMousePress">
+                            <Expanded Value="1"/>
+                            <Confirm>
+                                <Action Name="Confirm">
+                                    <Expanded Value="0"/>
+                                    <Property Name="Confirm">
+                                        <Data Value="false"/>
+                                    </Property>
+                                    <Property Name="Title">
+                                        <Data Value="STA-SCADA"/>
+                                    </Property>
+                                    <Property Name="Message">
+                                        <Data Value="Perform a task ?"/>
+                                    </Property>
+                                </Action>
+                            </Confirm>
+                            <Action Name="Set value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Value">
+                                    <Data Value="8"/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Global variable">
+                                            <Tag Type="Global Variable" TagName="GlobalVariable\post_v_hoover_cmd"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <Text string="Закр"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <IconSizeElem IconHeight="16" IconWidth="16" AutoIconResize="0"/>
+            </MnemoObject>
         </MnemoScreen>
         <MnemoScreen FullName="Settings">
             <Properties>
@@ -11980,1122 +12233,1502 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_cmd" Units="....." Location="61" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_status" Units="....." Location="62" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_number" Units="....." Location="63" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_func_number"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pressure" Units="....." Location="64" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pressure"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_cmd" Units="....." Location="66" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_foam_status" Units="....." Location="67" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_foam_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_cmd" Units="....." Location="68" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_wax_status" Units="....." Location="69" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_wax_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_cmd" Units="....." Location="70" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_shampoo_status" Units="....." Location="71" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_shampoo_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_cmd" Units="....." Location="72" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_cold_water_status" Units="....." Location="73" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_cold_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_cmd" Units="....." Location="74" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hot_water_status" Units="....." Location="75" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hot_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_cmd" Units="....." Location="76" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_osmos_status" Units="....." Location="77" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_osmos_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_cmd" Units="....." Location="78" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_water_status" Units="....." Location="79" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_water_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_cmd" Units="....." Location="80" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_out_foam_status" Units="....." Location="81" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_out_foam_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_cmd" Units="....." Location="82" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_intensive_status" Units="....." Location="83" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_intensive_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_cmd" Units="....." Location="84" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_cmd"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_status" Units="....." Location="85" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_status"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_out_freq" Units="....." Location="86" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_out_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_man_freq" Units="....." Location="88" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_man_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_auto_freq" Units="....." Location="90" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_auto_freq"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_pump_alarm" Units="....." Location="92" IsReadTag="0">
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_pump_alarm"/>
+                    </ListenersList>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hoover_cmd" Units="....." Location="93" IsReadTag="0">
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hoover_cmd"/>
+                    </ListenersList>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_hoover_status" Units="....." Location="94" IsReadTag="0">
+                    <ListenersList>
+                        <Listener Path="GlobalVariable\" Type="GlobalVariable" Name="post_v_hoover_status"/>
+                    </ListenersList>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res1_cmd" Units="....." Location="95" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res1_status" Units="....." Location="96" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res2_cmd" Units="....." Location="97" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res2_status" Units="....." Location="98" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res3_cmd" Units="....." Location="99" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p1_v_res3_status" Units="....." Location="100" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_cmd" Units="....." Location="101" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_status" Units="....." Location="102" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_number" Units="....." Location="103" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pressure" Units="....." Location="104" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_foam_cmd" Units="....." Location="106" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_foam_status" Units="....." Location="107" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_wax_cmd" Units="....." Location="108" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_wax_status" Units="....." Location="109" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_shampoo_cmd" Units="....." Location="110" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_shampoo_status" Units="....." Location="111" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_cold_water_cmd" Units="....." Location="112" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_cold_water_status" Units="....." Location="113" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hot_water_cmd" Units="....." Location="114" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hot_water_status" Units="....." Location="115" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_osmos_cmd" Units="....." Location="116" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_osmos_status" Units="....." Location="117" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_water_cmd" Units="....." Location="118" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_water_status" Units="....." Location="119" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_foam_cmd" Units="....." Location="120" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_foam_status" Units="....." Location="121" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_intensive_cmd" Units="....." Location="122" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_intensive_status" Units="....." Location="123" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_cmd" Units="....." Location="124" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_status" Units="....." Location="125" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_out_freq" Units="....." Location="126" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_man_freq" Units="....." Location="128" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_auto_freq" Units="....." Location="130" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_alarm" Units="....." Location="132" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hoover_cmd" Units="....." Location="133" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hoover_status" Units="....." Location="134" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res1_cmd" Units="....." Location="135" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res1_status" Units="....." Location="136" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res2_cmd" Units="....." Location="137" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res2_status" Units="....." Location="138" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res3_cmd" Units="....." Location="139" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_res3_status" Units="....." Location="140" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_cmd" Units="....." Location="141" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_status" Units="....." Location="142" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_number" Units="....." Location="143" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pressure" Units="....." Location="144" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_foam_cmd" Units="....." Location="146" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_foam_status" Units="....." Location="147" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_wax_cmd" Units="....." Location="148" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_wax_status" Units="....." Location="149" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_shampoo_cmd" Units="....." Location="150" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_shampoo_status" Units="....." Location="151" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_cold_water_cmd" Units="....." Location="152" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_cold_water_status" Units="....." Location="153" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hot_water_cmd" Units="....." Location="154" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hot_water_status" Units="....." Location="155" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_osmos_cmd" Units="....." Location="156" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_osmos_status" Units="....." Location="157" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_water_cmd" Units="....." Location="158" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_water_status" Units="....." Location="159" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_foam_cmd" Units="....." Location="160" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_foam_status" Units="....." Location="161" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_intensive_cmd" Units="....." Location="162" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_intensive_status" Units="....." Location="163" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_cmd" Units="....." Location="164" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_status" Units="....." Location="165" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_out_freq" Units="....." Location="166" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_man_freq" Units="....." Location="168" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_auto_freq" Units="....." Location="170" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_alarm" Units="....." Location="172" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hoover_cmd" Units="....." Location="173" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hoover_status" Units="....." Location="174" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res1_cmd" Units="....." Location="175" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res1_status" Units="....." Location="176" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res2_cmd" Units="....." Location="177" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res2_status" Units="....." Location="178" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res3_cmd" Units="....." Location="179" IsReadTag="0">
+                    <ListenersList/>
+                    <FilterList/>
+                </Tag>
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_res3_status" Units="....." Location="180" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_cmd" Units="....." Location="93" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_cmd" Units="....." Location="181" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_status" Units="....." Location="94" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_status" Units="....." Location="182" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_number" Units="....." Location="95" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_number" Units="....." Location="183" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pressure" Units="....." Location="96" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pressure" Units="....." Location="184" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_foam_cmd" Units="....." Location="98" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_foam_cmd" Units="....." Location="186" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_foam_status" Units="....." Location="99" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_foam_status" Units="....." Location="187" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_wax_cmd" Units="....." Location="100" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_wax_cmd" Units="....." Location="188" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_wax_status" Units="....." Location="101" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_wax_status" Units="....." Location="189" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_shampoo_cmd" Units="....." Location="102" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_shampoo_cmd" Units="....." Location="190" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_shampoo_status" Units="....." Location="103" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_shampoo_status" Units="....." Location="191" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_cold_water_cmd" Units="....." Location="104" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_cold_water_cmd" Units="....." Location="192" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_cold_water_status" Units="....." Location="105" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_cold_water_status" Units="....." Location="193" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hot_water_cmd" Units="....." Location="106" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hot_water_cmd" Units="....." Location="194" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_hot_water_status" Units="....." Location="107" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hot_water_status" Units="....." Location="195" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_osmos_cmd" Units="....." Location="108" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_osmos_cmd" Units="....." Location="196" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_osmos_status" Units="....." Location="109" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_osmos_status" Units="....." Location="197" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_water_cmd" Units="....." Location="110" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_water_cmd" Units="....." Location="198" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_water_status" Units="....." Location="111" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_water_status" Units="....." Location="199" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_foam_cmd" Units="....." Location="112" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_foam_cmd" Units="....." Location="200" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_out_foam_status" Units="....." Location="113" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_foam_status" Units="....." Location="201" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_intensive_cmd" Units="....." Location="114" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_intensive_cmd" Units="....." Location="202" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_v_intensive_status" Units="....." Location="115" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_intensive_status" Units="....." Location="203" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_cmd" Units="....." Location="116" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_cmd" Units="....." Location="204" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_status" Units="....." Location="117" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_status" Units="....." Location="205" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_out_freq" Units="....." Location="118" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_out_freq" Units="....." Location="206" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_man_freq" Units="....." Location="120" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_man_freq" Units="....." Location="208" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_auto_freq" Units="....." Location="122" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_auto_freq" Units="....." Location="210" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p2_pump_alarm" Units="....." Location="124" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_alarm" Units="....." Location="212" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_cmd" Units="....." Location="125" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hoover_cmd" Units="....." Location="213" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_status" Units="....." Location="126" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hoover_status" Units="....." Location="214" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_number" Units="....." Location="127" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res1_cmd" Units="....." Location="215" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pressure" Units="....." Location="128" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res1_status" Units="....." Location="216" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_foam_cmd" Units="....." Location="130" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res2_cmd" Units="....." Location="217" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_foam_status" Units="....." Location="131" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res2_status" Units="....." Location="218" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_wax_cmd" Units="....." Location="132" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res3_cmd" Units="....." Location="219" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_wax_status" Units="....." Location="133" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_res3_status" Units="....." Location="220" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_shampoo_cmd" Units="....." Location="134" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_cmd" Units="....." Location="221" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_shampoo_status" Units="....." Location="135" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_status" Units="....." Location="222" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_cold_water_cmd" Units="....." Location="136" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_number" Units="....." Location="223" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_cold_water_status" Units="....." Location="137" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pressure" Units="....." Location="224" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hot_water_cmd" Units="....." Location="138" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_foam_cmd" Units="....." Location="226" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_hot_water_status" Units="....." Location="139" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_foam_status" Units="....." Location="227" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_osmos_cmd" Units="....." Location="140" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_wax_cmd" Units="....." Location="228" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_osmos_status" Units="....." Location="141" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_wax_status" Units="....." Location="229" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_water_cmd" Units="....." Location="142" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_shampoo_cmd" Units="....." Location="230" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_water_status" Units="....." Location="143" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_shampoo_status" Units="....." Location="231" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_foam_cmd" Units="....." Location="144" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_cold_water_cmd" Units="....." Location="232" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_out_foam_status" Units="....." Location="145" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_cold_water_status" Units="....." Location="233" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_intensive_cmd" Units="....." Location="146" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hot_water_cmd" Units="....." Location="234" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_v_intensive_status" Units="....." Location="147" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hot_water_status" Units="....." Location="235" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_cmd" Units="....." Location="148" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_osmos_cmd" Units="....." Location="236" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_status" Units="....." Location="149" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_osmos_status" Units="....." Location="237" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_out_freq" Units="....." Location="150" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_water_cmd" Units="....." Location="238" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_man_freq" Units="....." Location="152" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_water_status" Units="....." Location="239" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_auto_freq" Units="....." Location="154" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_foam_cmd" Units="....." Location="240" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p3_pump_alarm" Units="....." Location="156" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_foam_status" Units="....." Location="241" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_cmd" Units="....." Location="157" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_intensive_cmd" Units="....." Location="242" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_status" Units="....." Location="158" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_intensive_status" Units="....." Location="243" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_number" Units="....." Location="159" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_cmd" Units="....." Location="244" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pressure" Units="....." Location="160" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_status" Units="....." Location="245" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_foam_cmd" Units="....." Location="162" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_out_freq" Units="....." Location="246" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_foam_status" Units="....." Location="163" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_man_freq" Units="....." Location="248" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_wax_cmd" Units="....." Location="164" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_auto_freq" Units="....." Location="250" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_wax_status" Units="....." Location="165" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_alarm" Units="....." Location="252" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_shampoo_cmd" Units="....." Location="166" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hoover_cmd" Units="....." Location="253" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_shampoo_status" Units="....." Location="167" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hoover_status" Units="....." Location="254" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_cold_water_cmd" Units="....." Location="168" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res1_cmd" Units="....." Location="255" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_cold_water_status" Units="....." Location="169" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res1_status" Units="....." Location="256" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hot_water_cmd" Units="....." Location="170" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res2_cmd" Units="....." Location="257" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_hot_water_status" Units="....." Location="171" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res2_status" Units="....." Location="258" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_osmos_cmd" Units="....." Location="172" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res3_cmd" Units="....." Location="259" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_osmos_status" Units="....." Location="173" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_res3_status" Units="....." Location="260" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_water_cmd" Units="....." Location="174" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_cmd" Units="....." Location="261" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_water_status" Units="....." Location="175" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_status" Units="....." Location="262" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_foam_cmd" Units="....." Location="176" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_number" Units="....." Location="263" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_out_foam_status" Units="....." Location="177" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pressure" Units="....." Location="264" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_intensive_cmd" Units="....." Location="178" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_foam_cmd" Units="....." Location="266" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_v_intensive_status" Units="....." Location="179" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_foam_status" Units="....." Location="267" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_cmd" Units="....." Location="180" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_wax_cmd" Units="....." Location="268" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_status" Units="....." Location="181" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_wax_status" Units="....." Location="269" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_out_freq" Units="....." Location="182" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_shampoo_cmd" Units="....." Location="270" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_man_freq" Units="....." Location="184" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_shampoo_status" Units="....." Location="271" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_auto_freq" Units="....." Location="186" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_cold_water_cmd" Units="....." Location="272" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p4_pump_alarm" Units="....." Location="188" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_cold_water_status" Units="....." Location="273" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_cmd" Units="....." Location="189" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hot_water_cmd" Units="....." Location="274" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_status" Units="....." Location="190" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hot_water_status" Units="....." Location="275" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_number" Units="....." Location="191" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_osmos_cmd" Units="....." Location="276" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pressure" Units="....." Location="192" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_osmos_status" Units="....." Location="277" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_foam_cmd" Units="....." Location="194" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_water_cmd" Units="....." Location="278" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_foam_status" Units="....." Location="195" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_water_status" Units="....." Location="279" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_wax_cmd" Units="....." Location="196" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_foam_cmd" Units="....." Location="280" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_wax_status" Units="....." Location="197" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_foam_status" Units="....." Location="281" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_shampoo_cmd" Units="....." Location="198" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_intensive_cmd" Units="....." Location="282" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_shampoo_status" Units="....." Location="199" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_intensive_status" Units="....." Location="283" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_cold_water_cmd" Units="....." Location="200" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_cmd" Units="....." Location="284" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_cold_water_status" Units="....." Location="201" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_status" Units="....." Location="285" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hot_water_cmd" Units="....." Location="202" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_out_freq" Units="....." Location="286" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_hot_water_status" Units="....." Location="203" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_man_freq" Units="....." Location="288" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_osmos_cmd" Units="....." Location="204" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_auto_freq" Units="....." Location="290" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_osmos_status" Units="....." Location="205" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_alarm" Units="....." Location="292" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_water_cmd" Units="....." Location="206" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hoover_cmd" Units="....." Location="293" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_water_status" Units="....." Location="207" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hoover_status" Units="....." Location="294" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_foam_cmd" Units="....." Location="208" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res1_cmd" Units="....." Location="295" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_out_foam_status" Units="....." Location="209" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res1_status" Units="....." Location="296" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_intensive_cmd" Units="....." Location="210" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res2_cmd" Units="....." Location="297" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_v_intensive_status" Units="....." Location="211" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res2_status" Units="....." Location="298" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_cmd" Units="....." Location="212" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res3_cmd" Units="....." Location="299" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_status" Units="....." Location="213" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_res3_status" Units="....." Location="300" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_out_freq" Units="....." Location="214" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_cmd" Units="....." Location="301" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_man_freq" Units="....." Location="216" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_status" Units="....." Location="302" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_auto_freq" Units="....." Location="218" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_number" Units="....." Location="303" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p5_pump_alarm" Units="....." Location="220" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pressure" Units="....." Location="304" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_cmd" Units="....." Location="221" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_cmd" Units="....." Location="306" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_status" Units="....." Location="222" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_status" Units="....." Location="307" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_number" Units="....." Location="223" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_cmd" Units="....." Location="308" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pressure" Units="....." Location="224" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_status" Units="....." Location="309" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_foam_cmd" Units="....." Location="226" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_cmd" Units="....." Location="310" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_foam_status" Units="....." Location="227" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_status" Units="....." Location="311" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_wax_cmd" Units="....." Location="228" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_cmd" Units="....." Location="312" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_wax_status" Units="....." Location="229" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_status" Units="....." Location="313" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_shampoo_cmd" Units="....." Location="230" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_cmd" Units="....." Location="314" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_shampoo_status" Units="....." Location="231" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_status" Units="....." Location="315" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_cold_water_cmd" Units="....." Location="232" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_cmd" Units="....." Location="316" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_cold_water_status" Units="....." Location="233" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_status" Units="....." Location="317" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hot_water_cmd" Units="....." Location="234" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_cmd" Units="....." Location="318" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_hot_water_status" Units="....." Location="235" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_status" Units="....." Location="319" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_osmos_cmd" Units="....." Location="236" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_cmd" Units="....." Location="320" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_osmos_status" Units="....." Location="237" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_status" Units="....." Location="321" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_water_cmd" Units="....." Location="238" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_cmd" Units="....." Location="322" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_water_status" Units="....." Location="239" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_status" Units="....." Location="323" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_foam_cmd" Units="....." Location="240" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_cmd" Units="....." Location="324" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_out_foam_status" Units="....." Location="241" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_status" Units="....." Location="325" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_intensive_cmd" Units="....." Location="242" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_out_freq" Units="....." Location="326" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_v_intensive_status" Units="....." Location="243" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_man_freq" Units="....." Location="328" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_cmd" Units="....." Location="244" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_auto_freq" Units="....." Location="330" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_status" Units="....." Location="245" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_alarm" Units="....." Location="332" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_out_freq" Units="....." Location="246" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hoover_cmd" Units="....." Location="333" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_man_freq" Units="....." Location="248" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hoover_status" Units="....." Location="334" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_auto_freq" Units="....." Location="250" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res1_cmd" Units="....." Location="335" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p6_pump_alarm" Units="....." Location="252" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res1_status" Units="....." Location="336" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_cmd" Units="....." Location="253" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res2_cmd" Units="....." Location="337" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_status" Units="....." Location="254" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res2_status" Units="....." Location="338" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_number" Units="....." Location="255" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res3_cmd" Units="....." Location="339" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pressure" Units="....." Location="256" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_res3_status" Units="....." Location="340" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_cmd" Units="....." Location="258" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_cmd" Units="....." Location="341" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_foam_status" Units="....." Location="259" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_status" Units="....." Location="342" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_cmd" Units="....." Location="260" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_number" Units="....." Location="343" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_wax_status" Units="....." Location="261" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pressure" Units="....." Location="344" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_cmd" Units="....." Location="262" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_foam_cmd" Units="....." Location="346" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_shampoo_status" Units="....." Location="263" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_foam_status" Units="....." Location="347" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_cmd" Units="....." Location="264" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_wax_cmd" Units="....." Location="348" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_cold_water_status" Units="....." Location="265" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_wax_status" Units="....." Location="349" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_cmd" Units="....." Location="266" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_shampoo_cmd" Units="....." Location="350" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_hot_water_status" Units="....." Location="267" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_shampoo_status" Units="....." Location="351" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_cmd" Units="....." Location="268" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_cold_water_cmd" Units="....." Location="352" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_osmos_status" Units="....." Location="269" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_cold_water_status" Units="....." Location="353" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_cmd" Units="....." Location="270" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hot_water_cmd" Units="....." Location="354" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_water_status" Units="....." Location="271" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hot_water_status" Units="....." Location="355" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_cmd" Units="....." Location="272" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_osmos_cmd" Units="....." Location="356" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_out_foam_status" Units="....." Location="273" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_osmos_status" Units="....." Location="357" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_cmd" Units="....." Location="274" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_water_cmd" Units="....." Location="358" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_v_intensive_status" Units="....." Location="275" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_water_status" Units="....." Location="359" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_cmd" Units="....." Location="276" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_foam_cmd" Units="....." Location="360" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_status" Units="....." Location="277" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_foam_status" Units="....." Location="361" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_out_freq" Units="....." Location="278" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_intensive_cmd" Units="....." Location="362" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_man_freq" Units="....." Location="280" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_intensive_status" Units="....." Location="363" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_auto_freq" Units="....." Location="282" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_cmd" Units="....." Location="364" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p7_pump_alarm" Units="....." Location="284" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_status" Units="....." Location="365" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_cmd" Units="....." Location="285" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_out_freq" Units="....." Location="366" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_status" Units="....." Location="286" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_man_freq" Units="....." Location="368" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_number" Units="....." Location="287" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_auto_freq" Units="....." Location="370" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pressure" Units="....." Location="288" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_alarm" Units="....." Location="372" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_foam_cmd" Units="....." Location="290" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hoover_cmd" Units="....." Location="373" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_foam_status" Units="....." Location="291" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hoover_status" Units="....." Location="374" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_wax_cmd" Units="....." Location="292" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res1_cmd" Units="....." Location="375" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_wax_status" Units="....." Location="293" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res1_status" Units="....." Location="376" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_shampoo_cmd" Units="....." Location="294" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res2_cmd" Units="....." Location="377" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_shampoo_status" Units="....." Location="295" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res2_status" Units="....." Location="378" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_cold_water_cmd" Units="....." Location="296" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res3_cmd" Units="....." Location="379" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_cold_water_status" Units="....." Location="297" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_res3_status" Units="....." Location="380" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hot_water_cmd" Units="....." Location="298" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_cmd" Units="....." Location="381" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_hot_water_status" Units="....." Location="299" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_status" Units="....." Location="382" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_osmos_cmd" Units="....." Location="300" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_number" Units="....." Location="383" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_osmos_status" Units="....." Location="301" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pressure" Units="....." Location="384" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_water_cmd" Units="....." Location="302" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_foam_cmd" Units="....." Location="386" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_water_status" Units="....." Location="303" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_foam_status" Units="....." Location="387" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_foam_cmd" Units="....." Location="304" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_wax_cmd" Units="....." Location="388" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_out_foam_status" Units="....." Location="305" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_wax_status" Units="....." Location="389" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_intensive_cmd" Units="....." Location="306" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_shampoo_cmd" Units="....." Location="390" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_v_intensive_status" Units="....." Location="307" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_shampoo_status" Units="....." Location="391" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_cmd" Units="....." Location="308" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_cold_water_cmd" Units="....." Location="392" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_status" Units="....." Location="309" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_cold_water_status" Units="....." Location="393" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_out_freq" Units="....." Location="310" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hot_water_cmd" Units="....." Location="394" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_man_freq" Units="....." Location="312" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hot_water_status" Units="....." Location="395" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_auto_freq" Units="....." Location="314" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_osmos_cmd" Units="....." Location="396" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p8_pump_alarm" Units="....." Location="316" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_osmos_status" Units="....." Location="397" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_cmd" Units="....." Location="317" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_water_cmd" Units="....." Location="398" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_status" Units="....." Location="318" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_water_status" Units="....." Location="399" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_number" Units="....." Location="319" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_foam_cmd" Units="....." Location="400" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pressure" Units="....." Location="320" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_foam_status" Units="....." Location="401" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_foam_cmd" Units="....." Location="322" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_intensive_cmd" Units="....." Location="402" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_foam_status" Units="....." Location="323" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_intensive_status" Units="....." Location="403" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_wax_cmd" Units="....." Location="324" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_cmd" Units="....." Location="404" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_wax_status" Units="....." Location="325" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_status" Units="....." Location="405" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_shampoo_cmd" Units="....." Location="326" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_out_freq" Units="....." Location="406" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_shampoo_status" Units="....." Location="327" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_man_freq" Units="....." Location="408" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_cold_water_cmd" Units="....." Location="328" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_auto_freq" Units="....." Location="410" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_cold_water_status" Units="....." Location="329" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_alarm" Units="....." Location="412" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hot_water_cmd" Units="....." Location="330" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hoover_cmd" Units="....." Location="413" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hot_water_status" Units="....." Location="331" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_hoover_status" Units="....." Location="414" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_osmos_cmd" Units="....." Location="332" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res1_cmd" Units="....." Location="415" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_osmos_status" Units="....." Location="333" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res1_status" Units="....." Location="416" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_water_cmd" Units="....." Location="334" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res2_cmd" Units="....." Location="417" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_water_status" Units="....." Location="335" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res2_status" Units="....." Location="418" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_foam_cmd" Units="....." Location="336" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res3_cmd" Units="....." Location="419" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_out_foam_status" Units="....." Location="337" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_res3_status" Units="....." Location="420" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_intensive_cmd" Units="....." Location="338" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_cmd" Units="....." Location="421" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_v_intensive_status" Units="....." Location="339" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_status" Units="....." Location="422" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_cmd" Units="....." Location="340" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_number" Units="....." Location="423" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_status" Units="....." Location="341" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pressure" Units="....." Location="424" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_out_freq" Units="....." Location="342" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_foam_cmd" Units="....." Location="426" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_man_freq" Units="....." Location="344" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_foam_status" Units="....." Location="427" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_auto_freq" Units="....." Location="346" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_wax_cmd" Units="....." Location="428" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p9_pump_alarm" Units="....." Location="348" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_wax_status" Units="....." Location="429" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_cmd" Units="....." Location="349" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_shampoo_cmd" Units="....." Location="430" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_status" Units="....." Location="350" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_shampoo_status" Units="....." Location="431" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_number" Units="....." Location="351" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_cold_water_cmd" Units="....." Location="432" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pressure" Units="....." Location="352" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_cold_water_status" Units="....." Location="433" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_foam_cmd" Units="....." Location="354" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hot_water_cmd" Units="....." Location="434" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_foam_status" Units="....." Location="355" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hot_water_status" Units="....." Location="435" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_wax_cmd" Units="....." Location="356" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_osmos_cmd" Units="....." Location="436" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_wax_status" Units="....." Location="357" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_osmos_status" Units="....." Location="437" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_shampoo_cmd" Units="....." Location="358" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_water_cmd" Units="....." Location="438" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_shampoo_status" Units="....." Location="359" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_water_status" Units="....." Location="439" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_cold_water_cmd" Units="....." Location="360" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_foam_cmd" Units="....." Location="440" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_cold_water_status" Units="....." Location="361" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_foam_status" Units="....." Location="441" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hot_water_cmd" Units="....." Location="362" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_intensive_cmd" Units="....." Location="442" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hot_water_status" Units="....." Location="363" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_intensive_status" Units="....." Location="443" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_osmos_cmd" Units="....." Location="364" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_cmd" Units="....." Location="444" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_osmos_status" Units="....." Location="365" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_status" Units="....." Location="445" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_water_cmd" Units="....." Location="366" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_out_freq" Units="....." Location="446" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_water_status" Units="....." Location="367" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_man_freq" Units="....." Location="448" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_foam_cmd" Units="....." Location="368" IsReadTag="0">
+                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_auto_freq" Units="....." Location="450" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_out_foam_status" Units="....." Location="369" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_alarm" Units="....." Location="452" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_intensive_cmd" Units="....." Location="370" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hoover_cmd" Units="....." Location="453" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_intensive_status" Units="....." Location="371" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_hoover_status" Units="....." Location="454" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_cmd" Units="....." Location="372" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res1_cmd" Units="....." Location="455" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_status" Units="....." Location="373" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res1_status" Units="....." Location="456" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_out_freq" Units="....." Location="374" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res2_cmd" Units="....." Location="457" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_man_freq" Units="....." Location="376" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res2_status" Units="....." Location="458" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="Float" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_auto_freq" Units="....." Location="378" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res3_cmd" Units="....." Location="459" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
-                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_pump_alarm" Units="....." Location="380" IsReadTag="0">
+                <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="p10_v_res3_status" Units="....." Location="460" IsReadTag="0">
                     <ListenersList/>
                     <FilterList/>
                 </Tag>
@@ -13438,113 +14071,154 @@
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_status" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_status(4-62)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_cmd(4-61)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_func_number" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_206"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_number(4-63)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Float" Marker="0" Comments="" Name="post_pressure" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_205"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_pressure(4-64)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_cmd(4-66)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_foam_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_15"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_17"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_18"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_foam_status(4-67)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_cmd(4-68)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_wax_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_122"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_119"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_121"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_wax_status(4-69)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_cmd(4-70)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_shampoo_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_129"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_126"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_128"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_shampoo_status(4-71)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_cmd(4-72)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_cold_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_136"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_135"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_133"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_cold_water_status(4-73)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_cmd(4-74)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hot_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_143"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_140"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_142"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_hot_water_status(4-75)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_cmd(4-76)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_osmos_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_150"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_147"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_149"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_osmos_status(4-77)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_cmd(4-78)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_water_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_157"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_154"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_156"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_out_water_status(4-79)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_cmd(4-80)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_out_foam_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_164"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_161"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_163"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_out_foam_status(4-81)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_cmd(4-82)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_intensive_status" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_171"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_168"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_170"/>
+                    <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_286"/>
+                    <Listener Path="" Type="XMnemoShape" Name="Ellipse_288"/>
+                    <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_289"/>
+                    <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_168"/>
+                    <Listener Path="" Type="XMnemoShape" Name="Ellipse_170"/>
+                    <Listener Path="" Type="XMnemoTextLabel" Name="TextLabel_171"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_intensive_status(4-83)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_cmd" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_cmd(4-84)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_status" Value="0">
                 <ListenersList>
@@ -13552,23 +14226,43 @@
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_10"/>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_11"/>
                     <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_22"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_status(4-85)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_out_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_109"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_out_freq(4-86)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_man_freq" Value="0">
                 <ListenersList>
                     <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_214"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_man_freq(4-88)"/>
                 </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_auto_freq" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_auto_freq(4-90)"/>
+                </ListenersList>
             </GlobalVariable>
             <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_pump_alarm" Value="0">
-                <ListenersList/>
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_pump_alarm(4-92)"/>
+                </ListenersList>
+            </GlobalVariable>
+            <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hoover_cmd" Value="0">
+                <ListenersList>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_hoover_cmd(4-93)"/>
+                </ListenersList>
+            </GlobalVariable>
+            <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_v_hoover_status" Value="0">
+                <ListenersList>
+                    <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_289"/>
+                    <Listener Path="Common" Type="XMnemoTextLabel" Name="TextLabel_286"/>
+                    <Listener Path="Common" Type="XMnemoShape" Name="Ellipse_288"/>
+                    <Listener Path="main\" Type="Output register" Name="p1_v_hoover_status(4-94)"/>
+                </ListenersList>
             </GlobalVariable>
         </Group>
         <GlobalVariable Retained="0" Type="Integer" Marker="0" Comments="" Name="post_count" Value="0">

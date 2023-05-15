@@ -758,7 +758,7 @@ def get_object(post_quantity=8):
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):
             continue
-        start_addr = 60 + (int(name.lstrip('post_')) - 1) * 32
+        start_addr = 60 + (int(name.lstrip('post_')) - 1) * 40
         obj['mb_cells_idx'] = start_addr
         obj['children']['valve_foam']['mb_cells_idx'] = start_addr + 5
         obj['children']['valve_wax']['mb_cells_idx'] = start_addr + 7
@@ -768,8 +768,8 @@ def get_object(post_quantity=8):
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
         obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
-        # obj['children']['valve_hoover']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
+        obj['children']['valve_hoover']['mb_cells_idx'] = start_addr + 32
 
     return objects

@@ -181,7 +181,7 @@ class Altivar212(Mechanism, ModbusDataObject):
                     -start_addr + self.mb_cells_idx + 6: float_data[4],
                     -start_addr + self.mb_cells_idx + 7: float_data[5],
                     -start_addr + self.mb_cells_idx + 8: self.ai_alarm_code.val,
-                    -start_addr + self.mb_cells_idx + 9: 888,
+                    #-start_addr + self.mb_cells_idx + 9: 888,
                     }
         else:
             return {}
