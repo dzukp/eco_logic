@@ -7,23 +7,29 @@ from pylogic.timer import Ton
 class Tank(IoObject, ModbusDataObject):
     """ Water tank with 3 level sensors """
 
+    _save_attrs = ('empty_timeout', 'no_hi_level_timeout')
+
     def __init__(self, *args):
         super().__init__(*args)
         self.di_low_level = InChannel(False)
         self.di_mid_level = InChannel(False)
         self.di_hi_level = InChannel(False)
         self.no_hi_level_timeout = 30.0
+        self.empty_timeout = 300.0
         self.water_level_analizer_mode = '1'
         self._sens_err = False
         self._state = 0
         self._want_water = False
         self.mb_cells_idx = None
+        self.__is_empty = False
         self.ton = Ton()
+        self.ton_empty = Ton()
 
     def init(self):
         super(Tank, self).init()
 
     def process(self):
+        self.__is_empty = self.ton_empty.process(not self.di_low_level.val, timeout=self.empty_timeout)
         if not self.di_low_level.val and (self.di_hi_level.val or self.di_mid_level.val):
             if not self._sens_err:
                 self.logger.debug('Sensor error - no low level')
@@ -86,7 +92,8 @@ class Tank(IoObject, ModbusDataObject):
         return self._want_water
 
     def is_empty(self):
-        return not self.di_low_level.val
+        # return not self.di_low_level.val
+        return self.__is_empty
 
     def sensors_error(self):
         return self._sens_err
