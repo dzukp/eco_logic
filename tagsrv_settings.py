@@ -4,7 +4,7 @@ from pylogic.tagsrv.owen_mx210 import OwenAiMv210, OwenDiMv210, OwenDoMu210_403,
 from pylogic.tagsrv.modbusrtu import ModbusRTUModule
 from pylogic.tagsrv.serialsource import SerialSource
 
-import os
+import settings
 
 
 def gen_tagsrv_config(version='1.0', post_quantity=8):
@@ -94,23 +94,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     do_5 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_5_')], ip='192.168.200.5',
                            timeout=0.03)
 
-    if os.name == 'posix':
-        com_port1_name = 'fc_serial1'
-        com_port2_name = 'fc_serial2'
-    else:
-        com_port1_name = 'COM5'
-        com_port2_name = 'COM6'
-
-    sources = {
-        'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
-    }
-
-    if post_quantity > 4:
-        sources['port_2'] = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1,
-                                         timeout=0.1)
-
-    fc_modules_1 = []
-    fc_modules_2 = []
+    com_port1_name = settings.COM1
+    com_port2_name = settings.COM2
 
     # if quantity pumps > 4 use both serial ports
     if version == '1.2':
@@ -119,6 +104,17 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com1_end = post_quantity // 2
     else:
         com1_end = post_quantity
+
+    sources = {
+        'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+    }
+
+    if post_quantity > com1_end:
+        sources['port_2'] = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1,
+                                         timeout=0.1)
+
+    fc_modules_1 = []
+    fc_modules_2 = []
     for i in range(1, com1_end + 1):
         fc_modules_1.append(ModbusRTUModule(i, sources['port_1'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
@@ -127,20 +123,20 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                                     name.startswith(f'fc_{i}_ao_')]))
 
     if version in ('1.2',):
+        fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
+        comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
         fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
                                               in_tags=[tag for name, tag in tags['in'].items() if
                                                        name.startswith(f'fc_foam_1_ai_')],
                                               out_tags=[tag for name, tag in tags['out'].items() if
                                                         name.startswith(f'fc_foam_1_ao_')]))
 
-        fc_modules_2.append(ModbusRTUModule(51, sources['port_2'], io_tags=[], max_answ_len=5,
+        fc_module.append(ModbusRTUModule(51, comport, io_tags=[], max_answ_len=5,
                                               in_tags=[tag for name, tag in tags['in'].items() if
                                                        name.startswith(f'fc_foam_2_ai_')],
                                               out_tags=[tag for name, tag in tags['out'].items() if
                                                         name.startswith(f'fc_foam_2_ao_')]))
 
-        comport = sources['port_2'] if post_quantity > 7 else sources['port_1']
-        fc_module = fc_modules_2 if post_quantity > 7 else fc_modules_1
         fc_module.append(ModbusRTUModule(11, comport, io_tags=[], max_answ_len=5,
                                               in_tags=[tag for name, tag in tags['in'].items() if
                                                        name.startswith(f'fc_osmos_ai_')],
@@ -160,8 +156,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                                     name.startswith(f'fc_{i}_ao_')]))
 
     if version in ('1.1', '1.2') and 'port_2' in sources:
-        comport = sources['port_2'] if post_quantity > 7 else sources['port_1']
-        fc_module = fc_modules_2 if post_quantity > 7 else fc_modules_1
+        comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
+        fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
         fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
                                                    name.startswith(f'fc_os_ai_')],
@@ -187,10 +183,13 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     dispatchers = {
         'disp_1': ParallelDispatcher(
             modules=modules
-        ),
-        'mb_disp1': SerialDispatcher(modules=fc_modules_1),
-        'mb_disp2': SerialDispatcher(modules=fc_modules_2)
+        )
     }
+
+    if fc_modules_1:
+        dispatchers['mb_disp1'] = SerialDispatcher(modules=fc_modules_1)
+    if fc_modules_2:
+        dispatchers['mb_disp2'] = SerialDispatcher(modules=fc_modules_2)
 
     return {
         'tags': tags,
