@@ -27,7 +27,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
 
-    if version in ('1.1', '1.2'):
+    if version in ('1.1', '1.2', '1.4'):
         fc_names.append('fc_os_')
 
     if version in ('1.2',):
@@ -35,6 +35,9 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_names.append('fc_foam_2_')
         fc_names.append('fc_water_')
         fc_names.append('fc_osmos_')
+
+    if version in ('1.4',):
+        fc_names.append('fc_water_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -44,12 +47,12 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     for pref in do_names:
         tags['out'].update(dict([(pref + str(i), OutTag(i)) for i in range(1, 25)]))
 
-    if version == '1.2':
+    if version in ('1.2', '1.4'):
         for pref in ('dio_1_',):
             tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 13)]))
             tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 5)]))
 
-    if version in ('1.0', '1.2'):
+    if version in ('1.0', '1.2', '1.4'):
         # generate di_1_1 - do_1_20
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
@@ -70,7 +73,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
-    if version in ('1.0', '1.2'):
+    if version in ('1.0', '1.2', '1.4'):
         di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
                            ip='192.168.200.16', timeout=0.03)
     else:
@@ -78,7 +81,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                              ip='192.168.200.30', timeout=0.03)
 
     dio_1 = None
-    if version == '1.2':
+    if version in ('1.2', '1.4'):
         dio_tags = [tag for name, tag in tags['in'].items() if name.startswith('dio_1_i_')] + \
                    [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')]
         dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.15', timeout=0.03)
@@ -98,7 +101,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     com_port2_name = settings.COM2
 
     # if quantity pumps > 4 use both serial ports
-    if version == '1.2':
+    if version in ('1.2', '1.4'):
         com1_end = 6
     elif post_quantity > 4:
         com1_end = post_quantity // 2
@@ -122,47 +125,46 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
 
-    if version in ('1.2',):
+    if version in ('1.2', '1.4'):
         fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
         comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
-        fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_foam_1_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_foam_1_ao_')]))
 
-        fc_module.append(ModbusRTUModule(51, comport, io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_foam_2_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_foam_2_ao_')]))
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_foam_1_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_foam_1_ao_')]
+        if in_tags or out_tags:
+            fc_modules_1.append(ModbusRTUModule(
+                50, sources['port_1'], io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
-        fc_module.append(ModbusRTUModule(11, comport, io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_osmos_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_osmos_ao_')]))
-        fc_module.append(ModbusRTUModule(12, comport, io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_water_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_water_ao_')]))
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_foam_2_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_foam_2_ao_')]
+        if in_tags or out_tags:
+            fc_module.append(ModbusRTUModule(
+                51, comport, io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
+
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_osmos_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_osmos_ao_')]
+        if in_tags or out_tags:
+            fc_module.append(ModbusRTUModule(
+                11, comport, io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
+
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_water_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_water_ao_')]
+        if in_tags or out_tags:
+            fc_module.append(ModbusRTUModule(
+                12, comport, io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
     for i in range(com1_end + 1, post_quantity + 1):
-        fc_modules_2.append(ModbusRTUModule(i, sources['port_2'], io_tags=[], max_answ_len=5,
-                                          in_tags=[tag for name, tag in tags['in'].items() if
-                                                   name.startswith(f'fc_{i}_ai_')],
-                                          out_tags=[tag for name, tag in tags['out'].items() if
-                                                    name.startswith(f'fc_{i}_ao_')]))
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_{i}_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_{i}_ao_')]
+        fc_modules_2.append(ModbusRTUModule(
+            i, sources['port_2'], io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
-    if version in ('1.1', '1.2') and 'port_2' in sources:
+    if version in ('1.1', '1.2', '1.4'):
         comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
         fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
-        fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5,
-                                          in_tags=[tag for name, tag in tags['in'].items() if
-                                                   name.startswith(f'fc_os_ai_')],
-                                          out_tags=[tag for name, tag in tags['out'].items() if
-                                                    name.startswith(f'fc_os_ao_')]))
+        in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')]
+        out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
+        fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
     if post_quantity in (5, 6):
         modules = [do_1, do_2, do_3, di_1, ai_1, ai_2]
@@ -177,8 +179,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         if version == '1.2':
             modules.append(ai_4)
 
-    if version == '1.2':
-        modules.extend([dio_1,])
+    if dio_1:
+        modules.extend([dio_1])
 
     dispatchers = {
         'disp_1': ParallelDispatcher(
