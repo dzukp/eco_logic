@@ -73,22 +73,22 @@ def get_object(post_quantity=10):
                                 }
                             }
                         },
-                        # 'pump_osmos_supplier': {
-                        #     'class': PidEngine,
-                        #     'ai_sensor': 'ai_2_6',
-                        #     'mb_cells_idx': 589,
-                        #     'children': {
-                        #         'fc': {
-                        #             'class': Altivar212,
-                        #             'ao_command': 'fc_osmos_ao_1',
-                        #             'ao_frequency': 'fc_osmos_ao_2',
-                        #             'ai_status': 'fc_osmos_ai_1',
-                        #             'ai_frequency': 'fc_osmos_ai_2',
-                        #             'ai_alarm_code': 'fc_osmos_ai_3',
-                        #             'mb_cells_idx': 580
-                        #         }
-                        #     }
-                        # },
+                        'pump_osmos_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_6',
+                            'mb_cells_idx': 589,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_osmos_ao_1',
+                                    'ao_frequency': 'fc_osmos_ao_2',
+                                    'ai_status': 'fc_osmos_ai_1',
+                                    'ai_frequency': 'fc_osmos_ai_2',
+                                    'ai_alarm_code': 'fc_osmos_ai_3',
+                                    'mb_cells_idx': 580
+                                }
+                            }
+                        },
                         'pump_os1': {
                             'class': Engine,
                             'do_start': None,
