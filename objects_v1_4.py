@@ -73,26 +73,26 @@ def get_object(post_quantity=10):
                                 }
                             }
                         },
-                        # 'pump_osmos_supplier': {
-                        #     'class': PidEngine,
-                        #     'ai_sensor': 'ai_2_6',
-                        #     'mb_cells_idx': 589,
-                        #     'children': {
-                        #         'fc': {
-                        #             'class': Altivar212,
-                        #             'ao_command': 'fc_osmos_ao_1',
-                        #             'ao_frequency': 'fc_osmos_ao_2',
-                        #             'ai_status': 'fc_osmos_ai_1',
-                        #             'ai_frequency': 'fc_osmos_ai_2',
-                        #             'ai_alarm_code': 'fc_osmos_ai_3',
-                        #             'mb_cells_idx': 580
-                        #         }
-                        #     }
-                        # },
+                        'pump_osmos_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_6',
+                            'mb_cells_idx': 589,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_osmos_ao_1',
+                                    'ao_frequency': 'fc_osmos_ao_2',
+                                    'ai_status': 'fc_osmos_ai_1',
+                                    'ai_frequency': 'fc_osmos_ai_2',
+                                    'ai_alarm_code': 'fc_osmos_ai_3',
+                                    'mb_cells_idx': 580
+                                }
+                            }
+                        },
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': None,
-                            'mb_cells_idx': None
+                            'do_start': 'dio_1_o_8',
+                            'mb_cells_idx': 34
                         },
                         'pump_os2': {
                             'class': Engine,
@@ -117,8 +117,8 @@ def get_object(post_quantity=10):
                         },
                         'valve_water_os': {
                             'class': Valve,
-                            'do_open': None,
-                            'mb_cells_idx': None
+                            'do_open': 'dio_1_o_4',
+                            'mb_cells_idx': 40
                         },
                         'valve_b1': {
                             'class': Valve,
@@ -229,12 +229,12 @@ def get_object(post_quantity=10):
                 'valve_dose_osmos_intensive': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_14',
-                    'mb_cells_idx': 40 if i == 1 else None
+                    'mb_cells_idx': None if i == 1 else None
                 },
                 'valve_dose_foam_2': {
                     'class': Valve,
                     'do_open': f'do_{do_module}_17',
-                    'mb_cells_idx': 34 if i == 1 else None
+                    'mb_cells_idx': None if i == 1 else None
                 }
             }
         }

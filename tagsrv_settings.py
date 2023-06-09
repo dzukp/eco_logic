@@ -27,7 +27,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
 
-    if version in ('1.1', '1.2', '1.4'):
+    if version in ('1.1', '1.2'):
         fc_names.append('fc_os_')
 
     if version in ('1.2',):
@@ -38,6 +38,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
 
     if version in ('1.4',):
         fc_names.append('fc_water_')
+        fc_names.append('fc_osmos_')
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
@@ -50,7 +51,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     if version in ('1.2', '1.4'):
         for pref in ('dio_1_',):
             tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 13)]))
-            tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 5)]))
+            tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 9)]))
 
     if version in ('1.0', '1.2', '1.4'):
         # generate di_1_1 - do_1_20

@@ -66,7 +66,7 @@ class WaterSupplier(Subsystem):
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):
-        return True# self.ai_pressure.val > self.enough_pressure if self.ai_pressure.val > -10 else True
+        return self.ai_pressure.val > self.enough_pressure if self.ai_pressure.val > -10 else True
 
 
 class TwoPumpWaterSupplier(WaterSupplier):
@@ -367,4 +367,4 @@ class PidWaterSupplier(Subsystem):
 
     def is_can_supply(self):
         press = self.pid_pump.ai_sensor.val
-        return True# press > self.enough_pressure if press > -10 else True
+        return press > self.enough_pressure if press > -10 else True
