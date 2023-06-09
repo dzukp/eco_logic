@@ -82,7 +82,6 @@ class MultiValvePumpSteps(MultiValveSteps):
 
     def step_first(self):
         self.need_max_power = True
-        print('self.need_max_power', self.need_max_power)
         return super(MultiValvePumpSteps, self).step_first()
 
     def wait_press(self):
@@ -133,7 +132,7 @@ class MultiValvePumpSteps(MultiValveSteps):
             return res
         if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val > self.owner.no_flow_pressure:
             self.no_flow_press = self.owner.ai_pressure.val
-            self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
+            self.logger.info(f'no flow, pressure={self.no_flow_press}')
             return self.wait_press
 
 

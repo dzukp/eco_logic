@@ -80,11 +80,11 @@ class Post(IoObject, ModbusDataObject):
         for func_name, step in self.func_steps.items():
             if func_name in valves:
                 step.valves_link = valves[func_name]
+            step.set_logger(self.logger.getChild(step.name))
 
         for valves in valves.values():
             self.all_valves.update(valves)
 
-        self.pump.reset()
         self.pump.reset()
 
     def process(self):
