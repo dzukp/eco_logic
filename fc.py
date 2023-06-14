@@ -29,14 +29,14 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
         self.ai_alarm_code = InChannel(0)
-        self.ai_frequency.set_trans(lambda v: v * 0.01)
+        self.ai_frequency.set_trans(trans_divide_10)
         self.is_run = False
         self.is_alarm = False
-        self.reset_alarm = True
+        self.reset_alarm = False
         self.auto_frequency_task = 0.0
         self.man_frequency_task = 0.0
         self.timer = Ton()
-        self.timer.set_timeout(5000.0)
+        self.timer.set_timeout(2.0)
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
@@ -46,8 +46,8 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.mb_cells_idx = None
 
     def process(self):
-        self.is_alarm = False  # (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
-        self.is_run = (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
+        self.is_alarm = self.check_alarm()
+        self.is_run = self.check_run()
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
         if self.is_alarm and self.func_state != self.state_alarm:
@@ -122,16 +122,21 @@ class Altivar212(Mechanism, ModbusDataObject):
     def set_frequency(self, freq, manual=False, no_log=False):
         if manual:
             if freq != self.man_frequency_task:
-                changed = abs(freq - self.man_frequency_task) >= 0.5
                 self.man_frequency_task = freq
-                if not no_log and changed:
-                    self.logger.info(f'set manual frequency task: {round(freq, 2)}')
+                if not no_log:
+                    self.logger.info(f'set manual frequency task: {freq}')
         else:
             if freq != self.auto_frequency_task:
-                changed = abs(freq - self.auto_frequency_task) >= 0.5
                 self.auto_frequency_task = freq
-                if not no_log and changed:
-                    self.logger.debug(f'set auto frequency task: {round(freq, 2)}')
+                if not no_log:
+                    self.logger.debug(f'set auto frequency task: {freq}')
+
+    def check_run(self):
+        return (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
+
+    def check_alarm(self):
+        return False
+        # return (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
 
     def is_alarm_state(self):
         return self.state_alarm == self.func_state
@@ -178,6 +183,41 @@ class Altivar212(Mechanism, ModbusDataObject):
                     }
         else:
             return {}
+
+
+class OwenFc1(Altivar212):
+    """ Frequency converter Owen controlled by Modbus/RTU """
+
+    CMD_FORWARD_START = 0x847C
+    CMD_STOP = 0x8004
+    CMD_RESET = 0x8044
+
+    MASK_FORWARD_RUN = 0x0800
+    MASK_ALARM = 0x0008
+
+    def process(self):
+        super(OwenFc1, self).process()
+        self.ao_frequency.val = self.ao_frequency.val / 5000.0 * 16384.0
+
+
+class InovanceMd310(Altivar212):
+    CMD_FORWARD_START = 1
+    CMD_STOP = 6
+    CMD_RESET = 7
+
+    MASK_FORWARD_RUN = 1
+    MASK_STOP_RUN = 3
+    MASK_ALARM = 0
+
+    def process(self):
+        super().process()
+        self.ao_frequency.val = self.ao_frequency.val * 2
+
+    def check_run(self):
+        return self.ai_status.val == self.MASK_FORWARD_RUN
+
+    def check_alarm(self):
+        return self.ai_alarm_code.val != 0
 
 
 def trans_divide_10(value):
