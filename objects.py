@@ -26,9 +26,9 @@ def get_object(post_quantity=(6, 6)):
         'di_press_1': None,
         'ai_pe_1': None,
         'di_press_2': 'di_1_10',
-        'ai_pe_2': 'ai_1_1_7',
+        'ai_pe_2': 'ai_2_1_7',
         'di_press_3': None,
-        'ai_pe_3': 'ai_1_1_8',
+        'ai_pe_3': 'ai_2_1_8',
         'ai_pe_7': 'ai_2_2_1',
         'mb_cells_idx': 0,
         'children': {
