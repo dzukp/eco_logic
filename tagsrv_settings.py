@@ -69,9 +69,9 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
     ai_1_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_1_')],
                          ip='192.168.200.20', timeout=0.03)
     ai_1_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_2_')],
-                         ip='192.168.200.22', timeout=0.03)
-    ai_2_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_1_')],
                          ip='192.168.200.21', timeout=0.03)
+    ai_2_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_1_')],
+                         ip='192.168.200.22', timeout=0.03)
     ai_2_2 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_2_2_')],
                          ip='192.168.200.23', timeout=0.03)
     ai_3 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_3_')],
