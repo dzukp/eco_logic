@@ -153,8 +153,8 @@ def get_object(post_quantity=(6, 6)):
     }
     hoover = {
         'class': Hoover,
-        'ai_press_1': 'ai_3_1',
-        'ai_press_2': 'ai_3_2',
+        'ai_press_1': 'ai_3_3',
+        'ai_press_2': 'ai_3_4',
         'mb_cells_idx': 106,
         'children': {
             'flap': {
