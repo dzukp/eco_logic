@@ -29,14 +29,14 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
         self.ai_alarm_code = InChannel(0)
-        self.ai_frequency.set_trans(trans_divide_10)
+        self.ai_frequency.set_trans(lambda v: v * 0.01)
         self.is_run = False
         self.is_alarm = False
-        self.reset_alarm = False
+        self.reset_alarm = True
         self.auto_frequency_task = 0.0
         self.man_frequency_task = 0.0
         self.timer = Ton()
-        self.timer.set_timeout(2.0)
+        self.timer.set_timeout(5.0)
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
@@ -122,14 +122,16 @@ class Altivar212(Mechanism, ModbusDataObject):
     def set_frequency(self, freq, manual=False, no_log=False):
         if manual:
             if freq != self.man_frequency_task:
+                changed = abs(freq - self.man_frequency_task) >= 0.5
                 self.man_frequency_task = freq
-                if not no_log:
-                    self.logger.info(f'set manual frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.info(f'set manual frequency task: {round(freq, 2)}')
         else:
             if freq != self.auto_frequency_task:
+                changed = abs(freq - self.auto_frequency_task) >= 0.5
                 self.auto_frequency_task = freq
-                if not no_log:
-                    self.logger.debug(f'set auto frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.debug(f'set auto frequency task: {round(freq, 2)}')
 
     def check_run(self):
         return (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
