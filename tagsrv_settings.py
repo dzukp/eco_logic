@@ -26,6 +26,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
+    fc_names.remove('fc_2_')
+    fc_innovance_names = ['fc_2_']
 
     if version in ('1.1', '1.2'):
         fc_names.append('fc_os_')
@@ -65,6 +67,18 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     for pref in fc_names:
         tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
         tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+
+    for pref in fc_innovance_names:
+        tags['in'].update({
+            f'{pref}ai_1': InTag(0x3000),
+            f'{pref}ai_2': InTag(0x1001),
+            f'{pref}ai_3': InTag(0x8000),
+
+        })
+        tags['out'].update({
+            f'{pref}ao_1': OutTag(0x2000),
+            f'{pref}ao_2': OutTag(0x1000)
+        })
 
     ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.11',
                        timeout=0.03)
