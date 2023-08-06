@@ -143,8 +143,8 @@ class MultiValvePumpSteps(MultiValveSteps):
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no di_flow, pressure={self.no_flow_press}')
             return self.wait_press
-        if self.ton2.process(self.owner.ai_pressure.val < 75.0, timeout=5.0):
-            self.logger.info(f'low press during full_work_2, pressure={self.owner.ai_pressure.val}')
+        if self.ton2.process(self.owner.ai_pressure.val < self.owner.min_full_work_pressure, timeout=5.0):
+            self.logger.info(f'low press during full_work_2, pressure={self.owner.ai_pressure.val} < {self.owner.min_full_work_pressure}')
             return self.wait_flow
 
     def low_work(self):
