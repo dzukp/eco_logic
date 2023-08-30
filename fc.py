@@ -40,14 +40,14 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
-        self.reset_timer.set_timeout(6.0)
+        self.reset_timer.set_timeout(2.0)
         self.alarm_auto_reset_timeout = 5.0
         self.alarm_auto_reset_timer = Ton()
         self.mb_cells_idx = None
 
     def process(self):
-        self.is_alarm = False  # (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
-        self.is_run = (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
+        self.is_alarm = self.check_alarm()
+        self.is_run = self.check_run()
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
         if self.is_alarm and self.func_state != self.state_alarm:
@@ -74,7 +74,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         if self.is_run:
             self.func_state = self.state_run
             self.logger.debug(f'{self.name}: run state')
-        if self.timer.process(0):
+        if self.timer.process(not self.is_run):
             self.func_state = self.state_alarm
             self.timer.reset()
             self.logger.debug(f'{self.name}: alarm state from starting state, don\'t run signal in timeout')
@@ -82,7 +82,7 @@ class Altivar212(Mechanism, ModbusDataObject):
     def state_run(self):
         self.ao_command.val = self.CMD_FORWARD_START
         self.ao_frequency.val = self.man_frequency_task * 100.0 if self.manual else self.auto_frequency_task * 100.0
-        if self.timer.process(0):
+        if self.timer.process(not self.is_run):
             self.func_state = self.state_alarm
             self.timer.reset()
             self.logger.debug(f'{self.name}: alarm state from run state, don\'t run signal in timeout')
@@ -122,14 +122,23 @@ class Altivar212(Mechanism, ModbusDataObject):
     def set_frequency(self, freq, manual=False, no_log=False):
         if manual:
             if freq != self.man_frequency_task:
+                changed = abs(freq - self.man_frequency_task) >= 0.5
                 self.man_frequency_task = freq
-                if not no_log:
-                    self.logger.info(f'set manual frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.info(f'set manual frequency task: {round(freq, 2)}')
         else:
             if freq != self.auto_frequency_task:
+                changed = abs(freq - self.auto_frequency_task) >= 0.5
                 self.auto_frequency_task = freq
-                if not no_log:
-                    self.logger.debug(f'set auto frequency task: {freq}')
+                if not no_log and changed:
+                    self.logger.debug(f'set auto frequency task: {round(freq, 2)}')
+
+    def check_run(self):
+        return (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
+
+    def check_alarm(self):
+        return False
+        # return (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
 
     def is_alarm_state(self):
         return self.state_alarm == self.func_state
@@ -176,6 +185,41 @@ class Altivar212(Mechanism, ModbusDataObject):
                     }
         else:
             return {}
+
+
+class OwenFc1(Altivar212):
+    """ Frequency converter Owen controlled by Modbus/RTU """
+
+    CMD_FORWARD_START = 0x847C
+    CMD_STOP = 0x8004
+    CMD_RESET = 0x8044
+
+    MASK_FORWARD_RUN = 0x0800
+    MASK_ALARM = 0x0008
+
+    def process(self):
+        super(OwenFc1, self).process()
+        self.ao_frequency.val = self.ao_frequency.val / 5000.0 * 16384.0
+
+
+class InovanceMd310(Altivar212):
+    CMD_FORWARD_START = 1
+    CMD_STOP = 6
+    CMD_RESET = 7
+
+    MASK_FORWARD_RUN = 1
+    MASK_STOP_RUN = 3
+    MASK_ALARM = 0
+
+    def process(self):
+        super().process()
+        self.ao_frequency.val = self.ao_frequency.val * 2
+
+    def check_run(self):
+        return self.ai_status.val == self.MASK_FORWARD_RUN
+
+    def check_alarm(self):
+        return self.ai_alarm_code.val != 0
 
 
 def trans_divide_10(value):
