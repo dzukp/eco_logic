@@ -2,7 +2,7 @@ import copy
 
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
+from fc import Altivar212, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -300,6 +300,8 @@ def get_object(post_quantity=(6, 6)):
             children['valve_hoover']['mb_cells_idx'] = start_addr + 25
             # children['valve_shell']['mb_cells_idx'] = start_addr + 27
             children['pump']['mb_cells_idx'] = start_addr + 29
+            if post_number in (4, 12):
+                children['pump']['class'] = InovanceMd310
 
             module = (i - 1) // 2 + 1
             d = (i - 1) % 2 * 6
