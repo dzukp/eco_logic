@@ -172,7 +172,7 @@ def get_object(post_quantity=(6, 6)):
                 'mb_cells_idx': 137
             },
             'fc_2': {
-                'class': Altivar212,
+                'class': InovanceMd310,
                 'ao_command': 'fc_hoover_2_ao_1',
                 'ao_frequency': 'fc_hoover_2_ao_2',
                 'ai_status': 'fc_hoover_2_ai_1',
