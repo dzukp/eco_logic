@@ -179,7 +179,7 @@ def get_object(post_quantity=10):
                             'class': Altivar212,
                             'ao_command': f'fc_foam_{i}_ao_1',
                             'ao_frequency': f'fc_foam_{i}_ao_2',
-                            'ai_status': f'fc_os_foam_{i}_ai_1',
+                            'ai_status': f'fc_foam_{i}_ai_1',
                             'ai_frequency': f'fc_foam_{i}_ai_2',
                             'ai_alarm_code': f'fc_foam_{i}_ai_3',
                             'mb_cells_idx': 518 if i == 1 else 538
