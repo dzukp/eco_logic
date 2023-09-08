@@ -365,7 +365,7 @@ def get_object(post_quantity=10):
         obj['children']['pump']['ai_frequency'] = f'fc_{post_number}_ai_2'
         obj['children']['pump']['ai_alarm_code'] = None
 
-        if post_number in (2, 4):
+        if post_number in (2, 6):
             obj['children']['pump']['class'] = InovanceMd310
 
     return objects
