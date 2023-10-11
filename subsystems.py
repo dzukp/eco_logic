@@ -142,7 +142,7 @@ class B1TankFiller(Subsystem):
             self.valve_2.open()
         else:
             self.valve_2.close()
-        if pump:
+        if pump and not (self.source_tank and self.source_tank.is_empty()):
             self.pump.start()
         else:
             self.pump.stop()
