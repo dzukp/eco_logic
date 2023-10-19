@@ -366,4 +366,5 @@ def get_object(post_quantity=10):
         obj['children']['pump']['ai_alarm_code'] = None
 
     objects['top']['children']['post_2']['children']['pump']['class'] = InovanceMd310
+    objects['top']['children']['post_6']['children']['pump']['class'] = InovanceMd310
     return objects
