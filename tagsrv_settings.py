@@ -23,7 +23,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
         f'fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']
 
-    fc_innovance_names = ['fc_1_4_', 'fc_2_4_', 'fc_hoover_1_', 'fc_hoover_2_']
+    fc_innovance_names = ['fc_1_4_', 'fc_2_4_', 'fc_2_7_', 'fc_hoover_1_', 'fc_hoover_2_']
     for fc in fc_innovance_names:
         fc_names.remove(fc)
 

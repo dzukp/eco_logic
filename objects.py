@@ -300,8 +300,6 @@ def get_object(post_quantity=(6, 6)):
             children['valve_hoover']['mb_cells_idx'] = start_addr + 25
             # children['valve_shell']['mb_cells_idx'] = start_addr + 27
             children['pump']['mb_cells_idx'] = start_addr + 29
-            if post_number in (4, 12):
-                children['pump']['class'] = InovanceMd310
 
             module = (i - 1) // 2 + 1
             d = (i - 1) % 2 * 6
@@ -321,6 +319,9 @@ def get_object(post_quantity=(6, 6)):
             children['pump']['ai_status'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_1'
             children['pump']['ai_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_2'
             children['pump']['ai_alarm_code'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_3'
+
+            if post_number in (4, 12, 15):
+                children['pump']['class'] = InovanceMd310
 
     return objects
 
