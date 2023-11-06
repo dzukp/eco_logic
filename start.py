@@ -15,12 +15,13 @@ from objects import get_object
 from simulator_objects import get_simulator_objects
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
+import settings
 
 
 def start():
-    # post_quantity = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 12
-    post_quantity = (6, 6)
-    sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
+    post_quantity = settings.POST_QUANTITY
+    simulator = settings.SIMULATOR
+    sim_obj = get_simulator_objects(post_quantity) if simulator else {}
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():
         makedirs(log_dir.absolute())
