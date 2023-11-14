@@ -1,4 +1,5 @@
 from mechanism import Mechanism
+from operating_time import OperatingTimer
 from pylogic.channel import OutChannel, InChannel
 from pylogic.timer import Timer, Ton
 from pylogic.modbus_supervisor import ModbusDataObject
@@ -24,7 +25,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
-        self.ao_command = OutChannel(0)#команда частотнику
+        self.ao_command = OutChannel(0)
         self.ao_frequency = OutChannel(0)
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
@@ -43,11 +44,13 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.reset_timer.set_timeout(2.0)
         self.alarm_auto_reset_timeout = 5.0
         self.alarm_auto_reset_timer = Ton()
+        self.operation_timer = OperatingTimer(name='op_timer', parent=self)
         self.mb_cells_idx = None
 
     def process(self):
         self.is_alarm = False  # (self.ai_status.val & self.MASK_ALARM) == self.MASK_ALARM
         self.is_run = (self.ai_status.val & self.MASK_FORWARD_RUN) == self.MASK_FORWARD_RUN
+        self.operation_timer.run(run=self.is_run)
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
         if self.is_alarm and self.func_state != self.state_alarm:

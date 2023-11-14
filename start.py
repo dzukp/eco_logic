@@ -8,6 +8,7 @@ from os import getcwd, makedirs
 from pathlib import Path
 import sys
 
+from op_time_supervisor import OperatingTimeSupervisor
 from pylogic.main import main
 from pylogic.logged_object import DEFAULT_LOGGER
 from pylogic.modbus_supervisor import ModbusSupervisor
@@ -30,7 +31,7 @@ def start():
         'simulators': sim_obj,
         'tagsrv_settings': gen_tagsrv_config(post_quantity),
         'logging_conf': logging_config,
-        'supervisors': {'supervis_modbus': ModbusSupervisor,}
+        'supervisors': {'supervis_modbus': ModbusSupervisor, 'supervis_op_time': OperatingTimeSupervisor}
     }
     main(config)
 
