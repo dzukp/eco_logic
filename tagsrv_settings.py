@@ -5,10 +5,12 @@ from pylogic.tagsrv.owen_mx210 import OwenAiMv210, OwenDiMv210, OwenDoMu210_403,
 from pylogic.tagsrv.modbusrtu import ModbusRTUModule
 from pylogic.tagsrv.serialsource import SerialSource
 
-import os
+import settings
 
 
-def gen_tagsrv_config(post_quantity=(6, 6)):
+def gen_tagsrv_config(post_quantity=None):
+    if post_quantity is None:
+        post_quantity = settings.POST_QUANTITY
     tags = {
         'in': {},
         'out': {}
@@ -118,14 +120,9 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                    [tag for name, tag in tags['in'].items() if name.startswith(f'dio_p_{i}_')]
         dio_post.append(OwenDiDoMk210(tags=dio_tags, ip=f'192.168.200.{100 + i}', timeout=0.03))
 
-    if os.name == 'posix':
-        com_port1_name = 'fc1_serial'
-        com_port2_name = 'fc2_serial'
-        com_port3_name = 'fc3_serial'
-    else:
-        com_port1_name = 'COM5'
-        com_port2_name = 'COM3'
-        com_port3_name = None
+    com_port1_name = settings.COM1
+    com_port2_name = settings.COM2
+    com_port3_name = settings.COM3
 
     ports = {1: SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),
              2: SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1),

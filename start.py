@@ -8,6 +8,7 @@ from os import getcwd, makedirs
 from pathlib import Path
 import sys
 
+from op_time_supervisor import OperatingTimeSupervisor
 from pylogic.main import main
 from pylogic.logged_object import DEFAULT_LOGGER
 from pylogic.modbus_supervisor import ModbusSupervisor
@@ -16,14 +17,13 @@ from simulator_objects import get_simulator_objects
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
 from rpc_supervisor import RpcSupervisor
+import settings
 
 
 def start():
-    try:
-        post_quantity = (int(sys.argv[1]), int(sys.argv[2]))
-    except (IndexError, ValueError):
-        post_quantity = (6, 6)
-    sim_obj = get_simulator_objects(post_quantity) if '--simulator' in sys.argv else {}
+    post_quantity = settings.POST_QUANTITY
+    simulator = settings.SIMULATOR
+    sim_obj = get_simulator_objects(post_quantity) if simulator else {}
     log_dir = Path(getcwd()) / 'logs'
     if not log_dir.exists():
         makedirs(log_dir.absolute())
@@ -32,7 +32,11 @@ def start():
         'simulators': sim_obj,
         'tagsrv_settings': gen_tagsrv_config(post_quantity),
         'logging_conf': logging_config,
-        'supervisors': {'supervis_modbus': ModbusSupervisor, 'supervis_rpc': RpcSupervisor}
+        'supervisors': {
+            'supervis_modbus': ModbusSupervisor,
+            'supervis_rpc': RpcSupervisor,
+            'supervis_op_time': OperatingTimeSupervisor
+        }
     }
     main(config)
 
