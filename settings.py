@@ -8,7 +8,7 @@ def parse_args():
     if 'pytest' in sys.modules:
         for arg in sys.argv[1:]:
             parser.add_argument('*')
-    parser.add_argument('--post_quantity', nargs=2, type=int, default=[6, 6])
+    parser.add_argument('post_quantity', nargs=2, type=int, default=[6, 6])
     parser.add_argument('-v', '--version', type=str, default='2.1')
     parser.add_argument('--simulator', action='store_true')
     parser.add_argument('--chat_id', type=str, default='')
