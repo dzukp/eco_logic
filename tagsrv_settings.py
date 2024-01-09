@@ -148,12 +148,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                      out_tags=[tag for name, tag in tags['out'].items() if
                                                name.startswith(f'fc_os_ao_')]))
 
-    fc_modules[3].append(ModbusRTUModule(40, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(ModbusRTUModule(40, ports[1], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_1_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_1_ao_')]))
-    fc_modules[3].append(CustomInnovanceMbRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[3].append(CustomInnovanceMbRTUModule(41, ports[1], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_2_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
