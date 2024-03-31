@@ -1,4 +1,5 @@
 from mechanism import Mechanism
+from operating_time import OperatingTimer
 from pylogic.channel import OutChannel, InChannel
 from pylogic.timer import Timer, Ton
 from pylogic.modbus_supervisor import ModbusDataObject
