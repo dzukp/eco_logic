@@ -24,7 +24,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
-        self.ao_command = OutChannel(0)#команда частотнику
+        self.ao_command = OutChannel(0)
         self.ao_frequency = OutChannel(0)
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
@@ -36,18 +36,20 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.auto_frequency_task = 0.0
         self.man_frequency_task = 0.0
         self.timer = Ton()
-        self.timer.set_timeout(5000.0)
+        self.timer.set_timeout(5.0)
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
         self.reset_timer.set_timeout(2.0)
         self.alarm_auto_reset_timeout = 5.0
         self.alarm_auto_reset_timer = Ton()
+        self.operation_timer = OperatingTimer(name='op_timer', parent=self)
         self.mb_cells_idx = None
 
     def process(self):
         self.is_alarm = self.check_alarm()
         self.is_run = self.check_run()
+        self.operation_timer.run(run=self.is_run)
         self.func_state()
         reset_alarm_time = self.reset_timer.process(self.reset_alarm)
         if self.is_alarm and self.func_state != self.state_alarm:
