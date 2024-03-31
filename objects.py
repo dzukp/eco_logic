@@ -34,7 +34,7 @@ def get_object(post_quantity=(6, 6)):
         'children': {
             'pump_n1': {
                 'class': Engine,
-                'do_start': 'do_1_2_13',
+                'do_start': 'do_2_2_13',
                 'mb_cells_idx': 50,
             },
             'pump_n1_1': {
@@ -44,17 +44,17 @@ def get_object(post_quantity=(6, 6)):
             },
             'pump_n2': {
                 'class': Engine,
-                'do_start': 'do_1_2_14',
+                'do_start': 'do_2_2_14',
                 'mb_cells_idx': 52
             },
             'pump_n1_2': {
                 'class': Engine,
-                'do_start': 'do_1_2_18',
+                'do_start': 'do_2_2_18',
                 'mb_cells_idx': 54
             },
             'pump_n3': {
                 'class': Engine,
-                'do_start': 'do_1_2_19',
+                'do_start': 'do_2_2_19',
                 'mb_cells_idx': 56
             },
             'pump_os': {
@@ -75,17 +75,17 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_water_os': {
                 'class': Valve,
-                'do_open': 'do_1_2_23',
+                'do_open': 'do_2_2_23',
                 'mb_cells_idx': 78
             },
             'valve_wash_osmos': {
                 'class': Valve,
-                'do_open': 'do_1_2_24',
+                'do_open': 'do_2_2_24',
                 'mb_cells_idx': None
             },
             'valve_b1': {
                 'class': Valve,
-                'do_open': 'do_1_2_21',
+                'do_open': 'do_2_2_21',
                 'mb_cells_idx': 82
             },
             # 'valve_b2': {
@@ -95,7 +95,7 @@ def get_object(post_quantity=(6, 6)):
             # },
             'valve_b1_1': {
                 'class': Valve,
-                'do_open': 'do_1_2_20',
+                'do_open': 'do_2_2_20',
                 'mb_cells_idx': 86
             },
             'tank_b1': {
@@ -114,17 +114,17 @@ def get_object(post_quantity=(6, 6)):
             },
             'pump_n4': {
                 'class': Engine,
-                'do_start': 'do_1_2_15',
+                'do_start': 'do_2_2_15',
                 'mb_cells_idx': 92
             },
             'pump_n5': {
                 'class': Engine,
-                'do_start': 'do_1_2_16',
+                'do_start': 'do_2_2_16',
                 'mb_cells_idx': 94
             },
             'pump_n6': {
                 'class': Engine,
-                'do_start': 'do_1_2_17',
+                'do_start': 'do_2_2_17',
                 'mb_cells_idx': 96
             },
             'pump_n7': {
