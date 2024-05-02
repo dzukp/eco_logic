@@ -139,7 +139,7 @@ def gen_tagsrv_config(post_quantity=None):
                                               out_tags=[tag for name, tag in tags['out'].items() if
                                                         name.startswith(f'fc_{section_num}_{i}_ao_')]))
 
-    fc_modules[1].append(ModbusRTUModule(30, ports[2], io_tags=[], max_answ_len=5,
+    fc_modules[2].append(ModbusRTUModule(30, ports[2], io_tags=[], max_answ_len=5,
                                      in_tags=[tag for name, tag in tags['in'].items() if
                                               name.startswith(f'fc_os_ai_')],
                                      out_tags=[tag for name, tag in tags['out'].items() if
