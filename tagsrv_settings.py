@@ -36,7 +36,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_names.append('fc_water_')
         fc_names.append('fc_osmos_')
 
-    fc_innovance_names = ['fc_2_']
+    fc_innovance_names = []
     for fc in fc_innovance_names:
         fc_names.remove(fc)
 
