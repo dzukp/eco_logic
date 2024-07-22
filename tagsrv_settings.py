@@ -23,7 +23,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
         f'fc_os_', 'fc_hoover_1_', 'fc_hoover_2_']
 
-    fc_innovance_names = ['fc_1_4_', 'fc_2_4_', 'fc_2_7_', 'fc_hoover_1_', 'fc_hoover_2_']
+    fc_innovance_names = ['fc_1_4_', 'fc_2_4_', 'fc_2_7_', 'fc_hoover_1_', 'fc_hoover_2_', 'fc_os_']
     for fc in fc_innovance_names:
         fc_names.remove(fc)
 
@@ -148,12 +148,12 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
                                      out_tags=[tag for name, tag in tags['out'].items() if
                                                name.startswith(f'fc_os_ao_')]))
 
-    fc_modules[3].append(ModbusRTUModule(40, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[1].append(ModbusRTUModule(40, ports[1], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_1_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
                                                    name.startswith(f'fc_hoover_1_ao_')]))
-    fc_modules[3].append(ModbusRTUModule(41, ports[3], io_tags=[], max_answ_len=5,
+    fc_modules[1].append(ModbusRTUModule(41, ports[1], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
                                                   name.startswith(f'fc_hoover_2_ai_')],
                                          out_tags=[tag for name, tag in tags['out'].items() if
@@ -168,7 +168,7 @@ def gen_tagsrv_config(post_quantity=(6, 6)):
         ),
         'mb_disp_1': SerialDispatcher(modules=fc_modules[1]),
         'mb_disp_2': SerialDispatcher(modules=fc_modules[2]),
-        'mb_disp_3': SerialDispatcher(modules=fc_modules[3])
+        # 'mb_disp_3': SerialDispatcher(modules=fc_modules[3])
     }
 
     return {

@@ -63,7 +63,7 @@ def get_object(post_quantity=(6, 6)):
                 'mb_cells_idx': 58,
                 'children': {
                     'fc': {
-                        'class': Altivar212,
+                        'class': InovanceMd310,
                         'ao_command': 'fc_os_ao_1',
                         'ao_frequency': 'fc_os_ao_2',
                         'ai_status': 'fc_os_ai_1',
