@@ -58,7 +58,7 @@ def get_object(post_quantity=(6, 6)):
                 'mb_cells_idx': 56
             },
             'pump_os': {
-                'class': PidEngine,
+                'class': InovanceMd310,
                 'ai_sensor': 'ai_1_2_4',
                 'mb_cells_idx': 58,
                 'children': {
