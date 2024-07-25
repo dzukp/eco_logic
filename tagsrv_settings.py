@@ -36,7 +36,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_names.append('fc_water_')
         fc_names.append('fc_osmos_')
 
-    fc_innovance_names = []
+    fc_innovance_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
     for fc in fc_innovance_names:
         fc_names.remove(fc)
 
@@ -113,8 +113,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         com_port1_name = 'fc_serial1'
         com_port2_name = 'fc_serial2'
     else:
-        com_port1_name = 'COM5'
-        com_port2_name = 'COM6'
+        com_port1_name = 'COM3'
+        com_port2_name = 'COM4'
 
     sources = {
         'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
@@ -127,13 +127,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     fc_modules_1 = []
     fc_modules_2 = []
 
-    # if quantity pumps > 4 use both serial ports
-    if version == '1.2':
-        com1_end = 6
-    elif post_quantity > 4:
-        com1_end = post_quantity // 2
-    else:
-        com1_end = post_quantity
+    com1_end = post_quantity
     for i in range(1, com1_end + 1):
         fc_modules_1.append(ModbusRTUModule(i, sources['port_1'], io_tags=[], max_answ_len=5,
                                           in_tags=[tag for name, tag in tags['in'].items() if
@@ -141,31 +135,35 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
 
-    if version in ('1.2',):
-        fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_foam_1_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_foam_1_ao_')]))
+    fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc_foam_1_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc_foam_1_ao_')]))
 
-        fc_modules_2.append(ModbusRTUModule(51, sources['port_2'], io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_foam_2_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_foam_2_ao_')]))
+    # fc_modules_2.append(ModbusRTUModule(51, sources['port_2'], io_tags=[], max_answ_len=5,
+    #                                       in_tags=[tag for name, tag in tags['in'].items() if
+    #                                                name.startswith(f'fc_foam_2_ai_')],
+    #                                       out_tags=[tag for name, tag in tags['out'].items() if
+    #                                                 name.startswith(f'fc_foam_2_ao_')]))
 
-        comport = sources['port_2'] if post_quantity > 7 else sources['port_1']
-        fc_module = fc_modules_2 if post_quantity > 7 else fc_modules_1
-        fc_module.append(ModbusRTUModule(11, comport, io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_osmos_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_osmos_ao_')]))
-        fc_module.append(ModbusRTUModule(12, comport, io_tags=[], max_answ_len=5,
-                                              in_tags=[tag for name, tag in tags['in'].items() if
-                                                       name.startswith(f'fc_water_ai_')],
-                                              out_tags=[tag for name, tag in tags['out'].items() if
-                                                        name.startswith(f'fc_water_ao_')]))
+    comport = sources['port_2']
+    fc_module = fc_modules_2
+    fc_module.append(ModbusRTUModule(11, comport, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc_osmos_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc_osmos_ao_')]))
+    fc_module.append(ModbusRTUModule(12, comport, io_tags=[], max_answ_len=5,
+                                          in_tags=[tag for name, tag in tags['in'].items() if
+                                                   name.startswith(f'fc_water_ai_')],
+                                          out_tags=[tag for name, tag in tags['out'].items() if
+                                                    name.startswith(f'fc_water_ao_')]))
+    fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5,
+                                     in_tags=[tag for name, tag in tags['in'].items() if
+                                              name.startswith(f'fc_os_ai_')],
+                                     out_tags=[tag for name, tag in tags['out'].items() if
+                                               name.startswith(f'fc_os_ao_')]))
 
     for i in range(com1_end + 1, post_quantity + 1):
         fc_modules_2.append(ModbusRTUModule(i, sources['port_2'], io_tags=[], max_answ_len=5,
@@ -173,15 +171,6 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                                    name.startswith(f'fc_{i}_ai_')],
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
-
-    if version in ('1.1', '1.2') and 'port_2' in sources:
-        comport = sources['port_2'] if post_quantity > 7 else sources['port_1']
-        fc_module = fc_modules_2 if post_quantity > 7 else fc_modules_1
-        fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5,
-                                          in_tags=[tag for name, tag in tags['in'].items() if
-                                                   name.startswith(f'fc_os_ai_')],
-                                          out_tags=[tag for name, tag in tags['out'].items() if
-                                                    name.startswith(f'fc_os_ao_')]))
 
     if post_quantity in (5, 6):
         modules = [do_1, do_2, do_3, di_1, ai_1, ai_2]
