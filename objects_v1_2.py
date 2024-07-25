@@ -25,9 +25,9 @@ def get_object(post_quantity=10):
                     'di_press_1': 'di_1_14',
                     'ai_pe_1': None,
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_1_5',
+                    'ai_pe_2': 'ai_3_2',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_1_8',
+                    'ai_pe_3': 'ai_3_5',
                     'di_press_4': 'di_1_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -59,7 +59,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_water_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_1_5',
+                            'ai_sensor': 'ai_3_2',
                             'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
@@ -75,7 +75,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_osmos_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_1_8',
+                            'ai_sensor': 'ai_3_5',
                             'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
@@ -171,7 +171,7 @@ def get_object(post_quantity=10):
             'children': {
                 'pump_foam': {
                     'class': PidEngine,
-                    'ai_sensor': 'ai_1_6' if i == 1 else 'ai_3_5',
+                    'ai_sensor': 'ai_3_3' if i == 1 else 'ai_3_5',
                     'set_point': 7.0,
                     'mb_cells_idx': 527 if i == 1 else 547,
                     'children': {
