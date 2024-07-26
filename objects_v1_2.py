@@ -1,7 +1,6 @@
 import copy
 
-from pylogic.io_object import IoObject
-from valve import Valve, NOValve
+from valve import Valve
 from engine import Engine
 from fc import Altivar212, InovanceMd310
 from tank import Tank
@@ -365,7 +364,6 @@ def get_object(post_quantity=10):
         obj['children']['pump']['ai_frequency'] = f'fc_{post_number}_ai_2'
         obj['children']['pump']['ai_alarm_code'] = None
 
-        if post_number in []:
-            obj['children']['pump']['class'] = InovanceMd310
+        obj['children']['pump']['class'] = InovanceMd310
 
     return objects
