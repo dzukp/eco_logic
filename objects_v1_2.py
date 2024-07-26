@@ -144,9 +144,9 @@ def get_object(post_quantity=10):
                         },
                         'tank_b2': {
                             'class': Tank,
-                            'di_low_level': 'di_1_3',
-                            'di_mid_level': 'di_1_2',
-                            'di_hi_level': 'di_1_1',
+                            'di_low_level': 'dio_1_i_9',
+                            'di_mid_level': 'dio_1_i_8',
+                            'di_hi_level': 'dio_1_i_7',
                             'mb_cells_idx': 50
                         },
                         'tank_b3': {
