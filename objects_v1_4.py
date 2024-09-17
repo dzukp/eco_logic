@@ -368,5 +368,6 @@ def get_object(post_quantity=10):
     objects['top']['children']['post_1']['children']['pump']['class'] = InovanceMd310
     objects['top']['children']['post_2']['children']['pump']['class'] = InovanceMd310
     objects['top']['children']['post_3']['children']['pump']['class'] = InovanceMd310
+    objects['top']['children']['post_5']['children']['pump']['class'] = InovanceMd310
     objects['top']['children']['post_6']['children']['pump']['class'] = InovanceMd310
     return objects
