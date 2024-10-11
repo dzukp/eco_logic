@@ -196,12 +196,12 @@ def get_object(post_quantity=6):
                 },
                 'valve_dose_osmos_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_14',
+                    # 'do_open': f'do_{do_module}_14',
                     'mb_cells_idx': 40 if i == 1 else None
                 },
                 'valve_dose_foam_2': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_17',
+                    # 'do_open': f'do_{do_module}_17',
                     'mb_cells_idx': 34 if i == 1 else None
                 }
             }
@@ -293,15 +293,16 @@ def get_object(post_quantity=6):
         obj['ai_pressure'] = f'ai_1_{post_number}'
 
         if post_number <= 6:
-            module_number = ((post_number - 1) // 3) + 1 if post_number <= 6 else ((post_number - 7) // 3) + 4
-            obj['children']['valve_solution_2']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 1}'
+            module_number = ((post_number - 1) // 3) + 1
+            obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 1}'
             obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 2}'
-            obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 3}'
+            obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 3}'
             obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 4}'
             obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 5}'
-            obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 6}'
-            obj['children']['valve_out_water']['do_open'] = None
-            obj['children']['valve_out_foam']['do_open'] = None
+            obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 6}'
+            obj['children']['valve_out_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 7}'
+            obj['children']['valve_out_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 8}'
+            obj['children']['valve_intensive']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 9}'
         else:
             module_number = 4
             obj['children']['valve_solution_2']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 1}'
@@ -314,9 +315,10 @@ def get_object(post_quantity=6):
             obj['children']['valve_out_foam']['do_open'] = None
 
         if post_number <= 6:
-            module2_number = 3
-            obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 1}'
-            obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 2}'
+            pass
+            # module2_number = 3
+            # obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 1}'
+            # obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 2}'
         else:
             module2_number = 5
             obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 7) * 2 + 1}'
