@@ -139,7 +139,7 @@ def get_object(post_quantity=6):
             'children': {
                 'pump_foam': {
                     'class': PidEngine,
-                    'ai_sensor': 'ai_1_6' if i == 1 else 'ai_3_5',
+                    # 'ai_sensor': 'ai_1_6' if i == 1 else 'ai_3_5',
                     'set_point': 7.0,
                     'mb_cells_idx': 527 if i == 1 else 547,
                     'children': {
@@ -156,42 +156,42 @@ def get_object(post_quantity=6):
                 },
                 'pump_intensive': {
                     'class': Engine,
-                    'do_start': f'do_{do_module}_23',
+                    'do_start': f'do_1_22' if i == 1 else None,
                     'mb_cells_idx': 38 if i == 1 else None
                 },
                 'valve_dose_foam': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_18',
+                    # 'do_open': f'do_{do_module}_18',
                     'mb_cells_idx': 52 if i == 1 else None
                 },
                 'valve_dose_wax': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_19',
+                    # 'do_open': f'do_{do_module}_19',
                     'mb_cells_idx': 54 if i == 1 else None
                 },
                 'valve_dose_shampoo': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_22',
+                    # 'do_open': f'do_{do_module}_22',
                     'mb_cells_idx': 56 if i == 1 else None
                 },
                 'valve_dose_water_shampoo': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_20',
+                    # 'do_open': f'do_{do_module}_20',
                     'mb_cells_idx': 512 if i == 1 else None
                 },
                 'valve_dose_hot_water_shampoo': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_21',
+                    # 'do_open': f'do_{do_module}_21',
                     'mb_cells_idx': 514 if i == 1 else None
                 },
                 'valve_dose_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_16',
+                    # 'do_open': f'do_{do_module}_16',
                     'mb_cells_idx': 58 if i == 1 else None
                 },
                 'valve_dose_water_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_15',
+                    # 'do_open': f'do_{do_module}_15',
                     'mb_cells_idx': 516 if i == 1 else None
                 },
                 'valve_dose_osmos_intensive': {
