@@ -47,10 +47,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.osmosis_pump_off_press = 4.0
         self.b1_filler = TankFiller('b1_filler')
         self.b2_filler = OsmosisTankFiller('b2_filler')
-        self.b3_filler = TankFiller('b3_filler')
-        self.water_supplier = PidWaterSupplier('cold_water')
+        # self.b3_filler = TankFiller('b3_filler')
+        self.water_supplier = WaterSupplier('cold_water')
         # self.pre_filter_supplier = WaterSupplier('pre_filter')
-        self.osmos_supplier = PidWaterSupplier('osmosis')
+        self.osmos_supplier = WaterSupplier('osmosis')
         self.start_b1 = True
         self.start_b2 = True
         self.start_b3 = True
@@ -74,18 +74,20 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b2_filler.pid_pump = self.pump_os
         self.b2_filler.valve_inlet = self.valve_water_os
         self.b2_filler.di_pressure = self.di_press_2
-        self.b3_filler.tank = self.tank_b3
-        self.b3_filler.valve = self.valve_b3
-        self.water_supplier.tank = self.tank_b3
-        self.water_supplier.pid_pump = self.pump_water_supplier
+        # self.b3_filler.tank = self.tank_b3
+        # self.b3_filler.valve = self.valve_b3
+        self.water_supplier.tank = self.tank_b1
+        self.water_supplier.pump = self.pump_n1
+        self.water_supplier.ai_pressure = self.ai_pe_2
         # self.pre_filter_supplier.ai_pressure = self.ai_pe_1
         # self.pre_filter_supplier.tank = self.tank_b1
         # self.pre_filter_supplier.pump = self.pump_n1_3
         self.osmos_supplier.tank = self.tank_b2
-        self.osmos_supplier.pid_pump = self.pump_osmos_supplier
+        self.osmos_supplier.pump = self.pump_n2
+        self.osmos_supplier.ai_pressure = self.ai_pe_3
         self.b1_filler.set_logger(self.logger.getChild(self.b1_filler.name))
         self.b2_filler.set_logger(self.logger.getChild(self.b2_filler.name))
-        self.b3_filler.set_logger(self.logger.getChild(self.b3_filler.name))
+        # self.b3_filler.set_logger(self.logger.getChild(self.b3_filler.name))
         self.water_supplier.set_logger(self.logger.getChild(self.water_supplier.name))
         self.osmos_supplier.set_logger(self.logger.getChild(self.osmos_supplier.name))
         self.sides = {post: self.find_child_by_name(side) for post, side in self.sides.items()}
@@ -101,12 +103,12 @@ class WaterPreparing(IoObject, ModbusDataObject):
             self.b1_filler.stop()
         self.b1_filler.process()
 
-        # Filling Water B3 Tank
-        if self.start_b3:
-            self.b3_filler.start()
-        else:
-            self.b3_filler.stop()
-        self.b3_filler.process()
+        # # Filling Water B3 Tank
+        # if self.start_b3:
+        #     self.b3_filler.start()
+        # else:
+        #     self.b3_filler.stop()
+        # self.b3_filler.process()
 
         # Filling Osmosis Tank
         if self.start_b2:

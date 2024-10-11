@@ -3,7 +3,7 @@ import copy
 from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
+from fc import Altivar212, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
@@ -56,38 +56,6 @@ def get_object(post_quantity=10):
                             'class': Engine,
                             'do_start': None,
                             'mb_cells_idx': 497
-                        },
-                        'pump_water_supplier': {
-                            'class': PidEngine,
-                            'ai_sensor': 'ai_1_5',
-                            'mb_cells_idx': 569,
-                            'children': {
-                                'fc': {
-                                    'class': Altivar212,
-                                    'ao_command': 'fc_water_ao_1',
-                                    'ao_frequency': 'fc_water_ao_2',
-                                    'ai_status': 'fc_water_ai_1',
-                                    'ai_frequency': 'fc_water_ai_2',
-                                    'ai_alarm_code': 'fc_water_ai_3',
-                                    'mb_cells_idx': 560
-                                }
-                            }
-                        },
-                        'pump_osmos_supplier': {
-                            'class': PidEngine,
-                            'ai_sensor': 'ai_1_8',
-                            'mb_cells_idx': 589,
-                            'children': {
-                                'fc': {
-                                    'class': Altivar212,
-                                    'ao_command': 'fc_osmos_ao_1',
-                                    'ao_frequency': 'fc_osmos_ao_2',
-                                    'ai_status': 'fc_osmos_ai_1',
-                                    'ai_frequency': 'fc_osmos_ai_2',
-                                    'ai_alarm_code': 'fc_osmos_ai_3',
-                                    'mb_cells_idx': 580
-                                }
-                            }
                         },
                         'pump_os1': {
                             'class': Engine,
@@ -151,9 +119,9 @@ def get_object(post_quantity=10):
                         },
                         'tank_b3': {
                             'class': Tank,
-                            'di_low_level': 'dio_1_i_6',
-                            'di_mid_level': 'dio_1_i_5',
-                            'di_hi_level': 'dio_1_i_4',
+                            'di_low_level': None,
+                            'di_mid_level': None,
+                            'di_hi_level': None,
                             'mb_cells_idx': 558
                         }
                     }
@@ -285,7 +253,7 @@ def get_object(post_quantity=10):
                 'do_open': None
             },
             'pump': {
-                'class': Altivar212,
+                'class': InovanceMd310,
                 'ao_command': None,
                 'ao_frequency': None,
                 'ai_status': None,
