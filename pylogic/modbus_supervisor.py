@@ -20,7 +20,7 @@ class ModbusSupervisor(BaseSupervisor):
         start_addr, end_addr = self.prepare_object(self.top_object)
         if start_addr is not None and end_addr is not None:
             self.start_addr = start_addr
-            self.length = end_addr - start_addr + 4
+            self.length = end_addr - start_addr + 400
         else:
             self.start_addr = 0
             self.length = 4

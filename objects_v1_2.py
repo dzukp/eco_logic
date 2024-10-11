@@ -90,31 +90,31 @@ def get_object(post_quantity=10):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_1',
+                            'do_open': 'do_2_19',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_3',
+                            'do_open': 'do_1_23',
                             'mb_cells_idx': 46
                         },
                         'valve_b3': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_2',
+                            'do_open': None,
                             'mb_cells_idx': 42
                         },
                         'tank_b1': {
                             'class': Tank,
-                            'di_low_level': 'dio_1_i_3',
-                            'di_mid_level': 'dio_1_i_2',
-                            'di_hi_level': 'dio_1_i_1',
+                            'di_low_level': 'di_1_1',
+                            'di_mid_level': 'di_1_2',
+                            'di_hi_level': 'di_1_3',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {
                             'class': Tank,
-                            'di_low_level': 'di_1_3',
-                            'di_mid_level': 'di_1_2',
-                            'di_hi_level': 'di_1_1',
+                            'di_low_level': 'di_1_4',
+                            'di_mid_level': 'di_1_5',
+                            'di_hi_level': 'di_1_6',
                             'mb_cells_idx': 50
                         },
                         'tank_b3': {
@@ -290,12 +290,7 @@ def get_object(post_quantity=10):
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        if post_number <= 3:
-            obj['ai_pressure'] = f'ai_1_{post_number}'
-        elif post_number <= 6:
-            obj['ai_pressure'] = f'ai_2_{post_number - 3}' if post_number != 4 else 'ai_2_4'
-        else:
-            obj['ai_pressure'] = f'ai_3_{post_number - 6}'
+        obj['ai_pressure'] = f'ai_1_{post_number}'
 
         if post_number <= 6:
             module_number = ((post_number - 1) // 3) + 1 if post_number <= 6 else ((post_number - 7) // 3) + 4
