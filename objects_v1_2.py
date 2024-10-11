@@ -34,22 +34,22 @@ def get_object(post_quantity=6):
                     'children': {
                         'pump_n1': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_19',
                             'mb_cells_idx': 30,
                         },
                         'pump_n1_2': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_2_20',
                             'mb_cells_idx': 493,
                         },
                         'pump_n1_3': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_2_21',
                             'mb_cells_idx': 495,
                         },
                         'pump_n2': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_20',
                             'mb_cells_idx': 32
                         },
                         'pump_n3': {
@@ -73,7 +73,7 @@ def get_object(post_quantity=6):
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
-                                    'class': Altivar212,
+                                    'class': InovanceMd310,
                                     'ao_command': 'fc_os_ao_1',
                                     'ao_frequency': 'fc_os_ao_2',
                                     'ai_status': 'fc_os_ai_1',
