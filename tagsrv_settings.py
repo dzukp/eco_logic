@@ -57,10 +57,17 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
-    # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
-        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
-        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+        tags['in'].update({
+            f'{pref}ai_1': InTag(0x3000),
+            f'{pref}ai_2': InTag(0x1001),
+            f'{pref}ai_3': InTag(0x8000),
+
+        })
+        tags['out'].update({
+            f'{pref}ao_1': OutTag(0x2000),
+            f'{pref}ao_2': OutTag(0x1000)
+        })
 
     ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.11',
                        timeout=0.03)
@@ -71,7 +78,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
     if version in ('1.0', '1.2'):
-        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
+        di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
                            ip='192.168.200.16', timeout=0.03)
     else:
         di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],

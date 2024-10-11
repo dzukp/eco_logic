@@ -13,7 +13,7 @@ from side_supplier import SideSupplier
 from top import Top
 
 
-def get_object(post_quantity=10):
+def get_object(post_quantity=6):
     objects = {
         'top': {
             'class': Top,
@@ -22,13 +22,13 @@ def get_object(post_quantity=10):
                 'supplier': {
                     'class': WaterPreparing,
                     'sides': {},
-                    'di_press_1': 'di_1_14',
+                    'di_press_1': None,
                     'ai_pe_1': None,
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_1_5',
-                    'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_1_8',
-                    'di_press_4': 'di_1_13',
+                    'ai_pe_2': 'ai_2_5',
+                    'di_press_3': None,
+                    'ai_pe_3': 'ai_2_8',
+                    'di_press_4': None,
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
