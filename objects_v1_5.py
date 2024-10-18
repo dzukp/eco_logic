@@ -74,7 +74,7 @@ def get_object(post_quantity=10):
                             'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
-                                    'class': Altivar212,
+                                    'class': InovanceMd310,
                                     'ao_command': 'fc_water_ao_1',
                                     'ao_frequency': 'fc_water_ao_2',
                                     'ai_status': 'fc_water_ai_1',
@@ -90,7 +90,7 @@ def get_object(post_quantity=10):
                             'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
-                                    'class': Altivar212,
+                                    'class': InovanceMd310,
                                     'ao_command': 'fc_osmos_ao_1',
                                     'ao_frequency': 'fc_osmos_ao_2',
                                     'ai_status': 'fc_osmos_ai_1',
@@ -116,7 +116,7 @@ def get_object(post_quantity=10):
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
-                                    'class': Altivar212,
+                                    'class': InovanceMd310,
                                     'ao_command': 'fc_os_ao_1',
                                     'ao_frequency': 'fc_os_ao_2',
                                     'ai_status': 'fc_os_ai_1',
@@ -187,7 +187,7 @@ def get_object(post_quantity=10):
                     'mb_cells_idx': 527 if i == 1 else 547,
                     'children': {
                         'fc': {
-                            'class': Altivar212,
+                            'class': InovanceMd310,
                             'ao_command': f'fc_foam_{i}_ao_1',
                             'ao_frequency': f'fc_foam_{i}_ao_2',
                             'ai_status': f'fc_os_foam_{i}_ai_1',
