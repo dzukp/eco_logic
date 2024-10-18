@@ -35,42 +35,42 @@ def get_object(post_quantity=10):
                     'children': {
                         'pump_n1': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_19',
                             'mb_cells_idx': 30,
                         },
                         'pump_n1_2': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_2_20',
                             'mb_cells_idx': 493,
                         },
                         'pump_n1_3': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_2_21',
                             'mb_cells_idx': 495,
                         },
                         'pump_n2': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_20',
                             'mb_cells_idx': 32
                         },
                         'pump_n3': {
                             'class': Engine,
-                            'do_start': None,
+                            'do_start': 'do_1_21',
                             'mb_cells_idx': 497
                         },
                         'pump_intensive': {
                             'class': Engine,
-                            'do_start': f'do_1_23',
+                            'do_start': f'do_1_22',
                             'mb_cells_idx': 38
                         },
                         'valve_bypass_intensive': {
                             'class': Valve,
-                            'do_open': '',
+                            'do_open': 'do_1_24',
                             'mb_cells_idx': 58
                         },
                         'pump_water_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_5',
+                            'ai_sensor': 'ai_2_6',
                             'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
@@ -86,7 +86,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_osmos_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_6',
+                            'ai_sensor': 'ai_2_5',
                             'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
@@ -182,7 +182,7 @@ def get_object(post_quantity=10):
             'children': {
                 'pump_foam': {
                     'class': PidEngine,
-                    'ai_sensor': 'ai_2_4' if i == 1 else 'ai_3_5',
+                    'ai_sensor': None,
                     'set_point': 10.0,
                     'mb_cells_idx': 527 if i == 1 else 547,
                     'children': {
@@ -234,17 +234,17 @@ def get_object(post_quantity=10):
                 },
                 'valve_dose_water_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_15',
+                    'do_open': None,
                     'mb_cells_idx': 604 if i == 1 else None
                 },
                 'valve_dose_osmos_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_14',
+                    'do_open': None,
                     'mb_cells_idx': None if i == 1 else None
                 },
                 'valve_dose_foam_2': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_17',
+                    'do_open': None,
                     'mb_cells_idx': None if i == 1 else None
                 }
             }

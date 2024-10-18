@@ -69,7 +69,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.start_b3 = True
         self.start_water_press = True
         self.start_osmos_press = True
-        self.start_intensive_press = True
         self.sides = {}
         self.side_suppliers = {}
         self.mb_cells_idx = None
@@ -169,12 +168,10 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.intensive_suppler.pump_off_press = self.intensive_pump_off_press
         self.intensive_bypass.hi_limit = self.intensive_bypass_off_press
         self.intensive_bypass.low_limit = self.intensive_bypass_on_press
-        if self.start_intensive_press:
+        if FuncNames.INTENSIVE in self.active_functions:
             self.intensive_suppler.start()
-            self.intensive_bypass.start()
         else:
             self.intensive_suppler.stop()
-            self.intensive_bypass.stop()
         self.intensive_suppler.process()
         self.intensive_bypass.process()
 
@@ -304,10 +301,6 @@ class WaterPreparing(IoObject, ModbusDataObject):
                 self.start_b3 = True
             if cmd & 0x0200:
                 self.start_b3 = False
-            if cmd & 0x0400:
-                self.start_intensive_press = True
-            if cmd & 0x0800:
-                self.start_intensive_press = False
             floats = modbus_cells_to_floats(data[addr + 12:addr + 24])
             last_floats = self.water_pump_off_press, self.water_pump_on_press, self.water_enough_press, \
                           self.osmosis_pump_off_press, self.osmosis_pump_on_press, self.osmosis_enough_press
@@ -329,8 +322,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
                      int(self.start_b2) * (1 << 6) | \
                      int(self.start_osmos_press) * (1 << 7) | \
                      int(self.di_press_4.val) * (1 << 8) | \
-                     int(self.start_b3) * (1 << 9) | \
-                     int(self.start_intensive_press) * (1 << 10)
+                     int(self.start_b3) * (1 << 9)
             tmp_data = floats_to_modbus_cells((self.ai_pe_1.val, self.ai_pe_2.val, self.ai_pe_3.val))
             water_suppl_status = 0
             osmos_suppl_status = 0
