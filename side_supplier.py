@@ -1,6 +1,7 @@
 from func_names import FuncNames
 from pylogic.io_object import IoObject
 from pylogic.modbus_supervisor import ModbusDataObject
+from subsystems import WaterSupplier
 
 
 class SideSupplier(IoObject, ModbusDataObject):

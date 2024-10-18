@@ -8,6 +8,8 @@ from pylogic.channel import InChannel
 
 import struct
 
+from valve import Valve
+
 
 class Subsystem(LoggedObject):
 
@@ -368,3 +370,23 @@ class PidWaterSupplier(Subsystem):
     def is_can_supply(self):
         press = self.pid_pump.ai_sensor.val
         return press > self.enough_pressure if press > -10 else True
+
+
+class BypassValve(Subsystem):
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.valve: Valve | None = None
+        self.ai_pressure: InChannel | None = None
+        self.low_limit = 11
+        self.hi_limit = 12
+        self.hysteresis = Hysteresis(low=self.low_limit, hi=self.hi_limit)
+
+    def process(self):
+        self.hysteresis.low = self.low_limit
+        self.hysteresis.hi = self.hi_limit
+        need_valve = not self.hysteresis.process(self.ai_pressure.val)
+        if self.started and self.external_enable and need_valve:
+            self.valve.open()
+        else:
+            self.valve.close()

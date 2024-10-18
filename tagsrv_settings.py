@@ -26,10 +26,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
-    fc_names.remove('fc_2_')
-    fc_innovance_names = ['fc_2_']
 
-    if version in ('1.1', '1.2'):
+    if version in ('1.1', '1.2', '1.5'):
         fc_names.append('fc_os_')
 
     if version in ('1.2',):
@@ -55,7 +53,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
             tags['in'].update(dict([(pref + 'i_' + str(i), InTag(i)) for i in range(1, 13)]))
             tags['out'].update(dict([(pref + 'o_' + str(i), OutTag(i)) for i in range(1, 9)]))
 
-    if version in ('1.0', '1.2', '1.4'):
+    if version in ('1.0', '1.2', '1.4', '1.5'):
         # generate di_1_1 - do_1_20
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 21)]))
@@ -63,12 +61,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         for pref in ('di_1_',):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
-    # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
-        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
-        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
-
-    for pref in fc_innovance_names:
         tags['in'].update({
             f'{pref}ai_1': InTag(0x3000),
             f'{pref}ai_2': InTag(0x1001),
@@ -88,7 +81,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
-    if version in ('1.0', '1.2', '1.4'):
+    if version in ('1.0', '1.2', '1.4', '1.5'):
         di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
                            ip='192.168.200.16', timeout=0.03)
     else:
@@ -116,7 +109,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     com_port2_name = settings.COM2
 
     # if quantity pumps > 4 use both serial ports
-    if version in ('1.2', '1.4'):
+    if version in ('1.2', '1.4', '1.5'):
         com1_end = 6
     elif post_quantity > 4:
         com1_end = post_quantity // 2
@@ -174,7 +167,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_modules_2.append(ModbusRTUModule(
             i, sources['port_2'], io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
-    if version in ('1.1', '1.2', '1.4'):
+    if version in ('1.1', '1.2', '1.4', '1.5'):
         comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
         fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
         in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')]
