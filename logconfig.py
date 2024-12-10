@@ -17,12 +17,12 @@ logging_config = {
             'propagate': False,
             'level': 'DEBUG'
         },
-        'TagSrv.serial_port_fc_serial1': {
+        'TagSrv.serial_port_fc1_serial': {
             'handlers': ['comport_file'],
             'propagate': False,
             'level': 'DEBUG'
         },
-        'TagSrv.serial_port_fc_serial2': {
+        'TagSrv.serial_port_fc2_serial': {
             'handlers': ['comport_file'],
             'propagate': False,
             'level': 'DEBUG'
