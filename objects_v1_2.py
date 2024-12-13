@@ -316,12 +316,13 @@ def get_object(post_quantity=10):
         obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
-        # obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_solution_2']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        if post_number <= 3:
+        if post_number == 3:
+            obj['ai_pressure'] = 'ai_1_8'
+        elif post_number <= 3:
             obj['ai_pressure'] = f'ai_1_{post_number}'
         elif post_number <= 6:
             obj['ai_pressure'] = f'ai_2_{post_number - 3}'
