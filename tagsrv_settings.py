@@ -114,11 +114,11 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                                           out_tags=[tag for name, tag in tags['out'].items() if
                                                     name.startswith(f'fc_{i}_ao_')]))
 
-    fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
-                                          in_tags=[tag for name, tag in tags['in'].items() if
-                                                   name.startswith(f'fc_foam_1_ai_')],
-                                          out_tags=[tag for name, tag in tags['out'].items() if
-                                                    name.startswith(f'fc_foam_1_ao_')]))
+    # fc_modules_1.append(ModbusRTUModule(50, sources['port_1'], io_tags=[], max_answ_len=5,
+    #                                       in_tags=[tag for name, tag in tags['in'].items() if
+    #                                                name.startswith(f'fc_foam_1_ai_')],
+    #                                       out_tags=[tag for name, tag in tags['out'].items() if
+    #                                                 name.startswith(f'fc_foam_1_ao_')]))
 
     # fc_modules_2.append(ModbusRTUModule(51, sources['port_2'], io_tags=[], max_answ_len=5,
     #                                       in_tags=[tag for name, tag in tags['in'].items() if
