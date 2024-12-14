@@ -167,7 +167,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_modules_2.append(ModbusRTUModule(
             i, sources['port_2'], io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
-    if version in ('1.1', '1.2', '1.4', '1.5'):
+    if version in ('1.1', '1.2', '1.4'):
         comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
         fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
         in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')]

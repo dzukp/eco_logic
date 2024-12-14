@@ -146,7 +146,6 @@ def get_object(post_quantity=10):
 
     side_suppliers = {}
     for i in (1,):
-        do_module = {1: 3, 2: 5}[i]
         side_suppliers[f'side_{i}'] = {
             'class': SideSupplier,
             'mb_cells_idx': None,
@@ -289,7 +288,7 @@ def get_object(post_quantity=10):
         post_number = int(name.lstrip('post_'))
         start_addr = 60 + (post_number - 1) * 32
 
-        objects['top']['children']['supplier']['sides'][name] = 'side_1' if post_number <= 6 else 'side_2'
+        objects['top']['children']['supplier']['sides'][name] = 'side_1'
 
         obj['mb_cells_idx'] = start_addr
         obj['children']['valve_foam']['mb_cells_idx'] = start_addr + 5
