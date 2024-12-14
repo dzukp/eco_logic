@@ -23,19 +23,19 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_2_4',
+                    'ai_pe_1': 'ai_2_1',
                     'di_press_2': 'dio_1_i_1',
-                    'ai_pe_2': 'ai_2_5',
+                    'ai_pe_2': 'ai_2_1',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_2_6',
+                    'ai_pe_3': 'ai_2_4',
                     'di_press_4': 'di_1_13',
-                    'ai_pe_intensive': 'ai_2_7',
+                    'ai_pe_intensive': 'ai_2_3',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
                         'pump_n1': {
                             'class': Engine,
-                            'do_start': 'do_1_19',
+                            'do_start': 'do_2_19',
                             'mb_cells_idx': 30,
                         },
                         'pump_n1_2': {
@@ -68,51 +68,22 @@ def get_object(post_quantity=10):
                             'do_open': 'do_1_24',
                             'mb_cells_idx': 58
                         },
-                        'pump_water_supplier': {
-                            'class': PidEngine,
-                            'ai_sensor': 'ai_2_6',
-                            'mb_cells_idx': 569,
-                            'children': {
-                                'fc': {
-                                    'class': InovanceMd310,
-                                    'ao_command': 'fc_water_ao_1',
-                                    'ao_frequency': 'fc_water_ao_2',
-                                    'ai_status': 'fc_water_ai_1',
-                                    'ai_frequency': 'fc_water_ai_2',
-                                    'ai_alarm_code': 'fc_water_ai_3',
-                                    'mb_cells_idx': 560
-                                }
-                            }
-                        },
-                        'pump_osmos_supplier': {
-                            'class': PidEngine,
-                            'ai_sensor': 'ai_2_5',
-                            'mb_cells_idx': 589,
-                            'children': {
-                                'fc': {
-                                    'class': InovanceMd310,
-                                    'ao_command': 'fc_osmos_ao_1',
-                                    'ao_frequency': 'fc_osmos_ao_2',
-                                    'ai_status': 'fc_osmos_ai_1',
-                                    'ai_frequency': 'fc_osmos_ai_2',
-                                    'ai_alarm_code': 'fc_osmos_ai_3',
-                                    'mb_cells_idx': 580
-                                }
-                            }
-                        },
+                                                        
+                                                   
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': 'dio_1_o_8',
+                            'do_start': 'do_1_19',
                             'mb_cells_idx': 34
                         },
                         'pump_os2': {
                             'class': Engine,
-                            'do_start': None,
-                            'mb_cells_idx': None
+                            'do_start': (None, 'do_2_16')[post_quantity // 5],
+                            'mb_cells_idx': 36
+
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_8',
+                            'ai_sensor': 'ai_2_o_4',
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
@@ -128,12 +99,12 @@ def get_object(post_quantity=10):
                         },
                         'valve_water_os': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_4',
+                            'do_open': 'do_2_23',
                             'mb_cells_idx': 40
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_1',
+                            'do_open': 'do_2_21',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
