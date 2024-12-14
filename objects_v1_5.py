@@ -77,7 +77,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os2': {
                             'class': Engine,
-                            'do_start': (None, 'do_2_16')[post_quantity // 5],
+                            'do_start': None,
                             'mb_cells_idx': 36
 
                         },
