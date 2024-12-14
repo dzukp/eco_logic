@@ -164,7 +164,7 @@ class PumpTankFiller(TankFiller):
             # Работа
             self.pump.start()
             self.no_press_timer.start(5.0)
-            if self.di_press.val:
+            if not self.di_press or self.di_press.val:
                 self.no_press_timer.restart()
             elif self.no_press_timer.is_end():
                 self.logger.info('no pressure after pump start')
@@ -179,7 +179,7 @@ class OsmosisTankFiller(TankFiller):
         self.pump1 = None
         self.pump2 = None
         self.valve_inlet = None
-        self.di_pressure = None
+        self.di_press = None
         self.timer = Timer()
         self.pid_pump = None
         self._state = 0
@@ -205,7 +205,7 @@ class OsmosisTankFiller(TankFiller):
             self.pid_pump.stop()
             self.valve.close()
             self.timer.start(5.0)
-            # if self.di_pressure.val and self.timer.is_end():
+            # if self.di_press.val and self.timer.is_end():
             if self.timer.is_end():
                 self.logger.info('water, go start pumps and open valve')
                 self.set_state(2)
@@ -223,7 +223,7 @@ class OsmosisTankFiller(TankFiller):
             if self.timer.is_end():
                 self.set_state(3)
                 self.logger.info('timer end, start os2')
-            # if not self.di_pressure.val:
+            # if not self.di_press.val:
             #     self.logger.info('no pressure, stop osmosis filler')
             #     self.set_state(0)
             if not self.need_fill():
@@ -236,7 +236,7 @@ class OsmosisTankFiller(TankFiller):
             self.pump2.start()
             self.pid_pump.start()
             self.valve.open()
-            # if not self.di_pressure.val:
+            # if not self.di_press.val:
             #     self.logger.info('no pressure, stop osmosis filler')
             #     self.set_state(0)
             if not self.need_fill():

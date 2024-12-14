@@ -83,7 +83,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_o_4',
+                            'ai_sensor': None,
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {

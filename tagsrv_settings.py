@@ -108,13 +108,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     com_port1_name = settings.COM1
     com_port2_name = settings.COM2
 
-    # if quantity pumps > 4 use both serial ports
-    if version in ('1.2', '1.4', '1.5'):
-        com1_end = 6
-    elif post_quantity > 4:
-        com1_end = post_quantity // 2
-    else:
-        com1_end = post_quantity
+    com1_end = post_quantity
 
     sources = {
         'port_1': SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)

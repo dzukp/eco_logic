@@ -41,11 +41,11 @@ class SideSupplier(IoObject, ModbusDataObject):
         if FuncNames.FOAM in self.active_functions:
             self.valve_dose_foam.open()
             self.valve_dose_foam_2.open()
-            self.pump_foam.start()
+            # self.pump_foam.start()
         else:
             self.valve_dose_foam.close()
             self.valve_dose_foam_2.close()
-            self.pump_foam.stop()
+            # self.pump_foam.stop()
 
         if FuncNames.INTENSIVE in self.active_functions or FuncNames.FOAM in self.active_functions:
             self.valve_dose_water_intensive.open()
