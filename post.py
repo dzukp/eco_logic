@@ -117,8 +117,10 @@ class Post(IoObject, ModbusDataObject):
             self.valve_out_water.open()
         else:
             self.valve_out_water.close()
-        no_pressure = self.pressure_timer.process(run=self.pump.is_run and self.ai_pressure.val < self.min_pressure,
-                                           timeout=self.pressure_timeout)
+        no_pressure = self.pressure_timer.process(
+            run=self.pump.is_run and -10.0 < self.ai_pressure.val < self.min_pressure,
+            timeout=self.pressure_timeout
+        )
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()
