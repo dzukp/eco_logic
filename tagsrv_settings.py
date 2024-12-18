@@ -204,7 +204,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
             modules=modules
         ),
         'mb_disp1': SerialDispatcher(modules=fc_modules_1),
-        'mb_disp2': SerialDispatcher(modules=fc_modules_2)
+        # 'mb_disp2': SerialDispatcher(modules=fc_modules_2)
     }
 
     return {
