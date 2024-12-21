@@ -6,6 +6,17 @@ logging_config = {
             'propagate': False,
             'level': 'DEBUG',
         },
+        'TagSrv.serial_port_COM3': {
+            'handlers':['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
+
+        },
+        'TagSrv.serial_port_COM4': {
+            'handlers':['comport_file', 'tagsrv_console'],
+            'propagate': False,
+            'level': 'DEBUG',
+        },
         'TagSrv.serial_port_COM5': {
             'handlers':['comport_file', 'tagsrv_console'],
             'propagate': False,
@@ -56,7 +67,7 @@ logging_config = {
             'handlers': ['rpc_post_server_file'],
             'propagate': False,
             'level': 'INFO'
-        },
+        } ,
         'PylogicLogger.rpc_post_state': {
             'handlers': ['rpc_post_state_file'],
             'propagate': False,
