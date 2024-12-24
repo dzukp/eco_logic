@@ -26,7 +26,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
-    fc_innovance_names = ['fc_2_', 'fc_3_', 'fc_4_', 'fc_5_', 'fc_6_', 'fc_9_', 'fc_10_']
+    fc_innovance_names = ['fc_2_', 'fc_3_', 'fc_4_', 'fc_5_', 'fc_6_', 'fc_8_', 'fc_9_', 'fc_10_']
     for fc in fc_innovance_names:
         fc_names.remove(fc)
 
