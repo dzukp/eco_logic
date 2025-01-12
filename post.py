@@ -14,7 +14,8 @@ from func_names import FuncNames
 class Post(IoObject, ModbusDataObject):
 
     _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure', 'flow_indicator')
+                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure', 'flow_indicator',
+                   'use_terminal_heartbeat')
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -65,6 +66,8 @@ class Post(IoObject, ModbusDataObject):
         self.func_steps[FuncNames.INTENSIVE] = MultiValveSteps('intensive_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
+        self.last_terminal_heartbeat = 0
+        self.use_terminal_heartbeat = True
 
     def init(self):
         valves = {
@@ -84,7 +87,6 @@ class Post(IoObject, ModbusDataObject):
         for valves in valves.values():
             self.all_valves.update(valves)
 
-        self.pump.reset()
         self.pump.reset()
 
     def process(self):
@@ -135,6 +137,15 @@ class Post(IoObject, ModbusDataObject):
         if self.alarm_reset_timer.process(run=self.alarm, timeout=self.alarm_reset_timeout):
             self.logger.debug('Alarm reset by time')
             self.reset_alarm()
+        if self.current_func != FuncNames.STOP and not self.check_terminal_heartbeat():
+            self.logger.info('Stop function because not terminal heartbeat')
+            self.set_function(FuncNames.STOP)
+
+    def check_terminal_heartbeat(self):
+        if self.use_terminal_heartbeat:
+            return (time.time() - self.last_terminal_heartbeat) < 10.0
+        else:
+            return True
 
     def set_function(self, func_name):
         if not self.alarm and func_name in FuncNames.all_funcs() and self.is_func_allowed(func_name):
@@ -145,6 +156,9 @@ class Post(IoObject, ModbusDataObject):
             self.current_func = FuncNames.STOP
         self.func_number = FuncNames.all_funcs().index(self.current_func)
         return self.current_func == func_name
+
+    def terminal_heartbeat(self):
+        self.last_terminal_heartbeat = time.time()
 
     def set_alarm(self):
         self.alarm = True

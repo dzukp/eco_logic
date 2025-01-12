@@ -139,6 +139,9 @@ class Top(IoObject, ModbusDataObject):
             self.new_function[self.posts[post_name]] = function
             return True
 
+    def terminal_heartbeat(self, post_name):
+        self.posts[post_name].terminal_heartbeat()
+
     def get_readiness_functions(self, post_name):
         return {
             FuncNames.WAX:

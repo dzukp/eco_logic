@@ -68,6 +68,7 @@ class RpcPostServer(LoggedObject):
                 self.logger.debug(f'get state from post #{post_number} ')
                 self.post_state.logger.info(f'get state from post #{post_number} ')
                 try:
+                    self.top_object.terminal_heartbeat(post_name)
                     return {
                         'readiness': self.top_object.get_readiness_functions(post_name),
                         'function': self.top_object.get_post_function(post_name)
