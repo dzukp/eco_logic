@@ -68,8 +68,6 @@ def get_object(post_quantity=10):
                             'do_open': 'do_1_24',
                             'mb_cells_idx': 58
                         },
-                                                        
-                                                   
                         'pump_os1': {
                             'class': Engine,
                             'do_start': 'do_1_19',
@@ -109,7 +107,7 @@ def get_object(post_quantity=10):
                         },
                         'valve_b2': {
                             'class': Valve,
-                            'do_open': 'dio_1_o_3',
+                            'do_open': 'do_1_23',
                             'mb_cells_idx': 46
                         },
                         'valve_b3': {
