@@ -24,9 +24,9 @@ def gen_tagsrv_config(post_quantity=None):
     fc_innovance_names = tuple([
         f'fc_1_{i}_' for i in range(1, int(post_quantity[0] + 1))] + [
         f'fc_2_{i}_' for i in range(1, int(post_quantity[1] + 1))] + [
-        'fc_hoover_1_', 'fc_hoover_2_']
+        'fc_hoover_1_', 'fc_hoover_2_', f'fc_os_',]
     )
-    fc_names = (f'fc_os_',)
+    fc_names = []
 
     # generate ai_1_1 - ai_2_8
     for pref in ai_names:
