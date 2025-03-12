@@ -42,6 +42,7 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: 40.0,
             FuncNames.COLD_WATER: 40.0,
             FuncNames.OSMOSIS: 40.0,
+            FuncNames.INTENSIVE: 40.0
         }
         self.pump_on_timeout = 1.0
         self.valve_off_timeout = 1.0
@@ -58,8 +59,7 @@ class Post(IoObject, ModbusDataObject):
         self.alarm = False
         self.mb_cells_idx = None
         self.func_steps = dict([(name, MultiValvePumpSteps(f'{name}_steps', self))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)])
-        self.func_steps[FuncNames.INTENSIVE] = MultiValveSteps('intensive_steps', self)
+                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP,)])
         self.disabled_funcs = []
         self.all_valves = set()
 
