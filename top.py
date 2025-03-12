@@ -180,10 +180,11 @@ class Top(IoObject, ModbusDataObject):
                     p.set_func_pump_frequency(FuncNames.SHAMPOO, data[self.mb_cells_idx - start_addr + 4])
                 if data[self.mb_cells_idx - start_addr + 5] != p.func_frequencies[FuncNames.WAX]:
                     p.set_func_pump_frequency(FuncNames.WAX, data[self.mb_cells_idx - start_addr + 5])
-                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.HOT_WATER]:
-                    p.set_func_pump_frequency(FuncNames.HOT_WATER, data[self.mb_cells_idx - start_addr + 6])
+                if data[self.mb_cells_idx - start_addr + 6] != p.func_frequencies[FuncNames.INTENSIVE]:
+                    p.set_func_pump_frequency(FuncNames.INTENSIVE, data[self.mb_cells_idx - start_addr + 6])
                 if data[self.mb_cells_idx - start_addr + 7] != p.func_frequencies[FuncNames.COLD_WATER]:
                     p.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
+                    p.set_func_pump_frequency(FuncNames.HOT_WATER, data[self.mb_cells_idx - start_addr + 7])
                 if data[self.mb_cells_idx - start_addr + 8] != p.func_frequencies[FuncNames.OSMOSIS]:
                     p.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
                 if p.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
@@ -198,7 +199,7 @@ class Top(IoObject, ModbusDataObject):
                 int(self.posts['post_1'].func_frequencies[FuncNames.FOAM]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.SHAMPOO]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.WAX]),
-                int(self.posts['post_1'].func_frequencies[FuncNames.HOT_WATER]),
+                int(self.posts['post_1'].func_frequencies[FuncNames.INTENSIVE]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.COLD_WATER]),
                 int(self.posts['post_1'].func_frequencies[FuncNames.OSMOSIS]),
                 int(self.posts['post_1'].pressure_timeout),
