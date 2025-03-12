@@ -6,7 +6,8 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import MultiValvePumpSteps, MultiValveSteps, PostIntensiveSteps, SharedValveSteps
+from post_function import MultiValvePumpSteps, MultiValveSteps, PostIntensiveSteps, SharedValveSteps, \
+    IntensiveMultiValvePumpSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
@@ -60,6 +61,7 @@ class Post(IoObject, ModbusDataObject):
         self.mb_cells_idx = None
         self.func_steps = dict([(name, MultiValvePumpSteps(f'{name}_steps', self))
                                 for name in FuncNames.all_funcs() if name not in (FuncNames.STOP,)])
+        self.func_steps[FuncNames.INTENSIVE] = IntensiveMultiValvePumpSteps('intensive_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
 
