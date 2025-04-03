@@ -26,6 +26,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         ai_names = ('ai_1_',)
         do_names = ('do_1_', 'do_2_')
     fc_names = [f'fc_{i}_' for i in range(1, post_quantity + 1)]
+    fc_innovance_names = []
 
     if version in ('1.1', '1.2', '1.5'):
         fc_names.append('fc_os_')
@@ -62,6 +63,10 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
             tags['in'].update(dict([(pref + str(i), InTag(i)) for i in range(1, 13)]))
 
     for pref in fc_names:
+        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
+        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+
+    for pref in fc_innovance_names:
         tags['in'].update({
             f'{pref}ai_1': InTag(0x3000),
             f'{pref}ai_2': InTag(0x1001),
@@ -81,19 +86,14 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
-    if version in ('1.0', '1.2', '1.4', '1.5'):
-        di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
-                           ip='192.168.200.16', timeout=0.03)
-    else:
-        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
-                             ip='192.168.200.30', timeout=0.03)
+    di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
+                         ip='192.168.200.30', timeout=0.03)
 
     dio_1 = None
     if version in ('1.2', '1.4'):
         dio_tags = [tag for name, tag in tags['in'].items() if name.startswith('dio_1_i_')] + \
                    [tag for name, tag in tags['out'].items() if name.startswith('dio_1_o_')]
         dio_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.15', timeout=0.03)
-    # ao_0 = OwenAoMu210(tags=tags_ao_0, ip='192.168.1.2')
     do_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_')], ip='192.168.200.1',
                            timeout=0.03)
     do_2 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_')], ip='192.168.200.2',
