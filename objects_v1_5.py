@@ -35,27 +35,27 @@ def get_object(post_quantity=10):
                     'children': {
                         'pump_n1': {
                             'class': Engine,
-                            'do_start': 'do_2_19',
+                            'do_start': None,
                             'mb_cells_idx': 30,
                         },
                         'pump_n1_2': {
                             'class': Engine,
-                            'do_start': 'do_2_20',
+                            'do_start': None,
                             'mb_cells_idx': 493,
                         },
                         'pump_n1_3': {
                             'class': Engine,
-                            'do_start': 'do_2_21',
+                            'do_start': None,
                             'mb_cells_idx': 495,
                         },
                         'pump_n2': {
                             'class': Engine,
-                            'do_start': 'do_1_20',
+                            'do_start': None,
                             'mb_cells_idx': 32
                         },
                         'pump_n3': {
                             'class': Engine,
-                            'do_start': 'do_1_21',
+                            'do_start': None,
                             'mb_cells_idx': 497
                         },
                         'pump_intensive': {
@@ -70,7 +70,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os1': {
                             'class': Engine,
-                            'do_start': 'do_1_19',
+                            'do_start': None,
                             'mb_cells_idx': 34
                         },
                         'pump_os2': {
@@ -102,7 +102,7 @@ def get_object(post_quantity=10):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': 'do_2_21',
+                            'do_open': None,
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
