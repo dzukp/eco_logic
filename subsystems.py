@@ -134,7 +134,7 @@ class PumpTankFiller(TankFiller):
             self.no_pump_timer.start(5.0)
             if self.no_pump_timer.is_end():
                 pump_start = True
-            self.valve.close()
+            self.valve.open()
         else:
             self.valve.close()
             self.no_pump_timer.reset()
