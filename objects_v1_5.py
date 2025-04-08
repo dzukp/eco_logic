@@ -22,13 +22,13 @@ def get_object(post_quantity=10):
                 'supplier': {
                     'class': WaterPreparing,
                     'sides': {},
-                    'di_press_1': 'di_1_14',
+                    'di_press_1': 'di_1_10',
                     'ai_pe_1': 'ai_2_4',
-                    'di_press_2': 'di_1_16',
+                    'di_press_2': 'di_1_11',
                     'ai_pe_2': 'ai_2_5',
-                    'di_press_3': 'di_1_15',
+                    'di_press_3': 'di_1_12',
                     'ai_pe_3': 'ai_2_6',
-                    'di_press_4': 'di_1_13',
+                    'di_press_4': None,
                     'ai_pe_intensive': 'ai_2_3',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -134,17 +134,17 @@ def get_object(post_quantity=10):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': None,
+                            'do_open': 'do_1_24',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
                             'class': Valve,
-                            'do_open': 'do_1_23',
+                            'do_open': 'do_1_22',
                             'mb_cells_idx': 46
                         },
                         'valve_b3': {
                             'class': Valve,
-                            'do_open': None,
+                            'do_open': 'do_1_23',
                             'mb_cells_idx': 42
                         },
                         'tank_b1': {
