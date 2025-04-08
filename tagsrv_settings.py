@@ -31,11 +31,12 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
     if version in ('1.1', '1.2', '1.5'):
         fc_names.append('fc_os_')
 
-    if version in ('1.2',):
+    if version in ('1.2', '1.5'):
         fc_names.append('fc_foam_1_')
         fc_names.append('fc_foam_2_')
         fc_names.append('fc_water_')
         fc_names.append('fc_osmos_')
+        fc_names.append('fc_os_')
 
     if version in ('1.4',):
         fc_names.append('fc_water_')
@@ -161,9 +162,19 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
         fc_modules_2.append(ModbusRTUModule(
             i, sources['port_2'], io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))
 
-    if version in ('1.1', '1.2', '1.4'):
+    if version in ('1.1', '1.2', '1.4', '1.5'):
         comport = sources['port_2'] if post_quantity > com1_end else sources['port_1']
         fc_module = fc_modules_2 if post_quantity > com1_end else fc_modules_1
+        fc_module.append(ModbusRTUModule(11, comport, io_tags=[], max_answ_len=5,
+                                         in_tags=[tag for name, tag in tags['in'].items() if
+                                                  name.startswith(f'fc_osmos_ai_')],
+                                         out_tags=[tag for name, tag in tags['out'].items() if
+                                                   name.startswith(f'fc_osmos_ao_')]))
+        fc_module.append(ModbusRTUModule(12, comport, io_tags=[], max_answ_len=5,
+                                         in_tags=[tag for name, tag in tags['in'].items() if
+                                                  name.startswith(f'fc_water_ai_')],
+                                         out_tags=[tag for name, tag in tags['out'].items() if
+                                                   name.startswith(f'fc_water_ao_')]))
         in_tags = [tag for name, tag in tags['in'].items() if name.startswith(f'fc_os_ai_')]
         out_tags = [tag for name, tag in tags['out'].items() if name.startswith(f'fc_os_ao_')]
         fc_module.append(ModbusRTUModule(13, comport, io_tags=[], max_answ_len=5, in_tags=in_tags, out_tags=out_tags))

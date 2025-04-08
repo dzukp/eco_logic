@@ -23,11 +23,11 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_2_1',
+                    'ai_pe_1': 'ai_2_4',
                     'di_press_2': 'di_1_16',
-                    'ai_pe_2': 'ai_2_1',
+                    'ai_pe_2': 'ai_2_5',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_2_4',
+                    'ai_pe_3': 'ai_2_6',
                     'di_press_4': 'di_1_13',
                     'ai_pe_intensive': 'ai_2_3',
                     'do_no_n3_press_signal': None,
@@ -57,6 +57,38 @@ def get_object(post_quantity=10):
                             'class': Engine,
                             'do_start': None,
                             'mb_cells_idx': 497
+                        },
+                        'pump_water_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_4',
+                            'mb_cells_idx': 569,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_water_ao_1',
+                                    'ao_frequency': 'fc_water_ao_2',
+                                    'ai_status': 'fc_water_ai_1',
+                                    'ai_frequency': 'fc_water_ai_2',
+                                    'ai_alarm_code': 'fc_water_ai_3',
+                                    'mb_cells_idx': 560
+                                }
+                            }
+                        },
+                        'pump_osmos_supplier': {
+                            'class': PidEngine,
+                            'ai_sensor': 'ai_2_6',
+                            'mb_cells_idx': 589,
+                            'children': {
+                                'fc': {
+                                    'class': Altivar212,
+                                    'ao_command': 'fc_osmos_ao_1',
+                                    'ao_frequency': 'fc_osmos_ao_2',
+                                    'ai_status': 'fc_osmos_ai_1',
+                                    'ai_frequency': 'fc_osmos_ai_2',
+                                    'ai_alarm_code': 'fc_osmos_ai_3',
+                                    'mb_cells_idx': 580
+                                }
+                            }
                         },
                         'pump_intensive': {
                             'class': Engine,
@@ -131,9 +163,9 @@ def get_object(post_quantity=10):
                         },
                         'tank_b3': {
                             'class': Tank,
-                            'di_low_level': 'di_1_1',
-                            'di_mid_level': 'di_1_2',
-                            'di_hi_level': 'di_1_3',
+                            'di_low_level': 'di_1_7',
+                            'di_mid_level': 'di_1_8',
+                            'di_hi_level': 'di_1_9',
                             'mb_cells_idx': 558
                         }
                     }
