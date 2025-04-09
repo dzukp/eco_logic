@@ -1,13 +1,11 @@
 import copy
 
-from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
 from fc import Altivar212, InovanceMd310
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
-from nofrost import Nofrost
 from subsystems import PidEngine
 from side_supplier import SideSupplier
 from top import Top
@@ -113,7 +111,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_os': {
                             'class': PidEngine,
-                            'ai_sensor': None,
+                            'ai_sensor': 'ai_2_5',
                             'mb_cells_idx': 471,
                             'children': {
                                 'fc': {
@@ -134,7 +132,7 @@ def get_object(post_quantity=10):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': 'do_1_24',
+                            'do_open': 'do_1_23',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {
@@ -144,7 +142,7 @@ def get_object(post_quantity=10):
                         },
                         'valve_b3': {
                             'class': Valve,
-                            'do_open': 'do_1_23',
+                            'do_open': None,
                             'mb_cells_idx': 42
                         },
                         'tank_b1': {
