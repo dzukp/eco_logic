@@ -191,7 +191,7 @@ class MultiValvePumpSteps(MultiValveSteps):
             return res
         if self.owner.ai_pressure.val > 50:
             return self.wait_flow
-        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < 50.0:
+        if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout) and self.owner.ai_pressure.val < 50.0:
             self.ton.reset()
             if self.need_max_power:
                 return self.full_work
@@ -230,7 +230,7 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.need_max_power = False
         if res:
             return res
-        if self.ton.process(run=True, timeout=2.0) and self.check_no_flow_pressure():
+        if self.ton.process(run=True, timeout=self.owner.max_freq_timeout) and self.check_no_flow_pressure():
             self.no_flow_press = self.owner.ai_pressure.val
             self.logger.info(f'no flow, pressure={self.no_flow_press}')
             return self.wait_press
