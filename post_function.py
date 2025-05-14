@@ -1,6 +1,5 @@
 from pylogic.timer import Ton
 from pylogic.steps import Steps
-from func_names import FuncNames
 
 
 class BaseSteps(Steps):
@@ -166,6 +165,8 @@ class MultiValveSteps(BaseSteps):
 
 
 class MultiValvePumpSteps(MultiValveSteps):
+    INITIAL_PRESSURE = 50.0
+    LOW_PRESSURE = 30.0
 
     def __init__(self, *args, **kwargs):
         super(MultiValvePumpSteps, self).__init__(*args, **kwargs)
@@ -189,9 +190,10 @@ class MultiValvePumpSteps(MultiValveSteps):
         self.pump = 1
         if res:
             return res
-        if self.owner.ai_pressure.val > 50:
+        if self.owner.ai_pressure.val > self.INITIAL_PRESSURE:
             return self.wait_flow
-        if self.ton.process(run=True, timeout=self.owner.begin_phase_timeout) and self.owner.ai_pressure.val < 50.0:
+        if (self.ton.process(run=True, timeout=self.owner.begin_phase_timeout)
+                and self.owner.ai_pressure.val < self.INITIAL_PRESSURE):
             self.ton.reset()
             if self.need_max_power:
                 return self.full_work
@@ -211,8 +213,8 @@ class MultiValvePumpSteps(MultiValveSteps):
                 return self.full_work
             else:
                 return self.full_work_2
-        if self.owner.ai_pressure.val < 30:
-            self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < 30')
+        if self.owner.ai_pressure.val < self.LOW_PRESSURE:
+            self.logger.info(f'low pressuer {self.owner.ai_pressure.val} < {self.LOW_PRESSURE}')
             return self.wait_press
 
     def full_work(self):
@@ -243,9 +245,11 @@ class MultiValvePumpSteps(MultiValveSteps):
 
 
 class IntensiveMultiValvePumpSteps(MultiValvePumpSteps):
+    INITIAL_PRESSURE = 12.0
+    LOW_PRESSURE = 8.0
+
     def check_no_flow_pressure(self):
         return self.owner.ai_pressure.val > 35.0
-
 
 
 class SharedValveSteps(Steps):
