@@ -20,9 +20,6 @@ class Post(IoObject, ModbusDataObject):
     def __init__(self, name, parent):
         super().__init__(name, parent)
         self.ai_pressure = InChannelExt(0.0)
-
-        # self.ai_pressure.set_trans(simulate_pressure)
-
         self.di_flow = InChannel(False)
         self.valve_foam = None
         self.valve_wax = None
