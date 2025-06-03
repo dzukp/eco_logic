@@ -188,6 +188,8 @@ class Top(IoObject, ModbusDataObject):
                     post.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
                 if data[self.mb_cells_idx - start_addr + 8] != post.func_frequencies[FuncNames.OSMOSIS]:
                     post.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
+                if data[self.mb_cells_idx - start_addr + 9] != post.no_flow_pressure:
+                    post.set_pressure_timeout(data[self.mb_cells_idx - start_addr + 9])
                 if post.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
                     post.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
                 if data[self.mb_cells_idx - start_addr + 12] * 0.001 != post.begin_phase_timeout:

@@ -7979,7 +7979,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_13" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="380" rect.bottom="403" rect.left="540" rect.right="739"/>
+                <Geometry rect.top="360" rect.bottom="383" rect.left="560" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -7993,7 +7993,7 @@
                 <LabelProperties TextAlign="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_14" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="380" rect.bottom="403" rect.left="760" rect.right="839"/>
+                <Geometry rect.top="360" rect.bottom="383" rect.left="780" rect.right="859"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8022,7 +8022,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_15" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="420" rect.bottom="443" rect.left="540" rect.right="739"/>
+                <Geometry rect.top="400" rect.bottom="423" rect.left="560" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -8036,7 +8036,7 @@
                 <LabelProperties TextAlign="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_16" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="420" rect.bottom="443" rect.left="760" rect.right="839"/>
+                <Geometry rect.top="400" rect.bottom="423" rect.left="780" rect.right="859"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8323,7 +8323,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_29" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="460" rect.bottom="483" rect.left="540" rect.right="739"/>
+                <Geometry rect.top="440" rect.bottom="463" rect.left="560" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -8337,7 +8337,7 @@
                 <LabelProperties TextAlign="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_30" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="460" rect.bottom="483" rect.left="760" rect.right="839"/>
+                <Geometry rect.top="440" rect.bottom="463" rect.left="780" rect.right="859"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8409,7 +8409,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_33" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="500" rect.bottom="523" rect.left="540" rect.right="739"/>
+                <Geometry rect.top="480" rect.bottom="503" rect.left="560" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -8423,7 +8423,7 @@
                 <LabelProperties TextAlign="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_34" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="540" rect.bottom="563" rect.left="540" rect.right="739"/>
+                <Geometry rect.top="520" rect.bottom="543" rect.left="560" rect.right="759"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList/>
@@ -8437,7 +8437,7 @@
                 <LabelProperties TextAlign="1"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_35" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="500" rect.bottom="523" rect.left="760" rect.right="839"/>
+                <Geometry rect.top="480" rect.bottom="503" rect.left="780" rect.right="859"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8466,7 +8466,7 @@
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_36" ToolTip="" MnemoLayer="general">
-                <Geometry rect.top="540" rect.bottom="563" rect.left="760" rect.right="839"/>
+                <Geometry rect.top="520" rect.bottom="543" rect.left="780" rect.right="859"/>
                 <StandartProperies Freeze="0">
                     <Palette SystemPalette="1"/>
                     <EventList>
@@ -8492,6 +8492,49 @@
                     <ListenersList/>
                 </StandartProperies>
                 <SpinBoxProperties Step="100" Decimals="0" Min="0" Max="6000"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_37" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="560" rect.bottom="583" rect.left="560" rect.right="759"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList/>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <HTML html="0"/>
+                <Text Angle="0" string="Время аварии без давления, с" format=""/>
+                <Transparency Value="1"/>
+                <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
+                <LabelProperties TextAlign="1"/>
+            </MnemoObject>
+            <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_38" ToolTip="" MnemoLayer="general">
+                <Geometry rect.top="560" rect.bottom="583" rect.left="780" rect.right="859"/>
+                <StandartProperies Freeze="0">
+                    <Palette SystemPalette="1"/>
+                    <EventList>
+                        <Event Name="OnEditingFinished">
+                            <Expanded Value="1"/>
+                            <Action Name="Set cur.value">
+                                <Expanded Value="1"/>
+                                <Property Name="Type">
+                                    <Data Value="="/>
+                                </Property>
+                                <Property Name="Dest">
+                                    <Data Value=""/>
+                                    <UserData>
+                                        <Object Type="Controller tag">
+                                            <Tag Type="Source Tag" TagName="main\post_pressure_timeout"/>
+                                        </Object>
+                                    </UserData>
+                                </Property>
+                            </Action>
+                        </Event>
+                    </EventList>
+                    <ActionList/>
+                    <ListenersList/>
+                </StandartProperies>
+                <SpinBoxProperties Step="1" Decimals="0" Min="0" Max="6000"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
         </MnemoScreen>
@@ -9824,7 +9867,6 @@
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_valve_off_timeout" Units="....." Location="323" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_16"/>
-                        <Listener Path="" Type="XMnemoSpinBox" Name="SpinBox_16"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -9865,7 +9907,9 @@
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_pressure_timeout" Units="....." Location="330" IsReadTag="0">
-                    <ListenersList/>
+                    <ListenersList>
+                        <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_38"/>
+                    </ListenersList>
                     <FilterList/>
                 </Tag>
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_min_pressure" Units="....." Location="331" IsReadTag="0">
@@ -9875,7 +9919,6 @@
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_hi_press_valve_off_timeout" Units="....." Location="332" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_30"/>
-                        <Listener Path="" Type="XMnemoSpinBox" Name="SpinBox_30"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>
@@ -9888,6 +9931,7 @@
                 <Tag Active="1" DataFormat="UInt16" Comment="" Marker="0" Type="Output register" Sense="Stable" Name="post_no_flow_press" Units="....." Location="334" IsReadTag="0">
                     <ListenersList>
                         <Listener Path="Settings" Type="XMnemoSpinBox" Name="SpinBox_36"/>
+                        <Listener Path="" Type="XMnemoSpinBox" Name="SpinBox_36"/>
                     </ListenersList>
                     <FilterList/>
                 </Tag>

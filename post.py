@@ -195,6 +195,12 @@ class Post(IoObject, ModbusDataObject):
             self.logger.info(f'Set flow_indicator {value}')
             self.save()
 
+    def set_pressure_timeout(self, value):
+        if self.pressure_timeout != float(value):
+            self.pressure_timeout = float(value)
+            self.logger.info(f'Set pressure_timeout {value}')
+            self.save()
+
     def is_func_allowed(self, func_name):
         return func_name not in self.disabled_funcs
 
