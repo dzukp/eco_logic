@@ -192,8 +192,7 @@ class MultiValvePumpSteps(MultiValveSteps):
             return res
         if self.owner.ai_pressure.val > self.INITIAL_PRESSURE:
             return self.wait_flow
-        if (self.ton.process(run=True, timeout=self.owner.begin_phase_timeout)
-                and self.owner.ai_pressure.val < self.INITIAL_PRESSURE):
+        if self.ton.process(run=True, timeout=2.0) and self.owner.ai_pressure.val < self.INITIAL_PRESSURE:
             self.ton.reset()
             if self.need_max_power:
                 return self.full_work
