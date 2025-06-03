@@ -193,7 +193,7 @@ class Top(IoObject, ModbusDataObject):
                 if post.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
                     post.set_hi_press_valve_off_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
                 if data[self.mb_cells_idx - start_addr + 12] * 0.001 != post.begin_phase_timeout:
-                    post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]) * 0.001)
+                    post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]))
                 if data[self.mb_cells_idx - start_addr + 13] != post.no_flow_pressure:
                     post.set_no_flow_pressure(data[self.mb_cells_idx - start_addr + 13])
             n = data[self.mb_cells_idx - start_addr + 14]
@@ -215,7 +215,7 @@ class Top(IoObject, ModbusDataObject):
                     int(post.pressure_timeout),
                     int(post.min_pressure * 100),
                     int(post.hi_press_valve_off_timeout * 1000),
-                    int(post.begin_phase_timeout * 1000),
+                    int(post.begin_phase_timeout),
                     int(post.no_flow_pressure)
                 ]
             else:
