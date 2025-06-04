@@ -187,10 +187,14 @@ class Top(IoObject, ModbusDataObject):
                     post.set_func_pump_frequency(FuncNames.COLD_WATER, data[self.mb_cells_idx - start_addr + 7])
                 if data[self.mb_cells_idx - start_addr + 8] != post.func_frequencies[FuncNames.OSMOSIS]:
                     post.set_func_pump_frequency(FuncNames.OSMOSIS, data[self.mb_cells_idx - start_addr + 8])
+                if data[self.mb_cells_idx - start_addr + 9] != post.no_flow_pressure:
+                    post.set_pressure_timeout(data[self.mb_cells_idx - start_addr + 9])
+                if data[self.mb_cells_idx - start_addr + 10] != post.no_flow_pressure * 0.01:
+                    post.set_min_pressure(float(data[self.mb_cells_idx - start_addr + 10]))
                 if post.hi_press_valve_off_timeout != data[self.mb_cells_idx - start_addr + 11] * 0.001:
                     post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 11]) * 0.001)
                 if data[self.mb_cells_idx - start_addr + 12] * 0.001 != post.begin_phase_timeout:
-                    post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]) * 0.001)
+                    post.set_begin_phase_timeout(float(data[self.mb_cells_idx - start_addr + 12]))
                 if data[self.mb_cells_idx - start_addr + 13] != post.no_flow_pressure:
                     post.set_no_flow_pressure(data[self.mb_cells_idx - start_addr + 13])
                 if -data[self.mb_cells_idx - start_addr + 14] != post.flow_indicator:
@@ -213,9 +217,9 @@ class Top(IoObject, ModbusDataObject):
                     int(post.func_frequencies[FuncNames.COLD_WATER]),
                     int(post.func_frequencies[FuncNames.OSMOSIS]),
                     int(post.pressure_timeout),
-                    int(post.min_pressure * 100),
+                    int(post.min_pressure),
                     int(post.hi_press_valve_off_timeout * 1000),
-                    int(post.begin_phase_timeout * 1000),
+                    int(post.begin_phase_timeout),
                     int(post.no_flow_pressure),
                     int(-post.flow_indicator)
                 ]

@@ -123,7 +123,9 @@ class Post(IoObject, ModbusDataObject):
             self.pump.set_frequency(0.0)
 
         no_pressure = self.pressure_timer.process(
-            run=self.pump.is_run and self.ai_pressure.val < self.min_pressure, timeout=self.pressure_timeout)
+            run=self.pump.is_run and self.min_pressure > 0.0 and self.ai_pressure.val < self.min_pressure,
+            timeout=self.pressure_timeout
+        )
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()
@@ -195,6 +197,18 @@ class Post(IoObject, ModbusDataObject):
         if self.flow_indicator != value:
             self.flow_indicator = value
             self.logger.info(f'Set flow_indicator {value}')
+            self.save()
+
+    def set_pressure_timeout(self, value):
+        if self.pressure_timeout != float(value):
+            self.pressure_timeout = float(value)
+            self.logger.info(f'Set pressure_timeout {value}')
+            self.save()
+
+    def set_min_pressure(self, value):
+        if self.min_pressure != float(value):
+            self.min_pressure = float(value)
+            self.logger.info(f'Set min_pressure {value}')
             self.save()
 
     def is_func_allowed(self, func_name):
