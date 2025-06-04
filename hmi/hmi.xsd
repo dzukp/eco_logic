@@ -8462,7 +8462,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <SpinBoxProperties Step="100" Decimals="0" Min="0" Max="6000"/>
+                <SpinBoxProperties Step="1" Decimals="0" Min="0" Max="6000"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoSpinBox" Name="SpinBox_36" ToolTip="" MnemoLayer="general">
@@ -8491,7 +8491,7 @@
                     <ActionList/>
                     <ListenersList/>
                 </StandartProperies>
-                <SpinBoxProperties Step="100" Decimals="0" Min="0" Max="6000"/>
+                <SpinBoxProperties Step="10" Decimals="0" Min="0" Max="6000"/>
                 <Font size="8" family="MS Shell Dlg 2" bold="0" underline="0" strikeOut="0" italic="0"/>
             </MnemoObject>
             <MnemoObject Cursor="0" Comment="" Type="XMnemoTextLabel" Name="TextLabel_37" ToolTip="" MnemoLayer="general">
