@@ -81,12 +81,8 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
                        timeout=0.03)
     ai_4 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_4_')], ip='192.168.200.14',
                        timeout=0.03)
-    if version in ('1.0', '1.2', '1.4', '1.5'):
-        di_1 = OwenDiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
-                           ip='192.168.200.16', timeout=0.03)
-    else:
-        di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
-                             ip='192.168.200.30', timeout=0.03)
+    di_1 = OwenDiDoMk210(tags=[tag for name, tag in tags['in'].items() if name.startswith('di_1_')],
+                         ip='192.168.200.30', timeout=0.03)
 
     dio_1 = None
     if version in ('1.2', '1.4'):

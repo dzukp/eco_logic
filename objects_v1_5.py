@@ -24,7 +24,7 @@ def get_object(post_quantity=10):
                     'sides': {},
                     'di_press_1': 'di_1_14',
                     'ai_pe_1': 'ai_2_1',
-                    'di_press_2': 'di_1_16',
+                    'di_press_2': 'di_1_11',
                     'ai_pe_2': 'ai_2_1',
                     'di_press_3': 'di_1_15',
                     'ai_pe_3': 'ai_2_4',
