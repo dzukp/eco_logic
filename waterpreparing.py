@@ -57,7 +57,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.intensive_bypass_on_press = 11.0
         self.intensive_bypass_off_press = 12.0
         self.b1_filler = TankFiller('b1_filler')
-        self.b2_filler = PumpTankFiller('b2_filler')
+        self.b2_filler = OsmosisTankFiller('b2_filler')
         self.b3_filler = TankFiller('b3_filler')
         self.water_supplier = WaterSupplier('cold_water')
         # self.pre_filter_supplier = WaterSupplier('pre_filter')
@@ -81,8 +81,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
         # self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b2_filler.tank = self.tank_b2
-        self.b2_filler.valve = self.valve_b2
-        self.b2_filler.pump = self.pump_os1
+        self.b2_filler.valve_inlet = self.valve_b2
+        self.b2_filler.pump1 = self.pump_os1
         self.b2_filler.di_press = self.di_press_2
         # self.b2_filler.valve_inlet = self.valve_water_os
         # self.b2_filler.di_pressure = self.di_press_2
