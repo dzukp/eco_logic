@@ -183,7 +183,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.intensive_bypass.process()
 
     def is_ready_for_foam(self):
-        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
+        return self.osmos_supplier.is_can_supply()
 
     def is_ready_for_wax(self):
         return self.water_supplier.is_can_supply()
@@ -198,7 +198,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         return self.water_supplier.is_can_supply()
 
     def is_ready_for_intensive(self):
-        return self.osmos_supplier.is_can_supply() or self.water_supplier.is_can_supply()
+        return self.osmos_supplier.is_can_supply()
 
     def is_ready_for_osmosis(self):
         return self.osmos_supplier.is_can_supply()
