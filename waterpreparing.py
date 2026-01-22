@@ -127,6 +127,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
         # Supplying water
         self.water_supplier.enough_pressure = self.water_enough_press
+        self.water_supplier.pump_on_press = self.water_pump_on_press
+        self.water_supplier.pump_off_press = self.water_pump_off_press
         if self.start_water_press:
             self.water_supplier.start()
         else:
@@ -135,6 +137,8 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
         # Supplying osmos
         self.osmos_supplier.enough_pressure = self.osmosis_enough_press
+        self.osmos_supplier.pump_on_press = self.osmosis_pump_on_press
+        self.osmos_supplier.pump_off_press = self.osmosis_pump_off_press
         if self.start_osmos_press:
             self.osmos_supplier.start()
         else:
