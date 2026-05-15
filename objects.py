@@ -1,8 +1,8 @@
 from pylogic.io_object import IoObject
 from valve import Valve, NOValve
 from engine import Engine
-from fc import Altivar212
-from tank import FakeTank
+from fc import OwenFc1
+from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
 from nofrost import Nofrost
@@ -17,11 +17,11 @@ def get_object(post_quantity=8):
             'children': {
                 'supplier': {
                     'class': WaterPreparing,
-                    'di_press_1': 'di_1_7',
+                    'di_press_1': None,
                     'ai_pe_1': None,
-                    'di_press_2': 'di_1_8',
+                    'di_press_2': None,
                     'ai_pe_2': None,
-                    'di_press_3': 'di_1_9',
+                    'di_press_3': None,
                     'ai_pe_3': None,
                     'mb_cells_idx': 0,
                     'children': {
@@ -71,11 +71,17 @@ def get_object(post_quantity=8):
                             'mb_cells_idx': 46
                         },
                         'tank_b1': {
-                            'class': FakeTank,
+                            'class': Tank,
+                            'di_low_level': 'dio_1_i_1',
+                            'di_mid_level': 'dio_1_i_2',
+                            'di_hi_level': 'dio_1_i_3',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {
-                            'class': FakeTank,
+                            'class': Tank,
+                            'di_low_level': 'dio_1_i_4',
+                            'di_mid_level': 'dio_1_i_5',
+                            'di_hi_level': 'dio_1_i_6',
                             'mb_cells_idx': 50
                         },
                         'valve_dose_foam': {
@@ -152,7 +158,7 @@ def get_object(post_quantity=8):
                             'mb_cells_idx': 81
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': OwenFc1,
                             'ao_command': 'fc1_ao_1',
                             'ao_frequency': 'fc1_ao_2',
                             'ai_status': 'fc1_ai_1',
@@ -204,7 +210,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_4_11'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': OwenFc1,
                             'ao_command': 'fc2_ao_1',
                             'ao_frequency': 'fc2_ao_2',
                             'ai_status': 'fc2_ai_1',
@@ -256,7 +262,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_4_10'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': OwenFc1,
                             'ao_command': 'fc3_ao_1',
                             'ao_frequency': 'fc3_ao_2',
                             'ai_status': 'fc3_ai_1',
@@ -308,7 +314,7 @@ def get_object(post_quantity=8):
                             'do_open': 'do_4_9'
                         },
                         'pump': {
-                            'class': Altivar212,
+                            'class': OwenFc1,
                             'ao_command': 'fc4_ao_1',
                             'ao_frequency': 'fc4_ao_2',
                             'ai_status': 'fc4_ai_1',
@@ -366,7 +372,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_2_12'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': OwenFc1,
                         'ao_command': 'fc5_ao_1',
                         'ao_frequency': 'fc5_ao_2',
                         'ai_status': 'fc5_ai_1',
@@ -418,7 +424,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_2_11'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': OwenFc1,
                         'ao_command': 'fc6_ao_1',
                         'ao_frequency': 'fc6_ao_2',
                         'ai_status': 'fc6_ai_1',
@@ -470,7 +476,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_2_10'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': OwenFc1,
                         'ao_command': 'fc7_ao_1',
                         'ao_frequency': 'fc7_ao_2',
                         'ai_status': 'fc7_ai_1',
@@ -522,7 +528,7 @@ def get_object(post_quantity=8):
                         'do_open': 'do_2_9'
                     },
                     'pump': {
-                        'class': Altivar212,
+                        'class': OwenFc1,
                         'ao_command': 'fc8_ao_1',
                         'ao_frequency': 'fc8_ao_2',
                         'ai_status': 'fc8_ai_1',
@@ -534,6 +540,9 @@ def get_object(post_quantity=8):
             }
         }
         objects['top']['children'].update(posts5_8)
+
+    for num in range(8, post_quantity, -1):
+        del objects['top']['children'][f'post_{num}']
 
     for name, obj in objects['top']['children'].items():
         if not name.startswith('post_'):
@@ -552,21 +561,21 @@ def get_object(post_quantity=8):
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        module_number = ((post_number - 1) // 4) + 1
-        obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 1}'
-        obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 2}'
-        obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 3}'
-        obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 4}'
-        obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 5}'
-        obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 4 * 6 + 6}'
-        obj['children']['valve_intensive']['do_open'] = f'dio_1_o_{post_number}'
+        module_number = ((post_number - 1) // 2) + 1
+        obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 1}'
+        obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 2}'
+        obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 3}'
+        obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 4}'
+        obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 5}'
+        obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 6}'
+        obj['children']['valve_intensive']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 9}'
         obj['children']['valve_out_water']['do_open'] = None
         obj['children']['valve_out_foam']['do_open'] = None
         obj['children']['pump']['ao_command'] = f'fc{post_number}_ao_1'
         obj['children']['pump']['ao_frequency'] = f'fc{post_number}_ao_2'
         obj['children']['pump']['ai_status'] = f'fc{post_number}_ai_1'
         obj['children']['pump']['ai_frequency'] = f'fc{post_number}_ai_2'
-        obj['children']['pump']['ai_alarm_code'] = f'fc{post_number}_ai_3'
+        obj['children']['pump']['ai_alarm_code'] = None
         obj['ai_pressure'] = f'ai_1_{post_number}'
 
     return objects

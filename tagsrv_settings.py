@@ -22,7 +22,7 @@ def gen_tagsrv_config(post_quantity=8):
     fc_names = tuple([f'fc{i}_' for i in range(1, post_quantity + 1)])
 
     ai_names = ('ai_1_',)
-    do_names = ('do_1_', 'do_2_',)
+    do_names = ('do_1_', 'do_2_', 'do_3_')
     dio_names = ('dio_1_',)
 
     # generate ai_1_1 - ai_1_8
@@ -44,8 +44,18 @@ def gen_tagsrv_config(post_quantity=8):
 
     # generate fc1_ai_1 - fc8_ai_3, fc1_ao_1 - fc8_ao_2
     for pref in fc_names:
-        tags['in'].update(dict([(f'{pref}ai_{i}', InTag(0x1875 + i - 1)) for i in range(1, 5)]))
-        tags['out'].update(dict([(f'{pref}ao_{i}', OutTag(0x1870 + i - 1)) for i in range(1, 3)]))
+        tags['in'].update(
+            {
+                f'{pref}ai_1': InTag(50199),
+                f'{pref}ai_2': InTag(16129)
+            }
+        )
+        tags['out'].update(
+            {
+                f'{pref}ao_1': OutTag(49999),
+                f'{pref}ao_2': OutTag(50009)
+            }
+        )
 
     ai_1 = OwenAiMv210(tags=[tag for name, tag in tags['in'].items() if name.startswith('ai_1_')], ip='192.168.200.11',
                        timeout=0.03)
@@ -63,9 +73,9 @@ def gen_tagsrv_config(post_quantity=8):
     do_2 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_')],
                            ip='192.168.200.2',
                            timeout=0.03)
-    # do_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_3_')],
-    #                        ip='192.168.200.3',
-    #                        timeout=0.03)
+    do_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_3_')],
+                           ip='192.168.200.3',
+                           timeout=0.03)
     # do_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_4_')],
     #                        ip='192.168.200.4',
     #                        timeout=0.03)
@@ -97,7 +107,7 @@ def gen_tagsrv_config(post_quantity=8):
 
     dispatchers = {
         'disp_1': ParallelDispatcher(
-            modules=(do_1, do_2, dio_1, ai_1)
+            modules=(do_1, do_2, do_3, dio_1, ai_1)
         ),
         'mb_disp1': SerialDispatcher(modules=fc_modules_1),
         # 'mb_disp2': SerialDispatcher(modules=fc_modules_2)

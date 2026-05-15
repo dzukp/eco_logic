@@ -24,7 +24,7 @@ class Altivar212(Mechanism, ModbusDataObject):
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
-        self.ao_command = OutChannel(0)#команда частотнику
+        self.ao_command = OutChannel(0)
         self.ao_frequency = OutChannel(0)
         self.ai_status = InChannel(0)
         self.ai_frequency = InChannel(0)
@@ -36,7 +36,7 @@ class Altivar212(Mechanism, ModbusDataObject):
         self.auto_frequency_task = 0.0
         self.man_frequency_task = 0.0
         self.timer = Ton()
-        self.timer.set_timeout(2.0)
+        self.timer.set_timeout(5.0)
         self.state = self.STATE_IDLE
         self.func_state = self.state_idle
         self.reset_timer = Ton()
@@ -174,6 +174,21 @@ class Altivar212(Mechanism, ModbusDataObject):
                     }
         else:
             return {}
+
+
+class OwenFc1(Altivar212):
+    """ Frequency converter Owen controlled by Modbus/RTU """
+
+    CMD_FORWARD_START = 0x847C
+    CMD_STOP = 0x8004
+    CMD_RESET = 0x8044
+
+    MASK_FORWARD_RUN = 0x0800
+    MASK_ALARM = 0x0008
+
+    def process(self):
+        super(OwenFc1, self).process()
+        self.ao_frequency.val = self.ao_frequency.val / 5000.0 * 16384.0
 
 
 def trans_divide_10(value):
