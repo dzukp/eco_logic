@@ -62,7 +62,7 @@ def get_object(post_quantity=8):
                         },
                         'valve_b1': {
                             'class': Valve,
-                            'do_open': None,
+                            'do_open': 'do_2_19',
                             'mb_cells_idx': 44
                         },
                         'valve_b2': {

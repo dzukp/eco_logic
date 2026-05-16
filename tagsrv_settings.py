@@ -88,7 +88,7 @@ def gen_tagsrv_config(post_quantity=8):
         com_port1_name = 'COM3'
         com_port2_name = 'COM4'
 
-    port_1 = SerialSource(port=com_port1_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
+    port_1 = SerialSource(port=com_port1_name, baudrate=9600, bytesize=8, parity='N', stopbits=1, timeout=0.1)
     # port_2 = SerialSource(port=com_port2_name, baudrate=19200, bytesize=8, parity='E', stopbits=1, timeout=0.1)
 
     fc_modules_1 = []
