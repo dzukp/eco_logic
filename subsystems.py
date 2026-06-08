@@ -114,6 +114,7 @@ class PumpTankFiller(TankFiller):
         super().__init__(name)
         self.pump = None
         self.pump2 = None
+        self.valves = []
         self.di_press = None
         self.do_no_press_signal = None
         self.no_pump_timer = Timer()
@@ -128,14 +129,17 @@ class PumpTankFiller(TankFiller):
                 not self.mid_level_ton.process(self.tank.di_mid_level.val, 10.0):
             self.no_pump_timer.start(5.0)
             pump_start = True
-            self.valve.open()
+            for valve in self.valves:
+                valve.open()
         elif self.started and self.external_enable and self.need_fill():
             self.no_pump_timer.start(5.0)
             if self.no_pump_timer.is_end():
                 pump_start = True
-            self.valve.close()
+            for valve in self.valves:
+                valve.close()
         else:
-            self.valve.close()
+            for valve in self.valves:
+                valve.close()
             self.no_pump_timer.reset()
             self.wait_after_no_press_timer.reset()
 
