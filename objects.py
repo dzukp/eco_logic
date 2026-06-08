@@ -90,7 +90,7 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_b1_1': {
                 'class': Valve,
-                'do_open': 'do_2_2_20',
+                'do_open': 'do_1_1_20',
                 'mb_cells_idx': 86
             },
             'tank_b1': {
@@ -134,9 +134,9 @@ def get_object(post_quantity=(6, 6)):
             },
             'tank_b1_1': {
                 'class': Tank,
-                'di_low_level': 'dio_2_1_i_3',
-                'di_mid_level': 'dio_2_1_i_2',
-                'di_hi_level': 'dio_2_1_i_1',
+                'di_low_level': 'dio_1_1_i_9',
+                'di_mid_level': 'dio_1_1_i_8',
+                'di_hi_level': 'dio_1_1_i_7',
                 'mb_cells_idx': 102
             },
             'pump_n8': {
