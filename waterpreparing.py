@@ -80,14 +80,14 @@ class WaterPreparing(IoObject, ModbusDataObject):
 
     def init(self):
         self.b1_filler.tank = self.tank_b1
-        self.b1_filler.valve = self.valve_b1
+        self.b1_filler.valves = [self.valve_b1, self.valve_b1_1]
         self.b1_filler.pump = self.pump_n3
         self.b1_filler.pump2 = self.pump_n8
         self.b1_filler.di_press = self.di_press_4
         self.b1_filler.do_no_press_signal = self.do_no_n3_press_signal
         self.b1_1_filler.tank = self.tank_b1_1
         self.b1_1_filler.source_tank = self.tank_b1
-        self.b1_1_filler.valves = [self.valve_b1_1]
+        self.b1_1_filler.valves = []
         self.b1_1_filler.pumps = [self.pump_n1, self.pump_n7]
         self.b2_filler.tank = self.tank_b2
         self.b2_filler.valve = self.valve_b2
