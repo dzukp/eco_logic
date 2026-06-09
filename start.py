@@ -15,6 +15,7 @@ from objects import get_object
 from simulator_objects import get_simulator_objects
 from tagsrv_settings import gen_tagsrv_config
 from logconfig import logging_config
+from rpc_supervisor import RpcSupervisor
 
 
 def start():
@@ -29,7 +30,7 @@ def start():
         'simulators': sim_obj,
         'tagsrv_settings': gen_tagsrv_config(post_quantity),
         'logging_conf': logging_config,
-        'supervisors': {'supervis_modbus': ModbusSupervisor,}
+        'supervisors': {'supervis_modbus': ModbusSupervisor, 'supervis_rpc': RpcSupervisor}
     }
     main(config)
 

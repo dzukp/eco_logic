@@ -1,8 +1,8 @@
-
 import time
 import struct
 
 from .tagsrv_logger import logger
+from .module import BaseModule
 
 
 __all__ = ['ModbusRTUModule',]
@@ -43,7 +43,7 @@ def crc16(input_data: bytes):
     return struct.pack('H', register)
     
 
-class ModbusRTUModule(object):
+class ModbusRTUModule(BaseModule):
     """ Модуль ModBus RTU """
     
     class InTagRequest(object):
@@ -161,13 +161,15 @@ class ModbusRTUModule(object):
         def ans_process(self, ans):
             pass
 
-    def __init__(self, slave, serial, in_tags=[], out_tags=[], io_tags=[], max_answ_len=16, timeout=0.1):
+    def __init__(self, slave, serial, in_tags=tuple(), out_tags=tuple(), io_tags=tuple(), max_answ_len=16, timeout=0.1):
+        super(ModbusRTUModule, self).__init__(name=f'{serial.name} #{slave}')
         self.slave = slave
         self.serial = serial
         self.max_answ_len = max_answ_len
         self.timeout = timeout
-        in_tags = self._forming_tag_list(in_tags + io_tags)
-        out_tags = self._forming_tag_list(out_tags + io_tags)
+        self.tags = in_tags + io_tags + out_tags
+        in_tags = self._forming_tag_list(list(in_tags + io_tags))
+        out_tags = self._forming_tag_list(list(out_tags + io_tags))
         self.ireqs = []
         self.oreqs = []
         for tags in in_tags:
@@ -197,11 +199,15 @@ class ModbusRTUModule(object):
 
     def set_logger(self, logger):
         self.logger = logger
+
+    def _value_to_str(self, value):
+        return f'{int(value):04x}' if value is not None else '----'
         
     def process(self):
         self.serial.read_all()
         i = 0
         #first_start_time = time.time()
+        ok = False
         for req in self.ireqs + self.oreqs:
             i += 1
             try:
@@ -211,7 +217,12 @@ class ModbusRTUModule(object):
                 #print i, 'send - receive timeout', time.time() - start_time
             except Exception as e:
                 self.logger.error(e)
+            else:
+                ok = True
             time.sleep(0.005)
+        self.ok = ok
+        if ok:
+            self.last_ok = time.time()
         #print 'all_cycle', time.time() - first_start_time
     
     def send(self, req):

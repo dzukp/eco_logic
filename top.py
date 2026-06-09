@@ -19,7 +19,6 @@ class Top(IoObject, ModbusDataObject):
         self.post_function = {}
         self.new_function = {}
         self.post_service = {}
-        self.rpc_server = RpcPostServer()
         self.mb_cells_idx = None
         self.counter = 0
         self.side_posts = {'1': set(), '2': set()}
@@ -45,8 +44,6 @@ class Top(IoObject, ModbusDataObject):
             self.side_brush_wash['1'].add_post(post)
         for post in self.side_posts['2']:
             self.side_brush_wash['2'].add_post(post)
-        self.rpc_server.set_top_object(self)
-        self.rpc_server.start()
 
     def process(self):
         for post, func in self.new_function.items():
