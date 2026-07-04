@@ -75,7 +75,7 @@ def get_object(post_quantity=(6, 6)):
             },
             'valve_water_os': {
                 'class': Valve,
-                'do_open': 'do_2_2_23',
+                'do_open': None,
                 'mb_cells_idx': 78
             },
             'valve_wash_osmos': {
@@ -88,11 +88,11 @@ def get_object(post_quantity=(6, 6)):
                 'do_open': 'do_2_2_21',
                 'mb_cells_idx': 82
             },
-            # 'valve_b2': {
-            #     'class': Valve,
-            #     'do_open': None,
-            #     'mb_cells_idx': 84
-            # },
+            'valve_b2': {
+                'class': Valve,
+                'do_open': 'do_2_2_23',
+                'mb_cells_idx': 84
+            },
             'valve_b1_1': {
                 'class': Valve,
                 'do_open': 'do_2_2_20',
@@ -100,16 +100,16 @@ def get_object(post_quantity=(6, 6)):
             },
             'tank_b1': {
                 'class': Tank,
-                'di_low_level': 'di_1_3',
-                'di_mid_level': 'di_1_2',
-                'di_hi_level': 'di_1_1',
+                'di_low_level': 'dio_1_1_i_1',
+                'di_mid_level': 'dio_1_1_i_2',
+                'di_hi_level': 'dio_1_1_i_1',
                 'mb_cells_idx': 88
             },
             'tank_b2': {
                 'class': Tank,
-                'di_low_level': 'di_1_6',
-                'di_mid_level': 'di_1_5',
-                'di_hi_level': 'di_1_4',
+                'di_low_level': 'dio_1_1_i_6',
+                'di_mid_level': 'dio_1_1_i_5',
+                'di_hi_level': 'dio_1_1_i_4',
                 'mb_cells_idx': 90
             },
             'pump_n4': {
@@ -270,6 +270,7 @@ def get_object(post_quantity=(6, 6)):
     post_quantity = post_quantity if isinstance(post_quantity, (list, tuple)) else (post_quantity,)
     post_number = 0
     for side, post_q in enumerate(post_quantity, start=1):
+        start_post_numer = post_number + 1
         for i in range(1, post_q + 1):
             new_post = copy.deepcopy(post)
             post_number += 1
@@ -279,7 +280,7 @@ def get_object(post_quantity=(6, 6)):
             start_addr = 200 + (post_number - 1) * 38
             new_post['mb_cells_idx'] = start_addr
 
-            new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - 1) % post_q + 1}'
+            new_post['ai_pressure'] = f'ai_{side}_1_{(post_number - start_post_numer) % post_q + 1}'
             new_post['di_hoover'] = f'dio_p_{post_number}_i_1'
             new_post['di_brush'] = f'dio_p_{post_number}_i_2'
             new_post['di_car_inside'] = f'dio_p_{post_number}_i_3'
@@ -314,11 +315,11 @@ def get_object(post_quantity=(6, 6)):
             children['valve_polish']['do_open'] = f'dio_p_{post_number}_o_3'
             children['valve_glass']['do_open'] = f'dio_p_{post_number}_o_4'
             children['valve_hoover']['do_open'] = f'dio_p_{post_number}_o_5'
-            children['pump']['ao_command'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_1'
-            children['pump']['ao_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ao_2'
-            children['pump']['ai_status'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_1'
-            children['pump']['ai_frequency'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_2'
-            children['pump']['ai_alarm_code'] = f'fc_{side}_{(post_number - 1) % post_q + 1}_ai_3'
+            children['pump']['ao_command'] = f'fc_{side}_{(post_number - start_post_numer) % post_q + 1}_ao_1'
+            children['pump']['ao_frequency'] = f'fc_{side}_{(post_number - start_post_numer) % post_q + 1}_ao_2'
+            children['pump']['ai_status'] = f'fc_{side}_{(post_number - start_post_numer) % post_q + 1}_ai_1'
+            children['pump']['ai_frequency'] = f'fc_{side}_{(post_number - start_post_numer) % post_q + 1}_ai_2'
+            children['pump']['ai_alarm_code'] = f'fc_{side}_{(post_number - start_post_numer) % post_q + 1}_ai_3'
 
     return objects
 

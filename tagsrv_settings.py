@@ -101,9 +101,9 @@ def gen_tagsrv_config(post_quantity=None):
     do_2_4 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_2_4_')],
                              ip='192.168.200.8', timeout=0.03)
 
-    # dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_1_')] + \
-    #            [tag for name, tag in tags['in'].items() if name.startswith('dio_1_1_')]
-    # dio_1_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
+    dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_1_1_')] + \
+               [tag for name, tag in tags['in'].items() if name.startswith('dio_1_1_')]
+    dio_1_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.30', timeout=0.03)
     # dio_tags = [tag for name, tag in tags['out'].items() if name.startswith('dio_2_1_')] + \
     #            [tag for name, tag in tags['in'].items() if name.startswith('dio_2_1_')]
     # dio_2_1 = OwenDiDoMk210(tags=dio_tags, ip='192.168.200.31', timeout=0.03)
@@ -139,11 +139,11 @@ def gen_tagsrv_config(post_quantity=None):
                                               out_tags=[tag for name, tag in tags['out'].items() if
                                                         name.startswith(f'fc_{section_num}_{i}_ao_')]))
 
-    fc_modules[2].append(ModbusRTUModule(30, ports[2], io_tags=[], max_answ_len=5,
-                                     in_tags=[tag for name, tag in tags['in'].items() if
-                                              name.startswith(f'fc_os_ai_')],
-                                     out_tags=[tag for name, tag in tags['out'].items() if
-                                               name.startswith(f'fc_os_ao_')]))
+#    fc_modules[2].append(ModbusRTUModule(30, ports[2], io_tags=[], max_answ_len=5,
+#                                     in_tags=[tag for name, tag in tags['in'].items() if
+#                                              name.startswith(f'fc_os_ai_')],
+#                                     out_tags=[tag for name, tag in tags['out'].items() if
+#                                               name.startswith(f'fc_os_ao_')]))
 
     fc_modules[2].append(ModbusRTUModule(40, ports[2], io_tags=[], max_answ_len=5,
                                          in_tags=[tag for name, tag in tags['in'].items() if
@@ -157,7 +157,7 @@ def gen_tagsrv_config(post_quantity=None):
                                                    name.startswith(f'fc_hoover_2_ao_')]))
 
     modules = [do_1_1, do_1_2, do_1_3, do_1_4, do_2_1, do_2_2, do_2_3, do_2_4, di_1_1, di_2_1, ai_1_1, ai_1_2, ai_2_1,
-               ai_2_2, ai_3, dio_3, dio_4] + dio_post
+               ai_2_2, ai_3, dio_1_1, dio_3, dio_4] + dio_post
 
     dispatchers = {
         'disp_1': ParallelDispatcher(
