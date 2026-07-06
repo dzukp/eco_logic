@@ -88,7 +88,7 @@ class WaterPreparing(IoObject, ModbusDataObject):
         self.b1_1_filler.tank = self.tank_b1_1
         # self.b1_1_filler.pumps = [self.pump_n3]
         self.b2_filler.tank = self.tank_b2
-        self.b2_filler.valves = [self.valve_water_os]
+        self.b2_filler.valve_inlet = self.valve_b2
         self.b2_filler.pumps = [self.pump_n3]
         self.b2_filler.di_press = self.di_press_2
         self.b2_filler.source_tank = self.tank_b1

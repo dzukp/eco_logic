@@ -254,14 +254,14 @@ class OsmosisTankFiller(TankFiller):
     def __init__(self, name):
         super().__init__(name)
         self.valve_inlet = FakeValve()
-        self.di_pressure = None
+        self.di_press = None
         self.timer = Timer()
         self.pumps = []
         self.source_tank = None
         self._state = 0
 
     def process(self):
-        di_press = not self.di_pressure or self.di_pressure.val
+        di_press = not self.di_press or self.di_press.val
         source_water = not self.source_tank or not self.source_tank.is_empty()
         pump = False
         if not self.started or not self.external_enable:
