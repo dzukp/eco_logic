@@ -292,7 +292,7 @@ class OsmosisTankFiller(TankFiller):
         # start 1 pump and open valve
         elif self._state == 2:
             self.valve_inlet.open()
-            pump = True
+            pump = di_press
             self.valve.open()
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, stop osmosis filler')
