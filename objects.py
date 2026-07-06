@@ -25,7 +25,7 @@ def get_object(post_quantity=(6, 6)):
         'class': WaterPreparing,
         'di_press_1': None,
         'ai_pe_1': None,
-        'di_press_2': 'di_1_10',
+        'di_press_2': 'dio_1_1_i_10',
         'ai_pe_2': 'ai_1_2_2',
         'di_press_3': None,
         'ai_pe_3': 'ai_1_2_1',
@@ -34,7 +34,7 @@ def get_object(post_quantity=(6, 6)):
         'children': {
             'pump_n1': {
                 'class': Engine,
-                'do_start': 'do_2_2_13',
+                'do_start': None,
                 'mb_cells_idx': 50,
             },
             'pump_n1_1': {
@@ -54,7 +54,7 @@ def get_object(post_quantity=(6, 6)):
             },
             'pump_n3': {
                 'class': Engine,
-                'do_start': 'do_2_2_19',
+                'do_start': 'do_2_2_13',
                 'mb_cells_idx': 56
             },
             'pump_os': {
@@ -102,14 +102,14 @@ def get_object(post_quantity=(6, 6)):
                 'class': Tank,
                 'di_low_level': 'dio_1_1_i_1',
                 'di_mid_level': 'dio_1_1_i_2',
-                'di_hi_level': 'dio_1_1_i_1',
+                'di_hi_level': 'dio_1_1_i_3',
                 'mb_cells_idx': 88
             },
             'tank_b2': {
                 'class': Tank,
-                'di_low_level': 'dio_1_1_i_6',
+                'di_low_level': 'dio_1_1_i_4',
                 'di_mid_level': 'dio_1_1_i_5',
-                'di_hi_level': 'dio_1_1_i_4',
+                'di_hi_level': 'dio_1_1_i_6',
                 'mb_cells_idx': 90
             },
             'pump_n4': {

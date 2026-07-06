@@ -95,7 +95,7 @@ class TankFiller(Subsystem):
 
     def __init__(self, name):
         super().__init__(name)
-        self.valve = None
+        self.valve = FakeValve()
         self.tank = None
 
     def process(self):
@@ -253,62 +253,68 @@ class OsmosisTankFiller(TankFiller):
 
     def __init__(self, name):
         super().__init__(name)
-        self.valve_inlet = None
+        self.valve_inlet = FakeValve()
         self.di_pressure = None
         self.timer = Timer()
-        self.pid_pump = None
+        self.pumps = []
+        self.source_tank = None
         self._state = 0
 
     def process(self):
+        di_press = not self.di_pressure or self.di_pressure.val
+        source_water = not self.source_tank or not self.source_tank.is_empty()
+        pump = False
         if not self.started or not self.external_enable:
             self.set_state(0)
         # no filling
         if self._state == 0:
             self.valve_inlet.close()
-            self.pid_pump.stop()
+            pump = False
             self.valve.close()
-            if self.started and self.external_enable and self.need_fill():
+            if self.started and self.external_enable and self.need_fill() and source_water:
                 self.set_state(1)
                 self.logger.info('need fill osmosis tank, go to open inlet valve')
         # open inlet valve
         elif self._state == 1:
             self.valve_inlet.open()
-            self.pid_pump.stop()
+            pump = False
             self.valve.close()
-            self.timer.start(5.0)
-            # if self.di_pressure.val and self.timer.is_end():
-            if self.timer.is_end():
+            self.timer.start(3.0)
+            if di_press and self.timer.is_end():
                 self.logger.info('water, go start pumps and open valve')
                 self.set_state(2)
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, stop osmosis filler')
                 self.set_state(0)
+            if not source_water:
+                self.logger.info('source tank is empty')
+                self.set_state(0)
         # start 1 pump and open valve
         elif self._state == 2:
             self.valve_inlet.open()
-            self.pid_pump.start()
+            pump = True
             self.valve.open()
-            self.timer.start(2.0)
-            if self.timer.is_end():
-                self.set_state(3)
-                self.logger.info('timer end, start os2')
-            # if not self.di_pressure.val:
-            #     self.logger.info('no pressure, stop osmosis filler')
-            #     self.set_state(0)
             if not self.need_fill():
                 self.logger.info('osmosis tank is full, stop osmosis filler')
-                self.set_state(0)
-        # start 2 pump
-        elif self._state == 3:
+                self.set_state(10)
+            if not source_water:
+                self.logger.info('source tank is empty')
+                self.set_state(10)
+        # stop pump, open valve
+        elif self._state == 10:
             self.valve_inlet.open()
-            self.pid_pump.start()
+            pump = False
             self.valve.open()
-            # if not self.di_pressure.val:
-            #     self.logger.info('no pressure, stop osmosis filler')
-            #     self.set_state(0)
-            if not self.need_fill():
-                self.logger.info('osmosis tank is full, stop osmosis filler')
+            self.timer.start(3.0)
+            if self.timer.is_end():
+                self.logger.info('pump stopped, close valve')
                 self.set_state(0)
+        for p in self.pumps:
+            if pump:
+                p.start()
+            else:
+                p.stop()
+
 
     def set_state(self, new_state):
         self._state = new_state
@@ -412,3 +418,10 @@ class PidEngine(IoObject, ModbusDataObject):
             }
         else:
             return {}
+
+
+class FakeValve:
+    def open(self):
+        pass
+    def close(self):
+        pass
