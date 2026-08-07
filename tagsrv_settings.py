@@ -85,7 +85,7 @@ def gen_tagsrv_config(post_quantity=None):
                          ip='192.168.200.11', timeout=0.03)
 
     do_1_1 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_1_')],
-                             ip='192.168.200.1', timeout=0.03)
+                             ip='192.168.200.50', timeout=0.03)
     do_1_2 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_2_')],
                              ip='192.168.200.2', timeout=0.03)
     do_1_3 = OwenDoMu210_403(tags=[tag for name, tag in tags['out'].items() if name.startswith('do_1_3_')],
