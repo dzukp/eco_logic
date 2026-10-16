@@ -1,13 +1,11 @@
 import copy
 
-from pylogic.io_object import IoObject
-from valve import Valve, NOValve
+from valve import Valve
 from engine import Engine
 from fc import Altivar212
 from tank import Tank
 from post import Post
 from waterpreparing import WaterPreparing
-from nofrost import Nofrost
 from subsystems import PidEngine
 from side_supplier import SideSupplier
 from top import Top
@@ -23,11 +21,11 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_2_7',
+                    'ai_pe_1': 'ai_3_3',
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_2_5',
+                    'ai_pe_2': 'ai_3_1',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_2_6',
+                    'ai_pe_3': 'ai_3_2',
                     'di_press_4': 'di_1_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -59,7 +57,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_water_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_5',
+                            'ai_sensor': 'ai_3_1',
                             'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
@@ -75,7 +73,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_osmos_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_2_6',
+                            'ai_sensor': 'ai_3_2',
                             'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
@@ -164,77 +162,44 @@ def get_object(post_quantity=10):
 
     side_suppliers = {}
     for i in (1,):
-        do_module = {1: 3, 2: 5}[i]
         side_suppliers[f'side_{i}'] = {
             'class': SideSupplier,
             'mb_cells_idx': None,
             'children': {
-                'pump_foam': {
-                    'class': PidEngine,
-                    'ai_sensor': 'ai_2_4' if i == 1 else 'ai_3_5',
-                    'set_point': 10.0,
-                    'mb_cells_idx': 527 if i == 1 else 547,
-                    'children': {
-                        'fc': {
-                            'class': Altivar212,
-                            'ao_command': f'fc_foam_{i}_ao_1',
-                            'ao_frequency': f'fc_foam_{i}_ao_2',
-                            'ai_status': f'fc_os_foam_{i}_ai_1',
-                            'ai_frequency': f'fc_foam_{i}_ai_2',
-                            'ai_alarm_code': f'fc_foam_{i}_ai_3',
-                            'mb_cells_idx': 518 if i == 1 else 538
-                        }
-                    }
-                },
                 'pump_intensive': {
                     'class': Engine,
-                    'do_start': f'do_{do_module}_24',
-                    'mb_cells_idx': 38 if i == 1 else None
+                    'do_start': f'do_4_22',
+                    'mb_cells_idx': 38
                 },
                 'valve_dose_foam': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_19',
-                    'mb_cells_idx': 52 if i == 1 else None
+                    'do_open': f'do_4_21',
+                    'mb_cells_idx': 52
                 },
                 'valve_dose_wax': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_20',
-                    'mb_cells_idx': 54 if i == 1 else None
+                    'do_open': f'do_4_16',
+                    'mb_cells_idx': 54
                 },
                 'valve_dose_shampoo': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_22',
-                    'mb_cells_idx': 56 if i == 1 else None
-                },
-                'valve_dose_water_shampoo': {
-                    'class': Valve,
-                    'do_open': f'do_{do_module}_20',
-                    'mb_cells_idx': 512 if i == 1 else None
-                },
-                'valve_dose_hot_water_shampoo': {
-                    'class': Valve,
-                    'do_open': f'do_{do_module}_21',
-                    'mb_cells_idx': 514 if i == 1 else None
+                    'do_open': f'do_4_20',
+                    'mb_cells_idx': 56
                 },
                 'valve_dose_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_16',
-                    'mb_cells_idx': 58 if i == 1 else None
+                    'do_open': f'do_4_14',
+                    'mb_cells_idx': 58
                 },
-                'valve_dose_water_intensive': {
+                'valve_dose_wax_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_15',
-                    'mb_cells_idx': 516 if i == 1 else None
+                    'do_open': f'do_4_12',
+                    'mb_cells_idx': 40
                 },
-                'valve_dose_osmos_intensive': {
+                'valve_dose_foam_shampoo': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_17',
-                    'mb_cells_idx': 40 if i == 1 else None
-                },
-                'valve_dose_foam_2': {
-                    'class': Valve,
-                    'do_open': f'do_{do_module}_17',
-                    'mb_cells_idx': 34 if i == 1 else None
+                    'do_open': f'do_4_18',
+                    'mb_cells_idx': 34
                 }
             }
         }
@@ -307,7 +272,7 @@ def get_object(post_quantity=10):
         post_number = int(name.lstrip('post_'))
         start_addr = 60 + (post_number - 1) * 32
 
-        objects['top']['children']['supplier']['sides'][name] = 'side_1' if post_number <= 6 else 'side_2'
+        objects['top']['children']['supplier']['sides'][name] = 'side_1'
 
         obj['mb_cells_idx'] = start_addr
         obj['children']['valve_foam']['mb_cells_idx'] = start_addr + 5
@@ -317,47 +282,26 @@ def get_object(post_quantity=10):
         obj['children']['valve_hot_water']['mb_cells_idx'] = start_addr + 13
         obj['children']['valve_osmos']['mb_cells_idx'] = start_addr + 15
         obj['children']['valve_out_water']['mb_cells_idx'] = start_addr + 17
-        # obj['children']['valve_out_foam']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_solution_2']['mb_cells_idx'] = start_addr + 19
         obj['children']['valve_intensive']['mb_cells_idx'] = start_addr + 21
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
-        if post_number <= 3:
+        if post_number <= 4:
             obj['ai_pressure'] = f'ai_1_{post_number}'
-        elif post_number <= 6:
-            obj['ai_pressure'] = f'ai_2_{post_number - 3}'
         else:
-            obj['ai_pressure'] = f'ai_3_{post_number - 6}'
+            obj['ai_pressure'] = f'ai_2_{post_number - 4}'
 
-        if post_number <= 6:
-            module_number = ((post_number - 1) // 3) + 1 if post_number <= 6 else ((post_number - 7) // 3) + 4
-            obj['children']['valve_solution_2']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 1}'
-            obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 2}'
-            obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 3}'
-            obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 4}'
-            obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 5}'
-            obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 3 * 8 + 6}'
-            obj['children']['valve_out_water']['do_open'] = None
-            obj['children']['valve_out_foam']['do_open'] = None
-        else:
-            module_number = 4
-            obj['children']['valve_solution_2']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 1}'
-            obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 2}'
-            obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 3}'
-            obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 4}'
-            obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 5}'
-            obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 7) % 4 * 6 + 6}'
-            obj['children']['valve_out_water']['do_open'] = None
-            obj['children']['valve_out_foam']['do_open'] = None
-
-        if post_number <= 6:
-            module2_number = 3
-            obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 1}'
-            obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 1) * 2 + 2}'
-        else:
-            module2_number = 5
-            obj['children']['valve_foam']['do_open'] = f'do_{module2_number}_{(post_number - 7) * 2 + 1}'
-            obj['children']['valve_intensive']['do_open'] = f'do_{module2_number}_{(post_number - 7) * 2 + 2}'
+        module_number = ((post_number - 1) // 2) + 1
+        obj['children']['valve_foam']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 1}'
+        obj['children']['valve_wax']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 2}'
+        obj['children']['valve_shampoo']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 3}'
+        obj['children']['valve_cold_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 4}'
+        obj['children']['valve_hot_water']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 5}'
+        obj['children']['valve_osmos']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 6}'
+        obj['children']['valve_intensive']['do_open'] = f'do_{module_number}_{(post_number - 1) % 2 * 9 + 9}'
+        obj['children']['valve_solution_2']['do_open'] = None
+        obj['children']['valve_out_water']['do_open'] = None
+        obj['children']['valve_out_foam']['do_open'] = None
 
         obj['children']['pump']['ao_command'] = f'fc_{post_number}_ao_1'
         obj['children']['pump']['ao_frequency'] = f'fc_{post_number}_ao_2'
