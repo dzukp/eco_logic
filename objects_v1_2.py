@@ -163,7 +163,7 @@ def get_object(post_quantity=10):
     }
 
     side_suppliers = {}
-    for i in (1, 2):
+    for i in (1,):
         do_module = {1: 3, 2: 5}[i]
         side_suppliers[f'side_{i}'] = {
             'class': SideSupplier,
@@ -188,17 +188,17 @@ def get_object(post_quantity=10):
                 },
                 'pump_intensive': {
                     'class': Engine,
-                    'do_start': f'do_{do_module}_23',
+                    'do_start': f'do_{do_module}_24',
                     'mb_cells_idx': 38 if i == 1 else None
                 },
                 'valve_dose_foam': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_18',
+                    'do_open': f'do_{do_module}_19',
                     'mb_cells_idx': 52 if i == 1 else None
                 },
                 'valve_dose_wax': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_19',
+                    'do_open': f'do_{do_module}_20',
                     'mb_cells_idx': 54 if i == 1 else None
                 },
                 'valve_dose_shampoo': {
@@ -228,7 +228,7 @@ def get_object(post_quantity=10):
                 },
                 'valve_dose_osmos_intensive': {
                     'class': Valve,
-                    'do_open': f'do_{do_module}_14',
+                    'do_open': f'do_{do_module}_17',
                     'mb_cells_idx': 40 if i == 1 else None
                 },
                 'valve_dose_foam_2': {
