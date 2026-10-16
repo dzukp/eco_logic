@@ -99,7 +99,7 @@ def gen_tagsrv_config(version='1.0', post_quantity=8):
 
     # if quantity pumps > 4 use both serial ports
     if version == '1.2':
-        com1_end = 6
+        com1_end = 10
     elif post_quantity > 4:
         com1_end = post_quantity // 2
     else:
