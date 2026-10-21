@@ -21,11 +21,11 @@ def get_object(post_quantity=10):
                     'class': WaterPreparing,
                     'sides': {},
                     'di_press_1': 'di_1_14',
-                    'ai_pe_1': 'ai_3_3',
+                    'ai_pe_1': 'ai_2_8',
                     'di_press_2': None,
-                    'ai_pe_2': 'ai_3_1',
+                    'ai_pe_2': 'ai_2_6',
                     'di_press_3': 'di_1_15',
-                    'ai_pe_3': 'ai_3_2',
+                    'ai_pe_3': 'ai_2_7',
                     'di_press_4': 'di_1_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
@@ -57,7 +57,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_water_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_3_1',
+                            'ai_sensor': 'ai_2_6',
                             'mb_cells_idx': 569,
                             'children': {
                                 'fc': {
@@ -73,7 +73,7 @@ def get_object(post_quantity=10):
                         },
                         'pump_osmos_supplier': {
                             'class': PidEngine,
-                            'ai_sensor': 'ai_3_2',
+                            'ai_sensor': 'ai_2_7',
                             'mb_cells_idx': 589,
                             'children': {
                                 'fc': {
