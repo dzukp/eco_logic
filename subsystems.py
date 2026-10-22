@@ -66,7 +66,7 @@ class WaterSupplier(Subsystem):
         return not self.hysteresis.process(self.ai_pressure.val)
 
     def is_can_supply(self):
-        return True# self.ai_pressure.val > self.enough_pressure if self.ai_pressure.val > -10 else True
+        return self.ai_pressure.val >= self.enough_pressure if self.ai_pressure.val > -10 else True
 
 
 class TwoPumpWaterSupplier(WaterSupplier):
@@ -162,7 +162,7 @@ class PumpTankFiller(TankFiller):
             # Работа
             self.pump.start()
             self.no_press_timer.start(5.0)
-            if self.di_press.val:
+            if not self.di_press or self.di_press.val:
                 self.no_press_timer.restart()
             elif self.no_press_timer.is_end():
                 self.logger.info('no pressure after pump start')

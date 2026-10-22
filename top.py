@@ -12,6 +12,7 @@ class Top(IoObject, ModbusDataObject):
 
     def __init__(self, *args):
         super().__init__(*args)
+        self.hmi_post_number = 1
         self.supplier = None
         self.nofrost = None
         self.posts = {}
