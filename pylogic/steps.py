@@ -38,7 +38,7 @@ class Steps(LoggedObject):
             self.logger.info(f'Start')
 
     def stop(self):
-        if self.is_idle():
+        if not self.is_idle():
             self.current_step = self.idle
             self.trans_args = []
             self.logger.info(f'Stop')
