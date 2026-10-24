@@ -15,7 +15,7 @@ class ModbusSupervisor(BaseSupervisor):
         self.length = 0
 
     def init(self):
-        self.mb = modbus_tcp.TcpServer(port=1512)
+        self.mb = modbus_tcp.TcpServer()
         self.mb.start()
         start_addr, end_addr = self.prepare_object(self.top_object)
         if start_addr is not None and end_addr is not None:
@@ -64,8 +64,6 @@ class ModbusSupervisor(BaseSupervisor):
         data = list(self.slave_1.get_values('main_hr', self.start_addr, self.length))
         for mb_object in self.mb_objects:
             for addr, val in mb_object.mb_output(self.start_addr).items():
-                if data[addr] != val and addr != 500:
-                    print(f'{mb_object.full_name} {addr} {data[addr]} -> {val}')
                 data[addr] = val
         self.slave_1.set_values('main_hr', self.start_addr, data)
 
