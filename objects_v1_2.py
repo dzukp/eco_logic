@@ -287,7 +287,7 @@ def get_object(post_quantity=10):
         obj['children']['pump']['mb_cells_idx'] = start_addr + 23
 
         if post_number <= 4:
-            obj['ai_pressure'] = f'ai_1_{post_number}'
+            obj['ai_pressure'] = f'ai_1_{post_number + 4}'
         else:
             obj['ai_pressure'] = f'ai_2_{post_number - 4}'
 
