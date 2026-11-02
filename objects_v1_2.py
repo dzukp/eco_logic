@@ -20,13 +20,13 @@ def get_object(post_quantity=10):
                 'supplier': {
                     'class': WaterPreparing,
                     'sides': {},
-                    'di_press_1': 'dio_1_i_14',
+                    'di_press_1': None,
                     'ai_pe_1': 'ai_2_8',
                     'di_press_2': None,
                     'ai_pe_2': 'ai_2_6',
-                    'di_press_3': 'dio_1_i_15',
+                    'di_press_3': None,
                     'ai_pe_3': 'ai_2_7',
-                    'di_press_4': 'dio_1_i_13',
+                    'di_press_4': None,
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
