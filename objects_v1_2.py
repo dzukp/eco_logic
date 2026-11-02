@@ -20,13 +20,13 @@ def get_object(post_quantity=10):
                 'supplier': {
                     'class': WaterPreparing,
                     'sides': {},
-                    'di_press_1': 'di_1_14',
+                    'di_press_1': 'dio_1_i_14',
                     'ai_pe_1': 'ai_2_8',
                     'di_press_2': None,
                     'ai_pe_2': 'ai_2_6',
-                    'di_press_3': 'di_1_15',
+                    'di_press_3': 'dio_1_i_15',
                     'ai_pe_3': 'ai_2_7',
-                    'di_press_4': 'di_1_13',
+                    'di_press_4': 'dio_1_i_13',
                     'do_no_n3_press_signal': None,
                     'mb_cells_idx': 0,
                     'children': {
@@ -135,23 +135,23 @@ def get_object(post_quantity=10):
                         },
                         'tank_b1': {
                             'class': Tank,
-                            'di_low_level': 'di_1_2',
-                            'di_mid_level': 'di_1_3',
-                            'di_hi_level': 'di_1_4',
+                            'di_low_level': 'dio_1_i_2',
+                            'di_mid_level': 'dio_1_i_3',
+                            'di_hi_level': 'dio_1_i_4',
                             'mb_cells_idx': 48
                         },
                         'tank_b2': {
                             'class': Tank,
-                            'di_low_level': 'di_1_10',
-                            'di_mid_level': 'di_1_11',
-                            'di_hi_level': 'di_1_12',
+                            'di_low_level': 'dio_1_i_10',
+                            'di_mid_level': 'dio_1_i_11',
+                            'di_hi_level': 'dio_1_i_12',
                             'mb_cells_idx': 50
                         },
                         'tank_b3': {
                             'class': Tank,
-                            'di_low_level': 'di_1_6',
-                            'di_mid_level': 'di_1_7',
-                            'di_hi_level': 'di_1_8',
+                            'di_low_level': 'dio_1_i_6',
+                            'di_mid_level': 'dio_1_i_7',
+                            'di_hi_level': 'dio_1_i_8',
                             'mb_cells_idx': 558
                         }
                     }
