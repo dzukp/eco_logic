@@ -115,8 +115,8 @@ def get_object(post_quantity=10):
                         },
                         'valve_water_os': {
                             'class': Valve,
-                            'do_open': None,
-                            'mb_cells_idx': None
+                            'do_open': 'dio_1_o_4',
+                            'mb_cells_idx': 42
                         },
                         'valve_b1': {
                             'class': Valve,
@@ -194,7 +194,7 @@ def get_object(post_quantity=10):
                 'valve_dose_wax_intensive': {
                     'class': Valve,
                     'do_open': f'do_4_12',
-                    'mb_cells_idx': 40
+                    'mb_cells_idx': 516
                 },
                 'valve_dose_foam_shampoo': {
                     'class': Valve,
