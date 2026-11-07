@@ -6,16 +6,18 @@ from pylogic.channel import InChannel
 from pylogic.modbus_supervisor import ModbusDataObject
 from pylogic.timer import Ton
 
-from post_function import MultiValvePumpSteps, MultiValveSteps, PostIntensiveSteps, SharedValveSteps, \
-    IntensiveMultiValvePumpSteps
+from post_function import MultiValvePumpSteps, IntensiveMultiValvePumpSteps, StopSteps
 from utils import floats_to_modbus_cells
 from func_names import FuncNames
 
 
 class Post(IoObject, ModbusDataObject):
 
-    _save_attrs = ('func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
-                   'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure', 'flow_indicator')
+    _save_attrs = (
+        'func_frequencies', 'pressure_timeout', 'min_pressure', 'pump_on_timeout', 'valve_off_timeout',
+        'disabled_funcs', 'no_flow_frequency', 'begin_phase_timeout', 'no_flow_pressure', 'flow_indicator',
+        'antifreeze_timeout'
+    )
 
     def __init__(self, name, parent):
         super().__init__(name, parent)
@@ -55,10 +57,14 @@ class Post(IoObject, ModbusDataObject):
         self.alarm_reset_timeout = 10.0
         self.alarm_reset_timer = Ton()
         self.alarm = False
+        self.antifreeze_timeout = 30.0
         self.mb_cells_idx = None
-        self.func_steps = dict([(name, MultiValvePumpSteps(f'{name}_steps', self))
-                                for name in FuncNames.all_funcs() if name not in (FuncNames.STOP,)])
+        self.func_steps = {
+            name: MultiValvePumpSteps(f'{name}_steps', self)
+            for name in FuncNames.all_funcs() if name not in (FuncNames.STOP, FuncNames.INTENSIVE)
+        }
         self.func_steps[FuncNames.INTENSIVE] = IntensiveMultiValvePumpSteps('intensive_steps', self)
+        self.func_steps[FuncNames.STOP] = StopSteps('stop_steps', self)
         self.disabled_funcs = []
         self.all_valves = set()
 
@@ -72,7 +78,8 @@ class Post(IoObject, ModbusDataObject):
             FuncNames.HOT_WATER: [self.valve_hot_water, ],
             FuncNames.COLD_WATER: [self.valve_cold_water],
             FuncNames.OSMOSIS: [self.valve_osmos, ],
-            FuncNames.INTENSIVE: [self.valve_intensive]
+            FuncNames.INTENSIVE: [self.valve_intensive],
+            FuncNames.STOP: [self.valve_cold_water],
         }
         for func_name, step in self.func_steps.items():
             if func_name in valves:
@@ -121,7 +128,9 @@ class Post(IoObject, ModbusDataObject):
             self.pump.set_frequency(0.0)
 
         no_pressure = self.pressure_timer.process(
-            run=self.pump.is_run and self.ai_pressure.val < self.min_pressure, timeout=self.pressure_timeout)
+            run=self.pump.is_run and self.ai_pressure.val < self.min_pressure and self.min_pressure > 0,
+            timeout=self.pressure_timeout
+        )
         if not self.alarm:
             if self.pump.is_alarm_state():
                 self.set_alarm()

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pylogic.timer import Ton
 from pylogic.steps import Steps
 
@@ -115,7 +117,8 @@ class MultiValveSteps(BaseSteps):
 
     def __init__(self, name, owner, *args, **kwargs):
         super().__init__(name)
-        self.owner = owner
+        from post import Post
+        self.owner: Post = owner
         self.valve = None
         self.pump = 0
         self.need_stop = False
@@ -291,3 +294,38 @@ class SharedValveSteps(Steps):
         self.out_valve = False
         self.pump = False
         return self.idle
+
+
+class StopSteps(MultiValveSteps):
+
+    def __init__(self, name, owner, *args, **kwargs):
+        super().__init__(name, owner, *args, **kwargs)
+        self._last_open_valve = False
+
+    def step_first(self):
+        self._last_open_valve = False
+        self.ton.reset()
+        return self.main_step
+
+    def main_step(self):
+        self.pump = 0
+        if not self.owner.antifreeze_timeout:
+            self.valve = False
+            return None
+        if not self.is_winter_today():
+            self.valve = False
+            return None
+        self.valve = self.ton.process(run=True, timeout=self.owner.antifreeze_timeout)
+        if self._last_open_valve != self.valve:
+            self._last_open_valve = self.valve
+            self.logger.info(f'Antifreeze start' if self.valve else f'Antifreeze stop')
+        if self.need_stop:
+            return self.idle
+        return None
+
+    def is_winter_today(self):
+        today = datetime.now().date()
+        current_md = (today.month, today.day)
+        start_md = (11, 1)
+        end_md = (4, 1)
+        return current_md >= start_md or current_md <= end_md
